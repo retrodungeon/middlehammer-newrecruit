@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Imperial Guard — Codex 2009 (5th Edition, Pilot)" id="mh-cat-guard-2009" revision="1" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="2" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Imperial Guard / Astra Militarum | Codex: Imperial Guard (5th Edition, 2009)" id="mh-cat-guard-2009" revision="2" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="2" type="catalogue">
   <comment>Selected pilot entries based on 2009 5th Edition Imperial Guard codex data. Incomplete: unit composition, wargear, and codex restrictions not yet represented. Do not use for games.</comment>
   <selectionEntries>
     <selectionEntry name="Company Command Squad" id="mh-ig-2009-0" hidden="false" type="unit">
