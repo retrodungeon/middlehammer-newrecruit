@@ -90,6 +90,49 @@ def main():
         warnings['missing_experimental_gst_profile_types']=1
 
 
+
+    def convert_modifiers(old,dest):
+        """Translate simple unconditional selection/cost changes conservatively.
+
+        Conditional legacy modifiers are NOT converted until their parent/child
+        selection semantics are independently verified against the 2.x schema.
+        """
+        for modifier in children(old,'modifiers'):
+            kind=modifier.get('type')
+            field=modifier.get('field')
+            conditions=list(modifier.iter())
+            conditional=any(local(x) in ('condition','conditionGroup') for x in conditions)
+            if conditional:
+                warnings['conditional_modifiers_pending']+=1
+                continue
+            if kind not in ('set','increment','decrement'):
+                warnings['unsupported_modifier_type:'+str(kind)]+=1
+                continue
+            if field not in ('points','minSelections','maxSelections','minInRoster','maxInRoster'):
+                warnings['unsupported_modifier_field:'+str(field)]+=1
+                continue
+            # Cost changes are only meaningful if the legacy value is numeric.
+            try: value=float(modifier.get('value',''))
+            except ValueError:
+                warnings['nonnumeric_modifier_value']+=1
+                continue
+            mapped={'points':('cost','6f18-a8fc-2c5b-9517'),
+                    'minSelections':('constraint',old.get('id','')+'-minSelections'),
+                    'maxSelections':('constraint',old.get('id','')+'-maxSelections'),
+                    'minInRoster':('constraint',old.get('id','')+'-minInRoster'),
+                    'maxInRoster':('constraint',old.get('id','')+'-maxInRoster')}
+            # Legacy increment/decrement can target a nonexistent 2.x constraint;
+            # retain an audit warning rather than silently manufacturing one.
+            target_type,target_id=mapped[field]
+            if target_type=='constraint' and not any(local(x)=='constraint' and x.get('id')==target_id for x in dest.iter()):
+                warnings['modifier_target_constraint_absent']+=1
+                continue
+            box=group(dest,'modifiers')
+            if box is None: box=sub(dest,'modifiers')
+            operation={'set':'set','increment':'increment','decrement':'decrement'}[kind]
+            sub(box,'modifier',type=operation,field=target_id,value=str(value))
+            warnings['simple_modifiers_converted']+=1
+
     def convert_profile(old,dest):
         box=group(dest,'profiles')
         if box is None: box=sub(dest,'profiles')
@@ -140,6 +183,7 @@ def main():
                   hidden=old.get('hidden','false'),defaultAmount=old.get('minSelections','0'))
             old_types[old.get('type','')]+=1
             constraints(old,e)
+            convert_modifiers(old,e)
             if float(old.get('points','0'))!=0:
                 costs=sub(e,'costs')
                 sub(costs,'cost',name='Points',typeId='6f18-a8fc-2c5b-9517',value=old.get('points'))
@@ -167,15 +211,14 @@ def main():
                 elif t in ('links','rules','profiles'):
                     convert_section(ch,e)
                 elif t=='modifiers':
-                    if len(ch):
-                        warnings['unconverted_modifiers']+=len(ch)
-                        audit_modifiers(old)
+                    if len(ch): audit_modifiers(old)
                 elif len(ch): warnings['unconverted_entry_section:'+t]+=len(ch)
             return
         if name in ('entryGroup','sharedEntryGroup'):
             e=sub(dest,'selectionEntryGroup',id=old.get('id'),name=old.get('name'),
                   hidden=old.get('hidden','false'),defaultSelectionEntryId=old.get('defaultSelectionEntryId'))
             constraints(old,e)
+            convert_modifiers(old,e)
             for ch in old:
                 t=local(ch)
                 if t=='entries':
@@ -186,8 +229,8 @@ def main():
                     for item in ch: walk(item,box)
                 elif t=='links': convert_section(ch,e)
                 elif len(ch):
-                    warnings['unconverted_group_section:'+t]+=len(ch)
                     if t=='modifiers': audit_modifiers(old)
+                    else: warnings['unconverted_group_section:'+t]+=len(ch)
     root_entries=sub(target,'selectionEntries')
     for e in children(source,'entries'): walk(e,root_entries,True)
     shared=sub(target,'sharedSelectionEntries')
