@@ -43,6 +43,8 @@ def main():
     ap.add_argument('target_gst',type=Path)
     ap.add_argument('output',type=Path)
     ap.add_argument('--report',type=Path,required=True)
+    ap.add_argument('--source-gst',type=Path)
+    ap.add_argument('--experimental-gst',type=Path)
     args=ap.parse_args()
     source=ET.parse(args.source).getroot()
     gst=ET.parse(args.target_gst).getroot()
@@ -53,6 +55,30 @@ def main():
         'library':'false'})
     warnings=collections.Counter()
     old_types=collections.Counter()
+
+    if args.source_gst and args.experimental_gst:
+        source_gst=ET.parse(args.source_gst).getroot()
+        gst_ns='{http://www.battlescribe.net/schema/gameSystemSchema}'
+        profile_types=group(gst,'profileTypes')
+        if profile_types is None: profile_types=ET.SubElement(gst,gst_ns+'profileTypes')
+        known={x.get('id') for x in gst.iter() if x.get('id')}
+        count=0
+        for old_type in source_gst.iter():
+            if local(old_type)!='profileType' or old_type.get('id') in known: continue
+            new_type=ET.SubElement(profile_types,gst_ns+'profileType',
+                                   {'id':old_type.get('id'),'name':'6e '+old_type.get('name','Profile')})
+            characteristic_types=ET.SubElement(new_type,gst_ns+'characteristicTypes')
+            for ch in old_type.iter():
+                if local(ch)=='characteristic':
+                    ET.SubElement(characteristic_types,gst_ns+'characteristicType',
+                                  {'id':ch.get('id'),'name':ch.get('name','')})
+            count+=1
+        args.experimental_gst.parent.mkdir(parents=True,exist_ok=True)
+        ET.ElementTree(gst).write(args.experimental_gst,encoding='utf-8',xml_declaration=True)
+        print('Legacy profile types added to isolated experimental GST:',count)
+    else:
+        warnings['missing_experimental_gst_profile_types']=1
+
 
     def convert_profile(old,dest):
         box=group(dest,'profiles')
