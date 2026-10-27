@@ -1,0 +1,30 @@
+name: Inspect archived 6th Edition codexes
+on:
+  workflow_dispatch:
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch preserved 6th Edition archive
+        run: |
+          python - <<'PY'
+          import urllib.request
+          url = 'https://github.com/BSData/wh40k-7th-edition/releases/download/v3.1.4/Warhammer_40000_6th_Ed_last_revision.bsr'
+          request = urllib.request.Request(url, headers={'User-Agent': 'middlehammer-sixth-inventory'})
+          with urllib.request.urlopen(request, timeout=120) as response:
+              data = response.read()
+          open('sixth.bsr', 'wb').write(data)
+          print('Archive bytes:', len(data))
+          PY
+      - name: Inventory codexes and identify Space Marines 2013
+        run: python tools/inspect_6e_archive.py sixth.bsr --output build/sixth-edition-inventory.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sixth-edition-inventory
+          path: build/sixth-edition-inventory.json
