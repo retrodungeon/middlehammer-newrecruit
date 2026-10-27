@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/inspect-sixth-edition.yml'
+      - 'tools/inspect_6e_structure.py'
 jobs:
   inventory:
     runs-on: ubuntu-latest
