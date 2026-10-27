@@ -4,8 +4,36 @@
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
-        <categoryLink name="HQ" hidden="false" id="mh-force-hq" targetId="ac8d-efba-1884-d3ad"/>
-        <categoryLink name="Troops" hidden="false" id="mh-force-troops" targetId="default-category"/>
+        <categoryLink name="HQ" hidden="false" id="mh-foc-0" targetId="ac8d-efba-1884-d3ad">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="force" shared="true" id="mh-foc-0-min"/>
+            <constraint type="max" value="2" field="selections" scope="force" shared="true" id="mh-foc-0-max"/>
+          </constraints>
+        </categoryLink>
+        <categoryLink name="Troops" hidden="false" id="mh-foc-1" targetId="default-category">
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="force" shared="true" id="mh-foc-1-min"/>
+            <constraint type="max" value="6" field="selections" scope="force" shared="true" id="mh-foc-1-max"/>
+          </constraints>
+        </categoryLink>
+        <categoryLink name="Elites" hidden="false" id="mh-foc-2" targetId="978c-e18f-8aeb-f4c1">
+          <constraints>
+            <constraint type="min" value="0" field="selections" scope="force" shared="true" id="mh-foc-2-min"/>
+            <constraint type="max" value="3" field="selections" scope="force" shared="true" id="mh-foc-2-max"/>
+          </constraints>
+        </categoryLink>
+        <categoryLink name="Fast Attack" hidden="false" id="mh-foc-3" targetId="74fe-37c3-fbbf-849e">
+          <constraints>
+            <constraint type="min" value="0" field="selections" scope="force" shared="true" id="mh-foc-3-min"/>
+            <constraint type="max" value="3" field="selections" scope="force" shared="true" id="mh-foc-3-max"/>
+          </constraints>
+        </categoryLink>
+        <categoryLink name="Heavy Support" hidden="false" id="mh-foc-4" targetId="9260-7d57-be5c-bd52">
+          <constraints>
+            <constraint type="min" value="0" field="selections" scope="force" shared="true" id="mh-foc-4-min"/>
+            <constraint type="max" value="3" field="selections" scope="force" shared="true" id="mh-foc-4-max"/>
+          </constraints>
+        </categoryLink>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
