@@ -55,6 +55,15 @@ def main():
         'library':'false'})
     warnings=collections.Counter()
     old_types=collections.Counter()
+    modifier_inventory=collections.Counter()
+    modifier_examples=[]
+    def audit_modifiers(owner):
+        for modifier in children(owner,'modifiers'):
+            key=(modifier.get('type','unknown'),modifier.get('field',''))
+            modifier_inventory[' / '.join(key)]+=1
+            if len(modifier_examples)<30:
+                modifier_examples.append({'owner':owner.get('name'),'type':key[0],'field':key[1],'value':modifier.get('value'),'conditions':[dict(x.attrib) for x in modifier.iter() if local(x)=='condition']})
+
     unmapped=[]
 
     if args.source_gst and args.experimental_gst:
@@ -88,14 +97,18 @@ def main():
         chars=sub(p,'characteristics')
         for ch in children(old,'characteristics'):
             sub(chars,'characteristic',name=ch.get('name'),typeId=ch.get('characteristicId')).text=ch.get('value','')
-        if children(old,'modifiers'): warnings['unconverted_profile_modifiers']+=len(children(old,'modifiers'))
+        if children(old,'modifiers'):
+            warnings['unconverted_profile_modifiers']+=len(children(old,'modifiers'))
+            audit_modifiers(old)
     def convert_rule(old,dest):
         box=group(dest,'rules')
         if box is None: box=sub(dest,'rules')
         r=sub(box,'rule',id=old.get('id'),name=old.get('name'),hidden=old.get('hidden','false'))
         desc=group(old,'description')
         sub(r,'description').text=(desc.text if desc is not None else old.get('description','')) or ''
-        if children(old,'modifiers'): warnings['unconverted_rule_modifiers']+=len(children(old,'modifiers'))
+        if children(old,'modifiers'):
+            warnings['unconverted_rule_modifiers']+=len(children(old,'modifiers'))
+            audit_modifiers(old)
     def convert_link(old,dest):
         kind=old.get('linkType')
         if kind not in ('entry','profile','rule','entry group'):
@@ -106,7 +119,9 @@ def main():
         if box is None: box=sub(dest,boxname)
         attrs={'id':old.get('id'),'targetId':old.get('targetId'),'type':'selectionEntryGroup' if kind=='entry group' else ('selectionEntry' if kind=='entry' else kind)}
         sub(box,'entryLink' if kind in ('entry','entry group') else 'infoLink',**attrs)
-        if children(old,'modifiers'): warnings['unconverted_link_modifiers']+=len(children(old,'modifiers'))
+        if children(old,'modifiers'):
+            warnings['unconverted_link_modifiers']+=len(children(old,'modifiers'))
+            audit_modifiers(old)
     def convert_section(old,dest):
         kind=local(old)
         for item in old:
@@ -152,7 +167,9 @@ def main():
                 elif t in ('links','rules','profiles'):
                     convert_section(ch,e)
                 elif t=='modifiers':
-                    if len(ch): warnings['unconverted_modifiers']+=len(ch)
+                    if len(ch):
+                        warnings['unconverted_modifiers']+=len(ch)
+                        audit_modifiers(old)
                 elif len(ch): warnings['unconverted_entry_section:'+t]+=len(ch)
             return
         if name in ('entryGroup','sharedEntryGroup'):
@@ -168,9 +185,11 @@ def main():
                     box=sub(e,'selectionEntryGroups')
                     for item in ch: walk(item,box)
                 elif t=='links': convert_section(ch,e)
-                elif len(ch): warnings['unconverted_group_section:'+t]+=len(ch)
-    box=sub(target,'selectionEntries')
-    for e in children(source,'entries'): walk(e,box,True)
+                elif len(ch):
+                    warnings['unconverted_group_section:'+t]+=len(ch)
+                    if t=='modifiers': audit_modifiers(old)
+    root_entries=sub(target,'selectionEntries')
+    for e in children(source,'entries'): walk(e,root_entries,True)
     shared=sub(target,'sharedSelectionEntries')
     for e in children(source,'sharedEntries'): walk(e,shared)
     sharedgroups=sub(target,'sharedSelectionEntryGroups')
@@ -201,10 +220,10 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     ET.ElementTree(target).write(args.output,encoding='utf-8',xml_declaration=True)
     result={'status':'EXPERIMENTAL_NOT_PUBLISHABLE','source':source.get('name'),
-            'rootUnits':len(box),'sharedEntries':len(shared),
+            'rootEntries':len(root_entries),'sharedEntries':len(shared),
             'sharedGroups':len(sharedgroups),'convertedProfiles':sum(1 for x in target.iter() if local(x)=='profile'),'convertedRules':sum(1 for x in target.iter() if local(x)=='rule'),'convertedLinks':sum(1 for x in target.iter() if local(x) in ('entryLink','infoLink')),'legacyTypes':dict(old_types),
-            'unsupported':dict(warnings),'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],
-            'warning':'Do not publish: legacy profiles, links, rules, modifiers and conditional restrictions still require semantic conversion.'}
+            'unsupported':dict(warnings),'modifierTypes':dict(modifier_inventory),'modifierExamples':modifier_examples,'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],
+            'warning':'Do not publish: conditional modifiers, special eligibility, and New Recruit validation remain unverified.'}
     args.report.parent.mkdir(parents=True,exist_ok=True)
     args.report.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
