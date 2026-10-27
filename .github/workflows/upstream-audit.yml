@@ -1,0 +1,40 @@
+name: Audit upstream BattleScribe data
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/**'
+      - 'sources/**'
+      - '.github/workflows/upstream-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download upstream snapshots
+        run: python tools/fetch_upstreams.py
+      - name: Download archived 6th Edition
+        run: |
+          python - <<'PY'
+          import pathlib, urllib.request
+          url = 'https://github.com/BSData/wh40k-7th-edition/releases/download/v3.1.4/Warhammer_40000_6th_Ed_last_revision.bsr'
+          dest = pathlib.Path('upstream-cache/6e.bsr')
+          request = urllib.request.Request(url, headers={'User-Agent': 'middlehammer-upstream-audit'})
+          with urllib.request.urlopen(request, timeout=120) as response:
+              dest.write_bytes(response.read())
+          print('Downloaded 6th Edition:', dest.stat().st_size, 'bytes')
+          PY
+      - name: Audit XML and archived data
+        run: python tools/audit_upstreams.py upstream-cache --json build/audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middlehammer-upstream-audit
+          path: build/audit.json
+          if-no-files-found: warn
+          retention-days: 30
