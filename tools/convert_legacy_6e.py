@@ -25,15 +25,16 @@ def group(e, name): return next((x for x in e if local(x)==name), None)
 def children(e,name): 
     x=group(e,name)
     return list(x) if x is not None else []
-def sub(parent,name,**attrs):
-    return ET.SubElement(parent,N+name,{k:str(v) for k,v in attrs.items() if v is not None})
+def sub(parent,tag_name,**attrs):
+    return ET.SubElement(parent,N+tag_name,{k:str(v) for k,v in attrs.items() if v is not None})
 def constraints(old,new):
     for legacy,scope,kind in [('minSelections','parent','min'),('maxSelections','parent','max'),
                               ('minInForce','force','min'),('maxInForce','force','max'),
                               ('minInRoster','roster','min'),('maxInRoster','roster','max')]:
         val=old.get(legacy)
         if val is not None and float(val)>=0 and not (kind=='min' and float(val)==0):
-            box=group(new,'constraints') or sub(new,'constraints')
+            box=group(new,'constraints')
+            if box is None: box=sub(new,'constraints')
             sub(box,'constraint',id=old.get('id')+'-'+legacy,type=kind,value=val,
                 field='selections',scope=scope,shared='true')
 def main():
