@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Chaos Space Marines (3rd Edition, 2002)" id="0f19-9487-acbb-e047" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="5" library="false" revision="3" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Chaos Space Marines (3rd Edition, 2002)" id="0f19-9487-acbb-e047" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="5" library="false" revision="4" type="catalogue">
   <comment>2002 Chaos Space Marine Codex</comment>
   <categoryEntries>
     <categoryEntry name="Mark of Khorne" id="039c-5796-7006-0975" hidden="false" />
@@ -30,22 +30,22 @@
     <entryLink name="Chaos Space Marines" id="ed26-1603-021e-9d71" collective="false" hidden="false" import="true" targetId="eeac-fbec-cb57-09b9" type="selectionEntry" />
     <entryLink name="Bloodletters Daemon Pack" id="9989-5a0d-37d6-282c" collective="false" hidden="false" import="true" targetId="aaae-ce39-0fdc-6a0f" type="selectionEntry">
       <categoryLinks>
-        <categoryLink name="Troops" id="143d-5724-09f8-f3c5" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="143d-5724-09f8-f3c5" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Horror Daemon Pack" id="3f55-f6ea-2fda-c8e2" collective="false" hidden="false" import="true" targetId="be62-31cf-0875-9538" type="selectionEntry">
       <categoryLinks>
-        <categoryLink name="Troops" id="bd6a-f3ad-8cf9-8c2c" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="bd6a-f3ad-8cf9-8c2c" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Daemonette Daemon Pack" id="bf09-30ec-f806-42b5" collective="false" hidden="false" import="true" targetId="867a-f2a6-0a64-7648" type="selectionEntry">
       <categoryLinks>
-        <categoryLink name="Troops" id="17a4-5f5c-bce3-dff3" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="17a4-5f5c-bce3-dff3" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Plaguebearer Daemon Pack" id="530f-231c-0b0b-2ec7" collective="false" hidden="false" import="true" targetId="b418-2be0-7258-d526" type="selectionEntry">
       <categoryLinks>
-        <categoryLink name="Troops" id="d299-517b-ce53-b4d2" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="d299-517b-ce53-b4d2" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Nurglings" id="4b57-2afb-bb8d-b0b3" collective="false" hidden="false" import="true" targetId="8aba-c9fe-5499-cfbd" type="selectionEntry" />
@@ -59,7 +59,7 @@
     <entryLink name="Chaos Dreadnought" id="56d6-06ef-3251-2423" collective="false" hidden="false" import="true" targetId="f787-e645-f731-b130" type="selectionEntry" />
     <entryLink name="Chaos Land Raider" id="aa4f-15c4-4a6c-ad1a" collective="false" hidden="false" import="true" targetId="7b79-098a-f562-00e2" type="selectionEntry">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="b6b5-6ae6-679a-8d30" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="b6b5-6ae6-679a-8d30" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Chaos Defiler" id="04e7-829b-b373-281e" collective="false" hidden="false" import="true" targetId="893f-8699-a721-0be9" type="selectionEntry" />
@@ -71,7 +71,7 @@
     <entryLink name="Khorne Beserkers" id="5683-f410-4726-2b5c" collective="false" hidden="false" import="true" targetId="df6a-ef9f-483a-2b06" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="c247-01b1-6fba-1e12" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="c247-01b1-6fba-1e12" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -98,7 +98,7 @@
     <entryLink name="Plague Marines" id="b0b1-7da1-351d-acbe" collective="false" hidden="false" import="true" targetId="5e2c-55a9-6755-8a23" type="selectionEntry">
       <comment>Troop Choice</comment>
       <categoryLinks>
-        <categoryLink name="Troops" id="14dc-309a-cef6-1cdd" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="14dc-309a-cef6-1cdd" primary="true" targetId="default-category" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -152,7 +152,7 @@
     <entryLink name="Noise Marines" id="3898-b48e-eb3c-ae03" collective="false" hidden="false" import="true" targetId="7ce0-d88a-abf0-8f50" type="selectionEntry">
       <comment>Troop Choice</comment>
       <categoryLinks>
-        <categoryLink name="Troops" id="13dd-1ad0-60e8-1724" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="13dd-1ad0-60e8-1724" primary="true" targetId="default-category" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -171,7 +171,7 @@
     <entryLink name="Rubric Marines" id="0e6a-4135-2c98-c529" collective="false" hidden="false" import="true" targetId="250f-5853-4341-ce44" type="selectionEntry">
       <comment>Troop Choice</comment>
       <categoryLinks>
-        <categoryLink name="Troops" id="373e-d88e-ea82-c0d1" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="373e-d88e-ea82-c0d1" primary="true" targetId="default-category" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -190,7 +190,7 @@
     <entryLink name="Khorne Beserker Bikers" id="0791-95a1-8f00-5768" collective="false" hidden="false" import="true" targetId="0d50-913a-14bc-960d" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="a355-466c-3d60-3a3f" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="a355-466c-3d60-3a3f" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -217,7 +217,7 @@
     <entryLink name="Noise Marine Bikers" id="c90b-4891-530a-9dba" collective="false" hidden="false" import="true" targetId="ec22-521e-9a8e-4e3c" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="fe24-cd14-71b6-14f3" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="fe24-cd14-71b6-14f3" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -269,7 +269,7 @@
     <entryLink name="Noise Marine Havocs" id="a885-4679-852c-4fa9" collective="false" hidden="false" import="true" targetId="996e-ebb3-c322-13a4" type="selectionEntry">
       <comment>Heavy Support Choice</comment>
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="d678-b1e5-9444-23c7" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="d678-b1e5-9444-23c7" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -288,7 +288,7 @@
     <entryLink name="Plague Marine Havocs" id="eea7-5ce5-9b08-6656" collective="false" hidden="false" import="true" targetId="3464-512a-2b16-b756" type="selectionEntry">
       <comment>Heavy Support Choice</comment>
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="b1e3-e0a7-9508-9c6f" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="b1e3-e0a7-9508-9c6f" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -346,7 +346,7 @@
     <entryLink name="Khorne Beserker Bikers" id="a047-2009-6447-1a08" collective="false" hidden="false" import="true" targetId="0d50-913a-14bc-960d" type="selectionEntry">
       <comment>Fast Attack Choice</comment>
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="8dd9-7405-2cf6-271e" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="8dd9-7405-2cf6-271e" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -365,7 +365,7 @@
     <entryLink name="Khorne Beserkers" id="6ddc-4662-f48a-5774" collective="false" hidden="false" import="true" targetId="df6a-ef9f-483a-2b06" type="selectionEntry">
       <comment>Troop Choice</comment>
       <categoryLinks>
-        <categoryLink name="Troops" id="2de8-5bdf-96cf-9315" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="2de8-5bdf-96cf-9315" primary="true" targetId="default-category" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -384,7 +384,7 @@
     <entryLink name="Noise Marine Bikers" id="71c2-7a2c-b1a4-ff6f" collective="false" hidden="false" import="true" targetId="ec22-521e-9a8e-4e3c" type="selectionEntry">
       <comment>Fast Attack Choice</comment>
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="7465-4fa9-155b-3a3d" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="7465-4fa9-155b-3a3d" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -403,7 +403,7 @@
     <entryLink name="Noise Marine Havocs" id="c1cd-0bdc-5952-806e" collective="false" hidden="false" import="true" targetId="996e-ebb3-c322-13a4" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="d656-cf44-3010-31cc" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="d656-cf44-3010-31cc" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -430,7 +430,7 @@
     <entryLink name="Noise Marines" id="d8b4-9396-6701-4c78" collective="false" hidden="false" import="true" targetId="7ce0-d88a-abf0-8f50" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="ccbe-0829-c060-64e7" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="ccbe-0829-c060-64e7" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -457,7 +457,7 @@
     <entryLink name="Plague Marine Havocs" id="81be-ffe0-7a5c-cb1d" collective="false" hidden="false" import="true" targetId="3464-512a-2b16-b756" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="bb3c-506d-f00e-f834" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="bb3c-506d-f00e-f834" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -484,7 +484,7 @@
     <entryLink name="Plague Marines" id="1d50-6a90-c53d-1e31" collective="false" hidden="false" import="true" targetId="5e2c-55a9-6755-8a23" type="selectionEntry">
       <comment>Fast Attack for Death Guard</comment>
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="6267-a739-06a1-238a" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="6267-a739-06a1-238a" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -523,7 +523,7 @@
     <entryLink name="Rubric Marines" id="1e5d-dcb2-7212-8151" collective="false" hidden="false" import="true" targetId="250f-5853-4341-ce44" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="65db-d433-55c7-51aa" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="65db-d433-55c7-51aa" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -550,7 +550,7 @@
     <entryLink name="Plague Marines" id="8d71-5e76-552e-dbe8" collective="false" hidden="false" import="true" targetId="5e2c-55a9-6755-8a23" type="selectionEntry">
       <comment>Elite Choice</comment>
       <categoryLinks>
-        <categoryLink name="Elites" id="55a4-2625-4856-21ae" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="55a4-2625-4856-21ae" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <modifiers>
         <modifier field="hidden" type="set" value="true">
@@ -1583,7 +1583,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     <selectionEntry name="Chaos Lord" id="9fda-9a74-56c3-7c97" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
         <categoryLink name="Independent Character" id="c570-4007-ed32-4e66" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
-        <categoryLink name="HQ" id="1907-89ae-9906-8b7e" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="1907-89ae-9906-8b7e" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
       <constraints>
         <constraint id="af4c-d4e8-40d1-5466" field="selections" includeChildForces="false" includeChildSelections="true" message="A Chaos Army can only have one Chaos Lord. Note that Abaddon, Ahriman, Fabius Bile, Lucius and Typhus count as Chaos Lords according to their unit entries." percentValue="false" scope="force" shared="false" type="max" value="1" />
@@ -2063,7 +2063,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Hound" id="5f91-8cdf-9757-3592" collective="false" hidden="false" import="true" type="model">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="9e4f-d415-124c-9d36" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="9e4f-d415-124c-9d36" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -2075,7 +2075,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     <selectionEntry name="Chaos Lieutenant" id="0dd6-780b-c869-8d67" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
         <categoryLink name="Independent Character" id="b0c7-95c8-9c10-2cc1" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
-        <categoryLink name="HQ" id="fad6-5863-26ad-6f61" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="fad6-5863-26ad-6f61" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="45" />
@@ -2397,7 +2397,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Greater Daemon" id="9c6d-d5f0-5bc8-1962" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="HQ" id="d6a8-14a8-3626-9735" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="d6a8-14a8-3626-9735" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
       <constraints>
         <constraint id="f4c3-ba58-b72b-8fa2" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="parent" shared="true" type="max" value="1" />
@@ -2718,7 +2718,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Rhino" id="9c32-521d-4770-91b9" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Dedicated Transport" id="b484-dc8d-10d9-1f1b" hidden="false" primary="true" targetId="a090-a855-c7de-f5c3" />
+        <categoryLink name="Dedicated Transport" id="b484-dc8d-10d9-1f1b" hidden="false" primary="true" targetId="168b-a772-94f7-83f5" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="50" />
@@ -2743,7 +2743,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Possessed Chaos Space Marines" id="5cb8-f01f-ac12-b0fa" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Elites" id="d5c3-59d9-6705-2d2f" hidden="false" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="d5c3-59d9-6705-2d2f" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -3189,7 +3189,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Obliterator Cult" id="899b-1364-808f-05e0" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Elites" id="b3ab-27e2-af55-10f0" hidden="false" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="b3ab-27e2-af55-10f0" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <constraints>
         <constraint id="5586-40a7-78eb-efd5" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -3252,7 +3252,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Space Marines" id="eeac-fbec-cb57-09b9" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Troops" id="fa66-64ca-06b5-5986" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="fa66-64ca-06b5-5986" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -3526,7 +3526,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Rubric Terminators" id="14d2-42b1-7ca9-a8bf" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Elites" id="f81c-8923-8341-4f1c" hidden="false" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="f81c-8923-8341-4f1c" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -3959,7 +3959,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Nurglings" id="8aba-c9fe-5499-cfbd" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Troops" id="2c44-b761-e247-fb2d" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="2c44-b761-e247-fb2d" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
       <constraints>
         <constraint id="fce0-cb79-b5b8-860b" field="selections" includeChildForces="false" includeChildSelections="false" message="An army may only include one unit of Nurglings for each Independent Character or Unit with the Mark of Nurgle." percentValue="false" scope="force" shared="true" type="max" value="0" />
@@ -4051,7 +4051,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Raptors" id="113c-3886-c7d8-db5e" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="ebb9-36b1-0725-5fda" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="ebb9-36b1-0725-5fda" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <constraints>
         <constraint id="4bbc-b7fc-6ad2-a60b" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -4195,7 +4195,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Bikers" id="9238-83a9-94fd-dd48" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="a271-2469-b1ea-3349" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="a271-2469-b1ea-3349" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -4368,7 +4368,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Flesh Hounds Daemon Pack" id="a1ec-8530-63ce-8eb5" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="cf8a-e48e-c3bf-0866" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="cf8a-e48e-c3bf-0866" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -4448,7 +4448,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Screamer Daemon Pack" id="2797-d238-1574-7d3c" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="9152-b57b-804a-9119" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="9152-b57b-804a-9119" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -4525,7 +4525,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Furies Daemon Pack" id="e618-1a94-5fa6-40fe" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="ae9f-fb0f-7854-f9ad" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="ae9f-fb0f-7854-f9ad" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -4573,7 +4573,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Havocs" id="3fa5-f9d1-67cf-b133" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="2229-5c18-8436-53e4" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="2229-5c18-8436-53e4" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -4784,7 +4784,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Predator" id="40bd-3a33-716d-f2c6" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="4074-5921-1fd2-7fe9" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="4074-5921-1fd2-7fe9" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="85" />
@@ -4893,7 +4893,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Dreadnought" id="f787-e645-f731-b130" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="8ac1-b9bd-b3be-416a" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="8ac1-b9bd-b3be-416a" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="75" />
@@ -5237,7 +5237,7 @@ Additionally, earn 50 Victory Points each time this power succeeds, but only ear
     </selectionEntry>
     <selectionEntry name="Chaos Defiler" id="893f-8699-a721-0be9" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="dfdb-2814-cb4b-46ab" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="dfdb-2814-cb4b-46ab" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="150" />
@@ -5348,7 +5348,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Chaos Cultists" id="5533-85b3-c57e-edc0" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Troops" id="3f8b-6ba6-0c89-82a5" hidden="false" primary="true" targetId="0ef5-5056-d52e-3cfd" />
+        <categoryLink name="Troops" id="3f8b-6ba6-0c89-82a5" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -5507,7 +5507,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Chaos Basilisk" id="3159-1b38-f167-3f88" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="5e36-dd46-ce73-9cca" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="5e36-dd46-ce73-9cca" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <constraints>
         <constraint id="ec8f-2cf1-609a-941b" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -5538,7 +5538,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Chaos Vindicator" id="928b-d7cd-5256-f224" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="b6bf-88f8-0150-4a01" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="b6bf-88f8-0150-4a01" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <constraints>
         <constraint id="51cc-e356-b913-3b3b" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -5574,7 +5574,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Abaddon the Despoiler" id="bdac-a8bf-59a7-6578" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="HQ" id="f056-6a1c-3285-c689" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="f056-6a1c-3285-c689" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
         <categoryLink name="Independent Character" id="d4b6-b86b-964a-391d" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
         <categoryLink name="Terminator" id="c25c-44b4-4a4c-81ca" hidden="false" primary="false" targetId="50e1-b8c9-703d-63a5" />
       </categoryLinks>
@@ -5694,7 +5694,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
               <entryLinks>
                 <entryLink name="Chaos Land Raider" id="d86d-772d-4805-9161" collective="false" hidden="false" import="true" targetId="fa36-6237-9cf3-0f4d" type="selectionEntry">
                   <categoryLinks>
-                    <categoryLink name="Dedicated Transport" id="bb3d-f9b9-c38d-e8ae" hidden="false" primary="true" targetId="a090-a855-c7de-f5c3" />
+                    <categoryLink name="Dedicated Transport" id="bb3d-f9b9-c38d-e8ae" hidden="false" primary="true" targetId="168b-a772-94f7-83f5" />
                   </categoryLinks>
                   <constraints>
                     <constraint id="056e-d974-86e6-31fc" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="parent" shared="true" type="max" value="1" />
@@ -5780,7 +5780,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Kharn the Betrayer" id="6b75-5c8b-898f-eaa0" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="HQ" id="1996-c9a4-044d-19df" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="1996-c9a4-044d-19df" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
         <categoryLink name="Independent Character" id="8c5d-9c99-24c8-ea1a" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
       </categoryLinks>
       <constraints>
@@ -5869,7 +5869,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Typhus" id="71da-1c7a-2eae-5da8" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="HQ" id="072a-e631-2962-90bb" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="072a-e631-2962-90bb" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
         <categoryLink name="Independent Character" id="ee77-9fa3-1d53-7a5f" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
         <categoryLink name="Mark of Nurgle" id="6129-1b7e-cd65-0c55" hidden="false" primary="false" targetId="b1cf-c764-2ad0-c229" />
         <categoryLink name="Sorcerer" id="5da6-c965-dee8-5d6d" hidden="false" primary="false" targetId="d832-0917-094f-7627" />
@@ -6033,7 +6033,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Lucius the Eternal" id="83cf-ff36-d1f0-fddc" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="HQ" id="566e-51b1-db7b-eb12" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="566e-51b1-db7b-eb12" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
         <categoryLink name="Independent Character" id="cb30-f17c-4645-75d9" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
         <categoryLink name="Mark of Slaanesh" id="cb98-2d02-1b2a-5ecf" hidden="false" primary="false" targetId="9b41-cfd0-0af7-2496" />
         <categoryLink name="Sorcerer" id="8512-9c9a-07b3-d312" hidden="false" primary="false" targetId="d832-0917-094f-7627" />
@@ -6230,7 +6230,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Ahriman of the Thousand Sons" id="d982-9ee7-19b6-b32a" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="HQ" id="a077-a050-9905-7331" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="a077-a050-9905-7331" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
         <categoryLink name="Independent Character" id="35dc-d084-7fcc-804c" hidden="false" primary="false" targetId="3c96-248b-affd-e504" />
         <categoryLink name="Mark of Tzeentch" id="aa35-e456-1a05-c696" hidden="false" primary="false" targetId="98bc-5939-38d6-c754" />
         <categoryLink name="Sorcerer" id="f736-abf7-ed1a-8b20" hidden="false" primary="false" targetId="d832-0917-094f-7627" />
@@ -6324,7 +6324,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
               <entryLinks>
                 <entryLink name="Chaos Land Raider" id="5f01-62b2-7a3a-e2e6" collective="false" hidden="false" import="true" targetId="fa36-6237-9cf3-0f4d" type="selectionEntry">
                   <categoryLinks>
-                    <categoryLink name="Dedicated Transport" id="cde4-901b-c055-2c4b" hidden="false" primary="true" targetId="a090-a855-c7de-f5c3" />
+                    <categoryLink name="Dedicated Transport" id="cde4-901b-c055-2c4b" hidden="false" primary="true" targetId="168b-a772-94f7-83f5" />
                   </categoryLinks>
                   <constraints>
                     <constraint id="96e4-0843-3e32-1fa9" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="parent" shared="true" type="max" value="1" />
@@ -6428,7 +6428,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Fabius Bile" id="228f-2438-d2d1-998b" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="HQ" id="57cb-9015-4130-9d59" hidden="false" primary="true" targetId="a8a7-7a4b-5f7e-2138" />
+        <categoryLink name="HQ" id="57cb-9015-4130-9d59" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
         <categoryLink name="Mark of Chaos Undivided" id="3d0e-75ef-bde6-fe2c" hidden="false" primary="false" targetId="e9f2-4b8e-c0b1-bb50" />
       </categoryLinks>
       <constraints>
@@ -6521,7 +6521,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Chosen" id="a8f6-e018-b6b1-fc41" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Elites" id="4e75-df5c-aff0-e3e7" hidden="false" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="4e75-df5c-aff0-e3e7" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <constraints>
         <constraint id="03c5-a9f5-95b1-1dc2" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -8458,7 +8458,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Iron Warrior Exchange Slots" id="47e0-84a7-126d-212e" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="97b8-366b-389f-d017" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="97b8-366b-389f-d017" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <constraints>
         <constraint id="57a9-90a6-7120-2bec" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -8495,7 +8495,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
             <entryLink name="Chaos Havocs" id="c9fd-e6bb-335f-3495" collective="false" hidden="false" import="true" targetId="3fa5-f9d1-67cf-b133" type="selectionEntry" />
             <entryLink name="Chaos Land Raider" id="3cb2-d18a-1679-d6b3" collective="false" hidden="false" import="true" targetId="7b79-098a-f562-00e2" type="selectionEntry">
               <categoryLinks>
-                <categoryLink name="Heavy Support" id="aec6-2c5a-4ccd-c54f" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+                <categoryLink name="Heavy Support" id="aec6-2c5a-4ccd-c54f" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
               </categoryLinks>
             </entryLink>
             <entryLink name="Chaos Vindicator" id="d7e6-078f-54f0-b292" collective="false" hidden="false" import="true" targetId="928b-d7cd-5256-f224" type="selectionEntry" />
@@ -8506,7 +8506,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Night Lord Exchange Slots" id="bd46-a480-9c57-9aae" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="7267-5ef6-f63a-22f3" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="7267-5ef6-f63a-22f3" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <constraints>
         <constraint id="3290-bd80-b349-e645" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -10231,7 +10231,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Word Bearers Elite Replacement Slot" id="0b83-3e43-29c9-527e" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Elites" id="28c8-55bc-26b5-1f4a" hidden="false" primary="true" targetId="6d25-b346-c314-6911" />
+        <categoryLink name="Elites" id="28c8-55bc-26b5-1f4a" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <constraints>
         <constraint id="1774-d881-a722-2c84" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="force" shared="true" type="max" value="1" />
@@ -10264,7 +10264,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Word Bearers Fast Attack Replacement Slot" id="e012-9bdc-fec4-ada1" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="e009-5302-c695-343d" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="e009-5302-c695-343d" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <constraints>
         <constraint id="3c27-fccc-8983-2696" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="parent" shared="true" type="max" value="1" />
@@ -10297,7 +10297,7 @@ Weapon Destroyed results may choose to remove this weapon.</description>
     </selectionEntry>
     <selectionEntry name="Word Bearers Heavy Support Replacement Slot" id="fe02-e269-a11c-5d16" collective="false" hidden="false" import="true" type="upgrade">
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="0608-3a5c-21dd-6105" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="0608-3a5c-21dd-6105" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <constraints>
         <constraint id="4648-f800-c1ad-1ef4" field="selections" includeChildForces="false" includeChildSelections="false" percentValue="false" scope="parent" shared="true" type="max" value="1" />
@@ -10346,7 +10346,7 @@ Normal = 10
 CCW = 1*3*2=6
 Daemonic Possession=20</comment>
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="730e-0807-7ae2-4b69" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="730e-0807-7ae2-4b69" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="106" />
@@ -10432,7 +10432,7 @@ Normal = 10
 Dreadnought CCW= 5*3*4=60
 Daemonic Possession=20</comment>
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="45db-1661-0004-719d" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="45db-1661-0004-719d" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="160" />
@@ -10470,7 +10470,7 @@ Armor 12-11-11 = 10+30+20 = 60
 Flyer = 40
 Daemonic Possession = 20</comment>
       <categoryLinks>
-        <categoryLink name="Heavy Support" id="704c-33f4-7968-7d4a" hidden="false" primary="true" targetId="aacb-8a81-62c0-3db8" />
+        <categoryLink name="Heavy Support" id="704c-33f4-7968-7d4a" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="120" />
@@ -10661,7 +10661,7 @@ A Dreadnought with Destroyer upgrade may re-roll one close combat miss in each r
     </selectionEntry>
     <selectionEntry name="Mounted Daemonette Daemon Pack" id="ee9c-7446-f48a-f942" collective="false" hidden="false" import="true" type="unit">
       <categoryLinks>
-        <categoryLink name="Fast Attack" id="4449-ec79-cdab-7ee8" hidden="false" primary="true" targetId="34e2-d53c-28ab-44cf" />
+        <categoryLink name="Fast Attack" id="4449-ec79-cdab-7ee8" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="0" />
@@ -10773,7 +10773,7 @@ A Dreadnought with Destroyer upgrade may re-roll one close combat miss in each r
     <selectionEntry name="Chaos Land Raider" id="fa36-6237-9cf3-0f4d" collective="false" hidden="false" import="true" type="upgrade">
       <comment>Dedicated Transport Option - Needed for dedications to work for Chosen correctly.</comment>
       <categoryLinks>
-        <categoryLink name="Dedicated Transport" id="1739-7ec2-3c5b-46c8" hidden="false" primary="true" targetId="a090-a855-c7de-f5c3" />
+        <categoryLink name="Dedicated Transport" id="1739-7ec2-3c5b-46c8" hidden="false" primary="true" targetId="168b-a772-94f7-83f5" />
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="4ed5-2f92-9abc-2870" value="250" />
