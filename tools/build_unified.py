@@ -31,10 +31,16 @@ def main():
     base = out / "foundation-base.gst"
     unified = out / "Middlehammer-Unification.gst"
     chaos = out / "Chaos Space Marines (2002).cat"
-    guard = out / "Imperial Guard.cat"
+    guard = out / "Imperial Guard - Codex 2009.cat"
     build(a.fifth, base)
     resolve(a.chaos, a.third, base, unified, chaos, out / "chaos-merge-report.json")
     convert(a.guard, unified, guard, out / "imperial-guard-audit.json")
+    # Preserve the public-facing codex name and increment the catalogue revision.
+    guard_tree = ET.parse(guard)
+    guard_root = guard_tree.getroot()
+    guard_root.set("name", "Imperial Guard (5th Edition, 2009)")
+    guard_root.set("revision", "5")
+    guard_tree.write(guard, encoding="utf-8", xml_declaration=True)
     system = ET.parse(unified).getroot()
     catalogues = [ET.parse(path).getroot() for path in (guard, chaos)]
     system_ids = ids(system)
