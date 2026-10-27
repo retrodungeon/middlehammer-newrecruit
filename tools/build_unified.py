@@ -58,7 +58,8 @@ def main():
     guard_tree = ET.parse(guard)
     guard_root = guard_tree.getroot()
     guard_root.set("name", "Imperial Guard (5th Edition, 2009)")
-    guard_root.set("revision", "5")
+    guard_root.set("revision", "8")
+    ET.register_namespace("", "http://www.battlescribe.net/schema/catalogueSchema")
     guard_tree.write(guard, encoding="utf-8", xml_declaration=True)
     system = ET.parse(unified).getroot()
     catalogues = [ET.parse(path).getroot() for path in (guard, chaos)]
