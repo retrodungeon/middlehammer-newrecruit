@@ -27,6 +27,8 @@ jobs:
           PY
       - name: Inventory codexes and identify Space Marines 2013
         run: python tools/inspect_6e_archive.py sixth.bsr --output build/sixth-edition-inventory.json
+      - name: Inspect Space Marines 2013 and 6e dependency structure
+        run: python tools/inspect_6e_structure.py sixth.bsr
       - uses: actions/upload-artifact@v4
         with:
           name: sixth-edition-inventory
