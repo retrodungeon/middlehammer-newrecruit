@@ -1,0 +1,6 @@
+# Locally fetched upstream content and generated output
+upstream-cache/
+build/
+__pycache__/
+*.pyc
+.DS_Store
