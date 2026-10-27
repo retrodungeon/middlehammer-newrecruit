@@ -1,0 +1,45 @@
+name: Unified Middlehammer v0.1 structural build
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/build_unified.py'
+      - '.github/workflows/build-unified.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download required upstream sources
+        run: |
+          python - <<'PY'
+          import pathlib, urllib.parse, urllib.request
+          sources = {
+            'third.gst': ('KSnyder1986/Warhammer-40k-3rd-Edition', 'Warhammer 40k 3rd Edition.gst'),
+            'fifth.gst': ('AnonymousCheese/WH40K5E', 'Warhammer 40,000 5e.gst'),
+            'chaos.cat': ('KSnyder1986/Warhammer-40k-3rd-Edition', 'Chaos Space Marines (2002).cat'),
+            'guard.cat': ('AnonymousCheese/WH40K5E', 'Imperial Guard.cat'),
+          }
+          for filename, (repo, path) in sources.items():
+              url = f'https://raw.githubusercontent.com/{repo}/main/{urllib.parse.quote(path)}'
+              request = urllib.request.Request(url, headers={'User-Agent': 'middlehammer-unified-builder'})
+              with urllib.request.urlopen(request, timeout=120) as response:
+                  payload = response.read()
+              pathlib.Path(filename).write_bytes(payload)
+              print(filename, len(payload))
+          PY
+      - name: Build and validate unified system
+        run: python tools/build_unified.py --fifth fifth.gst --third third.gst --guard guard.cat --chaos chaos.cat --output build/unified
+      - name: Upload generated test package
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middlehammer-unified-v0.1-experimental
+          path: build/unified/
+          if-no-files-found: warn
+          retention-days: 30
