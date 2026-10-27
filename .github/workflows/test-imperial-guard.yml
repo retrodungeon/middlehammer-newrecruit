@@ -1,0 +1,52 @@
+name: Test Imperial Guard integration
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/convert_5e_catalogue.py'
+      - '.github/workflows/test-imperial-guard.yml'
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original upstream GST and Imperial Guard catalogue
+        run: |
+          python - <<'PY'
+          import pathlib, urllib.request
+          urls = {
+            'upstream.gst': 'https://raw.githubusercontent.com/AnonymousCheese/WH40K5E/main/Warhammer%2040%2C000%205e.gst',
+            'guard.cat': 'https://raw.githubusercontent.com/AnonymousCheese/WH40K5E/main/Imperial%20Guard.cat',
+          }
+          for path, url in urls.items():
+              request = urllib.request.Request(url, headers={'User-Agent': 'middlehammer-integration-test'})
+              with urllib.request.urlopen(request, timeout=120) as response:
+                  pathlib.Path(path).write_bytes(response.read())
+          PY
+      - name: Generate full foundation
+        run: python tools/build_foundation.py upstream.gst build/Middlehammer-Unification.gst
+      - name: Convert and audit Imperial Guard
+        run: python tools/convert_5e_catalogue.py guard.cat build/Middlehammer-Unification.gst 'build/Imperial Guard.cat' --report build/imperial-guard-audit.json
+      - name: Check generated XML and system linkage
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          gst = ET.parse('build/Middlehammer-Unification.gst').getroot()
+          cat = ET.parse('build/Imperial Guard.cat').getroot()
+          assert gst.get('id') == cat.get('gameSystemId')
+          assert cat.get('name') == 'Imperial Guard', cat.get('name')
+          print('Generated XML parses and system IDs match.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: middlehammer-imperial-guard-integration
+          path: |
+            build/Middlehammer-Unification.gst
+            build/Imperial Guard.cat
+            build/imperial-guard-audit.json
+          retention-days: 30
