@@ -35,6 +35,25 @@ def main():
     build(a.fifth, base)
     resolve(a.chaos, a.third, base, unified, chaos, out / "chaos-merge-report.json")
     convert(a.guard, unified, guard, out / "imperial-guard-audit.json")
+    # Historical 2009 codex exclusions. The upstream 5e-compatible catalogue
+    # also includes units released in later editions. Remove their top-level
+    # entry links; leave shared definitions intact to avoid dangling references.
+    excluded = {"Rogal Dorn Battle Tank", "Bullgryn Squad", "Field Ordnance Battery"}
+    tree = ET.parse(guard)
+    cat = tree.getroot()
+    ns = "{http://www.battlescribe.net/schema/catalogueSchema}"
+    root_links = cat.find(ns + "entryLinks")
+    if root_links is None:
+        raise SystemExit("Guard catalogue has no root entryLinks")
+    removed = []
+    for link in list(root_links):
+        if link.get("name") in excluded:
+            removed.append(link.get("name"))
+            root_links.remove(link)
+    if set(removed) != excluded:
+        raise SystemExit(f"Historical exclusions not found as expected: {sorted(excluded - set(removed))}")
+    tree.write(guard, encoding="utf-8", xml_declaration=True)
+    (out / "guard-historical-exclusions.json").write_text(json.dumps({"excluded": sorted(removed), "basis": "Not present in the 2009 Codex: Imperial Guard army list", "scope": "Top-level selections only"}, indent=2) + "\\n")
     # Preserve the public-facing codex name and increment the catalogue revision.
     guard_tree = ET.parse(guard)
     guard_root = guard_tree.getroot()
