@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/inspect-sixth-edition.yml'
       - 'tools/inspect_6e_structure.py'
+      - 'tools/convert_legacy_6e.py'
 jobs:
   inventory:
     runs-on: ubuntu-latest
@@ -30,7 +31,18 @@ jobs:
         run: python tools/inspect_6e_archive.py sixth.bsr --output build/sixth-edition-inventory.json
       - name: Inspect Space Marines 2013 and 6e dependency structure
         run: python tools/inspect_6e_structure.py sixth.bsr
+      - name: Run experimental 1.x to 2.x translator (not published)
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('sixth.bsr') as archive:
+              open('space-marines-2013-legacy.cat','wb').write(archive.read('Space Marines - Codex.cat'))
+          PY
+          python tools/convert_legacy_6e.py space-marines-2013-legacy.cat Middlehammer-Unification.gst build/experimental/Space-Marines-2013.cat --report build/experimental/translation-report.json
       - uses: actions/upload-artifact@v4
         with:
           name: sixth-edition-inventory
-          path: build/sixth-edition-inventory.json
+          path: |
+            build/sixth-edition-inventory.json
+            build/experimental/Space-Marines-2013.cat
+            build/experimental/translation-report.json
