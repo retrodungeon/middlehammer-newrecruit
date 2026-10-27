@@ -1,5 +1,5 @@
 name: Inspect archived 6th Edition codexes
-# Includes experimental conversion audit, modifier audit and FOC review; never publishes.
+# Includes experimental conversion audit, conservative modifier translation and FOC review; never publishes.
 on:
   workflow_dispatch:
   push:
