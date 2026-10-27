@@ -97,14 +97,14 @@ def main():
         if children(old,'modifiers'): warnings['unconverted_rule_modifiers']+=len(children(old,'modifiers'))
     def convert_link(old,dest):
         kind=old.get('linkType')
-        if kind not in ('entry','profile','rule'):
+        if kind not in ('entry','profile','rule','entry group'):
             warnings['unsupported_link_type:'+str(kind)]+=1
             return
-        boxname='entryLinks' if kind=='entry' else 'infoLinks'
+        boxname='entryLinks' if kind in ('entry','entry group') else 'infoLinks'
         box=group(dest,boxname)
         if box is None: box=sub(dest,boxname)
-        attrs={'id':old.get('id'),'targetId':old.get('targetId'),'type':'selectionEntry' if kind=='entry' else kind}
-        sub(box,'entryLink' if kind=='entry' else 'infoLink',**attrs)
+        attrs={'id':old.get('id'),'targetId':old.get('targetId'),'type':'selectionEntryGroup' if kind=='entry group' else ('selectionEntry' if kind=='entry' else kind)}
+        sub(box,'entryLink' if kind in ('entry','entry group') else 'infoLink',**attrs)
         if children(old,'modifiers'): warnings['unconverted_link_modifiers']+=len(children(old,'modifiers'))
     def convert_section(old,dest):
         kind=local(old)
