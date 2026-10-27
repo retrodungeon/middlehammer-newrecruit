@@ -1,4 +1,5 @@
 name: Inspect archived 6th Edition codexes
+# Includes experimental conversion audit; never publishes the result.
 on:
   workflow_dispatch:
   push:
