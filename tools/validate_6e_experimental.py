@@ -32,5 +32,20 @@ for entry in units:
     for link in entry.iter():
         if tag(link)=='categoryLink':
             assert link.get('targetId') in foc, (entry.get('name'),link.get('targetId'))
-print('PASS: source-era units, FOC references, counts, and resolved links.')
+# Audit converted profiles against the companion GST, not just the baseline GST.
+companion=ET.parse(sys.argv[4]).getroot() if len(sys.argv)>4 else gst
+profile_types={x.get('id'):x for x in companion.iter() if tag(x)=='profileType'}
+profile_errors=[]
+for profile in catalogue.iter():
+    if tag(profile)!='profile': continue
+    ptype=profile_types.get(profile.get('typeId'))
+    if ptype is None:
+        profile_errors.append((profile.get('name'),'missing type',profile.get('typeId')))
+        continue
+    char_ids={x.get('id') for x in ptype.iter() if tag(x)=='characteristicType'}
+    for characteristic in profile.iter():
+        if tag(characteristic)=='characteristic' and characteristic.get('typeId') not in char_ids:
+            profile_errors.append((profile.get('name'),'missing characteristic',characteristic.get('typeId')))
+assert not profile_errors, f'Broken profile type references: {profile_errors[:15]} (total {len(profile_errors)})'
+print('PASS: source-era units, FOC references, counts, resolved links, and profile type references.')
 print('NOT A PLAYABILITY CERTIFICATION: conditional modifiers and roster legality remain unvalidated.')
