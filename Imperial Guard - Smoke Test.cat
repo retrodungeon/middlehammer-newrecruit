@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Imperial Guard (Smoke Test)" id="mh-cat-guard-smoke" revision="2" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="2" type="catalogue">
-  <comment>Original placeholder data for testing New Recruit GitHub imports. Not codex rules, points, or Unification Patch implementation.</comment>
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Imperial Guard — Codex 2009 (5th Edition, Pilot)" id="mh-cat-guard-smoke" revision="3" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="2" type="catalogue">
+  <comment>Selected pilot entries based on 2009 5th Edition Imperial Guard codex data. Incomplete: unit composition, wargear, and codex restrictions not yet represented. Do not use for games.</comment>
   <selectionEntries>
-    <selectionEntry name="Test Infantry Squad" id="mh-cat-guard-smoke-unit" hidden="false" type="unit">
-      <categoryLinks>
-        <categoryLink name="Troops" id="mh-cat-guard-smoke-troops" hidden="false" targetId="default-category" primary="true"/>
-      </categoryLinks>
+    <selectionEntry name="Company Command Squad" id="mh-ig-2009-0" hidden="false" type="unit">
+      <categoryLinks><categoryLink name="HQ" id="mh-ig-2009-0-category" hidden="false" targetId="ac8d-efba-1884-d3ad" primary="true"/></categoryLinks>
       <costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="50"/></costs>
+    </selectionEntry>
+    <selectionEntry name="Veteran Squad" id="mh-ig-2009-1" hidden="false" type="unit">
+      <categoryLinks><categoryLink name="Troops" id="mh-ig-2009-1-category" hidden="false" targetId="default-category" primary="true"/></categoryLinks>
+      <costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="70"/></costs>
+    </selectionEntry>
+    <selectionEntry name="Leman Russ Battle Tank" id="mh-ig-2009-2" hidden="false" type="unit">
+      <categoryLinks><categoryLink name="Heavy Support" id="mh-ig-2009-2-category" hidden="false" targetId="9260-7d57-be5c-bd52" primary="true"/></categoryLinks>
+      <costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="150"/></costs>
     </selectionEntry>
   </selectionEntries>
 </catalogue>
