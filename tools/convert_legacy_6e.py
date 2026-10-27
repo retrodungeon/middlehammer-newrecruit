@@ -55,6 +55,7 @@ def main():
         'library':'false'})
     warnings=collections.Counter()
     old_types=collections.Counter()
+    unmapped=[]
 
     if args.source_gst and args.experimental_gst:
         source_gst=ET.parse(args.source_gst).getroot()
@@ -137,7 +138,9 @@ def main():
                     cl=sub(e,'categoryLinks')
                     sub(cl,'categoryLink',id=old.get('id')+'-foc',name=label,
                         targetId=FOC[label],primary='true')
-                else: warnings['unmapped_root_category:'+label]+=1
+                else:
+                    warnings['unmapped_root_category:'+label]+=1
+                    unmapped.append({'name':old.get('name'),'categoryId':cat,'decoded':label})
             for ch in old:
                 t=local(ch)
                 if t=='entries':
@@ -188,13 +191,19 @@ def main():
                 if section=='links': convert_link(item,target)
                 else: convert_rule(item,target)
         elif items: warnings['unconverted_catalogue_section:'+section]+=len(items)
+    known={x.get('id') for x in target.iter() if x.get('id')}
+    known.update(x.get('id') for x in gst.iter() if x.get('id'))
+    unresolved=[{'id':x.get('id'),'targetId':x.get('targetId'),'type':x.get('type')}
+                for x in target.iter() if local(x) in ('entryLink','infoLink')
+                and x.get('targetId') not in known]
+    if unresolved: warnings['unresolved_link_targets']=len(unresolved)
     ET.register_namespace('',NS)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     ET.ElementTree(target).write(args.output,encoding='utf-8',xml_declaration=True)
     result={'status':'EXPERIMENTAL_NOT_PUBLISHABLE','source':source.get('name'),
             'rootUnits':len(box),'sharedEntries':len(shared),
             'sharedGroups':len(sharedgroups),'convertedProfiles':sum(1 for x in target.iter() if local(x)=='profile'),'convertedRules':sum(1 for x in target.iter() if local(x)=='rule'),'convertedLinks':sum(1 for x in target.iter() if local(x) in ('entryLink','infoLink')),'legacyTypes':dict(old_types),
-            'unsupported':dict(warnings),
+            'unsupported':dict(warnings),'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],
             'warning':'Do not publish: legacy profiles, links, rules, modifiers and conditional restrictions still require semantic conversion.'}
     args.report.parent.mkdir(parents=True,exist_ok=True)
     args.report.write_text(json.dumps(result,indent=2)+'\n')
