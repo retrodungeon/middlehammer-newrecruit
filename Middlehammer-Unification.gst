@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification (Rules Prototype)" id="sys-middlehammer-2026" revision="1" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification (Rules Prototype)" id="sys-middlehammer-2026" revision="2" battleScribeVersion="2.03" type="gameSystem">
   <comment>Rules prototype based on The Book of the Unification v1.7.2. Current catalogues remain original placeholder test data, not official codex units.</comment>
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
