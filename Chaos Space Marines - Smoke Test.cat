@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Chaos Space Marines (Smoke Test)" id="mh-cat-chaos-smoke" revision="1" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="1" type="catalogue">
+  <comment>Original placeholder data for testing New Recruit GitHub imports. Not codex rules, points, or Unification Patch implementation.</comment>
+  <selectionEntries>
+    <selectionEntry name="Test Legionary Squad" id="mh-cat-chaos-smoke-unit" hidden="false" type="unit">
+      <categoryLinks>
+        <categoryLink name="Troops" id="mh-cat-chaos-smoke-troops" hidden="false" targetId="default-category" primary="true"/>
+      </categoryLinks>
+      <costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="60"/></costs>
+    </selectionEntry>
+  </selectionEntries>
+</catalogue>
