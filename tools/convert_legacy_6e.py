@@ -179,7 +179,7 @@ def main():
                 warnings['excluded_allied_detachment']+=1
                 return
             e=sub(dest,'selectionEntry',id=old.get('id'),name=old.get('name'),
-                  type=(old.get('type') if old.get('type') in ('unit','model','upgrade') else 'upgrade'),
+                  type=('unit' if root and old.get('categoryId') not in (None,'(No Category)') else (old.get('type') if old.get('type') in ('unit','model','upgrade') else 'upgrade')),
                   hidden=old.get('hidden','false'),defaultAmount=old.get('minSelections','0'))
             old_types[old.get('type','')]+=1
             constraints(old,e)
