@@ -38,8 +38,9 @@ jobs:
           import zipfile
           with zipfile.ZipFile('sixth.bsr') as archive:
               open('space-marines-2013-legacy.cat','wb').write(archive.read('Space Marines - Codex.cat'))
+              open('sixth-edition-legacy.gst','wb').write(archive.read('Warhammer40K.gst'))
           PY
-          python tools/convert_legacy_6e.py space-marines-2013-legacy.cat Middlehammer-Unification.gst build/experimental/Space-Marines-2013.cat --report build/experimental/translation-report.json
+          python tools/convert_legacy_6e.py space-marines-2013-legacy.cat Middlehammer-Unification.gst build/experimental/Space-Marines-2013.cat --report build/experimental/translation-report.json --source-gst sixth-edition-legacy.gst --experimental-gst build/experimental/Middlehammer-6e-profile-types.gst
       - uses: actions/upload-artifact@v4
         with:
           name: sixth-edition-inventory
@@ -47,3 +48,4 @@ jobs:
             build/sixth-edition-inventory.json
             build/experimental/Space-Marines-2013.cat
             build/experimental/translation-report.json
+            build/experimental/Middlehammer-6e-profile-types.gst
