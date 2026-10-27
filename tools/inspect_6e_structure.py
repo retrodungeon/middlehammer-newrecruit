@@ -20,3 +20,13 @@ print('CAT UNIT ENTRIES',[(x.get('name'),x.get('type')) for x in cat.iter() if t
 missing={x.get('targetId') for x in cat.iter() if x.get('targetId')}-ids(cat)-ids(gst)
 print('UNRESOLVED IN SOURCE',len(missing),sorted(missing)[:30])
 print('SOURCE GST FORCES',[(x.get('name'),x.get('id')) for x in gst.iter() if tag(x)=='forceEntry'][:12])
+
+print('ROOT ENTRIES SAMPLE')
+for e in list(next(x for x in cat if tag(x)=='entries'))[:5]:
+ print(ET.tostring(e,encoding='unicode')[:4000])
+print('ROOT LINKS SAMPLE')
+for e in list(next(x for x in cat if tag(x)=='links'))[:3]:
+ print(ET.tostring(e,encoding='unicode')[:1200])
+print('FORCE TYPE SAMPLE')
+for e in list(next(x for x in gst if tag(x)=='forceTypes'))[:3]:
+ print(ET.tostring(e,encoding='unicode')[:2500])
