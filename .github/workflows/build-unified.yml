@@ -1,10 +1,6 @@
 name: Unified Middlehammer v0.1 structural build
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'tools/build_unified.py'
-      - '.github/workflows/build-unified.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -66,6 +62,7 @@ jobs:
           guard_path = Path('build/unified/Imperial Guard - Codex 2009.cat')
           guard_tree = ET.parse(guard_path)
           guard_tree.getroot().set('gameSystemRevision', '5')
+          ET.register_namespace('', 'http://www.battlescribe.net/schema/catalogueSchema')
           guard_tree.write('Imperial Guard - Codex 2009.cat', encoding='utf-8', xml_declaration=True)
           print('Published Guard units:', sum(e.tag.endswith('selectionEntry') and e.get('type') == 'unit' for e in guard_tree.getroot().iter()))
           PY
