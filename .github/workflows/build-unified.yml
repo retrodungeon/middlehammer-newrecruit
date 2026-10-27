@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -43,3 +43,33 @@ jobs:
           path: build/unified/
           if-no-files-found: warn
           retention-days: 30
+
+      - name: Publish full Guard catalogue to New Recruit repository
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          import subprocess
+          NS = 'http://www.battlescribe.net/schema/gameSystemSchema'
+          old = ET.parse('Middlehammer-Unification.gst').getroot()
+          generated = ET.parse('build/unified/Middlehammer-Unification.gst')
+          root = generated.getroot()
+          root.set('name', 'Middlehammer Unification')
+          root.set('revision', '5')
+          old_force = old.find(f'{{{NS}}}forceEntries')
+          new_force = root.find(f'{{{NS}}}forceEntries')
+          if new_force is not None:
+              root.remove(new_force)
+          root.insert(0, old_force)
+          ET.register_namespace('', NS)
+          generated.write('Middlehammer-Unification.gst', encoding='utf-8', xml_declaration=True)
+          guard_path = Path('build/unified/Imperial Guard - Codex 2009.cat')
+          guard_tree = ET.parse(guard_path)
+          guard_tree.getroot().set('gameSystemRevision', '5')
+          guard_tree.write('Imperial Guard - Codex 2009.cat', encoding='utf-8', xml_declaration=True)
+          print('Published Guard units:', sum(e.tag.endswith('selectionEntry') and e.get('type') == 'unit' for e in guard_tree.getroot().iter()))
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Middlehammer-Unification.gst 'Imperial Guard - Codex 2009.cat'
+          git diff --cached --quiet || (git commit -m 'Publish complete 2009 Imperial Guard codex for New Recruit' && git push)
