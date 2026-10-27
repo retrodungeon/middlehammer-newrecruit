@@ -30,3 +30,22 @@ for e in list(next(x for x in cat if tag(x)=='links'))[:3]:
 print('FORCE TYPE SAMPLE')
 for e in list(next(x for x in gst if tag(x)=='forceTypes'))[:3]:
  print(ET.tostring(e,encoding='unicode')[:2500])
+
+print('LEGACY LINK SAMPLES')
+for e in list(cat.iter()):
+ if tag(e)=='link':
+  print(ET.tostring(e,encoding='unicode')[:900]);
+  if sum(1 for x in list(cat.iter()) if tag(x)=='link')<0: break
+  break
+print('LEGACY RULE SAMPLE')
+for e in cat.iter():
+ if tag(e)=='rule':print(ET.tostring(e,encoding='unicode')[:1300]);break
+print('LEGACY MODIFIER SAMPLE')
+for e in cat.iter():
+ if tag(e)=='modifier':print(ET.tostring(e,encoding='unicode')[:1200]);break
+print('SOURCE PROFILE TYPE')
+for e in gst.iter():
+ if tag(e)=='profileType':print(ET.tostring(e,encoding='unicode')[:1600]);break
+print('SOURCE CATEGORY COUNTS')
+from collections import Counter
+print(Counter(e.get('categoryId') for e in list(next(x for x in cat if tag(x)=='entries'))))
