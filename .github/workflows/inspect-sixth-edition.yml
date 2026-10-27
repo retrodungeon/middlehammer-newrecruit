@@ -7,6 +7,7 @@ on:
       - '.github/workflows/inspect-sixth-edition.yml'
       - 'tools/inspect_6e_structure.py'
       - 'tools/convert_legacy_6e.py'
+      - 'tools/validate_6e_experimental.py'
 jobs:
   inventory:
     runs-on: ubuntu-latest
@@ -41,6 +42,8 @@ jobs:
               open('sixth-edition-legacy.gst','wb').write(archive.read('Warhammer40K.gst'))
           PY
           python tools/convert_legacy_6e.py space-marines-2013-legacy.cat Middlehammer-Unification.gst build/experimental/Space-Marines-2013.cat --report build/experimental/translation-report.json --source-gst sixth-edition-legacy.gst --experimental-gst build/experimental/Middlehammer-6e-profile-types.gst
+      - name: Validate experimental catalogue source fidelity
+        run: python tools/validate_6e_experimental.py build/experimental/Space-Marines-2013.cat build/experimental/translation-report.json Middlehammer-Unification.gst
       - uses: actions/upload-artifact@v4
         with:
           name: sixth-edition-inventory
