@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "policy": "Upstream sources are recorded here. Do not publish copied catalogue contents until redistribution rights are established.",
+  "editions": {
+    "3": {
+      "status": "candidate",
+      "repository": "KSnyder1986/Warhammer-40k-3rd-Edition",
+      "branch": "main",
+      "game_system": "Warhammer 40k 3rd Edition.gst"
+    },
+    "4": {
+      "status": "candidate",
+      "repository": "Kothra/Warhammer-40-000-4th-Edition-for-NewRecruit",
+      "branch": "main",
+      "game_system": "Warhammer 40,000 4th Edition.gst",
+      "alternatives": [
+        "SquidManNuva/Warhammer-40k-4th-Edition"
+      ]
+    },
+    "5": {
+      "status": "candidate",
+      "repository": "AnonymousCheese/WH40K5E",
+      "branch": "main",
+      "game_system": "Warhammer 40,000 5e.gst",
+      "alternatives": [
+        "Matt-Tansley/wh40k-5th-edition"
+      ]
+    },
+    "6": {
+      "status": "accepted_archive_pending_extraction",
+      "repository": "BSData/wh40k-7th-edition",
+      "release": "v3.1.4",
+      "asset": "Warhammer_40000_6th_Ed_last_revision.bsr"
+    },
+    "7": {
+      "status": "accepted",
+      "repository": "BSData/wh40k-7th-edition",
+      "branch": "master",
+      "game_system": "Warhammer40K.gst"
+    }
+  },
+  "note": "Candidate accuracy is provisionally assumed; schema integrity, license and importability are not yet validated."
+}
