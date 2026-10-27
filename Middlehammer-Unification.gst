@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification (Development)" id="sys-middlehammer-2026" revision="1" battleScribeVersion="2.03" type="gameSystem">
-  <comment>Development-only foundation. This is not yet a playable New Recruit system. Categories and cost type use 5e source IDs for initial compatibility; other editions require reference mapping. No Unification Patch rules or full force organization are implemented yet.</comment>
-  <categoryEntries>
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification — Import Smoke Test" id="sys-middlehammer-2026" revision="1" battleScribeVersion="2.03" type="gameSystem">
+  <comment>Original smoke-test data only. These sample units are placeholders, not official codex data or Unification Patch rules.</comment>
+  <forceEntries>\n    <forceEntry name="Test Detachment" id="mh-test-force" hidden="false">\n      <categoryLinks>\n        <categoryLink name="HQ" hidden="false" id="mh-force-hq" targetId="ac8d-efba-1884-d3ad"/>\n        <categoryLink name="Troops" hidden="false" id="mh-force-troops" targetId="default-category"/>\n      </categoryLinks>\n    </forceEntry>\n  </forceEntries>\n  <categoryEntries>
     <categoryEntry name="Troops" id="default-category" hidden="false"/>
     <categoryEntry name="HQ" id="ac8d-efba-1884-d3ad" hidden="false"/>
     <categoryEntry name="Elites" id="978c-e18f-8aeb-f4c1" hidden="false"/>
