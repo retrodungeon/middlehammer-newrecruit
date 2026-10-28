@@ -60,9 +60,9 @@ def run(catpath, sourcegst, mhgst, outcat, outgst):
         for category in oldcategories:
             same = next((e for e in mhcategories if e.get("name") == category.get("name")), None)
             if same is not None: mapping[category.get("id")] = same.get("id")
-    # Bring over definitions used by the catalogue, but NOT 7e force entries.
+    # Army-list-only: discard 7e formations and detachments.\n    # Middlehammer supplies its own 5e force organization.\n    cat_forces = children(cat, 'forceEntries')\n    if cat_forces is not None:\n        cat.remove(cat_forces)\n    # Bring over army-building shared entries and equipment profiles.
     # Catalogue-local copies isolate 7e rules from existing Guard/CSM definitions.
-    for section in ("sharedSelectionEntries", "sharedSelectionEntryGroups", "sharedRules", "sharedProfiles"):
+    for section in ("sharedSelectionEntries", "sharedSelectionEntryGroups", "sharedProfiles"):
         origin = children(src, section)
         if origin is None: continue
         dest = children(cat, section)
