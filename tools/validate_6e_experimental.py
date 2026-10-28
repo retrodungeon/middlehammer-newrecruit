@@ -47,5 +47,27 @@ for profile in catalogue.iter():
         if tag(characteristic)=='characteristic' and characteristic.get('typeId') not in char_ids:
             profile_errors.append((profile.get('name'),'missing characteristic',characteristic.get('typeId')))
 assert not profile_errors, f'Broken profile type references: {profile_errors[:15]} (total {len(profile_errors)})'
-print('PASS: source-era units, FOC references, counts, resolved links, and profile type references.')
+# Every emitted modifier must target an actual cost/constraint, and each
+# condition must have a supported 2.x operator and a known selection target.
+ids={e.get('id') for e in catalogue.iter() if e.get('id')}
+ids.update(e.get('id') for e in companion.iter() if e.get('id'))
+cost_ids={e.get('typeId') for e in catalogue.iter() if tag(e)=='cost'}
+cost_ids.update(e.get('id') for e in companion.iter() if tag(e)=='costType')
+modifier_errors=[]
+for owner in catalogue.iter():
+    modifiers=direct(owner,'modifiers')
+    if modifiers is None: continue
+    owner_constraints={e.get('id') for e in owner.iter() if tag(e)=='constraint'}
+    for modifier in modifiers:
+        field=modifier.get('field')
+        if field not in owner_constraints and field not in cost_ids:
+            modifier_errors.append(('target',owner.get('name'),field))
+        for cond in modifier.iter():
+            if tag(cond)!='condition': continue
+            if cond.get('type') not in ('atLeast','atMost','equalTo','notEqualTo'):
+                modifier_errors.append(('operator',owner.get('name'),cond.get('type')))
+            if cond.get('childId') not in ids:
+                modifier_errors.append(('condition target',owner.get('name'),cond.get('childId')))
+assert not modifier_errors, f'Invalid modifiers: {modifier_errors[:15]} (total {len(modifier_errors)})'
+print('PASS: source-era units, FOC references, counts, resolved links, profile types, and modifier targets.')
 print('NOT A PLAYABILITY CERTIFICATION: conditional modifiers and roster legality remain unvalidated.')
