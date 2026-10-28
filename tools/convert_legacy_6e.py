@@ -127,12 +127,21 @@ def main():
             field=modifier.get('field')
             legacy_conditions=[x for x in modifier.iter() if local(x)=='condition']
             condition_groups=[x for x in modifier.iter() if local(x)=='conditionGroup']
-            if condition_groups:
-                if len(grouped_condition_examples)<15:
-                    grouped_condition_examples.append({'owner':old.get('name'),'modifier':dict(modifier.attrib),'groups':[ET.tostring(x,encoding='unicode')[:2500] for x in condition_groups]})
+            if condition_groups and len(grouped_condition_examples)<15:
+                grouped_condition_examples.append({'owner':old.get('name'),'modifier':dict(modifier.attrib),'groups':[ET.tostring(x,encoding='unicode')[:2500] for x in condition_groups]})
+            groups=[]
+            for legacy_group in condition_groups:
+                nested=[x for x in legacy_group.iter() if local(x)=='conditionGroup' and x is not legacy_group]
+                group_conditions=[x for x in legacy_group.iter() if local(x)=='condition']
+                converted=[translate_condition(x) for x in group_conditions]
+                if nested or legacy_group.get('type') not in ('or','and') or not converted or any(x is None for x in converted):
+                    groups=None
+                    break
+                groups.append((legacy_group.get('type'),converted))
+            if groups is None:
                 warnings['conditional_groups_pending']+=1
                 continue
-            conditions=[translate_condition(x) for x in legacy_conditions]
+            conditions=[translate_condition(x) for x in children(modifier,'conditions')]
             if any(x is None for x in conditions):
                 warnings['conditional_modifiers_pending']+=1
                 continue
@@ -164,9 +173,15 @@ def main():
             if conditions:
                 cb=sub(m,'conditions')
                 for cond in conditions: sub(cb,'condition',**cond)
-                warnings['conditional_modifiers_converted']+=1
-            else:
-                warnings['simple_modifiers_converted']+=1
+            if groups:
+                gb=sub(m,'conditionGroups')
+                for operation,group_conditions in groups:
+                    cg=sub(gb,'conditionGroup',type=operation)
+                    cb=sub(cg,'conditions')
+                    for cond in group_conditions: sub(cb,'condition',**cond)
+                warnings['conditional_groups_converted']+=len(groups)
+            if conditions or groups: warnings['conditional_modifiers_converted']+=1
+            else: warnings['simple_modifiers_converted']+=1
 
     def convert_profile(old,dest):
         box=group(dest,'profiles')
