@@ -165,8 +165,12 @@ def main():
                 warnings['modifier_target_constraint_absent']+=1
                 continue
             if target_type=='cost' and not any(local(x)=='cost' and x.get('typeId')==target_id for x in dest.iter()):
-                warnings['modifier_target_cost_absent']+=1
-                continue
+                # A zero-point entry may legitimately gain points through a
+                # modifier. Give the modifier a real zero-valued cost target.
+                costs=group(dest,'costs')
+                if costs is None: costs=sub(dest,'costs')
+                sub(costs,'cost',name='Points',typeId=target_id,value='0')
+                warnings['zero_cost_targets_created']+=1
             box=group(dest,'modifiers')
             if box is None: box=sub(dest,'modifiers')
             m=sub(box,'modifier',type=kind,field=target_id,value=str(value))
