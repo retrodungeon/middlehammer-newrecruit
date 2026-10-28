@@ -215,10 +215,10 @@ def main():
                   hidden=old.get('hidden','false'),defaultAmount=old.get('minSelections','0'))
             old_types[old.get('type','')]+=1
             constraints(old,e)
-            convert_modifiers(old,e)
             if float(old.get('points','0'))!=0:
                 costs=sub(e,'costs')
                 sub(costs,'cost',name='Points',typeId='6f18-a8fc-2c5b-9517',value=old.get('points'))
+            convert_modifiers(old,e)
             if root:
                 cat=old.get('categoryId','')
                 try:
