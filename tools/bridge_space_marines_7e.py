@@ -14,6 +14,10 @@ def children(root, name):
     return next((e for e in root if local(e.tag) == name), None)
 def all_ids(root):
     return {e.get("id") for e in root.iter() if e.get("id")}
+def catalogue_namespace(node):
+    for e in node.iter():
+        if e.tag.startswith("{"): e.tag = f"{{{C}}}{local(e.tag)}"
+
 def reassign_ids(node, mapping):
     for e in node.iter():
         for key, value in list(e.attrib.items()):
@@ -63,7 +67,10 @@ def run(catpath, sourcegst, mhgst, outcat, outgst):
         if origin is None: continue
         dest = children(cat, section)
         if dest is None: dest = ET.SubElement(cat, f"{{{C}}}{section}")
-        for entry in origin: dest.append(copy.deepcopy(entry))
+        for entry in origin:
+            cloned = copy.deepcopy(entry)
+            catalogue_namespace(cloned)
+            dest.append(cloned)
     # Resolve any duplicated IDs with existing Middlehammer definitions.
     # Preserve internal references across the imported catalogue.
     for ident in all_ids(cat):
