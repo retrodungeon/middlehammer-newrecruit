@@ -1,0 +1,51 @@
+name: Validate Space Marines Middlehammer bridge
+on:
+  push:
+    branches: [development/space-marines-7e-import]
+    paths:
+      - 'tools/bridge_space_marines_7e.py'
+      - '.github/workflows/test-space-marines-bridge.yml'
+  workflow_dispatch:
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute converter on staged source and production GST
+        run: |
+          python tools/bridge_space_marines_7e.py \
+            'sources/bsdata-7e/Space Marines - Codex (2015).cat' \
+            'sources/bsdata-7e/Warhammer40K.gst' \
+            'Middlehammer-Unification.gst' \
+            'build/Space Marines - Middlehammer Experimental.cat' \
+            'build/Middlehammer-Unification.gst'
+      - name: Check XML, IDs, existing FOC and cross-file references
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          from collections import Counter
+          from pathlib import Path
+          original = ET.parse('Middlehammer-Unification.gst').getroot()
+          gst = ET.parse('build/Middlehammer-Unification.gst').getroot()
+          cat = ET.parse('build/Space Marines - Middlehammer Experimental.cat').getroot()
+          assert cat.get('gameSystemId') == gst.get('id') == original.get('id')
+          assert gst.find('{*}forceEntries/{*}forceEntry').get('name') == original.find('{*}forceEntries/{*}forceEntry').get('name')
+          assert len(list(cat.iter())) > 1000
+          assert len(list(gst.iter())) >= len(list(original.iter()))
+          ids = Counter(e.get('id') for root in (gst,cat) for e in root.iter() if e.get('id'))
+          duplicates = [k for k,v in ids.items() if v > 1]
+          print('Original system nodes:',len(list(original.iter())))
+          print('Output system nodes:',len(list(gst.iter())))
+          print('Output catalogue nodes:',len(list(cat.iter())))
+          print('Cross-file duplicate IDs:',len(duplicates),duplicates[:20])
+          assert not duplicates, 'Duplicate IDs across catalogue and system'
+          for file in Path('build').glob('*'): print(file.name, file.stat().st_size)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: space-marines-middlehammer-experimental
+          path: build/
