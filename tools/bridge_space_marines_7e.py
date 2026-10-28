@@ -76,6 +76,13 @@ def run(catpath, sourcegst, mhgst, outcat, outgst):
     for ident in all_ids(cat):
         if ident in existing and ident not in mapping:
             mapping[ident] = str(uuid.uuid5(uuid.NAMESPACE_URL, "middlehammer/space-marines-7e/" + ident))
+    # Remove catalogue-local categories mapped to existing system categories;
+    # otherwise the same ID would be defined twice across GST and CAT.
+    cat_categories = children(cat, "categoryEntries")
+    if cat_categories is not None:
+        for category in list(cat_categories):
+            if category.get("id") in mapping:
+                cat_categories.remove(category)
     reassign_ids(cat, mapping)
     cat.set("id", "mh-sm-7e-2015")
     cat.set("name", "Space Marines (7th Edition, 2015) [Experimental]")
