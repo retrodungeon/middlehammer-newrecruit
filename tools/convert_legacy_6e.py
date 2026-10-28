@@ -57,6 +57,7 @@ def main():
     old_types=collections.Counter()
     modifier_inventory=collections.Counter()
     modifier_examples=[]
+    grouped_condition_examples=[]
     def audit_modifiers(owner):
         for modifier in children(owner,'modifiers'):
             key=(modifier.get('type','unknown'),modifier.get('field',''))
@@ -127,6 +128,8 @@ def main():
             legacy_conditions=[x for x in modifier.iter() if local(x)=='condition']
             condition_groups=[x for x in modifier.iter() if local(x)=='conditionGroup']
             if condition_groups:
+                if len(grouped_condition_examples)<15:
+                    grouped_condition_examples.append({'owner':old.get('name'),'modifier':dict(modifier.attrib),'groups':[ET.tostring(x,encoding='unicode')[:2500] for x in condition_groups]})
                 warnings['conditional_groups_pending']+=1
                 continue
             conditions=[translate_condition(x) for x in legacy_conditions]
@@ -297,7 +300,7 @@ def main():
     result={'status':'EXPERIMENTAL_NOT_PUBLISHABLE','source':source.get('name'),
             'rootEntries':len(root_entries),'sharedEntries':len(shared),
             'sharedGroups':len(sharedgroups),'convertedProfiles':sum(1 for x in target.iter() if local(x)=='profile'),'convertedRules':sum(1 for x in target.iter() if local(x)=='rule'),'convertedLinks':sum(1 for x in target.iter() if local(x) in ('entryLink','infoLink')),'legacyTypes':dict(old_types),
-            'unsupported':dict(warnings),'modifierTypes':dict(modifier_inventory),'modifierExamples':modifier_examples,'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],
+            'unsupported':dict(warnings),'modifierTypes':dict(modifier_inventory),'modifierExamples':modifier_examples,'groupedConditionExamples':grouped_condition_examples,'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],
             'warning':'Do not publish: conditional modifiers, special eligibility, and New Recruit validation remain unverified.'}
     args.report.parent.mkdir(parents=True,exist_ok=True)
     args.report.write_text(json.dumps(result,indent=2)+'\n')
