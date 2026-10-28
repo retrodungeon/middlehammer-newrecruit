@@ -91,18 +91,46 @@ def main():
 
 
 
-    def convert_modifiers(old,dest):
-        """Translate simple unconditional selection/cost changes conservatively.
+    def translate_condition(legacy):
+        """Translate only understood selection-count predicates."""
+        if local(legacy)!='condition' or legacy.get('field')!='selections':
+            return None
+        try:
+            value=float(legacy.get('value',''))
+        except ValueError:
+            return None
+        op=legacy.get('type')
+        mapped={'greater than':('atLeast',value+1),
+                'less than':('atMost',value-1),
+                'equal to':('equalTo',value),
+                'not equal to':('notEqualTo',value),
+                'at least':('atLeast',value),
+                'at most':('atMost',value)}
+        if op not in mapped: return None
+        kind,v=mapped[op]
+        parent=legacy.get('parentId')
+        child=legacy.get('childId')
+        if not child or child=='no child': return None
+        # Old 1.x conditions reference the owning entry directly; BS 2.x
+        # uses a relative scope. Only roster/force references can be mapped
+        # without reconstructing the full ancestor graph.
+        if parent not in ('roster','force'):
+            return None
+        return {'type':kind,'value':str(int(v) if v.is_integer() else v),
+                'field':'selections','scope':parent,'childId':child,'shared':'true'}
 
-        Conditional legacy modifiers are NOT converted until their parent/child
-        selection semantics are independently verified against the 2.x schema.
-        """
+    def convert_modifiers(old,dest):
+        """Translate supported selection constraints and preserve audit of the rest."""
         for modifier in children(old,'modifiers'):
             kind=modifier.get('type')
             field=modifier.get('field')
-            conditions=list(modifier.iter())
-            conditional=any(local(x) in ('condition','conditionGroup') for x in conditions)
-            if conditional:
+            legacy_conditions=[x for x in modifier.iter() if local(x)=='condition']
+            condition_groups=[x for x in modifier.iter() if local(x)=='conditionGroup']
+            if condition_groups:
+                warnings['conditional_groups_pending']+=1
+                continue
+            conditions=[translate_condition(x) for x in legacy_conditions]
+            if any(x is None for x in conditions):
                 warnings['conditional_modifiers_pending']+=1
                 continue
             if kind not in ('set','increment','decrement'):
@@ -111,7 +139,6 @@ def main():
             if field not in ('points','minSelections','maxSelections','minInRoster','maxInRoster'):
                 warnings['unsupported_modifier_field:'+str(field)]+=1
                 continue
-            # Cost changes are only meaningful if the legacy value is numeric.
             try: value=float(modifier.get('value',''))
             except ValueError:
                 warnings['nonnumeric_modifier_value']+=1
@@ -121,17 +148,22 @@ def main():
                     'maxSelections':('constraint',old.get('id','')+'-maxSelections'),
                     'minInRoster':('constraint',old.get('id','')+'-minInRoster'),
                     'maxInRoster':('constraint',old.get('id','')+'-maxInRoster')}
-            # Legacy increment/decrement can target a nonexistent 2.x constraint;
-            # retain an audit warning rather than silently manufacturing one.
             target_type,target_id=mapped[field]
             if target_type=='constraint' and not any(local(x)=='constraint' and x.get('id')==target_id for x in dest.iter()):
                 warnings['modifier_target_constraint_absent']+=1
                 continue
+            if target_type=='cost' and not any(local(x)=='cost' and x.get('typeId')==target_id for x in dest.iter()):
+                warnings['modifier_target_cost_absent']+=1
+                continue
             box=group(dest,'modifiers')
             if box is None: box=sub(dest,'modifiers')
-            operation={'set':'set','increment':'increment','decrement':'decrement'}[kind]
-            sub(box,'modifier',type=operation,field=target_id,value=str(value))
-            warnings['simple_modifiers_converted']+=1
+            m=sub(box,'modifier',type=kind,field=target_id,value=str(value))
+            if conditions:
+                cb=sub(m,'conditions')
+                for cond in conditions: sub(cb,'condition',**cond)
+                warnings['conditional_modifiers_converted']+=1
+            else:
+                warnings['simple_modifiers_converted']+=1
 
     def convert_profile(old,dest):
         box=group(dest,'profiles')
