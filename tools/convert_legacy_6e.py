@@ -303,6 +303,28 @@ def main():
                 if section=='links': convert_link(item,target)
                 else: convert_rule(item,target)
         elif items: warnings['unconverted_catalogue_section:'+section]+=len(items)
+    # The removed Allied Detachment contains duplicate Chapter Tactics choices.
+    # Retarget conditions to identically named choices in the normal Chapter
+    # Tactics entry only when the replacement is unambiguous.
+    legacy_names={x.get('id'):x.get('name') for x in source.iter() if x.get('id') and x.get('name')}
+    available={}
+    for entry in target.iter():
+        if local(entry)=='selectionEntry' and entry.get('name'):
+            available.setdefault(entry.get('name'),set()).add(entry.get('id'))
+    remapped_conditions=[]
+    target_ids={x.get('id') for x in target.iter() if x.get('id')}
+    for condition in target.iter():
+        if local(condition)!='condition': continue
+        old_id=condition.get('childId')
+        if not old_id or old_id in target_ids: continue
+        name=legacy_names.get(old_id)
+        replacements=available.get(name,set())
+        if len(replacements)==1:
+            new_id=next(iter(replacements))
+            condition.set('childId',new_id)
+            remapped_conditions.append({'name':name,'from':old_id,'to':new_id})
+        else:
+            warnings['unresolved_condition_target']+=1
     known={x.get('id') for x in target.iter() if x.get('id')}
     known.update(x.get('id') for x in gst.iter() if x.get('id'))
     unresolved=[{'id':x.get('id'),'targetId':x.get('targetId'),'type':x.get('type')}
@@ -315,7 +337,7 @@ def main():
     result={'status':'EXPERIMENTAL_NOT_PUBLISHABLE','source':source.get('name'),
             'rootEntries':len(root_entries),'sharedEntries':len(shared),
             'sharedGroups':len(sharedgroups),'convertedProfiles':sum(1 for x in target.iter() if local(x)=='profile'),'convertedRules':sum(1 for x in target.iter() if local(x)=='rule'),'convertedLinks':sum(1 for x in target.iter() if local(x) in ('entryLink','infoLink')),'legacyTypes':dict(old_types),
-            'unsupported':dict(warnings),'modifierTypes':dict(modifier_inventory),'modifierExamples':modifier_examples,'groupedConditionExamples':grouped_condition_examples,'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],
+            'unsupported':dict(warnings),'modifierTypes':dict(modifier_inventory),'modifierExamples':modifier_examples,'groupedConditionExamples':grouped_condition_examples,'unmappedRootEntries':unmapped,'unresolvedLinks':unresolved[:100],'remappedConditions':remapped_conditions,
             'warning':'Do not publish: conditional modifiers, special eligibility, and New Recruit validation remain unverified.'}
     args.report.parent.mkdir(parents=True,exist_ok=True)
     args.report.write_text(json.dumps(result,indent=2)+'\n')
