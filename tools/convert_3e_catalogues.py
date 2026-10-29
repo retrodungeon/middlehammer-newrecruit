@@ -227,6 +227,11 @@ def ensure_force_links(gst, report):
             ET.SubElement(links, f"{{{GST_NS}}}categoryLink",
                           {"name": name, "hidden": "false", "id": link_id, "targetId": target})
             added.append(name)
+    # Configuration (holding the Army List choice) is listed first so New Recruit shows it on top.
+    config = next(l for l in links if l.get("targetId") == "525f-0a42-3f5c-5613")
+    if list(links).index(config) != 0:
+        links.remove(config)
+        links.insert(0, config)
     report["forceCategoryLinksAdded"] = added
 
 

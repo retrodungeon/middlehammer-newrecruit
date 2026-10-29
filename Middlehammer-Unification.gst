@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="7" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="8" type="gameSystem">
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
-        <categoryLink name="HQ" hidden="false" id="mh-foc-0" targetId="ac8d-efba-1884-d3ad">
+        <categoryLink name="Configuration" hidden="false" id="mh-foc-configuration" targetId="525f-0a42-3f5c-5613" /><categoryLink name="HQ" hidden="false" id="mh-foc-0" targetId="ac8d-efba-1884-d3ad">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="force" shared="true" id="mh-foc-0-min" />
             <constraint type="max" value="2" field="selections" scope="force" shared="true" id="mh-foc-0-max" />
@@ -33,7 +33,7 @@
             <constraint type="max" value="3" field="selections" scope="force" shared="true" id="mh-foc-4-max" />
           </constraints>
         </categoryLink>
-      <categoryLink name="Dedicated Transport" hidden="false" id="mh-foc-transport" targetId="168b-a772-94f7-83f5" /><categoryLink name="Unique" hidden="false" id="mh-foc-unique" targetId="1f0d-7d41-7ef9-ce4a" /><categoryLink name="Super-Heavy" hidden="false" id="mh-foc-superheavy" targetId="5968-f35e-18fd-612b" /><categoryLink name="Configuration" hidden="false" id="mh-foc-configuration" targetId="525f-0a42-3f5c-5613" /><categoryLink name="No Force Org Slot" hidden="false" id="mh-foc-noslot" targetId="be45-5314-4388-5bfd" /></categoryLinks>
+      <categoryLink name="Dedicated Transport" hidden="false" id="mh-foc-transport" targetId="168b-a772-94f7-83f5" /><categoryLink name="Unique" hidden="false" id="mh-foc-unique" targetId="1f0d-7d41-7ef9-ce4a" /><categoryLink name="Super-Heavy" hidden="false" id="mh-foc-superheavy" targetId="5968-f35e-18fd-612b" /><categoryLink name="No Force Org Slot" hidden="false" id="mh-foc-noslot" targetId="be45-5314-4388-5bfd" /></categoryLinks>
     </forceEntry>
   </forceEntries>
   <comment>Generated from AnonymousCheese/WH40K5E. Original definitions preserved; Middlehammer rules and cross-edition conversion NOT yet applied.</comment><categoryEntries>
