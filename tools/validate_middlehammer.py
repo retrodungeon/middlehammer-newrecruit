@@ -88,6 +88,10 @@ def main(root=Path(".")):
                     prim = [l.get("targetId") for l in t.findall("{*}categoryLinks/{*}categoryLink") if l.get("primary") == "true"]
                 if prim and prim[0] not in force_cats:
                     orphans.append(e.get("name"))
+        empty = [g for g in c.iter() if L(g.tag) == "conditionGroup"
+                 and not any(L(x.tag) == "condition" for x in g.iter())]
+        if empty:
+            errors[p.name].append(f"{len(empty)} condition groups with no conditions (New Recruit treats them as true)")
         if orphans:
             errors[p.name].append(f"{len(orphans)} root entries in a category the force does not show: {orphans[:4]}")
         summary.append((c.get("name"), c.get("revision")))

@@ -218,6 +218,28 @@ def rename_collisions(seen_ids, member, report):
         report.setdefault("idCollisionsRenamed", {})[member.get("name")] = sorted(clash)
 
 
+def drop_empty_condition_groups(root):
+    """Some source rules contain condition groups with no conditions left in them (the author
+    deleted the conditions). New Recruit treats such a group as satisfied, which e.g. hid the
+    7th Edition Chaos 'Force Options'. An empty 'or' group means 'none of these': the rule
+    never applies. An empty 'and' group adds no requirement and is removed."""
+    def has_condition(g):
+        return any(lname(x.tag) == "condition" for x in g.iter())
+    par = {c: p for p in root.iter() for c in p}
+    fixed = 0
+    for mod in [m for m in root.iter() if lname(m.tag) in ("modifier", "repeat")]:
+        never = False
+        for g in [g for g in mod.iter() if lname(g.tag) == "conditionGroup" and not has_condition(g)]:
+            if g.get("type") == "or" and par[par[g]] is mod:
+                never = True
+            if g in par:
+                par[g].remove(g)
+            fixed += 1
+        if never and mod in par:
+            par[mod].remove(mod)
+    return fixed
+
+
 def build_factions(members, game_system_id, report):
     """members: {(edition, source name): catalogue root}. Returns {faction name: root}."""
     assigned = {(m[0], m[1]) for fm in FACTIONS.values() for m in fm}
@@ -235,6 +257,8 @@ def build_factions(members, game_system_id, report):
             cid = members[(m[0], m[1])].get("id")
             option_for[cid] = f"mh-al-{cid}"
             faction_of[cid] = fid
+
+    report["emptyConditionGroupsFixed"] = sum(drop_empty_condition_groups(r) for r in members.values())
 
     # 1. Rewrite catalogue-identity references in every member before moving anything.
     rewritten = 0
