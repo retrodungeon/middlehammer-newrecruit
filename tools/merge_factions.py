@@ -135,7 +135,7 @@ def selector(fid, options):
     sid = f"{fid}-armylist"
     entry = ET.Element(q("selectionEntry"), {
         "type": "upgrade", "import": "true", "name": "Army List", "hidden": "false",
-        "id": sid, "collective": "false"})
+        "id": sid, "collective": "false", "sortIndex": "1"})
     constraint(entry, "min", 1, "force", f"{sid}-min")
     constraint(entry, "max", 1, "force", f"{sid}-max")
     ET.SubElement(child(entry, "categoryLinks"), q("categoryLink"), {
