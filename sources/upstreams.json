@@ -1,12 +1,14 @@
 {
   "schema_version": 1,
-  "policy": "Upstream sources are recorded here. Do not publish copied catalogue contents until redistribution rights are established.",
+  "policy": "Upstream sources are pinned to the commits below. Converted catalogues are published for a small private play group; the maintainer is treating redistribution as permitted pending explicit confirmation from upstream authors.",
   "editions": {
     "3": {
-      "status": "candidate",
+      "status": "accepted",
       "repository": "KSnyder1986/Warhammer-40k-3rd-Edition",
       "branch": "main",
-      "game_system": "Warhammer 40k 3rd Edition.gst"
+      "game_system": "Warhammer 40k 3rd Edition.gst",
+      "commit": "425f003229ef5e7243bc48114caec544386d134e",
+      "commit_date": "2026-10-25"
     },
     "4": {
       "status": "candidate",
@@ -15,16 +17,20 @@
       "game_system": "Warhammer 40,000 4th Edition.gst",
       "alternatives": [
         "SquidManNuva/Warhammer-40k-4th-Edition"
-      ]
+      ],
+      "commit": "4623cadf1dc4b5842f6ed9da79734011f9d4c304",
+      "commit_date": "2026-09-23"
     },
     "5": {
-      "status": "candidate",
+      "status": "accepted",
       "repository": "AnonymousCheese/WH40K5E",
       "branch": "main",
       "game_system": "Warhammer 40,000 5e.gst",
       "alternatives": [
         "Matt-Tansley/wh40k-5th-edition"
-      ]
+      ],
+      "commit": "d0cffad7b465196c9526220feab2f6cf7dd691e6",
+      "commit_date": "2026-10-20"
     },
     "6": {
       "status": "accepted_archive_pending_extraction",
@@ -36,8 +42,10 @@
       "status": "accepted",
       "repository": "BSData/wh40k-7th-edition",
       "branch": "master",
-      "game_system": "Warhammer40K.gst"
+      "game_system": "Warhammer40K.gst",
+      "commit": "6fd52df8ad613b98b34c635cc6d8011bc312f2e7",
+      "commit_date": "2020-06-29"
     }
   },
-  "note": "Candidate accuracy is provisionally assumed; schema integrity, license and importability are not yet validated."
+  "note": "Pinned 2026-10-29. Accuracy of upstream data is assumed, not verified against printed codexes. Homebrew content is excluded during conversion."
 }

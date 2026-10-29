@@ -1,0 +1,8 @@
+{
+  "note": "References deliberately left unresolved. Each is only used in a condition, so it always evaluates as 'not present', which is the correct Middlehammer behaviour.",
+  "reasons": {
+    "3e mission force types other than Standard Missions (Witch Hunters Frateris Militia limits)": ["949f-fced-04a6-c467", "8b56-2596-2bfa-9f1b", "3f32-74fc-e29a-38e3", "5d5f-cfa8-2970-4a50", "f0b5-294d-9445-a1b7", "b1dd-a74a-0fe1-35b8", "172d-d416-c92b-3694", "90e9-2e2f-1754-4917"],
+    "The Badab War (Homebrew) catalogue and its entries, referenced from Space Marines 1999 conditions": ["e2b4-3c55-5ca1-3f39", "31b1-4e0b-3c6c-f59d", "e523-fad3-c10b-2fe8"]
+  },
+  "ids": ["949f-fced-04a6-c467", "8b56-2596-2bfa-9f1b", "3f32-74fc-e29a-38e3", "5d5f-cfa8-2970-4a50", "f0b5-294d-9445-a1b7", "b1dd-a74a-0fe1-35b8", "172d-d416-c92b-3694", "90e9-2e2f-1754-4917", "e2b4-3c55-5ca1-3f39", "31b1-4e0b-3c6c-f59d", "e523-fad3-c10b-2fe8"]
+}

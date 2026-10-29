@@ -4,18 +4,27 @@ Unofficial community data for playing **The Book of the Unification** (Middleham
 
 ## Status
 
-**Usable for the codexes listed below.** Import this repository into New Recruit as a GitHub data source and choose the **Middlehammer Unification** game system.
+**Usable.** Import this repository into New Recruit as a GitHub data source and choose the **Middlehammer Unification** game system.
 
-| Catalogue (as shown in New Recruit) | File | Source data | Status |
-|---|---|---|---|
-| Imperial Guard (5th Edition, 2009) | `Imperial Guard - Codex 2009.cat` | AnonymousCheese/WH40K5E | Imports and builds lists correctly (maintainer-tested in New Recruit, 2026-10-29) |
-| Chaos Space Marines (3rd Edition, 2002) | `Chaos Space Marines - Codex 2002.cat` | KSnyder1986/Warhammer-40k-3rd-Edition | Imports and builds lists correctly (maintainer-tested in New Recruit, 2026-10-29) |
+| Edition | Published | Tested in New Recruit |
+|---|---:|---|
+| 3rd | 56 army lists (codexes, Chapter Approved, White Dwarf, Citadel Journal, campaign and Imperial Armour lists) | Chaos Space Marines 2002 (retest needed after 2026-10-29 fixes) |
+| 4th | 0 | — |
+| 5th | 1 (Imperial Guard 2009) | Yes, 2026-10-29 |
+| 6th | 0 (Space Marines 2013 in progress) | — |
+| 7th | 0 | — |
 
-Unit options and points come from the community source data listed above. They have not been checked line by line against the printed codexes; report errors as issues.
+Full per-list status: [`docs/codex-coverage.md`](docs/codex-coverage.md).
+
+**Content policy:** all official material is included, including Forge World / Imperial Armour, White Dwarf and Chapter Approved content. Homebrew and unofficial lists and units are excluded.
+
+Unit options and points come from the community source data (`sources/upstreams.json`). They have not been checked line by line against the printed books; report errors as issues.
 
 ### Army construction currently enforced
 
-One force type is available: **Standard Force Organization (5th Edition)** — HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 (5th Edition rulebook, p. 87). These limits have been tested in New Recruit.
+One force type is available: **Standard Force Organization (5th Edition)** — HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 (5th Edition rulebook, p. 87). These limits have been tested in New Recruit. The force also shows Dedicated Transport, Unique, Super-Heavy, Configuration and No Force Org Slot sections, without limits, matching the 5th Edition source data.
+
+Some 3rd Edition lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host).
 
 Other Unification army-building rules (super-heavy limits, Lords of War, era-restricted allies, the "Patched Out" list) are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
 
@@ -30,8 +39,8 @@ Other Unification army-building rules (super-heavy limits, Lords of War, era-res
 ## Repository layout
 
 - `*.gst`, `*.cat` (repository root) — the files New Recruit reads.
-- `tools/` — Python scripts for building, converting and auditing data.
-- `.github/workflows/` — GitHub Actions that fetch upstream data, run conversions and checks, and upload results as artifacts. **`build-unified.yml` (manual run only) commits a rebuilt Chaos Space Marines catalogue directly to `main`.** No other workflow writes to the repository.
+- `tools/` — Python scripts for building, converting and auditing data. `convert_3e_catalogues.py` builds all 3rd Edition lists; `validate_middlehammer.py` checks every published catalogue (run in CI by `validate.yml`).
+- `.github/workflows/` — GitHub Actions that fetch upstream data, run conversions and checks, and upload results as artifacts. No workflow writes to the repository.
 - `sources/upstreams.json` — the upstream repositories each edition is drawn from.
 - `docs/` — rules ledger, conversion notes and audit results.
 
@@ -45,8 +54,7 @@ The rulebooks and codexes themselves are not included in this repository.
 
 ## Open issues
 
-- **Redistribution rights.** The converted catalogues and the 7th Edition test files are derived from other community repositories. Their licences have not yet been reviewed; this should be done before more catalogues are published.
-- **Upstream pinning.** `sources/upstreams.json` tracks branch names, not fixed commits, so rebuilds may pick up upstream changes.
+- **Redistribution rights.** None of the source repositories has a licence file. This data is published for a small play group, and permission is being assumed pending confirmation from the upstream authors.
 
 ## Disclaimer
 

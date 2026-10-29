@@ -8,7 +8,8 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 
 | Rule | Source | How it is implemented | Tested |
 |---|---|---|---|
-| Standard 5th Edition Force Organization Chart: HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 | Unification p. 8, "The Force Organization Chart" (refers to 5e rulebook p. 87) | Force entry `mh-test-force` in `Middlehammer-Unification.gst` with min/max constraints | Yes — New Recruit, 2026-10-29 |
+| Standard 5th Edition Force Organization Chart: HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 | Unification p. 8, "The Force Organization Chart" (refers to 5e rulebook p. 87) | Force entry `mh-test-force` in `Middlehammer-Unification.gst` with min/max constraints. Dedicated Transport, Unique, Super-Heavy, Configuration and No Force Org Slot are also linked, without limits (as in the 5th Edition source). | Slot limits: yes — New Recruit, 2026-10-29. Extra sections: not yet |
+| Forge World / Imperial Armour, White Dwarf and Chapter Approved content allowed; homebrew excluded | Maintainer policy, 2026-10-29 | 3rd Edition converter unlocks content behind the source's Imperial Armour toggle and hides content behind its Homebrew toggle or named "(Homebrew)" | Not yet |
 
 ## Satisfied by omission (not actively enforced)
 
@@ -25,7 +26,7 @@ These are currently true only because the relevant units or detachments have not
 
 | Rule | Source | Notes on enforceability |
 |---|---|---|
-| Allies only within the same era: 3rd–5th with 3rd–5th, 6th–7th with 6th–7th | Unification p. 8 | Needs an edition/era tag on every catalogue and a constraint on any ally mechanism. Only relevant once a published codex offers allies. |
+| Allies only within the same era: 3rd–5th with 3rd–5th, 6th–7th with 6th–7th | Unification p. 8 | 3rd Edition ally force types (Daemon Hunters, Witch Hunters, Harlequins, Assassins, Kroot, Arbites) are published and are all within the 3rd–5th era. Cross-era blocking is needed once 6th/7th Edition lists exist. |
 | Super-heavies and Gargantuan Creatures not allowed at 1500 points or less **unless both players agree** | Unification p. 8 | New Recruit cannot model "both players agree". Likely implementation: a warning or a toggle, not a hard block. |
 | Above 1500 points, a codex with no super-heavy of its own may take one from its faction's 3rd–7th Edition Imperial Armour books without using a slot (not for codexes that cannot use a normal Force Organization Chart) | Unification p. 8 | Requires Imperial Armour data, which is not in the project. |
 | 6th/7th Edition Imperium or Chaos codexes may take an Imperial Knight or Renegade Knight as their Lord of War | Unification p. 8 | Requires Knight data and cross-catalogue links. |
@@ -43,3 +44,7 @@ These do not restrict list building but may appear in unit profiles or rules tex
 - Psykers: Mastery Level sets powers known; they cast Mastery Level −1 powers per turn (minimum 1) and choose powers (p. 10).
 - No Warp Charge (p. 9).
 - 2+ invulnerable saves cannot be rerolled and no invulnerable save can be improved past 3+ (p. 8).
+
+## Known accuracy issues
+
+- In the 5th Edition source, special characters such as Lord Castellan Creed have "Unique" as their primary category, so they do not count against HQ/Elites slots. This matches the source data, not necessarily the codex.
