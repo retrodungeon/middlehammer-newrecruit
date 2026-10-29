@@ -101,39 +101,102 @@ def add_corbulo(cat):
 
 
 # "Counts as Troops" alternates: the source includes a hidden Troops copy of these units but
-# never added the rule that reveals it. Revealed when any listed character is in the force.
-# Checked against the maintainer's codex PDFs (2026-10-29).
+# never added the rule that reveals it. Checked against the maintainer's codex PDFs (2026-10-29).
+# Each entry: (unit, unlockers, options). An unlocker is a root entry name, or
+# (root entry name, upgrade name) when the character must take that upgrade.
+# Options: per_unlocker -> at most one such Troops unit per unlocking character;
+#          min_models -> the Troops version needs at least this many models.
 TROOPS_UNLOCKS = {
     # Codex: Space Wolves (2009): Logan Grimnar "The Great Wolf"; Canis Wolfborn "The Wolf King".
-    "Space Wolves": [("Wolf Guard Pack", ["Logan Grimnar"]), ("Fenrisian Wolf Pack", ["Canis Wolfborn"])],
+    "Space Wolves": [("Wolf Guard Pack", ["Logan Grimnar"], {}),
+                     ("Fenrisian Wolf Pack", ["Canis Wolfborn"], {})],
     # Codex: Dark Eldar (2010): Baron Sathonyx "The Lord Hellion"; Urien Rakarth "Master
     # Haemonculus"; Haemonculus / Haemonculus Ancient "Lord of Covens".
-    "Dark Eldar": [("Hellions", ["Baron Sathonyx"]), ("Wracks", ["Urien Rakarth", "Haemonculus"])],
+    "Dark Eldar": [("Hellions", ["Baron Sathonyx"], {}),
+                   ("Wracks", ["Urien Rakarth", "Haemonculus"], {})],
+    # Codex: Grey Knights (2011): Draigo "Lord of Titan", Crowe "Keeper of Anarch", Coteaz
+    # (Henchmen warbands are Troops and not limited by the number of Inquisitors).
+    "Grey Knights": [("Paladin Squad", ["Lord Kaldor Draigo"], {}),
+                     ("Purifier Squad", ["Castellan Crowe"], {}),
+                     ("Inquisitorial Henchmen Warband", ["Inquisitor Coteaz"], {})],
+    # Codex: Space Marines (2008) "Mounted Assault": a Captain on Space Marine bike, or Kor'sarro
+    # Khan riding Moondrakkan; Bike squads of at least five models.
+    "Space Marines": [("Space Marine Bike Squad (Mounted Assault)",
+                       [("Space Marine Captain", "Space Marine Bike"), ("Kor'sarro Khan", "Moondrakken")],
+                       {"min_models": 5})],
+    # Codex: Orks (2008): "Da Big Boss" (each Warboss allows one Nobz or Meganobz mob as Troops);
+    # "Da Big Mek" (each Big Mek allows one Deff Dread as Troops). The combined Nobz-or-Meganobz
+    # limit is applied to each separately.
+    "Orks": [("Nobz", ["Warboss", "Warboss in Mega-Armour"], {"per_unlocker": True}),
+             ("Meganobz", ["Warboss", "Warboss in Mega-Armour"], {"per_unlocker": True}),
+             ("Deff Dread", ["Big Mek"], {"per_unlocker": True})],
 }
+
+
+def _cond(cid, kind="condition"):
+    attrs = {"type": "atLeast", "value": "1", "field": "selections", "scope": "force", "childId": cid,
+             "shared": "true", "includeChildSelections": "true", "includeChildForces": "false"}
+    if kind == "repeat":
+        attrs.update({"type": None, "repeats": "1", "roundUp": "false"})
+        attrs.pop("type")
+    return attrs
 
 
 def add_troops_unlocks(cat, name):
     if name not in TROOPS_UNLOCKS:
         return []
-    roots = [e for cont in ("selectionEntries", "entryLinks") for e in (cat.find(q(cont)) or [])]
+    roots = [e for cont in ("selectionEntries", "entryLinks") if cat.find(q(cont)) is not None
+             for e in cat.find(q(cont))]
+    ids = {e.get("id"): e for e in cat.iter() if e.get("id")}
     done = []
-    for unit, unlockers in TROOPS_UNLOCKS[name]:
+    for unit, unlockers, opts in TROOPS_UNLOCKS[name]:
         hidden = [e for e in roots if e.get("name") == unit and e.get("hidden") == "true"]
-        chars = {e.get("name"): e.get("targetId") or e.get("id") for e in roots if e.get("name") in unlockers}
-        if len(hidden) != 1 or set(chars) != set(unlockers):
-            raise ValueError(f"{name}: cannot place Troops unlock for {unit} ({len(hidden)} hidden, {chars})")
-        mods = hidden[0].find(q("modifiers"))
+        if len(hidden) != 1:
+            raise ValueError(f"{name}: expected one hidden Troops {unit}, found {len(hidden)}")
+        link = hidden[0]
+        unlock_ids = []
+        for u in unlockers:
+            root_name, upgrade = (u, None) if isinstance(u, str) else u
+            root = [e for e in roots if e.get("name") == root_name and e.get("hidden") != "true"]
+            if len(root) != 1:
+                raise ValueError(f"{name}: unlocker {root_name!r} not found once")
+            target = ids.get(root[0].get("targetId"), root[0])
+            if upgrade is None:
+                unlock_ids.append(target.get("id"))
+            else:
+                ups = [x for x in target.iter() if lname(x.tag) == "selectionEntry" and x.get("name") == upgrade]
+                if len(ups) != 1:
+                    raise ValueError(f"{name}: upgrade {upgrade!r} of {root_name!r} not found once")
+                unlock_ids.append(ups[0].get("id"))
+        mods = link.find(q("modifiers"))
         if mods is None:
             mods = ET.Element(q("modifiers"))
-            hidden[0].insert(0, mods)
+            link.insert(0, mods)
         m = ET.SubElement(mods, q("modifier"), {"type": "set", "field": "hidden", "value": "false"})
-        grp = ET.SubElement(ET.SubElement(m, q("conditionGroups")), q("conditionGroup"), {"type": "or"})
-        conds = ET.SubElement(grp, q("conditions"))
-        for cid in chars.values():
-            ET.SubElement(conds, q("condition"), {
-                "type": "atLeast", "value": "1", "field": "selections", "scope": "force", "childId": cid,
-                "shared": "true", "includeChildSelections": "true", "includeChildForces": "false"})
-        done.append(f"{unit} with {' or '.join(unlockers)}")
+        conds = ET.SubElement(ET.SubElement(ET.SubElement(m, q("conditionGroups")), q("conditionGroup"),
+                                            {"type": "or"}), q("conditions"))
+        for cid in unlock_ids:
+            ET.SubElement(conds, q("condition"), _cond(cid))
+        cons = link.find(q("constraints"))
+        if cons is None and (opts.get("per_unlocker") or opts.get("min_models")):
+            cons = ET.SubElement(link, q("constraints"))
+        if opts.get("per_unlocker"):
+            # Replace the source's flat "max 1" with one per unlocking character.
+            for c in [c for c in cons if c.get("type") == "max"]:
+                cons.remove(c)
+            cid = f"{link.get('id')}-per-unlocker"
+            ET.SubElement(cons, q("constraint"), {"id": cid, "type": "max", "value": "0", "field": "selections",
+                                                  "scope": "force", "shared": "true",
+                                                  "includeChildSelections": "false", "includeChildForces": "false"})
+            for uid in unlock_ids:
+                inc = ET.SubElement(mods, q("modifier"), {"type": "increment", "field": cid, "value": "1"})
+                ET.SubElement(ET.SubElement(inc, q("repeats")), q("repeat"), _cond(uid, "repeat"))
+        if opts.get("min_models"):
+            ET.SubElement(cons, q("constraint"), {
+                "id": f"{link.get('id')}-min-models", "type": "min", "value": str(opts["min_models"]),
+                "field": "selections", "scope": "self", "childId": "model", "shared": "true",
+                "includeChildSelections": "true", "includeChildForces": "false"})
+        done.append(f"{unit} with {' or '.join(u if isinstance(u, str) else f'{u[0]} ({u[1]})' for u in unlockers)}")
     return done
 
 

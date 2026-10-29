@@ -46,3 +46,4 @@ These do not restrict list building but may appear in unit profiles or rules tex
 ## Known accuracy issues
 
 - In the 5th Edition source, special characters such as Lord Castellan Creed have "Unique" as their primary category, so they do not count against HQ/Elites slots. This matches the source data, not necessarily the codex.
+- "Counts as Troops" units unlocked by characters (5th Edition source lists; Space Wolves, Dark Eldar, Grey Knights, Space Marines 2008, Orks 2008) are revealed in the Troops section when the unlocking character is taken. Orks: each Warboss allows one Nobz **or** Meganobz mob as Troops, but the data limits each to one per Warboss separately, so a Warboss could take one of each. Check this by hand.
