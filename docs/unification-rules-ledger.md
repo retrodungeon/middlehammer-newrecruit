@@ -11,16 +11,16 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 | Standard 5th Edition Force Organization Chart: HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 | Unification p. 8, "The Force Organization Chart" (refers to 5e rulebook p. 87) | Force entry `mh-test-force` in `Middlehammer-Unification.gst` with min/max constraints. Dedicated Transport, Unique, Super-Heavy, Configuration and No Force Org Slot are also linked, without limits (as in the 5th Edition source). | Slot limits: yes — New Recruit, 2026-10-29. Extra sections: not yet |
 | Forge World / Imperial Armour, White Dwarf and Chapter Approved content allowed; homebrew excluded | Maintainer policy, 2026-10-29 | 3rd Edition converter unlocks content behind the source's Imperial Armour toggle and hides content behind its Homebrew toggle or named "(Homebrew)" | Not yet |
 
-## Satisfied by omission (not actively enforced)
+## Enforced by conversion (7th Edition lists)
 
-These are currently true only because the relevant units or detachments have not been converted. Each new 6th/7th Edition catalogue must be checked against them.
-
-| Rule | Source | Notes |
+| Rule | Source | Implementation |
 |---|---|---|
-| No Allied Detachments | Unification p. 9 | The 6e Space Marines translator drops the Allied Detachment entry (`excluded_allied_detachment`). |
-| No Formations | Unification p. 9 | No formations exist in any published catalogue. |
-| Codex-specific detachments allowed, but Command Benefits ignored | Unification p. 9 | No 6th/7th Edition detachments are published yet. |
-| No Warlord Traits | Unification p. 10 | No 6th/7th Edition catalogues are published yet. |
+| No Allied Detachments; codex detachments allowed but Command Benefits ignored | Unification p. 9 | All 7th Edition detachments are removed and the standard chart is used. Codex detachments for lists that need them are pending. |
+| No Formations | Unification p. 9 | Formation, Battle Formation, Decurion-style and Flyer Wing entries removed; formation-only options never apply. |
+| No Warlord Traits | Unification p. 10 | Warlord Trait entries hidden. |
+| Lords of War: independent characters → HQ; super-heavies → super-heavy allowance; others → Heavy Support | Unification p. 10 | Applied per unit from its profile (unit type, or 9+ Hull Points for super-heavy). |
+| Castellans of the Imperium detachment patched out | Unification p. 13 | Removed with all other detachments. |
+| Super-heavies only by agreement | Unification p. 8 | "Hide super-heavies" switch, on by default. Not points-aware. |
 
 ## Not yet enforced
 
@@ -30,8 +30,6 @@ These are currently true only because the relevant units or detachments have not
 | Super-heavies and Gargantuan Creatures not allowed at 1500 points or less **unless both players agree** | Unification p. 8 | Partly: Imperial Guard 5th Ed keeps the source's "Hide Apocalypse Units" switch (on by default), which acts as the players' agreement toggle for its super-heavies. Not points-aware, and not yet applied to other lists' super-heavies. |
 | Above 1500 points, a codex with no super-heavy of its own may take one from its faction's 3rd–7th Edition Imperial Armour books without using a slot (not for codexes that cannot use a normal Force Organization Chart) | Unification p. 8 | Requires Imperial Armour data, which is not in the project. |
 | 6th/7th Edition Imperium or Chaos codexes may take an Imperial Knight or Renegade Knight as their Lord of War | Unification p. 8 | Requires Knight data and cross-catalogue links. |
-| Lords of War: independent characters count as HQ; a super-heavy is the one per detachment and uses no slot; anything else is Heavy Support (unless the detachment has a Lord of War slot) | Unification p. 10 | Category remapping during 6th/7th Edition conversion. Not needed for the current 3rd/5th Edition catalogues. |
-| Castellans of the Imperium Detachment (Gathering Storm: Fall of Cadia) may not be used | Unification p. 13, "Patched Out" list | Exclude when/if that publication is converted. |
 | Ynnari Strength from Death: one Soulburst action per turn in total | Unification p. 13 | In-game rule; at most a rules-text note. |
 | Supporting Units: infantry not taken as Troops, HQ or Lord of War score objectives with restrictions; 6th/7th Edition Imperial Knights units count as Supporting Units in an army made only of those publications | Mission Pack p. 7 | Scoring rule, not a list restriction. Could be shown as a rule note on affected units. |
 
