@@ -18,13 +18,12 @@ A single Middlehammer New Recruit/BattleScribe game system with edition- and pub
 
 As of 2026-10-29:
 
-- `Middlehammer-Unification.gst` is built from the 5th Edition source game system and carries the standard 5e Force Organization Chart.
-- Two converted catalogues are published and tested in New Recruit: Imperial Guard (5th Edition, 2009) and Chaos Space Marines (3rd Edition, 2002).
-- The 6th Edition archive (BSData release v3.1.4) is extracted in CI; the 2013 Space Marines conversion is experimental and unpublished.
-- Unmodified BSData 7th Edition files (`Warhammer 40,000 (7th Edition).gst`, `Space Marines (7th Edition, 2015).cat`) sit at the repository root as a separate game system for an import test.
-- 3rd–5th Edition independently maintained sources are **provisional accuracy baselines**.
-- Redistribution rights remain unverified. Public GitHub access alone is not a licence. Note that step 6 of the workflow above was not followed for the two published catalogues.
+- One build (`tools/build_middlehammer.py`) produces the game system and every faction catalogue from the sources pinned in `sources/upstreams.json`; CI checks the committed files equal a fresh build.
+- `Middlehammer-Unification.gst` is based on the 5th Edition source game system, with the standard 5e Force Organization Chart and the 3rd Edition definitions that converted lists need.
+- Catalogues are one per faction; each codex or variant list is an option of the faction's required "Army List" entry (`tools/merge_factions.py`).
+- Converted: all official 3rd Edition source lists, and the 5th Edition source (including the 4th Edition codexes it contains). 6th Edition is experimental; 7th Edition and the 4th Edition source are not started.
+- Redistribution rights remain unconfirmed; the data is published for a small play group.
 
 ## Naming
 
-Catalogue names must include edition and, where relevant, codex publication year to distinguish overlapping books. Avoid modifying upstream data in place.
+Catalogues are named by faction, using the most common name across 3rd–7th Edition. Army List options carry the book's edition and year, e.g. "4th Ed – Codex: Eldar (2006)". Upstream data is never modified in place; all changes are made by the build.
