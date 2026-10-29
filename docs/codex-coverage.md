@@ -55,7 +55,18 @@ Not started: the 4th Edition source (Kothra/Warhammer-40-000-4th-Edition-for-New
 
 Source: AnonymousCheese/WH40K5E, converted by `tools/convert_5e_catalogues.py`. The source's "Hide Homebrew Units" switch is treated as permanently on (switch removed). Its "Hide Apocalypse Units" switch is kept for Imperial Guard only, where it hides the Baneblade family of super-heavies by default.
 
-Units were audited against the codex each catalogue represents. Removals were made only where the unit is certainly from a later edition. Possibly anachronistic units kept pending review: Black Templars Grimaldus and High Marshal Helbrecht; Dark Eldar Harlequins; Sisters of Battle Arch-Confessor Kyrinov; Space Wolves Bran Redmaw. Some 5th Edition lists also look incomplete in the source (e.g. no Land Raiders or Chaplain Lemartes in Blood Angels 2010).
+Units were audited against the codex each catalogue represents. Removals were made only where the unit is certainly from a later edition.
+
+Verified against the maintainer's codex PDFs (2026-10-29):
+
+| Book | Checked | Result |
+|---|---|---|
+| Black Templars (2005) | High Marshal Helbrecht, Chaplain Grimaldus | Both are special characters in the codex — kept |
+| Sisters of Battle (White Dwarf 2011) | Arch-Confessor Kyrinov | In the codex — kept |
+| Dark Angels (2007) | Every unit in the list; Gladiator, Repulsor | All listed units appear in the codex; Gladiator and Repulsor do not — removal confirmed |
+| Chaos Space Marines (2007) | Every unit in the list; removed and homebrew-hidden units | All listed units appear (including Huron Blackheart, p. 56); Forgefiend, Maulerfiend and Venomcrawler do not appear; Lord of Skulls and cultists appear only in background text — removals confirmed |
+
+Not yet verified (books not yet read): Dark Eldar 2010 Harlequins; Space Wolves 2009 Bran Redmaw and the Gladiator/Repulsor removal; Blood Angels 2010 gaps (no Land Raiders or Chaplain Lemartes in the source) and the Gladiator/Repulsor removal; Tyranids 2010 Exocrine/Maleceptor removal and Pyrovore restore. These books are image scans over the Drive connector's 10 MB download limit, so they need attaching directly.
 
 | Source catalogue | Book | Result |
 |---|---|---|
