@@ -40,47 +40,5 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      - name: Publish 2002 Chaos Space Marines without modifying Guard
-        run: |
-          python - <<'PY'
-          import xml.etree.ElementTree as ET
-          from pathlib import Path
-          NS = 'http://www.battlescribe.net/schema/catalogueSchema'
-          system = ET.parse('Middlehammer-Unification.gst').getroot()
-          source = ET.parse('build/unified/Chaos Space Marines (2002).cat')
-          cat = source.getroot()
-          cat.set('name', 'Chaos Space Marines (3rd Edition, 2002)')
-          cat.set('revision', '3')
-          cat.set('gameSystemId', system.get('id'))
-          cat.set('gameSystemRevision', system.get('revision'))
-          # Translate 3rd Edition FOC category references to Middlehammer's
-          # 5th Edition categories; otherwise New Recruit shows no units.
-          category_map = {
-              'a8a7-7a4b-5f7e-2138': 'ac8d-efba-1884-d3ad',  # HQ
-              '0ef5-5056-d52e-3cfd': 'default-category',       # Troops
-              '6d25-b346-c314-6911': '978c-e18f-8aeb-f4c1',  # Elites
-              '34e2-d53c-28ab-44cf': '74fe-37c3-fbbf-849e',  # Fast Attack
-              'aacb-8a81-62c0-3db8': '9260-7d57-be5c-bd52',  # Heavy Support
-              'a090-a855-c7de-f5c3': '168b-a772-94f7-83f5',  # Dedicated Transport
-          }
-          rewritten = 0
-          for node in cat.iter():
-              if node.tag.rsplit('}', 1)[-1] == 'categoryLink' and node.get('targetId') in category_map:
-                  node.set('targetId', category_map[node.get('targetId')])
-                  rewritten += 1
-          if not rewritten:
-              raise SystemExit('CSM has no 3e category links to translate; inspect catalogue structure')
-          print('Mapped CSM category links:', rewritten)
-          cat.set('revision', '4')
-          ids = {x.get('id') for root in (cat, system) for x in root.iter() if x.get('id')}
-          unresolved = {x.get('targetId') for x in cat.iter() if x.get('targetId')} - ids
-          if unresolved:
-              raise SystemExit(f'Cannot publish CSM: {len(unresolved)} references absent from installed GST: {sorted(unresolved)[:12]}')
-          ET.register_namespace('', NS)
-          source.write('Chaos Space Marines - Codex 2002.cat', encoding='utf-8', xml_declaration=True)
-          print('CSM catalogue size:', Path('Chaos Space Marines - Codex 2002.cat').stat().st_size)
-          PY
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 'Chaos Space Marines - Codex 2002.cat'
-          git diff --cached --quiet || (git commit -m 'Publish Chaos Space Marines (3rd Edition, 2002)' && git push)
+      # Publishing step removed 2026-10-29: Chaos 2002 is now produced by
+      # tools/convert_3e_catalogues.py together with every other 3rd Edition catalogue.
