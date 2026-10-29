@@ -6,11 +6,13 @@ Unofficial community data for playing **The Book of the Unification** (Middleham
 
 **Usable.** Import this repository into New Recruit as a GitHub data source and choose the **Middlehammer Unification** game system.
 
-| Edition | Published | Tested in New Recruit |
+The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar…). After creating a list, choose the codex or variant list in the **Army List** entry under Configuration, e.g. "3rd Ed – Codex: Imperial Guard (1999)", "3rd Ed – Steel Legion Mechanised Infantry (Armageddon 2000)" or "5th Ed – Codex: Imperial Guard (2009)". Only that list's units are shown.
+
+| Edition | Army lists available | Tested in New Recruit |
 |---|---:|---|
-| 3rd | 24 army lists covering all 56 official source lists; chapter, regiment, craftworld and campaign variants are chosen inside their parent codex via an "Army List" option | Chaos Space Marines 2002 (retest needed after 2026-10-29 fixes) |
+| 3rd | 55 (all official 3rd Edition lists in the source) | Chaos Space Marines 2002 (retest as a faction option) |
 | 4th | 0 | — |
-| 5th | 1 (Imperial Guard 2009) | Yes, 2026-10-29 |
+| 5th | 1 (Imperial Guard 2009) | Tested as a standalone catalogue; retest as a faction option |
 | 6th | 0 (Space Marines 2013 in progress) | — |
 | 7th | 0 | — |
 
@@ -24,7 +26,7 @@ Unit options and points come from the community source data (`sources/upstreams.
 
 One force type is available: **Standard Force Organization (5th Edition)** — HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 (5th Edition rulebook, p. 87). These limits have been tested in New Recruit. The force also shows Dedicated Transport, Unique, Super-Heavy, Configuration and No Force Org Slot sections, without limits, matching the 5th Edition source data.
 
-Some 3rd Edition lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host).
+Some lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host).
 
 Other Unification army-building rules (super-heavy limits, Lords of War, era-restricted allies, the "Patched Out" list) are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
 
@@ -39,7 +41,7 @@ Other Unification army-building rules (super-heavy limits, Lords of War, era-res
 ## Repository layout
 
 - `*.gst`, `*.cat` (repository root) — the files New Recruit reads.
-- `tools/` — Python scripts for building, converting and auditing data. `convert_3e_catalogues.py` builds all 3rd Edition lists (with `merge_variants.py` folding variant lists into their codex); `validate_middlehammer.py` checks every published catalogue (run in CI by `validate.yml`).
+- `tools/` — Python scripts for building, converting and auditing data. `build_middlehammer.py` rebuilds every Middlehammer catalogue from the pinned sources (3rd Edition via `convert_3e_catalogues.py`, faction merging via `merge_factions.py`); `validate_middlehammer.py` checks every published catalogue (run in CI by `validate.yml`).
 - `.github/workflows/` — GitHub Actions that fetch upstream data, run conversions and checks, and upload results as artifacts. No workflow writes to the repository.
 - `sources/upstreams.json` — the upstream repositories each edition is drawn from.
 - `docs/` — rules ledger, conversion notes and audit results.

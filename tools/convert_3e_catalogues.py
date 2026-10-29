@@ -9,16 +9,12 @@ For every non-homebrew catalogue in the source folder:
   * 3e Force Organization categories, Configuration, Super-Heavy and the 3e points
     cost type are remapped to the Middlehammer (5e-based) equivalents, in every
     attribute that references them (category links, conditions, constraints, costs);
-  * variant army lists (chapter, regiment, craftworld, campaign lists) are folded
-    into their parent codex behind a required "Army List" choice (tools/merge_variants.py);
-  * catalogues are renamed "<Name> (3rd Edition, <publication>)" and retargeted to
-    the Middlehammer game system.
+  * catalogues are retargeted to the Middlehammer game system.
 Missing shared definitions are copied from the 3e game system into the Middlehammer
 GST by fixed-point closure. Catalogue IDs are preserved so catalogue links (e.g.
 chapter lists importing Space Marines 1999) keep working.
 
-Usage:
-  python tools/convert_3e_catalogues.py SOURCE_DIR --gst Middlehammer-Unification.gst --out .
+Used by tools/build_middlehammer.py.
 """
 import argparse
 import copy
@@ -27,7 +23,6 @@ import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from merge_variants import merge_variants
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
@@ -235,24 +230,38 @@ def ensure_force_links(gst, report):
     report["forceCategoryLinksAdded"] = added
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("source", type=Path)
-    ap.add_argument("--gst", type=Path, required=True)
-    ap.add_argument("--out", type=Path, required=True)
-    ap.add_argument("--report", type=Path, default=Path("build/3e-conversion-report.json"))
-    a = ap.parse_args()
+def expose_unlisted_units(cat, report):
+    """Source fix: a catalogue with no army list entries (Codex Assassins) offers nothing.
+    Link its shared unit entries at the root so they can be selected."""
+    if any(cat.find(f"{{{CAT_NS}}}{c}") is not None and len(cat.find(f"{{{CAT_NS}}}{c}"))
+           for c in ("selectionEntries", "entryLinks")):
+        return
+    shared = cat.find(f"{{{CAT_NS}}}sharedSelectionEntries")
+    links = cat.find(f"{{{CAT_NS}}}entryLinks")
+    if links is None:
+        links = ET.SubElement(cat, f"{{{CAT_NS}}}entryLinks")
+    added = []
+    for e in (list(shared) if shared is not None else []):
+        if e.get("type") in ("unit", "model"):
+            ET.SubElement(links, f"{{{CAT_NS}}}entryLink", {
+                "name": e.get("name"), "id": f"mh-root-{e.get('id')}", "hidden": "false",
+                "targetId": e.get("id"), "type": "selectionEntry", "import": "true", "collective": "false"})
+            added.append(e.get("name"))
+    report["rootLinksAdded"] = added
 
-    ET.register_namespace("", GST_NS)
-    gst_tree = ET.parse(a.gst)
-    gst = gst_tree.getroot()
-    source_gst = ET.parse(next(a.source.glob("*.gst"))).getroot()
+
+def convert_3e(source, gst, report):
+    """Convert every non-homebrew 3e catalogue in memory.
+
+    Returns {catalogue_id: (source_path, tree, report_entry)}; copies needed 3e
+    definitions into gst (modified in place). Nothing is written to disk.
+    """
+    source_gst = ET.parse(next(Path(source).glob("*.gst"))).getroot()
     if source_gst.get("id") != SOURCE_SYSTEM_ID:
         raise SystemExit("Unexpected 3e game system ID")
-
-    report = {"catalogues": [], "skippedHomebrew": []}
+    report.setdefault("skippedHomebrew", [])
     trees = {}
-    for path in sorted(a.source.glob("*.cat")):
+    for path in sorted(Path(source).glob("*.cat")):
         tree = ET.parse(path)
         cat = tree.getroot()
         if cat.get("gameSystemId") != SOURCE_SYSTEM_ID:
@@ -260,69 +269,23 @@ def main():
         if is_homebrew_catalogue(cat.get("name")):
             report["skippedHomebrew"].append(cat.get("name"))
             continue
-        entry = {"source": path.name, "sourceName": cat.get("name"), "id": cat.get("id")}
+        entry = {"edition": 3, "source": path.name, "sourceName": cat.get("name"), "id": cat.get("id")}
         strip_homebrew(cat, entry)
         unlock_imperial_armour(cat, entry)
         dedupe_ids(cat, entry)
+        expose_unlisted_units(cat, entry)
         entry["referencesRemapped"] = remap(cat)
+        cat.set("gameSystemId", MH_SYSTEM_ID)
         trees[cat.get("id")] = (path, tree, entry)
-
     for cid in trees:
         if any(l.get("targetId") not in trees for l in trees[cid][1].getroot().iter(f"{{{CAT_NS}}}catalogueLink")):
             raise SystemExit(f"{trees[cid][0].name} links a skipped catalogue")
-
-    variant_files = {display_name(trees[v][2]["sourceName"]) + ".cat" for v in trees}
-    merge_variants(trees, report)
-    variant_files -= {display_name(e["sourceName"]) + ".cat" for _, _, e in trees.values()}
-    report["variantFilesRemoved"] = []
-    for name in sorted(variant_files):
-        if (a.out / name).exists():
-            (a.out / name).unlink()
-            report["variantFilesRemoved"].append(name)
-
-    roots = [t.getroot() for _, t, _ in trees.values()]
     report["gstReferencesRemapped"] = remap(gst)
-    close_over_gst(roots, source_gst, gst, report)
+    close_over_gst([t.getroot() for _, t, _ in trees.values()], source_gst, gst, report)
     ensure_force_links(gst, report)
-    gst.set("revision", str(int(gst.get("revision")) + 1))
-    gst_rev = gst.get("revision")
-
-    ET.register_namespace("", CAT_NS)
-    for cid, (path, tree, entry) in trees.items():
-        cat = tree.getroot()
-        cat.set("name", display_name(cat.get("name")))
-        cat.set("gameSystemId", MH_SYSTEM_ID)
-        cat.set("gameSystemRevision", gst_rev)
-        filename = EXISTING_FILENAMES.get(cid, cat.get("name") + ".cat")
-        dest = a.out / filename
-        revision = int(cat.get("revision") or 1)
-        if dest.exists():
-            revision = max(revision, int(ET.parse(dest).getroot().get("revision") or 0) + 1)
-        cat.set("revision", str(revision))
-        tree.write(dest, encoding="utf-8", xml_declaration=True)
-        entry.update({"name": cat.get("name"), "file": filename, "revision": revision})
-        report["catalogues"].append(entry)
-
-    converted = {r["file"] for r in report["catalogues"]}
-    report["resynced"] = []
-    for other in sorted(a.out.glob("*.cat")):
-        if other.name in converted:
-            continue
-        t = ET.parse(other)
-        c = t.getroot()
-        if c.get("gameSystemId") == MH_SYSTEM_ID and c.get("gameSystemRevision") != gst_rev:
-            c.set("gameSystemRevision", gst_rev)
-            c.set("revision", str(int(c.get("revision") or 0) + 1))
-            t.write(other, encoding="utf-8", xml_declaration=True)
-            report["resynced"].append(other.name)
-
-    ET.register_namespace("", GST_NS)
-    gst_tree.write(a.gst, encoding="utf-8", xml_declaration=True)
-    a.report.parent.mkdir(parents=True, exist_ok=True)
-    a.report.write_text(json.dumps(report, indent=2) + "\n")
-    print(f"Converted {len(trees)} catalogues; skipped {len(report['skippedHomebrew'])} homebrew; "
-          f"copied {len(report['gstDefinitionsCopied'])} GST definitions; GST revision {gst_rev}")
+    report["converted3e"] = [e for _, _, e in trees.values()]
+    return trees
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit("Run tools/build_middlehammer.py, which builds every Middlehammer catalogue.")
