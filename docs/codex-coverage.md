@@ -4,44 +4,45 @@ Every army list in the pinned source repositories (see `sources/upstreams.json`)
 
 Status meanings: **Tested** — imported and used in New Recruit by the maintainer. **Converted** — published and structurally validated (`tools/validate_middlehammer.py`), not yet tested in New Recruit. **Not started**.
 
-## 3rd Edition — 24 army lists (56 source lists), 7 excluded
+## Faction catalogues (all editions)
 
-Source: KSnyder1986/Warhammer-40k-3rd-Edition. Built with `tools/convert_3e_catalogues.py`.
+New Recruit shows **one entry per faction**. Every codex and variant list of that faction, from every edition, is an option of the required **Army List** entry (Configuration section); only the chosen list's units are shown and its minimum requirements apply. Built by `tools/build_middlehammer.py` (using `convert_3e_catalogues.py` and `merge_factions.py`). Faction names are the most common across 3rd–7th Edition.
 
-Variant army lists (chapter, regiment, craftworld, Chapter Approved and campaign lists) are not separate entries in the New Recruit picker. They are folded into their parent codex (`tools/merge_variants.py`): pick the codex, then choose the variant from the required **Army List** option in the Configuration section. Each choice shows exactly the units of the original list.
+Status: Imperial Guard 5th Ed 2009 and Chaos Space Marines 3rd Ed 2002 were tested in New Recruit on 2026-10-29 as standalone catalogues and need retesting as faction options. Everything else is converted and structurally validated, awaiting New Recruit testing. Each option was simulated to show exactly the units of its original list.
 
-| Army list (as shown in New Recruit) | Status | Variants under "Army List" |
-|---|---|---|
-| Adeptus Arbites (3rd Edition, Citadel Journal 29) | Converted, awaiting New Recruit test | — |
-| Black Templars (3rd Edition, 2000) | Converted, awaiting New Recruit test | — |
-| Blood Angels (3rd Edition, 1998) | Converted, awaiting New Recruit test | Blood Angels Death Company (Chapter Approved 2001) |
-| Chaos Space Marines (3rd Edition, 1999) | Converted, awaiting New Recruit test | — |
-| Chaos Space Marines (3rd Edition, 2002) | Tested 2026-10-29 (before homebrew/points fixes); retest | — |
-| Codex Assassins (3rd Edition, 1999) | Converted, awaiting New Recruit test | — |
-| Daemon Hunters (3rd Edition, 2003) | Converted, awaiting New Recruit test | — |
-| Dark Angels (3rd Edition, 1999) | Converted, awaiting New Recruit test | — |
-| Dark Eldar (3rd Edition, 2001) | Converted, awaiting New Recruit test | Dark Eldar Wych Cult (2001) |
-| Eldar (3rd Edition, 2000) | Converted, awaiting New Recruit test | Biel-Tan Swordwind Army (2000), Saim-Hann Wild Rider Host (2000), Rangers of Alaitoc (2000), Ulthwe The Damned (2000), Ulthwe Strike Force (Eye of Terror 2003), Iyanden Ghost Warriors (2000) |
-| Genestealer Cults (3rd Edition, Citadel Journal 40) | Converted, awaiting New Recruit test | — |
-| Harlequins (3rd Edition, 2000) | Converted, awaiting New Recruit test | — |
-| Imperial Guard (3rd Edition, 1999) | Converted, awaiting New Recruit test | Deathworld Veterans (2000), Catachan (2000), Armageddon Ork Hunters (Chapter Approved 2003), Tanith First and Only (Chapter Approved 2003), Cityfighting Imperial Guard (Chapter Approved 2003), Planetary Defence Regiment (Armageddon 2000), Steel Legion Mechanised Infantry (Armageddon 2000), Death Korps of Krieg (Chapter Approved 2003), Elysian Drop Troops (Chapter Approved 2003), Armoured Company (Chapter Approved 2001), Cadian Shock Troops (Eye of Terror 2003), Salvar Chem-Dogs (Chapter Approved 2003) |
-| Imperial Guard (3rd Edition, 2003) | Converted, awaiting New Recruit test | Imperial Guard Armoured Company (Chapter Approved 2004), Armoured Battle Group (IA 2003) |
-| Kroot Mercenaries (3rd Edition, Chapter Approved 2004) | Converted, awaiting New Recruit test | — |
-| Lost and the Damned (3rd Edition, Eye of Terror 2003) | Converted, awaiting New Recruit test | — |
-| Necrons (3rd Edition, 2002) | Converted, awaiting New Recruit test | — |
-| Orks (3rd Edition, 1999) | Converted, awaiting New Recruit test | Feral Orks (Chapter Approved 2004), Speed Freeks (Armageddon 2000) |
-| Sisters of Battle (3rd Edition, Chapter Approved 2001) | Converted, awaiting New Recruit test | — |
-| Space Marines (3rd Edition, 1999) | Converted, awaiting New Recruit test | Salamanders (2000), White Scars (2002), Iron Hands (2001), Imperial Fists (2003), Relictors (White Dwarf 281), Cursed Foundings (Chapter Approved 2004) |
-| Space Wolves (3rd Edition, 2000) | Converted, awaiting New Recruit test | Space Wolves 13th Company (2003) |
-| Tau (3rd Edition, 2001) | Converted, awaiting New Recruit test | — |
-| Tyranids (3rd Edition, 2001) | Converted, awaiting New Recruit test | Tyranid Seeding Swarm (Chapter Approved 2003) |
-| Witch Hunters (3rd Edition, 2003) | Converted, awaiting New Recruit test | — |
+| Faction | Army List options | Options |
+|---|---:|---|
+| **Space Marines** | 7 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004) |
+| **Blood Angels** | 2 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001) |
+| **Dark Angels** | 1 | 3rd Ed – Codex: Dark Angels (1999) |
+| **Space Wolves** | 2 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003) |
+| **Black Templars** | 1 | 3rd Ed – Codex: Black Templars (2000) |
+| **Imperial Guard** | 17 | 3rd Ed – Codex: Imperial Guard (1999)<br>3rd Ed – Deathworld Veterans (2000)<br>3rd Ed – Catachan (2000)<br>3rd Ed – Armageddon Ork Hunters (Chapter Approved 2003)<br>3rd Ed – Tanith First and Only (Chapter Approved 2003)<br>3rd Ed – Cityfighting Imperial Guard (Chapter Approved 2003)<br>3rd Ed – Planetary Defence Regiment (Armageddon 2000)<br>3rd Ed – Steel Legion Mechanised Infantry (Armageddon 2000)<br>3rd Ed – Death Korps of Krieg (Chapter Approved 2003)<br>3rd Ed – Elysian Drop Troops (Chapter Approved 2003)<br>3rd Ed – Armoured Company (Chapter Approved 2001)<br>3rd Ed – Cadian Shock Troops (Eye of Terror 2003)<br>3rd Ed – Salvar Chem-Dogs (Chapter Approved 2003)<br>3rd Ed – Codex: Imperial Guard (2003)<br>3rd Ed – Imperial Guard Armoured Company (Chapter Approved 2004)<br>3rd Ed – Armoured Battle Group (IA 2003)<br>5th Ed – Codex: Imperial Guard (2009) |
+| **Chaos Space Marines** | 2 | 3rd Ed – Codex: Chaos Space Marines (1999)<br>3rd Ed – Codex: Chaos Space Marines (2002) |
+| **Renegades & Heretics** | 1 | 3rd Ed – Lost and the Damned (Eye of Terror 2003) |
+| **Eldar** | 7 | 3rd Ed – Codex: Eldar (2000)<br>3rd Ed – Biel-Tan Swordwind Army (2000)<br>3rd Ed – Saim-Hann Wild Rider Host (2000)<br>3rd Ed – Rangers of Alaitoc (2000)<br>3rd Ed – Ulthwe The Damned (2000)<br>3rd Ed – Ulthwe Strike Force (Eye of Terror 2003)<br>3rd Ed – Iyanden Ghost Warriors (2000) |
+| **Dark Eldar** | 2 | 3rd Ed – Codex: Dark Eldar (2001)<br>3rd Ed – Dark Eldar Wych Cult (2001) |
+| **Harlequins** | 1 | 3rd Ed – Harlequins (2000) |
+| **Orks** | 3 | 3rd Ed – Codex: Orks (1999)<br>3rd Ed – Feral Orks (Chapter Approved 2004)<br>3rd Ed – Speed Freeks (Armageddon 2000) |
+| **Tyranids** | 2 | 3rd Ed – Codex: Tyranids (2001)<br>3rd Ed – Tyranid Seeding Swarm (Chapter Approved 2003) |
+| **Genestealer Cults** | 1 | 3rd Ed – Genestealer Cults (Citadel Journal 40) |
+| **Necrons** | 1 | 3rd Ed – Codex: Necrons (2002) |
+| **Tau Empire** | 1 | 3rd Ed – Codex: Tau (2001) |
+| **Kroot Mercenaries** | 1 | 3rd Ed – Kroot Mercenaries (Chapter Approved 2004) |
+| **Sisters of Battle** | 2 | 3rd Ed – Codex: Witch Hunters (2003)<br>3rd Ed – Sisters of Battle (Chapter Approved 2001) |
+| **Grey Knights** | 1 | 3rd Ed – Codex: Daemon Hunters (2003) |
+| **Assassins** | 1 | 3rd Ed – Codex Assassins (1999) |
+| **Adeptus Arbites** | 1 | 3rd Ed – Adeptus Arbites (Citadel Journal 29) |
 
-Excluded as homebrew/unofficial: Adeptus Custodes (Homebrew), Adeptus Mechanicus (Homebrew), Alien Hunters (Homebrew), Daemons of Chaos (Homebrew), Imperial Knights (Homebrew), Squats (Unofficial 2000), The Badab War (Homebrew).
+Faction decisions (2026-10-29): Blood Angels, Dark Angels, Space Wolves and Black Templars are separate factions; Witch Hunters → Sisters of Battle; Daemon Hunters → Grey Knights; Lost and the Damned → Renegades & Heretics (7th Ed Forge World list joins later); Kroot Mercenaries separate; a future 7th Ed Inquisition codex gets its own faction.
 
-Standalone by decision (2026-10-29): Dark Angels, Black Templars, Blood Angels and Space Wolves are their own codexes; Lost and the Damned stays standalone (Chaos/Guard hybrid); Sisters of Battle, Genestealer Cults and the ally lists (Daemon Hunters, Witch Hunters, Assassins, Harlequins, Kroot, Arbites) stay standalone.
+Source fix: Codex Assassins (1999) defines the Officio Assassinorum Operative but never offers it in its army list; the build adds the missing entry (Elites).
 
-Known limitation: variant lists that bring their own force type (Saim-Hann Wild Rider Force) offer it whenever the parent codex is used, not only when that variant is chosen.
+Known limitation: lists that bring their own force type (e.g. Saim-Hann Wild Rider Force, Daemon Hunter and Witch Hunter allies) offer it whenever the faction is used, not only when that list is chosen.
+
+## 3rd Edition source — 56 lists converted, 7 excluded
+
+Source: KSnyder1986/Warhammer-40k-3rd-Edition. Excluded as homebrew/unofficial: Adeptus Custodes (Homebrew), Adeptus Mechanicus (Homebrew), Alien Hunters (Homebrew), Daemons of Chaos (Homebrew), Imperial Knights (Homebrew), Squats (Unofficial 2000), The Badab War (Homebrew). Homebrew units inside official lists are hidden; Imperial Armour content is unlocked.
 
 ## 4th Edition — not started (13 source catalogues)
 
@@ -55,7 +56,7 @@ Source: AnonymousCheese/WH40K5E. Built with `tools/convert_5e_catalogue.py` / `t
 
 | Catalogue | Status |
 |---|---|
-| Imperial Guard (5th Edition, 2009) | Tested 2026-10-29 |
+| Imperial Guard (2009) → option of the Imperial Guard faction | Tested 2026-10-29 as a standalone catalogue; retest |
 
 Not started: Black Templars, Blood Angels, Chaos Daemons, Chaos Space Marines, Dark Angels, Dark Eldar, Eldar, Grey Knights, Necrons, Orks, Sisters of Battle, Space Marines, Space Wolves, Tau Empire, Tyranids, Witch Hunters, Tyranids (3rd Ed).
 
