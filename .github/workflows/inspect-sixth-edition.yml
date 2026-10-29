@@ -8,6 +8,7 @@ on:
       - 'tools/inspect_6e_structure.py'
       - 'tools/convert_legacy_6e.py'
       - 'tools/validate_6e_experimental.py'
+      - 'tools/space_marines_release_gate.py'
 jobs:
   inventory:
     runs-on: ubuntu-latest
@@ -44,6 +45,8 @@ jobs:
           python tools/convert_legacy_6e.py space-marines-2013-legacy.cat Middlehammer-Unification.gst build/experimental/Space-Marines-2013.cat --report build/experimental/translation-report.json --source-gst sixth-edition-legacy.gst --experimental-gst build/experimental/Middlehammer-6e-profile-types.gst
       - name: Validate experimental catalogue source fidelity
         run: python tools/validate_6e_experimental.py build/experimental/Space-Marines-2013.cat build/experimental/translation-report.json Middlehammer-Unification.gst build/experimental/Middlehammer-6e-profile-types.gst
+      - name: Assess Middlehammer integration readiness
+        run: python tools/space_marines_release_gate.py build/experimental/Space-Marines-2013.cat build/experimental/translation-report.json build/experimental/Middlehammer-6e-profile-types.gst --output build/experimental/release-readiness.json
       - uses: actions/upload-artifact@v4
         with:
           name: sixth-edition-inventory
@@ -51,4 +54,5 @@ jobs:
             build/sixth-edition-inventory.json
             build/experimental/Space-Marines-2013.cat
             build/experimental/translation-report.json
+            build/experimental/release-readiness.json
             build/experimental/Middlehammer-6e-profile-types.gst
