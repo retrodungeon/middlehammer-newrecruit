@@ -7,6 +7,7 @@ only need retargeting plus content fixes:
     gated units are hidden and unlinked, and the switch is removed from the game system;
   * units from later editions that the source does not tag (EXCLUDED) are removed;
   * units the source wrongly tags as homebrew (RESTORED) are made available;
+  * units the source omits (ADDED) are added from the codex;
   * "Custom Content" (now only the Apocalypse switch, which hides super-heavies by default)
     is kept only where it hides something (APOCALYPSE_SWITCH_KEPT).
 Used by tools/build_middlehammer.py.
@@ -37,7 +38,9 @@ EXCLUDED = {
     "Black Templars": {"Gladiator", "Repulsor"},
     "Blood Angels": {"Gladiator", "Repulsor"},
     "Dark Angels": {"Gladiator", "Repulsor"},
-    "Space Wolves": {"Gladiator", "Repulsor"},
+    # Bran Redmaw appears only in background text of Codex: Space Wolves (2009) (checked
+    # against the maintainer's copy, 2026-10-29); the source's HQ entry has no codex basis.
+    "Space Wolves": {"Gladiator", "Repulsor", "Bran Redmaw"},
     "Tyranids": {"Exocrine Brood", "Maleceptor Brood"},
     "Chaos Space Marines": {"Khorne Lord of Skulls"},
     "Imperial Guard": {"Rogal Dorn Battle Tank", "Bullgryn Squad", "Field Ordnance Battery"},
@@ -49,6 +52,56 @@ APOCALYPSE_SWITCH_KEPT = {"Imperial Guard"}
 
 # Units the source tags homebrew that are in the codex (Pyrovore: Codex Tyranids 2010).
 RESTORED = {"Tyranids": {"Pyrovore Brood"}}
+
+
+UNIT_PROFILE = "0967-823d-dd82-4e47"
+UNIT_CHARS = [("WS", "15b1-a34a-6e7c-332e"), ("BS", "63a5-4be2-9cc0-7723"), ("S", "09af-e927-0c3c-9d88"),
+              ("T", "ff29-f8b2-5b20-b686"), ("W", "4a81-ac45-a71c-c71e"), ("I", "8517-a46c-d6df-9c75"),
+              ("A", "a535-0722-3bc1-4d3c"), ("Ld", "ddd5-77eb-4cc8-9eab"), ("Sv", "c1e7-f1bd-8acd-7595")]
+WARGEAR_PROFILE, WARGEAR_DESC = "456a-26d9-cb27-bd5c", "9e5e-2cfd-7c93-749a"
+POINTS = "6f18-a8fc-2c5b-9517"
+
+
+def add_corbulo(cat):
+    """Codex: Blood Angels (2010) p. 87 allows Brother Corbulo (105 pts) as one of the 1-3
+    Sanguinary Priests of an Elites choice; the source omits him. Profile and wargear from
+    the codex (checked 2026-10-29); rules text is referenced, not reproduced."""
+    priests = next(g for g in cat.iter(q("selectionEntryGroup")) if g.get("name") == "Priests"
+                   and any(e.get("name") == "Sanguinary Priest" for e in g.iter(q("selectionEntry"))))
+    entries = priests.find(q("selectionEntries"))
+    ref = "See Codex: Blood Angels (2010), page 49."
+    pid = "mh-ba2010-corbulo"
+    e = ET.SubElement(entries, q("selectionEntry"), {
+        "name": "Brother Corbulo", "id": pid, "hidden": "false", "import": "true",
+        "type": "model", "collective": "false"})
+    ET.SubElement(ET.SubElement(e, q("constraints")), q("constraint"), {
+        "id": f"{pid}-unique", "field": "selections", "scope": "roster", "shared": "true",
+        "type": "max", "value": "1", "includeChildSelections": "true", "includeChildForces": "true"})
+    ET.SubElement(ET.SubElement(e, q("costs")), q("cost"), {"name": "Points", "typeId": POINTS, "value": "105"})
+    links = ET.SubElement(e, q("infoLinks"))
+    for name, target, lid in (("Bolt Pistol", "d1b6-0b7d-7649-7b73", "bp"), ("Frag Grenades", "6e7c-a63e-3bc6-5bc9", "frag"),
+                              ("Krak Grenades", "0a12-b99c-7d80-2ab6", "krak")):
+        ET.SubElement(links, q("infoLink"), {"name": name, "id": f"{pid}-{lid}", "hidden": "false",
+                                             "targetId": target, "type": "profile"})
+    profiles = ET.SubElement(e, q("profiles"))
+    prof = ET.SubElement(profiles, q("profile"), {"name": "Brother Corbulo", "id": f"{pid}-profile",
+                                                  "hidden": "false", "typeId": UNIT_PROFILE, "typeName": "Unit"})
+    chars = ET.SubElement(prof, q("characteristics"))
+    for (n, t), v in zip(UNIT_CHARS, ["5", "5", "4", "4", "2", "5", "3", "9", "3+"]):
+        ET.SubElement(chars, q("characteristic"), {"name": n, "typeId": t}).text = v
+    for n, lid in (("Heaven's Teeth", "teeth"), ("The Red Grail", "grail")):
+        w = ET.SubElement(profiles, q("profile"), {"name": n, "id": f"{pid}-{lid}", "hidden": "false",
+                                                   "typeId": WARGEAR_PROFILE, "typeName": "Wargear"})
+        ET.SubElement(ET.SubElement(w, q("characteristics")), q("characteristic"),
+                      {"name": "Description", "typeId": WARGEAR_DESC}).text = ref
+    rule = ET.SubElement(ET.SubElement(e, q("rules")), q("rule"),
+                         {"name": "The Far-Seeing Eye", "id": f"{pid}-eye", "hidden": "false"})
+    ET.SubElement(rule, q("description")).text = ref
+    return ["Brother Corbulo"]
+
+
+# Units missing from the source, added from the codex.
+ADDED = {"Blood Angels": add_corbulo}
 
 
 def q(tag):
@@ -119,8 +172,9 @@ def convert_one(path, report):
                 if el.get("targetId") == CUSTOM_CONTENT:
                     r.remove(el)
                     entry["customContentRemoved"] = True
+    added = ADDED[name](cat) if name in ADDED else []
     cat.set("gameSystemId", MH_SYSTEM_ID)
-    entry.update({"homebrewHidden": sorted(set(hidden)), "excluded": sorted(removed),
+    entry.update({"added": added, "homebrewHidden": sorted(set(hidden)), "excluded": sorted(removed),
                   "restored": restored})
     return tree, entry
 
