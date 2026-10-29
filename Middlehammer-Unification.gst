@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="8" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="9" type="gameSystem">
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
@@ -6175,11 +6175,6 @@ Once the Drop Pod has landed, all passengers must immediately disembark, as norm
         <constraint id="9ed1-adc2-b692-1915-max" childId="any" field="selections" includeChildSelections="false" scope="parent" shared="false" type="max" value="1" />
       </constraints>
       <selectionEntries>
-        <selectionEntry name="Hide Homebrew Units" id="0d75-b87c-69ae-f778" defaultAmount="1" hidden="false" import="true" type="upgrade">
-          <constraints>
-            <constraint id="d847-745c-29eb-88c3" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
-          </constraints>
-        </selectionEntry>
         <selectionEntry name="Hide Apocalypse Units" id="7a0f-60e9-0b8f-41f9" defaultAmount="1" hidden="false" import="true" type="upgrade">
           <constraints>
             <constraint id="8391-61a9-bdee-c97a" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />

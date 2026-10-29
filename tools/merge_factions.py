@@ -17,19 +17,26 @@ MH_POINTS = "6f18-a8fc-2c5b-9517"
 ED = {3: "3rd Ed", 4: "4th Ed", 5: "5th Ed", 6: "6th Ed", 7: "7th Ed"}
 
 
-# Faction -> ordered members: (edition, source catalogue name, label prefix).
-# Prefix "Codex: " marks a codex; a longer "Codex: ..." prefix is a full label override.
+# Faction -> ordered members: (source edition, source catalogue name, label[, book edition]).
+# Label "Codex: " marks a codex (label = "Codex: <source name>"); a longer label is used
+# verbatim. Book edition (for the "4th Ed" prefix) defaults to the source edition: the
+# 5th Edition source includes 4th Edition codexes that were still current in 5th.
 # Names are the most common across 3rd-7th Edition (maintainer decision 2026-10-29).
 FACTIONS = {
     "Space Marines": [(3, "Space Marines (1999)", "Codex: ")] + [
         (3, n, "") for n in ("Salamanders (2000)", "White Scars (2002)", "Iron Hands (2001)",
                              "Imperial Fists (2003)", "Relictors (White Dwarf 281)",
-                             "Cursed Foundings (Chapter Approved 2004)")],
+                             "Cursed Foundings (Chapter Approved 2004)")] + [
+        (5, "Space Marines", "Codex: Space Marines (2008)")],
     "Blood Angels": [(3, "Blood Angels (1998)", "Codex: "),
-                     (3, "Blood Angels Death Company (Chapter Approved 2001)", "")],
-    "Dark Angels": [(3, "Dark Angels (1999)", "Codex: ")],
-    "Space Wolves": [(3, "Space Wolves (2000)", "Codex: "), (3, "Space Wolves 13th Company (2003)", "")],
-    "Black Templars": [(3, "Black Templars (2000)", "Codex: ")],
+                     (3, "Blood Angels Death Company (Chapter Approved 2001)", ""),
+                     (5, "Blood Angels", "Codex: Blood Angels (2010)")],
+    "Dark Angels": [(3, "Dark Angels (1999)", "Codex: "),
+                    (5, "Dark Angels", "Codex: Dark Angels (2007)", 4)],
+    "Space Wolves": [(3, "Space Wolves (2000)", "Codex: "), (3, "Space Wolves 13th Company (2003)", ""),
+                     (5, "Space Wolves", "Codex: Space Wolves (2009)")],
+    "Black Templars": [(3, "Black Templars (2000)", "Codex: "),
+                       (5, "Black Templars", "Codex: Black Templars (2005)", 4)],
     "Imperial Guard": [(3, "Imperial Guard (1999)", "Codex: ")] + [
         (3, n, "") for n in ("Deathworld Veterans (2000)", "Catachan (2000)",
                              "Armageddon Ork Hunters (Chapter Approved 2003)",
@@ -48,24 +55,32 @@ FACTIONS = {
         (5, "Imperial Guard", "Codex: Imperial Guard (2009)"),
     ],
     "Chaos Space Marines": [(3, "Chaos Space Marines (1999)", "Codex: "),
-                            (3, "Chaos Space Marines (2002)", "Codex: ")],
+                            (3, "Chaos Space Marines (2002)", "Codex: "),
+                            (5, "Chaos Space Marines", "Codex: Chaos Space Marines (2007)", 4)],
+    "Chaos Daemons": [(5, "Chaos Daemons", "Codex: Chaos Daemons (2008)", 4)],
     "Renegades & Heretics": [(3, "Lost and the Damned (Eye of Terror 2003)", "")],
     "Eldar": [(3, "Eldar (2000)", "Codex: ")] + [
         (3, n, "") for n in ("Biel-Tan Swordwind Army (2000)", "Saim-Hann Wild Rider Host (2000)",
                              "Rangers of Alaitoc (2000)", "Ulthwe The Damned (2000)",
-                             "Ulthwe Strike Force (Eye of Terror 2003)", "Iyanden Ghost Warriors (2000)")],
-    "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: "), (3, "Dark Eldar Wych Cult (2001)", "")],
+                             "Ulthwe Strike Force (Eye of Terror 2003)", "Iyanden Ghost Warriors (2000)")] + [
+        (5, "Eldar", "Codex: Eldar (2006)", 4)],
+    "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: "), (3, "Dark Eldar Wych Cult (2001)", ""),
+                   (5, "Dark Eldar", "Codex: Dark Eldar (2010)")],
     "Harlequins": [(3, "Harlequins (2000)", "")],
     "Orks": [(3, "Orks (1999)", "Codex: "), (3, "Feral Orks (Chapter Approved 2004)", ""),
-             (3, "Speed Freeks (Armageddon 2000)", "")],
-    "Tyranids": [(3, "Tyranids (2001)", "Codex: "), (3, "Tyranid Seeding Swarm (Chapter Approved 2003)", "")],
+             (3, "Speed Freeks (Armageddon 2000)", ""),
+             (5, "Orks", "Codex: Orks (2008)", 4)],
+    "Tyranids": [(3, "Tyranids (2001)", "Codex: "), (3, "Tyranid Seeding Swarm (Chapter Approved 2003)", ""),
+                 (5, "Tyranids", "Codex: Tyranids (2010)")],
     "Genestealer Cults": [(3, "Genestealer Cults (Citadel Journal 40)", "")],
-    "Necrons": [(3, "Necrons (2002)", "Codex: ")],
-    "Tau Empire": [(3, "Tau (2001)", "Codex: ")],
+    "Necrons": [(3, "Necrons (2002)", "Codex: "), (5, "Necrons", "Codex: Necrons (2011)")],
+    "Tau Empire": [(3, "Tau (2001)", "Codex: "), (5, "Tau Empire", "Codex: Tau Empire (2005)", 4)],
     "Kroot Mercenaries": [(3, "Kroot Mercenaries (Chapter Approved 2004)", "")],
     "Sisters of Battle": [(3, "Witch Hunters (2003)", "Codex: "),
-                          (3, "Sisters of Battle (Chapter Approved 2001)", "")],
-    "Grey Knights": [(3, "Daemon Hunters (2003)", "Codex: ")],
+                          (3, "Sisters of Battle (Chapter Approved 2001)", ""),
+                          (5, "Sisters of Battle", "Codex: Sisters of Battle (White Dwarf 2011)")],
+    "Grey Knights": [(3, "Daemon Hunters (2003)", "Codex: "),
+                     (5, "Grey Knights", "Codex: Grey Knights (2011)")],
     "Assassins": [(3, "Codex Assassins (1999)", "")],
     "Adeptus Arbites": [(3, "Adeptus Arbites (Citadel Journal 29)", "")],
 }
@@ -172,7 +187,7 @@ def rename_collisions(seen_ids, member, report):
 
 def build_factions(members, game_system_id, report):
     """members: {(edition, source name): catalogue root}. Returns {faction name: root}."""
-    assigned = {(e, s) for fm in FACTIONS.values() for e, s, _ in fm}
+    assigned = {(m[0], m[1]) for fm in FACTIONS.values() for m in fm}
     missing = sorted(set(members) - assigned)
     if missing:
         raise SystemExit(f"Converted lists not assigned to a faction: {missing}")
@@ -183,8 +198,8 @@ def build_factions(members, game_system_id, report):
     option_for, faction_of = {}, {}
     for fname, fm in FACTIONS.items():
         fid = f"mh-fac-{slug(fname)}"
-        for e, s, _ in fm:
-            cid = members[(e, s)].get("id")
+        for m in fm:
+            cid = members[(m[0], m[1])].get("id")
             option_for[cid] = f"mh-al-{cid}"
             faction_of[cid] = fid
 
@@ -213,16 +228,18 @@ def build_factions(members, game_system_id, report):
             "authorName": "Middlehammer (generated)"})
         comment = ET.SubElement(root, q("comment"))
         comment.text = "Generated by tools/build_middlehammer.py from: " + "; ".join(
-            f"{ED[e]} {s}" for e, s, _ in fm)
+            f"{ED[m[0]]} source: {m[1]}" for m in fm)
         links = ET.SubElement(root, q("catalogueLinks"))
         seen = {fid}
         options = []
-        for e, s, prefix in fm:
+        for spec in fm:
+            e, s, prefix = spec[:3]
+            book_edition = spec[3] if len(spec) > 3 else e
             m = members[(e, s)]
             mid = m.get("id")
             rename_collisions(seen, m, report)
             oid = option_for[mid]
-            options.append((oid, label(e, s, prefix)))
+            options.append((oid, label(book_edition, s, prefix)))
             for cont in ("selectionEntries", "entryLinks"):
                 src = m.find(q(cont))
                 for el in (list(src) if src is not None else []):

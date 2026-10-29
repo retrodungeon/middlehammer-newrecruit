@@ -1,0 +1,17 @@
+name: Check published data matches a fresh build
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild every Middlehammer catalogue from the pinned sources
+        run: python tools/build_middlehammer.py
+      - name: Fail if the committed files differ from the rebuild
+        run: git diff --stat --exit-code -- '*.gst' '*.cat'
+      - run: python tools/validate_middlehammer.py

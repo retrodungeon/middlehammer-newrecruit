@@ -4,8 +4,8 @@
   python tools/build_middlehammer.py            # writes to the repository root
 
 Steps: fetch pinned sources into upstream-cache/ (git), convert 3rd Edition
-catalogues (tools/convert_3e_catalogues.py) and the 5th Edition Imperial Guard
-2009 catalogue, merge everything into one catalogue per faction
+catalogues (tools/convert_3e_catalogues.py) and 5th Edition source catalogues
+(tools/convert_5e_catalogues.py), merge everything into one catalogue per faction
 (tools/merge_factions.py), then write the faction catalogues and game system.
 Revisions are bumped only for files whose content changed. Middlehammer
 catalogues at the root that are no longer produced are deleted.
@@ -19,6 +19,7 @@ import xml.etree.ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).parent))
 from convert_3e_catalogues import convert_3e  # noqa: E402
+from convert_5e_catalogues import convert_5e  # noqa: E402
 from merge_factions import build_factions     # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,9 +27,6 @@ CACHE = ROOT / "upstream-cache"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 MH_SYSTEM_ID = "sys-middlehammer-2026"
-FIFTH_SOURCE_ID = "sys-9c90-407d-0876-14fb"
-# Units in the 5e source catalogue that are not in the 2009 Codex: Imperial Guard.
-GUARD_2009_EXCLUDED = {"Rogal Dorn Battle Tank", "Bullgryn Squad", "Field Ordnance Battery"}
 
 
 def fetch(edition):
@@ -41,23 +39,6 @@ def fetch(edition):
         subprocess.run(["git", "-C", str(dest), "fetch", "-q", "origin", info["commit"]], check=True)
         subprocess.run(["git", "-C", str(dest), "checkout", "-q", info["commit"]], check=True)
     return dest
-
-
-def convert_guard_2009(source_dir, report):
-    tree = ET.parse(source_dir / "Imperial Guard.cat")
-    root = tree.getroot()
-    if root.get("gameSystemId") != FIFTH_SOURCE_ID:
-        raise SystemExit("Unexpected 5e Imperial Guard game system")
-    root.set("gameSystemId", MH_SYSTEM_ID)
-    links = root.find(f"{{{CAT_NS}}}entryLinks")
-    removed = [l.get("name") for l in list(links) if l.get("name") in GUARD_2009_EXCLUDED]
-    for l in list(links):
-        if l.get("name") in GUARD_2009_EXCLUDED:
-            links.remove(l)
-    if set(removed) != GUARD_2009_EXCLUDED:
-        raise SystemExit(f"Guard 2009 exclusions not found: {GUARD_2009_EXCLUDED - set(removed)}")
-    report["guard2009Excluded"] = sorted(removed)
-    return root
 
 
 def digest(root, ignore=("revision", "gameSystemRevision")):
@@ -93,7 +74,8 @@ def main():
 
     trees = convert_3e(third, gst, report)
     members = {(3, e["sourceName"]): t.getroot() for _, t, e in trees.values()}
-    members[(5, "Imperial Guard")] = convert_guard_2009(fifth, report)
+    for _, t, e in convert_5e(fifth, gst, report).values():
+        members[(5, e["sourceName"])] = t.getroot()
     factions = build_factions(members, MH_SYSTEM_ID, report)
 
     gst_changed = digest(gst) != before
