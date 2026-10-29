@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="7dbe-7b9c-89fc-d346" name="Black Templars (3rd Edition, 2000)" revision="4" battleScribeVersion="2.03" library="false" gameSystemId="sys-middlehammer-2026" gameSystemRevision="6" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="7dbe-7b9c-89fc-d346" name="Black Templars (3rd Edition, 2000)" revision="5" battleScribeVersion="2.03" library="false" gameSystemId="sys-middlehammer-2026" gameSystemRevision="7" type="catalogue">
   <entryLinks>
     <entryLink id="ba81-18ab-3ca6-29e5" name="Emperor's Champion" hidden="false" collective="false" import="true" targetId="ad23-c512-3d63-c3a4" type="selectionEntry">
       <constraints>
@@ -1143,7 +1143,7 @@
                 </modifier>
                 <modifier type="set" value="35" field="6f18-a8fc-2c5b-9517">
                   <conditions>
-                    <condition type="instanceOf" value="0" field="selections" scope="primary-catalogue" childId="8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false" />
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="mh-armylist-0e77-e514-f572-9f22-8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false" />
                   </conditions>
                 </modifier>
               </modifiers>
@@ -1177,7 +1177,7 @@
                   <modifiers>
                     <modifier type="set" value="true" field="hidden">
                       <conditions>
-                        <condition type="instanceOf" value="0" field="selections" scope="primary-catalogue" childId="8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false" />
+                        <condition type="atLeast" value="1" field="selections" scope="force" childId="mh-armylist-0e77-e514-f572-9f22-8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false" />
                       </conditions>
                     </modifier>
                   </modifiers>
@@ -1203,7 +1203,7 @@
               <modifiers>
                 <modifier type="set" value="23" field="6f18-a8fc-2c5b-9517">
                   <conditions>
-                    <condition type="instanceOf" value="0" field="selections" scope="primary-catalogue" childId="8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false" />
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="mh-armylist-0e77-e514-f572-9f22-8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false" />
                   </conditions>
                 </modifier>
               </modifiers>
@@ -1223,7 +1223,7 @@
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
                   <conditions>
-                    <condition type="instanceOf" value="0" field="selections" scope="primary-catalogue" childId="8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false" />
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="mh-armylist-0e77-e514-f572-9f22-8ac8-b0a2-9d27-1696" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false" />
                   </conditions>
                 </modifier>
                 <modifier type="set" value="true" field="hidden">

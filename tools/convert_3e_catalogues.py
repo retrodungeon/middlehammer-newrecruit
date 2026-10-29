@@ -9,6 +9,8 @@ For every non-homebrew catalogue in the source folder:
   * 3e Force Organization categories, Configuration, Super-Heavy and the 3e points
     cost type are remapped to the Middlehammer (5e-based) equivalents, in every
     attribute that references them (category links, conditions, constraints, costs);
+  * variant army lists (chapter, regiment, craftworld, campaign lists) are folded
+    into their parent codex behind a required "Army List" choice (tools/merge_variants.py);
   * catalogues are renamed "<Name> (3rd Edition, <publication>)" and retargeted to
     the Middlehammer game system.
 Missing shared definitions are copied from the 3e game system into the Middlehammer
@@ -24,6 +26,8 @@ import json
 import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
+
+from merge_variants import merge_variants
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
@@ -266,6 +270,15 @@ def main():
     for cid in trees:
         if any(l.get("targetId") not in trees for l in trees[cid][1].getroot().iter(f"{{{CAT_NS}}}catalogueLink")):
             raise SystemExit(f"{trees[cid][0].name} links a skipped catalogue")
+
+    variant_files = {display_name(trees[v][2]["sourceName"]) + ".cat" for v in trees}
+    merge_variants(trees, report)
+    variant_files -= {display_name(e["sourceName"]) + ".cat" for _, _, e in trees.values()}
+    report["variantFilesRemoved"] = []
+    for name in sorted(variant_files):
+        if (a.out / name).exists():
+            (a.out / name).unlink()
+            report["variantFilesRemoved"].append(name)
 
     roots = [t.getroot() for _, t, _ in trees.values()]
     report["gstReferencesRemapped"] = remap(gst)

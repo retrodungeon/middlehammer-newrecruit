@@ -8,7 +8,7 @@ Unofficial community data for playing **The Book of the Unification** (Middleham
 
 | Edition | Published | Tested in New Recruit |
 |---|---:|---|
-| 3rd | 56 army lists (codexes, Chapter Approved, White Dwarf, Citadel Journal, campaign and Imperial Armour lists) | Chaos Space Marines 2002 (retest needed after 2026-10-29 fixes) |
+| 3rd | 24 army lists covering all 56 official source lists; chapter, regiment, craftworld and campaign variants are chosen inside their parent codex via an "Army List" option | Chaos Space Marines 2002 (retest needed after 2026-10-29 fixes) |
 | 4th | 0 | — |
 | 5th | 1 (Imperial Guard 2009) | Yes, 2026-10-29 |
 | 6th | 0 (Space Marines 2013 in progress) | — |
@@ -39,7 +39,7 @@ Other Unification army-building rules (super-heavy limits, Lords of War, era-res
 ## Repository layout
 
 - `*.gst`, `*.cat` (repository root) — the files New Recruit reads.
-- `tools/` — Python scripts for building, converting and auditing data. `convert_3e_catalogues.py` builds all 3rd Edition lists; `validate_middlehammer.py` checks every published catalogue (run in CI by `validate.yml`).
+- `tools/` — Python scripts for building, converting and auditing data. `convert_3e_catalogues.py` builds all 3rd Edition lists (with `merge_variants.py` folding variant lists into their codex); `validate_middlehammer.py` checks every published catalogue (run in CI by `validate.yml`).
 - `.github/workflows/` — GitHub Actions that fetch upstream data, run conversions and checks, and upload results as artifacts. No workflow writes to the repository.
 - `sources/upstreams.json` — the upstream repositories each edition is drawn from.
 - `docs/` — rules ledger, conversion notes and audit results.
