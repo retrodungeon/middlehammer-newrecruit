@@ -100,6 +100,43 @@ def add_corbulo(cat):
     return ["Brother Corbulo"]
 
 
+# "Counts as Troops" alternates: the source includes a hidden Troops copy of these units but
+# never added the rule that reveals it. Revealed when any listed character is in the force.
+# Checked against the maintainer's codex PDFs (2026-10-29).
+TROOPS_UNLOCKS = {
+    # Codex: Space Wolves (2009): Logan Grimnar "The Great Wolf"; Canis Wolfborn "The Wolf King".
+    "Space Wolves": [("Wolf Guard Pack", ["Logan Grimnar"]), ("Fenrisian Wolf Pack", ["Canis Wolfborn"])],
+    # Codex: Dark Eldar (2010): Baron Sathonyx "The Lord Hellion"; Urien Rakarth "Master
+    # Haemonculus"; Haemonculus / Haemonculus Ancient "Lord of Covens".
+    "Dark Eldar": [("Hellions", ["Baron Sathonyx"]), ("Wracks", ["Urien Rakarth", "Haemonculus"])],
+}
+
+
+def add_troops_unlocks(cat, name):
+    if name not in TROOPS_UNLOCKS:
+        return []
+    roots = [e for cont in ("selectionEntries", "entryLinks") for e in (cat.find(q(cont)) or [])]
+    done = []
+    for unit, unlockers in TROOPS_UNLOCKS[name]:
+        hidden = [e for e in roots if e.get("name") == unit and e.get("hidden") == "true"]
+        chars = {e.get("name"): e.get("targetId") or e.get("id") for e in roots if e.get("name") in unlockers}
+        if len(hidden) != 1 or set(chars) != set(unlockers):
+            raise ValueError(f"{name}: cannot place Troops unlock for {unit} ({len(hidden)} hidden, {chars})")
+        mods = hidden[0].find(q("modifiers"))
+        if mods is None:
+            mods = ET.Element(q("modifiers"))
+            hidden[0].insert(0, mods)
+        m = ET.SubElement(mods, q("modifier"), {"type": "set", "field": "hidden", "value": "false"})
+        grp = ET.SubElement(ET.SubElement(m, q("conditionGroups")), q("conditionGroup"), {"type": "or"})
+        conds = ET.SubElement(grp, q("conditions"))
+        for cid in chars.values():
+            ET.SubElement(conds, q("condition"), {
+                "type": "atLeast", "value": "1", "field": "selections", "scope": "force", "childId": cid,
+                "shared": "true", "includeChildSelections": "true", "includeChildForces": "false"})
+        done.append(f"{unit} with {' or '.join(unlockers)}")
+    return done
+
+
 # Units missing from the source, added from the codex.
 ADDED = {"Blood Angels": add_corbulo}
 
@@ -173,6 +210,7 @@ def convert_one(path, report):
                     r.remove(el)
                     entry["customContentRemoved"] = True
     added = ADDED[name](cat) if name in ADDED else []
+    entry["troopsUnlocks"] = add_troops_unlocks(cat, name)
     cat.set("gameSystemId", MH_SYSTEM_ID)
     entry.update({"added": added, "homebrewHidden": sorted(set(hidden)), "excluded": sorted(removed),
                   "restored": restored})
