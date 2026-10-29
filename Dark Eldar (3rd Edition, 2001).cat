@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Dark Eldar (3rd Edition, 2001)" id="c1aa-7a7a-4831-e6fb" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="6" library="false" revision="12" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Dark Eldar (3rd Edition, 2001)" id="c1aa-7a7a-4831-e6fb" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="7" library="false" revision="13" type="catalogue">
   <entryLinks>
     <entryLink name="Archon Lord" id="a236-2a94-733b-317a" collective="false" hidden="false" import="true" targetId="7a61-a52d-11c2-0a92" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="3711-8d9b-3754-38fa" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Dracon Lord" id="5e5e-1797-9937-dc9b" collective="false" hidden="false" import="true" targetId="ca59-9bd6-bd62-fd74" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="c055-919d-7585-48cd" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
@@ -24,20 +24,20 @@
             <condition childId="ac8d-efba-1884-d3ad" field="selections" includeChildForces="true" includeChildSelections="true" percentValue="false" scope="force" shared="true" type="lessThan" value="2" />
           </conditions>
         </modifier>
-      </modifiers>
+      <modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers>
     </entryLink>
     <entryLink name="Wyches" id="64f3-d216-9ab3-dc49" collective="false" hidden="false" import="true" targetId="0486-b755-c746-6b1d" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Elites" id="7cab-eb11-065b-ca8b" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Grotesques" id="21b6-bfa9-7f66-f766" collective="false" hidden="false" import="true" targetId="e8cb-12c6-d071-65aa" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Elites" id="24dd-9851-c359-a3a2" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Warp Beast Pack" id="6701-99c5-27ae-4eaa" collective="false" hidden="false" import="true" targetId="9d23-3c32-3e72-68bf" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Elites" id="2aaa-23f2-2e2d-b307" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
       <constraints>
@@ -45,78 +45,163 @@
       </constraints>
     </entryLink>
     <entryLink name="Dark Eldar Scourges" id="d65a-a544-3efd-623d" collective="false" hidden="false" import="true" targetId="3609-d55b-7004-f5b7" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Heavy Support" id="a39c-3b25-2779-9218" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Haemonculus" id="b4ba-d72b-c4fe-ea2f" collective="false" hidden="false" import="true" targetId="ee01-17f7-2e54-3f2e" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="7622-b4c8-3938-16b4" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Hellions" id="b6aa-b3e8-dd6f-dfce" collective="false" hidden="false" import="true" targetId="f73e-f2f6-1774-94ca" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Fast Attack" id="c97a-34e0-3271-575a" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Mandrakes" id="5085-42cd-90df-9255" collective="false" hidden="false" import="true" targetId="2aaa-5105-fcf0-2282" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Elites" id="4424-6465-59a7-5a0a" hidden="false" primary="true" targetId="978c-e18f-8aeb-f4c1" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Raider Squad" id="f5d6-d3d0-4020-cdaf" collective="false" hidden="false" import="true" targetId="db69-fd2e-b675-38ce" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Troops" id="15cc-445d-85e0-3149" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Ravager" id="e94b-73eb-bdc7-d6f8" collective="false" hidden="false" import="true" targetId="349f-55e3-aa81-cbce" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Heavy Support" id="7e4e-b320-25b9-254a" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Reaver Jetbike Squad" id="f6f7-7b7d-977c-9ee5" collective="false" hidden="false" import="true" targetId="89d0-b76f-819a-ffc8" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Fast Attack" id="18de-58bf-bfeb-3e37" hidden="false" primary="true" targetId="74fe-37c3-fbbf-849e" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Talos" id="fa25-c24f-b800-04ea" collective="false" hidden="false" import="true" targetId="2755-50a2-cad5-37ea" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Heavy Support" id="1fc7-80e5-e988-fb24" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Warrior Squad" id="be8b-4d5c-1e22-e2a9" collective="false" hidden="false" import="true" targetId="90b0-c1c3-0eb5-5751" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Troops" id="e893-a313-449d-50f2" hidden="false" primary="true" targetId="default-category" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Decapitator" id="c943-6e8a-531f-ce72" collective="false" hidden="false" import="true" targetId="1e2f-7759-ebec-f774" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="2d05-cafe-aa93-b26a" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Urien Rakarth" id="dc8c-cfac-30f7-e22a" collective="false" hidden="false" import="true" targetId="f65f-1eb2-82e4-a947" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="5cfb-9eb7-3968-12be" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Kruellagh" id="0102-e582-22a1-e581" collective="false" hidden="false" import="true" targetId="28bb-2ff2-0f7f-da5b" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="a31f-49bb-6ad8-8d6e" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Asdrubael Vect" id="32d6-5fd0-c6b1-0d50" collective="false" hidden="false" import="true" targetId="e8e8-6964-113f-e463" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="HQ" id="b2ee-9333-a2f7-5430" hidden="false" primary="true" targetId="ac8d-efba-1884-d3ad" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Razorwing (IA)" id="0665-7ae1-dd05-2467" collective="false" hidden="false" import="true" targetId="de47-545a-8669-8f10" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Heavy Support" id="23e2-185e-0818-6f42" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
       </categoryLinks>
     </entryLink>
     <entryLink name="Raven (IA)" id="fc29-36de-1527-594e" collective="false" hidden="false" import="true" targetId="9e22-6546-2603-ccc1" type="selectionEntry">
-      <categoryLinks>
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-codex" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
         <categoryLink name="Heavy Support" id="621e-787b-6036-c20d" hidden="false" primary="true" targetId="9260-7d57-be5c-bd52" />
+      </categoryLinks>
+    </entryLink>
+  <entryLink id="b805-8a4c-9f9c-f0c2" name="Wych Archite" hidden="false" collective="false" import="true" targetId="5f66-3ec8-dd9d-0c06" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="35ef-4b9c-0a14-4fee" name="New CategoryLink" hidden="false" targetId="ac8d-efba-1884-d3ad" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="9788-166a-f269-9b72" name="Wych Dracite" hidden="false" collective="false" import="true" targetId="1807-7f0f-8101-7ef9" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="0fdb-b255-9612-5983" name="New CategoryLink" hidden="false" targetId="ac8d-efba-1884-d3ad" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="cc41-29fa-8779-55a8" name="Wyches" hidden="false" collective="false" import="true" targetId="0486-b755-c746-6b1d" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="98d5-2133-94d1-6bc4" name="New CategoryLink" hidden="false" targetId="default-category" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="8af2-e16f-a9aa-54af" name="Warrior Squad" hidden="false" collective="false" import="true" targetId="90b0-c1c3-0eb5-5751" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="823d-0948-b6dc-7953" name="Elites" hidden="false" targetId="978c-e18f-8aeb-f4c1" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="b10e-b43a-6562-651b" name="Raider Squad" hidden="false" collective="false" import="true" targetId="db69-fd2e-b675-38ce" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="0890-64ab-8759-ff86" name="New CategoryLink" hidden="false" targetId="978c-e18f-8aeb-f4c1" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="0c3b-d2ee-800d-bb67" name="Mandrakes" hidden="false" collective="false" import="true" targetId="2aaa-5105-fcf0-2282" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="6439-c073-5490-633f" name="New CategoryLink" hidden="false" targetId="978c-e18f-8aeb-f4c1" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="7498-83f8-8643-a250" name="Warp Beast Pack" hidden="false" collective="false" import="true" targetId="9d23-3c32-3e72-68bf" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><modifierGroups>
+        <modifierGroup>
+          <modifiers>
+            <modifier type="set" field="bf37-ca60-fc5a-c478" value="0.0" />
+            <modifier type="increment" field="bf37-ca60-fc5a-c478" value="1.0">
+              <repeats>
+                <repeat field="selections" scope="force" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="0486-b755-c746-6b1d" repeats="1" roundUp="false" />
+              </repeats>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+      <constraints>
+        <constraint field="selections" scope="force" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="bf37-ca60-fc5a-c478" type="max" />
+      </constraints>
+      <categoryLinks>
+        <categoryLink id="378f-1b67-005f-4155" name="New CategoryLink" hidden="false" targetId="978c-e18f-8aeb-f4c1" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="d621-5430-0663-adea" name="Reaver Jetbike Squad" hidden="false" collective="false" import="true" targetId="89d0-b76f-819a-ffc8" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="ea5b-eff5-9f3a-80ec" name="New CategoryLink" hidden="false" targetId="74fe-37c3-fbbf-849e" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="b211-0ed4-70e3-e69f" name="Hellions" hidden="false" collective="false" import="true" targetId="f73e-f2f6-1774-94ca" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="c3a2-1a1e-ccd4-439b" name="New CategoryLink" hidden="false" targetId="74fe-37c3-fbbf-849e" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="efd5-c2b5-e4e5-172e" name="Dark Eldar Scourges" hidden="false" collective="false" import="true" targetId="3609-d55b-7004-f5b7" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="4043-a4f0-c040-5cd8" name="New CategoryLink" hidden="false" targetId="9260-7d57-be5c-bd52" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="5a30-5927-dddc-3c6d" name="Ravager" hidden="false" collective="false" import="true" targetId="349f-55e3-aa81-cbce" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="8791-6375-fe84-4b80" name="New CategoryLink" hidden="false" targetId="9260-7d57-be5c-bd52" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="59d2-7786-2476-1373" name="Lelith Hesperax" hidden="false" collective="false" import="true" targetId="9af5-2fc3-2b24-d02c" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="7bb3-50e9-043f-c348" name="New CategoryLink" hidden="false" targetId="ac8d-efba-1884-d3ad" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="1a80-ceb6-443b-d405" name="Raven (IA)" hidden="false" collective="false" import="true" targetId="9e22-6546-2603-ccc1" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="6cb9-4d6f-af49-46ad" name="New CategoryLink" hidden="false" targetId="9260-7d57-be5c-bd52" primary="true" />
+      </categoryLinks>
+    </entryLink>
+    <entryLink id="e08a-35e7-5587-93d4" name="Razorwing (IA)" hidden="false" collective="false" import="true" targetId="de47-545a-8669-8f10" type="selectionEntry">
+      <modifiers><modifier type="set" field="hidden" value="true"><conditions><condition type="equalTo" value="0" field="selections" scope="force" childId="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" shared="true" includeChildSelections="true" includeChildForces="false" /></conditions></modifier></modifiers><categoryLinks>
+        <categoryLink id="63b0-b58e-f0cb-e4a1" name="New CategoryLink" hidden="false" targetId="9260-7d57-be5c-bd52" primary="true" />
       </categoryLinks>
     </entryLink>
   </entryLinks>
@@ -3224,4 +3309,4 @@ Haywire grenades may only be used against Dreadnoughts if the Dreadnought is imm
       </selectionEntryGroups>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
-</catalogue>
+<selectionEntries><selectionEntry type="upgrade" import="true" name="Army List" hidden="false" id="mh-armylist-c1aa-7a7a-4831-e6fb" collective="false"><constraints><constraint type="min" value="1" field="selections" scope="force" shared="true" id="mh-armylist-c1aa-7a7a-4831-e6fb-min" includeChildSelections="false" includeChildForces="false" /><constraint type="max" value="1" field="selections" scope="force" shared="true" id="mh-armylist-c1aa-7a7a-4831-e6fb-max" includeChildSelections="false" includeChildForces="false" /></constraints><categoryLinks><categoryLink name="Configuration" hidden="false" id="mh-armylist-c1aa-7a7a-4831-e6fb-cat" targetId="525f-0a42-3f5c-5613" primary="true" /></categoryLinks><selectionEntryGroups><selectionEntryGroup name="Army List" hidden="false" id="mh-armylist-c1aa-7a7a-4831-e6fb-group" collective="false" import="true" defaultSelectionEntryId="mh-armylist-c1aa-7a7a-4831-e6fb-codex"><constraints><constraint type="min" value="1" field="selections" scope="parent" shared="true" id="mh-armylist-c1aa-7a7a-4831-e6fb-group-min" includeChildSelections="false" includeChildForces="false" /><constraint type="max" value="1" field="selections" scope="parent" shared="true" id="mh-armylist-c1aa-7a7a-4831-e6fb-group-max" includeChildSelections="false" includeChildForces="false" /></constraints><selectionEntries><selectionEntry type="upgrade" import="true" name="Codex: Dark Eldar (2001)" hidden="false" id="mh-armylist-c1aa-7a7a-4831-e6fb-codex" collective="false"><constraints><constraint type="max" value="1" field="selections" scope="parent" shared="true" id="mh-armylist-c1aa-7a7a-4831-e6fb-codex-max" includeChildSelections="false" includeChildForces="false" /></constraints><costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="0" /></costs></selectionEntry><selectionEntry type="upgrade" import="true" name="Dark Eldar Wych Cult (2001)" hidden="false" id="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a" collective="false"><constraints><constraint type="max" value="1" field="selections" scope="parent" shared="true" id="mh-armylist-c1aa-7a7a-4831-e6fb-a7c0-91df-fdfc-704a-max" includeChildSelections="false" includeChildForces="false" /></constraints><costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="0" /></costs></selectionEntry></selectionEntries></selectionEntryGroup></selectionEntryGroups><costs><cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="0" /></costs></selectionEntry></selectionEntries></catalogue>

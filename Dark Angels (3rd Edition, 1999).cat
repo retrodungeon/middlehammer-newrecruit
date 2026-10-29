@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Dark Angels (3rd Edition, 1999)" id="188b-39f3-ae3a-00da" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="6" library="false" revision="9" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" name="Dark Angels (3rd Edition, 1999)" id="188b-39f3-ae3a-00da" battleScribeVersion="2.03" gameSystemId="sys-middlehammer-2026" gameSystemRevision="7" library="false" revision="10" type="catalogue">
   <catalogueLinks>
     <catalogueLink name="Space Marines (1999)" id="73c3-159f-7364-7056" importRootEntries="false" targetId="9d6b-d195-877e-09cb" type="catalogue" />
   </catalogueLinks>

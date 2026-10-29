@@ -4,80 +4,44 @@ Every army list in the pinned source repositories (see `sources/upstreams.json`)
 
 Status meanings: **Tested** — imported and used in New Recruit by the maintainer. **Converted** — published and structurally validated (`tools/validate_middlehammer.py`), not yet tested in New Recruit. **Not started**.
 
-## 3rd Edition — 56 published, 7 excluded
+## 3rd Edition — 24 army lists (56 source lists), 7 excluded
 
 Source: KSnyder1986/Warhammer-40k-3rd-Edition. Built with `tools/convert_3e_catalogues.py`.
 
-Many of these lists import a parent codex (e.g. chapter lists import Space Marines 1999; regimental lists import Imperial Guard 1999 or 2003). The parent catalogue must stay published for them to work.
+Variant army lists (chapter, regiment, craftworld, Chapter Approved and campaign lists) are not separate entries in the New Recruit picker. They are folded into their parent codex (`tools/merge_variants.py`): pick the codex, then choose the variant from the required **Army List** option in the Configuration section. Each choice shows exactly the units of the original list.
 
-| Catalogue (as shown in New Recruit) | File | Status | Notes |
-|---|---|---|---|
-| Adeptus Arbites (3rd Edition, Citadel Journal 29) | `Adeptus Arbites (3rd Edition, Citadel Journal 29).cat` | Converted, awaiting New Recruit test | 2 homebrew entries hidden |
-| Armageddon Ork Hunters (3rd Edition, Chapter Approved 2003) | `Armageddon Ork Hunters (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | — |
-| Armoured Battle Group (3rd Edition, IA 2003) | `Armoured Battle Group (3rd Edition, IA 2003).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden |
-| Armoured Company (3rd Edition, Chapter Approved 2001) | `Armoured Company (3rd Edition, Chapter Approved 2001).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 21 Imperial Armour entries unlocked |
-| Biel-Tan Swordwind Army (3rd Edition, 2000) | `Biel-Tan Swordwind Army (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| Black Templars (3rd Edition, 2000) | `Black Templars (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | 9 homebrew entries hidden |
-| Blood Angels (3rd Edition, 1998) | `Blood Angels (3rd Edition, 1998).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden |
-| Blood Angels Death Company (3rd Edition, Chapter Approved 2001) | `Blood Angels Death Company (3rd Edition, Chapter Approved 2001).cat` | Converted, awaiting New Recruit test | — |
-| Cadian Shock Troops (3rd Edition, Eye of Terror 2003) | `Cadian Shock Troops (3rd Edition, Eye of Terror 2003).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden |
-| Catachan (3rd Edition, 2000) | `Catachan (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 22 Imperial Armour entries unlocked |
-| Chaos Space Marines (3rd Edition, 1999) | `Chaos Space Marines (3rd Edition, 1999).cat` | Converted, awaiting New Recruit test | — |
-| Chaos Space Marines (3rd Edition, 2002) | `Chaos Space Marines - Codex 2002.cat` | Tested 2026-10-29 (before homebrew/points fixes); retest | 7 homebrew entries hidden |
-| Cityfighting Imperial Guard (3rd Edition, Chapter Approved 2003) | `Cityfighting Imperial Guard (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 13 Imperial Armour entries unlocked |
-| Codex Assassins (3rd Edition, 1999) | `Codex Assassins (3rd Edition, 1999).cat` | Converted, awaiting New Recruit test | — |
-| Cursed Foundings (3rd Edition, Chapter Approved 2004) | `Cursed Foundings (3rd Edition, Chapter Approved 2004).cat` | Converted, awaiting New Recruit test | — |
-| Daemon Hunters (3rd Edition, 2003) | `Daemon Hunters (3rd Edition, 2003).cat` | Converted, awaiting New Recruit test | 13 Imperial Armour entries unlocked |
-| Dark Angels (3rd Edition, 1999) | `Dark Angels (3rd Edition, 1999).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden |
-| Dark Eldar (3rd Edition, 2001) | `Dark Eldar (3rd Edition, 2001).cat` | Converted, awaiting New Recruit test | 2 homebrew entries hidden; 2 Imperial Armour entries unlocked |
-| Dark Eldar Wych Cult (3rd Edition, 2001) | `Dark Eldar Wych Cult (3rd Edition, 2001).cat` | Converted, awaiting New Recruit test | — |
-| Death Korps of Krieg (3rd Edition, Chapter Approved 2003) | `Death Korps of Krieg (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 21 Imperial Armour entries unlocked |
-| Deathworld Veterans (3rd Edition, 2000) | `Deathworld Veterans (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| Eldar (3rd Edition, 2000) | `Eldar (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | 8 Imperial Armour entries unlocked |
-| Elysian Drop Troops (3rd Edition, Chapter Approved 2003) | `Elysian Drop Troops (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | 3 Imperial Armour entries unlocked |
-| Feral Orks (3rd Edition, Chapter Approved 2004) | `Feral Orks (3rd Edition, Chapter Approved 2004).cat` | Converted, awaiting New Recruit test | — |
-| Genestealer Cults (3rd Edition, Citadel Journal 40) | `Genestealer Cults (3rd Edition, Citadel Journal 40).cat` | Converted, awaiting New Recruit test | — |
-| Harlequins (3rd Edition, 2000) | `Harlequins (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| Imperial Fists (3rd Edition, 2003) | `Imperial Fists (3rd Edition, 2003).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden |
-| Imperial Guard (3rd Edition, 1999) | `Imperial Guard (3rd Edition, 1999).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 26 Imperial Armour entries unlocked |
-| Imperial Guard (3rd Edition, 2003) | `Imperial Guard (3rd Edition, 2003).cat` | Converted, awaiting New Recruit test | 5 homebrew entries hidden; 41 Imperial Armour entries unlocked |
-| Imperial Guard Armoured Company (3rd Edition, Chapter Approved 2004) | `Imperial Guard Armoured Company (3rd Edition, Chapter Approved 2004).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden |
-| Iron Hands (3rd Edition, 2001) | `Iron Hands (3rd Edition, 2001).cat` | Converted, awaiting New Recruit test | 5 homebrew entries hidden |
-| Iyanden Ghost Warriors (3rd Edition, 2000) | `Iyanden Ghost Warriors (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| Kroot Mercenaries (3rd Edition, Chapter Approved 2004) | `Kroot Mercenaries (3rd Edition, Chapter Approved 2004).cat` | Converted, awaiting New Recruit test | — |
-| Lost and the Damned (3rd Edition, Eye of Terror 2003) | `Lost and the Damned (3rd Edition, Eye of Terror 2003).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden |
-| Necrons (3rd Edition, 2002) | `Necrons (3rd Edition, 2002).cat` | Converted, awaiting New Recruit test | 8 homebrew entries hidden |
-| Orks (3rd Edition, 1999) | `Orks (3rd Edition, 1999).cat` | Converted, awaiting New Recruit test | 5 homebrew entries hidden; 7 Imperial Armour entries unlocked |
-| Planetary Defence Regiment (3rd Edition, Armageddon 2000) | `Planetary Defence Regiment (3rd Edition, Armageddon 2000).cat` | Converted, awaiting New Recruit test | 4 Imperial Armour entries unlocked |
-| Rangers of Alaitoc (3rd Edition, 2000) | `Rangers of Alaitoc (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| Relictors (3rd Edition, White Dwarf 281) | `Relictors (3rd Edition, White Dwarf 281).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden; 2 Imperial Armour entries unlocked |
-| Saim-Hann Wild Rider Host (3rd Edition, 2000) | `Saim-Hann Wild Rider Host (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| Salamanders (3rd Edition, 2000) | `Salamanders (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden |
-| Salvar Chem-Dogs (3rd Edition, Chapter Approved 2003) | `Salvar Chem-Dogs (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 21 Imperial Armour entries unlocked |
-| Sisters of Battle (3rd Edition, Chapter Approved 2001) | `Sisters of Battle (3rd Edition, Chapter Approved 2001).cat` | Converted, awaiting New Recruit test | — |
-| Space Marines (3rd Edition, 1999) | `Space Marines (3rd Edition, 1999).cat` | Converted, awaiting New Recruit test | 7 homebrew entries hidden; 18 Imperial Armour entries unlocked |
-| Space Wolves (3rd Edition, 2000) | `Space Wolves (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden |
-| Space Wolves 13th Company (3rd Edition, 2003) | `Space Wolves 13th Company (3rd Edition, 2003).cat` | Converted, awaiting New Recruit test | — |
-| Speed Freeks (3rd Edition, Armageddon 2000) | `Speed Freeks (3rd Edition, Armageddon 2000).cat` | Converted, awaiting New Recruit test | — |
-| Steel Legion Mechanised Infantry (3rd Edition, Armageddon 2000) | `Steel Legion Mechanised Infantry (3rd Edition, Armageddon 2000).cat` | Converted, awaiting New Recruit test | 1 homebrew entries hidden; 17 Imperial Armour entries unlocked |
-| Tanith First and Only (3rd Edition, Chapter Approved 2003) | `Tanith First and Only (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | — |
-| Tau (3rd Edition, 2001) | `Tau (3rd Edition, 2001).cat` | Converted, awaiting New Recruit test | 6 homebrew entries hidden; 4 Imperial Armour entries unlocked |
-| Tyranid Seeding Swarm (3rd Edition, Chapter Approved 2003) | `Tyranid Seeding Swarm (3rd Edition, Chapter Approved 2003).cat` | Converted, awaiting New Recruit test | — |
-| Tyranids (3rd Edition, 2001) | `Tyranids (3rd Edition, 2001).cat` | Converted, awaiting New Recruit test | 3 Imperial Armour entries unlocked |
-| Ulthwe Strike Force (3rd Edition, Eye of Terror 2003) | `Ulthwe Strike Force (3rd Edition, Eye of Terror 2003).cat` | Converted, awaiting New Recruit test | — |
-| Ulthwe The Damned (3rd Edition, 2000) | `Ulthwe The Damned (3rd Edition, 2000).cat` | Converted, awaiting New Recruit test | — |
-| White Scars (3rd Edition, 2002) | `White Scars (3rd Edition, 2002).cat` | Converted, awaiting New Recruit test | 5 homebrew entries hidden |
-| Witch Hunters (3rd Edition, 2003) | `Witch Hunters (3rd Edition, 2003).cat` | Converted, awaiting New Recruit test | 13 Imperial Armour entries unlocked |
+| Army list (as shown in New Recruit) | Status | Variants under "Army List" |
+|---|---|---|
+| Adeptus Arbites (3rd Edition, Citadel Journal 29) | Converted, awaiting New Recruit test | — |
+| Black Templars (3rd Edition, 2000) | Converted, awaiting New Recruit test | — |
+| Blood Angels (3rd Edition, 1998) | Converted, awaiting New Recruit test | Blood Angels Death Company (Chapter Approved 2001) |
+| Chaos Space Marines (3rd Edition, 1999) | Converted, awaiting New Recruit test | — |
+| Chaos Space Marines (3rd Edition, 2002) | Tested 2026-10-29 (before homebrew/points fixes); retest | — |
+| Codex Assassins (3rd Edition, 1999) | Converted, awaiting New Recruit test | — |
+| Daemon Hunters (3rd Edition, 2003) | Converted, awaiting New Recruit test | — |
+| Dark Angels (3rd Edition, 1999) | Converted, awaiting New Recruit test | — |
+| Dark Eldar (3rd Edition, 2001) | Converted, awaiting New Recruit test | Dark Eldar Wych Cult (2001) |
+| Eldar (3rd Edition, 2000) | Converted, awaiting New Recruit test | Biel-Tan Swordwind Army (2000), Saim-Hann Wild Rider Host (2000), Rangers of Alaitoc (2000), Ulthwe The Damned (2000), Ulthwe Strike Force (Eye of Terror 2003), Iyanden Ghost Warriors (2000) |
+| Genestealer Cults (3rd Edition, Citadel Journal 40) | Converted, awaiting New Recruit test | — |
+| Harlequins (3rd Edition, 2000) | Converted, awaiting New Recruit test | — |
+| Imperial Guard (3rd Edition, 1999) | Converted, awaiting New Recruit test | Deathworld Veterans (2000), Catachan (2000), Armageddon Ork Hunters (Chapter Approved 2003), Tanith First and Only (Chapter Approved 2003), Cityfighting Imperial Guard (Chapter Approved 2003), Planetary Defence Regiment (Armageddon 2000), Steel Legion Mechanised Infantry (Armageddon 2000), Death Korps of Krieg (Chapter Approved 2003), Elysian Drop Troops (Chapter Approved 2003), Armoured Company (Chapter Approved 2001), Cadian Shock Troops (Eye of Terror 2003), Salvar Chem-Dogs (Chapter Approved 2003) |
+| Imperial Guard (3rd Edition, 2003) | Converted, awaiting New Recruit test | Imperial Guard Armoured Company (Chapter Approved 2004), Armoured Battle Group (IA 2003) |
+| Kroot Mercenaries (3rd Edition, Chapter Approved 2004) | Converted, awaiting New Recruit test | — |
+| Lost and the Damned (3rd Edition, Eye of Terror 2003) | Converted, awaiting New Recruit test | — |
+| Necrons (3rd Edition, 2002) | Converted, awaiting New Recruit test | — |
+| Orks (3rd Edition, 1999) | Converted, awaiting New Recruit test | Feral Orks (Chapter Approved 2004), Speed Freeks (Armageddon 2000) |
+| Sisters of Battle (3rd Edition, Chapter Approved 2001) | Converted, awaiting New Recruit test | — |
+| Space Marines (3rd Edition, 1999) | Converted, awaiting New Recruit test | Salamanders (2000), White Scars (2002), Iron Hands (2001), Imperial Fists (2003), Relictors (White Dwarf 281), Cursed Foundings (Chapter Approved 2004) |
+| Space Wolves (3rd Edition, 2000) | Converted, awaiting New Recruit test | Space Wolves 13th Company (2003) |
+| Tau (3rd Edition, 2001) | Converted, awaiting New Recruit test | — |
+| Tyranids (3rd Edition, 2001) | Converted, awaiting New Recruit test | Tyranid Seeding Swarm (Chapter Approved 2003) |
+| Witch Hunters (3rd Edition, 2003) | Converted, awaiting New Recruit test | — |
 
-| Source list | Status |
-|---|---|
-| Adeptus Custodes (Homebrew) | Excluded (homebrew/unofficial) |
-| Adeptus Mechanicus (Homebrew) | Excluded (homebrew/unofficial) |
-| Alien Hunters (Homebrew) | Excluded (homebrew/unofficial) |
-| Daemons of Chaos (Homebrew) | Excluded (homebrew/unofficial) |
-| Imperial Knights (Homebrew) | Excluded (homebrew/unofficial) |
-| Squats (Unofficial 2000) | Excluded (homebrew/unofficial) |
-| The Badab War (Homebrew) | Excluded (homebrew/unofficial) |
+Excluded as homebrew/unofficial: Adeptus Custodes (Homebrew), Adeptus Mechanicus (Homebrew), Alien Hunters (Homebrew), Daemons of Chaos (Homebrew), Imperial Knights (Homebrew), Squats (Unofficial 2000), The Badab War (Homebrew).
+
+Standalone by decision (2026-10-29): Dark Angels, Black Templars, Blood Angels and Space Wolves are their own codexes; Lost and the Damned stays standalone (Chaos/Guard hybrid); Sisters of Battle, Genestealer Cults and the ally lists (Daemon Hunters, Witch Hunters, Assassins, Harlequins, Kroot, Arbites) stay standalone.
+
+Known limitation: variant lists that bring their own force type (Saim-Hann Wild Rider Force) offer it whenever the parent codex is used, not only when that variant is chosen.
 
 ## 4th Edition — not started (13 source catalogues)
 
