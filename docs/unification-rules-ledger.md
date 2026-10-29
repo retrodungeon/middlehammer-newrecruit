@@ -20,6 +20,7 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 | No Warlord Traits | Unification p. 10 | Warlord Trait entries hidden. |
 | Lords of War: independent characters → HQ; super-heavies → super-heavy allowance; others → Heavy Support | Unification p. 10 | Applied per unit from its profile (unit type, or 9+ Hull Points for super-heavy). |
 | Castellans of the Imperium detachment patched out | Unification p. 13 | Removed with all other detachments. |
+| 7th Edition Chaos Legions: pick a Legion trait and the army must abide by its restrictions; the standard Force Organization Chart is the detachment | Ruling by the Unification's author, relayed by the maintainer, 2026-10-29 | The Legion is chosen in the Chaos Space Marines 7th Ed list's **Force Options** (Configuration). The source attaches Legion characters, unit restrictions, compulsory Marks and Veterans of the Long War to that choice, so they apply. Legion detachments (Vectorium, Grand Coven, Butcherhorde, etc.) and the Black Crusade detachment are not used; the units only they unlocked are formations (War Coven, Warband, Hounds of Abaddon, …), which are excluded anyway. |
 | Super-heavies only by agreement | Unification p. 8 | "Hide super-heavies" switch, on by default. Not points-aware. |
 
 ## Not yet enforced
