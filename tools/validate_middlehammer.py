@@ -19,6 +19,8 @@ L = lambda t: t.rsplit("}", 1)[-1]
 # References that are deliberately left dangling, each always evaluating to "not present".
 _allow = Path(__file__).with_name("validation-allowlist.json")
 ALLOWED = set(json.loads(_allow.read_text())["ids"]) if _allow.exists() else set()
+_gen = Path(__file__).with_name("validation-allowlist-generated.json")
+ALLOWED |= set(json.loads(_gen.read_text())["ids"]) if _gen.exists() else set()
 
 def main(root=Path(".")):
     gst = ET.parse(root / "Middlehammer-Unification.gst").getroot()
