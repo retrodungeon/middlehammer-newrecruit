@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="14" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="15" type="gameSystem">
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
@@ -33,7 +33,7 @@
             <constraint type="max" value="3" field="selections" scope="force" shared="true" id="mh-foc-4-max" />
           </constraints>
         </categoryLink>
-      <categoryLink name="Dedicated Transport" hidden="false" id="mh-foc-transport" targetId="168b-a772-94f7-83f5" /><categoryLink name="Unique" hidden="false" id="mh-foc-unique" targetId="1f0d-7d41-7ef9-ce4a" /><categoryLink name="Super-Heavy" hidden="false" id="mh-foc-superheavy" targetId="5968-f35e-18fd-612b" /><categoryLink name="No Force Org Slot" hidden="false" id="mh-foc-noslot" targetId="be45-5314-4388-5bfd" /></categoryLinks>
+      <categoryLink name="Dedicated Transport" hidden="false" id="mh-foc-transport" targetId="168b-a772-94f7-83f5" /><categoryLink name="Unique" hidden="false" id="mh-foc-unique" targetId="1f0d-7d41-7ef9-ce4a" /><categoryLink name="Super-Heavy" hidden="false" id="mh-foc-superheavy" targetId="5968-f35e-18fd-612b" /><categoryLink name="No Force Org Slot" hidden="false" id="mh-foc-noslot" targetId="be45-5314-4388-5bfd" /><categoryLink name="Knight Lord of War" hidden="false" id="mh-foc-mh-knight-low" targetId="mh-knight-low"><constraints><constraint type="max" value="1" field="selections" scope="force" shared="true" id="mh-foc-mh-knight-low-max" includeChildSelections="false" includeChildForces="false" /></constraints></categoryLink></categoryLinks>
     </forceEntry>
   </forceEntries>
   <comment>Generated from AnonymousCheese/WH40K5E. Original definitions preserved; Middlehammer rules and cross-edition conversion NOT yet applied.</comment><categoryEntries>
@@ -80,7 +80,7 @@
       </infoLinks>
     </categoryEntry>
     <categoryEntry name="Blood Angel" id="e39c-0852-74f1-402d" hidden="false" />
-    <categoryEntry name="Era: 3rd-5th Edition" id="mh-era-3-5" hidden="false" /><categoryEntry name="Era: 6th-7th Edition" id="mh-era-6-7" hidden="false" /></categoryEntries>
+    <categoryEntry name="Era: 3rd-5th Edition" id="mh-era-3-5" hidden="false" /><categoryEntry name="Era: 6th-7th Edition" id="mh-era-6-7" hidden="false" /><categoryEntry name="Knight Lord of War" id="mh-knight-low" hidden="false" /></categoryEntries>
   <costTypes>
     <costType name="Points" id="6f18-a8fc-2c5b-9517" defaultCostLimit="2000" />
   </costTypes>
