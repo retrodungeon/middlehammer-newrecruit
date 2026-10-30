@@ -23,7 +23,7 @@ ED = {3: "3rd Ed", 4: "4th Ed", 5: "5th Ed", 6: "6th Ed", 7: "7th Ed"}
 # 5th Edition source includes 4th Edition codexes that were still current in 5th.
 # Names are the most common across 3rd-7th Edition (maintainer decision 2026-10-29).
 FACTIONS = {
-    "Space Marines": [(3, "Space Marines (1999)", "Codex: ")] + [
+    "Space Marines": [(3, "Space Marines (1999)", "Codex: Space Marines (1998)")] + [
         (3, n, "") for n in ("Salamanders (2000)", "White Scars (2002)", "Iron Hands (2001)",
                              "Imperial Fists (2003)", "Relictors (White Dwarf 281)",
                              "Cursed Foundings (Chapter Approved 2004)")] + [
@@ -50,7 +50,7 @@ FACTIONS = {
                      (5, "Space Wolves", "Codex: Space Wolves (2009)"),
                      (7, "Space Wolves - Codex", "Codex: Space Wolves (2014)")],
     "Deathwatch": [(7, "Deathwatch - Codex", "Codex: Deathwatch (2016)")],
-    "Black Templars": [(3, "Black Templars (2000)", "Codex: "),
+    "Black Templars": [(3, "Black Templars (2000)", "Black Templars (Codex: Armageddon, 2000)"),
                        (5, "Black Templars", "Codex: Black Templars (2005)", 4)],
     "Imperial Guard": [(3, "Imperial Guard (1999)", "Codex: ")] + [
         (3, n, "") for n in ("Deathworld Veterans (2000)", "Catachan (2000)",
@@ -75,8 +75,8 @@ FACTIONS = {
         (7, "Astra Militarum - FW - Death Korps of Krieg Siege Regiment", "Forge World: Death Korps of Krieg Siege Regiment"),
         (7, "Astra Militarum - FW - Elysian", "Forge World: Elysian Drop Troops"),
         (7, "Astra Militarum - FW - Elysian Detachment D-99", "Forge World: Elysian Detachment D-99"),
-        (7, "Adeptus Astra Telepathica", "Adeptus Astra Telepathica"),
-        (7, "Aeronautica Imperialis", "Aeronautica Imperialis"),
+        (7, "Adeptus Astra Telepathica", "Astra Telepathica (Codex: Imperial Agents, 2016)"),
+        (7, "Aeronautica Imperialis", "Aeronautica Imperialis (Codex: Imperial Agents, 2016)"),
     ],
     "Chaos Space Marines": [(3, "Chaos Space Marines (1999)", "Codex: "),
                             (3, "Chaos Space Marines (2002)", "Codex: "),
@@ -103,7 +103,7 @@ FACTIONS = {
     "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: "), (3, "Dark Eldar Wych Cult (2001)", ""),
                    (5, "Dark Eldar", "Codex: Dark Eldar (2010)"),
                    (7, "Dark_Eldar_Codex_(2014)", "Codex: Dark Eldar (2014)"),
-                   (7, "Dark Eldar - Supplement - Haemonculus Covens", "Haemonculus Covens (supplement)")],
+                   (7, "Dark Eldar - Supplement - Haemonculus Covens", "Haemonculus Covens (supplement, 2014)")],
     "Harlequins": [(3, "Harlequins (2000)", ""), (7, "Harlequins - Codex", "Codex: Harlequins (2015)")],
     "Orks": [(3, "Orks (1999)", "Codex: "), (3, "Feral Orks (Chapter Approved 2004)", ""),
              (3, "Speed Freeks (Armageddon 2000)", ""),
@@ -119,12 +119,12 @@ FACTIONS = {
     "Necrons": [(3, "Necrons (2002)", "Codex: "), (5, "Necrons", "Codex: Necrons (2011)"),
                 (7, "Necrons - Codex (2015)", "Codex: Necrons (2015)"),
                 (7, "Necrons - FW - Dark Harvest", "Forge World: Dark Harvest")],
-    "Tau Empire": [(3, "Tau (2001)", "Codex: "), (5, "Tau Empire", "Codex: Tau Empire (2005)", 4),
+    "Tau Empire": [(3, "Tau (2001)", "Codex: "), (5, "Tau Empire", "Codex: Tau Empire (2006)", 4),
                    (6, "Tau - Codex", "Codex: Tau Empire (2013)"),
                    (6, "Tau - Supplement - Farsight Enclaves", "Farsight Enclaves (supplement, 2013)"),
                    (7, "Tau - Codex (2015)", "Codex: Tau Empire (2015)")],
     "Kroot Mercenaries": [(3, "Kroot Mercenaries (Chapter Approved 2004)", "")],
-    "Sisters of Battle": [(3, "Witch Hunters (2003)", "Codex: "),
+    "Sisters of Battle": [(3, "Witch Hunters (2003)", "Codex: Witch Hunters (2004)"),
                           (3, "Sisters of Battle (Chapter Approved 2001)", ""),
                           (5, "Sisters of Battle", "Codex: Sisters of Battle (White Dwarf 2011)"),
                           (7, "Adepta Sororitas", "Codex: Adepta Sororitas (2013)", 6)],
@@ -133,13 +133,13 @@ FACTIONS = {
                      (7, "Grey Knights - Codex (2014)", "Codex: Grey Knights (2014)")],
     "Adeptus Mechanicus": [(7, "Skitarii - Codex", "Codex: Skitarii (2015)"),
                            (7, "Cult Mechanicus Codex 2015", "Codex: Cult Mechanicus (2015)")],
-    "Adeptus Custodes": [(7, "Adeptus Custodes Dataslate", "Adeptus Custodes (dataslate)"),
-                         (7, "Sisters of Silence Dataslate", "Sisters of Silence (dataslate)")],
+    "Adeptus Custodes": [(7, "Adeptus Custodes Dataslate", "Codex: Adeptus Custodes (2017)"),
+                         (7, "Sisters of Silence Dataslate", "Codex: Sisters of Silence (2017)")],
     "Imperial Knights": [(7, "Imperial Knights - Codex (2015)", "Codex: Imperial Knights (2015)"),
-                         (7, "Chaos Renegade Knights", "Renegade Knights")],
+                         (7, "Chaos Renegade Knights", "Renegade Knights (Imperial Knights: Renegade, 2016)")],
     # Assassins merged into Inquisition (decision 2026-10-29).
-    "Inquisition": [(3, "Codex Assassins (1999)", ""),
-                    (7, "Inquisition - Codex", "Codex: Inquisition (2013)", 6),
+    "Inquisition": [(3, "Codex Assassins (1999)", "Codex Assassins (White Dwarf 235, 1999)"),
+                    (7, "Inquisition - Codex", "Codex: Inquisition (2013) and Codex: Imperial Agents (2016)", 6),
                     (7, "Assassins Codex", "Officio Assassinorum")],
     "Adeptus Arbites": [(3, "Adeptus Arbites (Citadel Journal 29)", "")],
 }
