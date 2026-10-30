@@ -29,6 +29,9 @@ FACTIONS = {
                              "Cursed Foundings (Chapter Approved 2004)")] + [
         (4, "Space Marines (4E)", "Codex: Space Marines (2004)"),
         (5, "Space Marines", "Codex: Space Marines (2008)"),
+        (6, "Space Marines - Codex", "Codex: Space Marines (2013)"),
+        (6, "Space Marines - Supplement - Clan Raukaan", "Clan Raukaan (supplement, 2013)"),
+        (6, "Space Marines - Supplement - Sentinels of Terra", "Sentinels of Terra (supplement, 2013)"),
         (7, "Space Marines - Codex (2015)", "Codex: Space Marines (2015)"),
         (7, "Space Marines - FW - Siege Assault Vanguard", "Forge World: Siege Assault Vanguard"),
         (7, "Tyrant's Legion - FW - Defenders of Badab", "Forge World: Tyrant's Legion (Defenders of Badab)"),
