@@ -5,7 +5,8 @@
 
 Steps: fetch pinned sources into upstream-cache/ (git), convert the 3rd, 4th, 5th
 6th and 7th Edition source catalogues (tools/convert_*e_catalogues.py), merge everything into one catalogue per faction
-(tools/merge_factions.py), then write the faction catalogues and game system.
+(tools/merge_factions.py), add the optional Horus Heresy 1st Edition units (tools/convert_hh1_relics.py),
+then write the faction catalogues and game system.
 Revisions are bumped only for files whose content changed. Middlehammer
 catalogues at the root that are no longer produced are deleted.
 """
@@ -23,6 +24,7 @@ from convert_5e_catalogues import convert_5e  # noqa: E402
 from convert_6e_catalogues import convert_6e, fetch_archive  # noqa: E402
 from convert_7e_catalogues import convert_7e  # noqa: E402
 from merge_factions import build_factions, ensure_era_categories, ensure_knight_category  # noqa: E402
+from convert_hh1_relics import add_relics, convert_relics  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "upstream-cache"
@@ -31,8 +33,8 @@ CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 MH_SYSTEM_ID = "sys-middlehammer-2026"
 
 
-def fetch(edition):
-    info = json.loads((ROOT / "sources/upstreams.json").read_text())["editions"][str(edition)]
+def fetch(edition, section="editions"):
+    info = json.loads((ROOT / "sources/upstreams.json").read_text())[section][str(edition)]
     dest = CACHE / info["repository"].split("/")[1]
     if not (dest / ".git").exists():
         subprocess.run(["git", "clone", "-q", f"https://github.com/{info['repository']}", str(dest)], check=True)
@@ -86,6 +88,8 @@ def main():
     for _, t, e in convert_7e(seventh, gst, report).values():
         members[(7, e["sourceName"])] = t.getroot()
     factions = build_factions(members, MH_SYSTEM_ID, report)
+    # Optional add-on: Horus Heresy 1st Edition units for 6th/7th Edition lists.
+    add_relics(factions, convert_relics(fetch("relics-hh1", "addons"), gst, report), report)
     ensure_era_categories(gst)
     ensure_knight_category(gst)
 

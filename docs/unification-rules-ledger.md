@@ -30,6 +30,19 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 | Allies only within the same era: 3rd–5th with 3rd–5th, 6th–7th with 6th–7th | Unification p. 8; author's ruling 2026-10-29 | Every Army List option carries an era category (by book edition). The ally force types (Adeptus Arbites Allies, Assassin Attachment, Daemon Hunter Allies, Harlequin Allies, Kroot Auxiliaries, Witch Hunter Allies, all 3rd Edition) show an error on their Army List unless the roster also contains another 3rd–5th Edition list for them to join. Lists of other eras may also be in the roster: in multi-detachment games, detachments may come from any edition (author). Limitation: two 3rd Edition ally forces count for each other. Not yet tested in New Recruit. |
 
 | 6th/7th Edition Imperium or Chaos codexes may take an Imperial Knight or Renegade Knight as their Lord of War | Unification p. 8 | Every 6th/7th Edition Army List of an Imperium faction (Space Marines, Blood Angels, Dark Angels, Space Wolves, Deathwatch, Imperial Guard, Grey Knights, Sisters of Battle, Adeptus Mechanicus, Adeptus Custodes) offers the Imperial Knights, and of a Chaos faction (Chaos Space Marines, Chaos Daemons, Renegades & Heretics) the Renegade Knight, in the Super-Heavy section, at most one per force ("Knight Lord of War" category). They follow the list's "Hide super-heavies" switch (lists without one were given one). Detachment-only lists are excluded. Not yet tested in New Recruit. |
+## Optional add-on: Relics of the Age of Darkness (Horus Heresy 1st Edition)
+
+Maintainer rulings, 2026-10-30. Not part of the Unification; details and unit lists in [`relics-of-the-age-of-darkness.md`](relics-of-the-age-of-darkness.md).
+
+| Rule | Implementation |
+|---|---|
+| Heresy 1st Edition units may be added to 6th/7th Edition Imperium and Chaos lists, by agreement | Configuration toggle per faction, shown only for 6th/7th Edition Army Lists; all Heresy units hidden unless ticked. Pilot: Legiones Astartes into Space Marines, Dark Angels, Blood Angels, Space Wolves, Chaos Space Marines. Not yet tested in New Recruit. |
+| Standard 5th Edition chart; no Rites of War, Heresy force types or allied detachments | Options and slots that depend on them never apply. |
+| No named characters or Primarchs | Removed. |
+| Legion-specific units only in the successor faction | See the add-on document. |
+| Legion traits replaced by the host list's army-wide rules | Rule "Relics of the Age of Darkness" on every Heresy unit. Middlehammer ruling, not printed text. |
+| No Hull Points; super-heavies get Structure Points of 1/3 their Hull Points (Unification p. 9–10); Lords of War reassigned (p. 10); no Warlord Traits | Applied in the conversion, as for 7th Edition lists. |
+
 ## Questions for the Unification author
 
 1. Which 6th/7th Edition detachment special rules are Command Benefits (ignored) and which still apply? Psykana Division: Empyric Link; Imperial Navy Section: Air Superiority; Null-Maiden Task Force: Nauseating Aura, Rite of Annulment; Spectral Host: Saviours from Beyond. All are currently dropped.
