@@ -78,9 +78,10 @@ HOSTS = {
 # Heresy slot categories -> Middlehammer sections.
 SLOT = {"HQ:": "HQ", "Troops:": "Troops", "Elites:": "Elites", "Fast Attack:": "Fast Attack",
         "Heavy Support:": "Heavy Support", "Bodyguard": "No Force Org Slot",
-        "Dedicated Transport:": "Dedicated Transport", "No Force Org": "No Force Org Slot",
-        "Compulsory HQ:": "HQ", "Compulsory Troops:": "Troops", "Compulsory Elite:": "Elites",
-        "Compulsory Fast Attack:": "Fast Attack"}
+        "Dedicated Transport:": "Dedicated Transport", "No Force Org": "No Force Org Slot"}
+# The Crusade chart's compulsory choices do not exist under the 5th Edition chart: categories
+# and options with "Compulsory" in their name are treated as absent and removed.
+COMPULSORY = re.compile(r"compulsory", re.I)
 DROPPED_SLOTS = {"Allegiance", "Warlord Traits", "Fortification:", "Dedicated Transport Restictions"}
 # Categories that only exist for Heresy army construction: conditions on them never apply.
 DEAD_CATEGORY = re.compile(r"^(Rite of War|Primarch|Use Playtest Rules|Warlord|Mournival|Delegatus|"
@@ -193,7 +194,7 @@ class Context:
             return compare(1.0 if self.traitor else 0.0, cond)
         if cid in self.forces:   # Heresy force types: only the standard (Crusade) force exists
             return compare(1.0 if self.forces[cid] == CRUSADE_FORCE else 0.0, cond)
-        if cid in self.absent:
+        if cid in self.absent or cond.get("scope") in self.absent:   # counted inside something absent
             return compare(0.0, cond)
         return None
 
@@ -330,6 +331,13 @@ def reachable(nodes, defined):
     return seen
 
 
+def tidy_name(name):
+    """'Ebon Keshig, The' -> 'The Ebon Keshig' (keeping any bracketed tag after it)."""
+    name = name.strip()
+    m = re.match(r"^(.*?), The(\s*\(.*\))?\s*$", name)
+    return f"The {m.group(1).strip()}{m.group(2) or ''}" if m else name
+
+
 def shared_tops(cat, hh_gst):
     """{id: top-level shared node containing it}."""
     top_of = {}
@@ -452,7 +460,10 @@ def convert_for_host(source, mh_types, host, legions, rep):
         # (copied neighbours in a shared node are never selectable).
         alive = reachable([el for _, el, *_ in current], defined)
         absent = {i for i in defined if i not in alive} - set(LEGIONS) - {LOYALIST, TRAITOR} - set(cats) - set(forces)
-        absent |= {i for i, n in cats.items() if DEAD_CATEGORY.match(n or "")}
+        absent |= {i for i, n in cats.items() if DEAD_CATEGORY.match(n or "") or COMPULSORY.search(n or "")}
+        absent |= {x.get("id") for i, e in defined.items() if COMPULSORY.search(e.get("name") or "")
+                   and lname(e.tag) in ("selectionEntry", "selectionEntryGroup", "entryLink")
+                   for x in e.iter() if x.get("id")}
         for c in contexts:
             for _, node in clones[c][0]:
                 fold(node, Context(c, traitor, absent, forces))
@@ -504,7 +515,9 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
     lords = {"HQ": [], "Super-Heavy": [], "Heavy Support": []}
     for cont, el, name, slot, context in kept:
         target = defined.get(el.get("targetId"), el)
-        el.set("name", name.strip() + NAME_SUFFIX)
+        # New Recruit shows the linked entry's name, so both carry the tag.
+        for n in {id(el): el, id(target): target}.values():
+            n.set("name", tidy_name(n.get("name") or name) + NAME_SUFFIX)
         if slot == "Lords of War":
             sh = any(is_super_heavy_profile(p) for n in (el, target) for p in n.iter(q("profile")))
             new = "Super-Heavy" if sh else "Heavy Support"
@@ -538,8 +551,23 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
     # Heresy army-construction leftovers: the "(Compulsory)" label and Compulsory categories
     # (the Crusade chart's compulsory slots), and the requirement to have a Warlord (the
     # Warlord option stays, for missions with Slay the Warlord, but is not required).
-    compulsory = {i for i, n in cats.items() if (n or "").startswith("Compulsory")}
+    compulsory = {i for i, n in cats.items() if COMPULSORY.search(n or "")}
     par = {c: p for p in block.iter() for c in p}
+    gone = 0
+    for x in [x for x in block.iter() if x in par]:
+        t = lname(x.tag)
+        if (t in ("selectionEntry", "selectionEntryGroup", "entryLink", "rule") and COMPULSORY.search(x.get("name") or "")) \
+                or (t == "categoryLink" and x.get("targetId") in compulsory) \
+                or (t == "constraint" and x.get("scope") in compulsory):
+            par[x].remove(x)
+            gone += 1
+    par = {c: p for p in block.iter() for c in p}
+    rule_ids = {x.get("id") for x in block.iter(q("rule"))}
+    for l in [l for l in block.iter(q("infoLink")) if l.get("type") == "rule" and l.get("targetId") not in rule_ids
+              and COMPULSORY.search(l.get("name") or "")]:
+        par[l].remove(l)
+        gone += 1
+    rep["compulsoryEntriesRemoved"] = gone
     dropped_mods = 0
     for m in [m for m in block.iter(q("modifier"))]:
         if (m.get("field") == "name" and "compulsory" in (m.get("value") or "").lower()) or \
@@ -656,6 +684,9 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
                     mods.remove(m)
                     notes.add(f"{target.get('name')}: {name} modifier dropped")
     rep["profileNotes"] = sorted(notes)
+    for x in block.iter():
+        if x.get("name") and ", The" in x.get("name"):
+            x.set("name", tidy_name(x.get("name")))
 
     # Empty rule texts are filled as for 7th Edition lists: 5th Edition core first.
     rep["rulesText"] = fill_from(block, q, [("5th Ed core", core_5e()), ("same list", texts_of(block)),

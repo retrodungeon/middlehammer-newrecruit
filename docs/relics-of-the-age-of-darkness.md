@@ -1,6 +1,6 @@
 # Relics of the Age of Darkness (optional add-on)
 
-Horus Heresy 1st Edition units for 6th and 7th Edition Army Lists. **Off by default.** In a list whose Army List is a 6th or 7th Edition book, tick **Configuration → Relics of the Age of Darkness → Use Horus Heresy 1st Edition units**; the Heresy units then appear in the normal sections, marked "(Heresy)". Both players should agree before using them.
+Horus Heresy 1st Edition units for 6th and 7th Edition Army Lists. **Off by default.** In a list whose Army List is a 6th or 7th Edition book, tick **Configuration → Relics of the Age of Darkness → Use Horus Heresy 1st Edition units**; the Heresy units then appear in the normal sections, marked "(Heresy)" like Forge World "(FW)" and Imperial Armour "(IA)" units. Both players should agree before using them.
 
 Source: [BSData/horus-heresy-1st-edition](https://github.com/BSData/horus-heresy-1st-edition), pinned in `sources/upstreams.json` (the archived, final Heresy 1st Edition data). Built by `tools/convert_hh1_relics.py`.
 
@@ -21,10 +21,12 @@ Pilot: **Legiones Astartes** only. Not yet tested in New Recruit. Still to do: M
 | Lords of War | Only Legion super-heavies (Fellblade, Falchion, Glaive, Typhon, Cerberus, Stormblade, Thunderhawks, Sokar Stormbird, Mastodon, Malcador). Super-heavies use the Super-Heavy section and the list's "Hide super-heavies" switch; others become Heavy Support (Unification p. 10). Titans, Knights and Imperial Army super-heavies wait for their own Heresy lists. |
 | No Hull Points; Structure Points for super-heavies | Hull Points are removed from profiles; super-heavies get Structure Points of 1/3 their Hull Points, rounded (Unification p. 9–10). |
 | No Warlord Traits; no fortifications | As for 7th Edition lists. |
-| Heresy army construction removed | The "(Compulsory)" labels and compulsory-slot categories of the Crusade chart are removed. The Warlord option stays (for Slay the Warlord) but is no longer required. "Master of the Legion" (Rite of War choice, one per 1,000 points) is hidden; Command Squads remain available. |
+| Heresy army construction removed | The Crusade chart's compulsory choices do not apply under the 5th Edition chart: the "(Compulsory)" labels, compulsory-slot categories and "Compulsory" options are removed (unit rules that mention compulsory HQ or Troops choices are kept, as the 5th Edition chart has compulsory choices too). The Warlord option stays (for Slay the Warlord) but is no longer required. "Master of the Legion" (Rite of War choice, one per 1,000 points) is hidden; Command Squads remain available. |
 | Not converted (content policy) | Fan-made: Necron, Asuryani and Mournival Units catalogues. Varangian Heresy Legions (provenance unverified). The Heresy copy of Codex: Chaos Daemons (2013), already in the data. |
 
 ## Units per faction
+
+Names are as in the source, except that names like "Ebon Keshig, The" read "The Ebon Keshig", and every unit ends in "(Heresy)".
 
 ### Space Marines (101 entries)
 
@@ -38,9 +40,9 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Elites: Deliverer Squad [Raven Guard]
 - Elites: Destroyer Squad, Legion
 - Elites: Dreadnought Talon, Legion
-- Elites: Ebon Keshig, The [White Scars]
+- Elites: The Ebon Keshig [White Scars]
 - Elites: Firedrake Terminator Squad [Salamanders]
-- Elites: Golden Keshig, The [White Scars]
+- Elites: The Golden Keshig [White Scars]
 - Elites: Gorgon Terminator Squad [Iron Hands]
 - Elites: Invictarus Suzerain Squad [Ultramarines]
 - Elites: Medusan Immortals [Iron Hands]
@@ -58,7 +60,7 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Fast Attack: Attack Bike Squadron, Legion
 - Fast Attack: Dark Fury Assault Squad [Raven Guard]
 - Fast Attack: Darkwing Storm Eagle [Raven Guard]
-- Fast Attack: Falcon's Claws, The [White Scars]
+- Fast Attack: The Falcon's Claws [White Scars]
 - Fast Attack: Javelin Attack Speeder Squadron, Legion
 - Fast Attack: Jetbike Sky Hunter Squadron, Legion
 - Fast Attack: Land Speeder Squadron, Legion
@@ -223,7 +225,7 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 ### Blood Angels (82 entries)
 
 
-- Elites: Angel's Tears, The
+- Elites: The Angel's Tears
 - Elites: Apothecarion Detachment
 - Elites: Contemptor Dreadnought Talon
 - Elites: Contemptor-Cortus Class Dreadnought Talon
@@ -313,7 +315,7 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Elites: Contemptor Dreadnought Talon
 - Elites: Contemptor-Cortus Class Dreadnought Talon
 - Elites: Contemptor-Mortis Dreadnought
-- Elites: Deathsworn, The
+- Elites: The Deathsworn
 - Elites: Destroyer Squad, Legion
 - Elites: Dreadnought Talon, Legion
 - Elites: Mortis Dreadnought, Legion
@@ -429,7 +431,7 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Elites: Veteran Tactical Squad, Legion
 - Fast Attack: Ammitara Occult Intercession Cabal [Thousand Sons]
 - Fast Attack: Anvillus Pattern Dreadclaw Drop Pod Unit
-- Fast Attack: Ashen Circle, The [Word Bearers]
+- Fast Attack: The Ashen Circle [Word Bearers]
 - Fast Attack: Attack Bike Squadron, Legion
 - Fast Attack: Headhunter Kill Teams [Alpha Legion]
 - Fast Attack: Javelin Attack Speeder Squadron, Legion
@@ -467,7 +469,7 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Heavy Support: Heavy Support Squad, Legion
 - Heavy Support: Iron Havoc Support Squad [Iron Warriors]
 - Heavy Support: Jetbike Sky Slayer Support Squadron, Legion
-- Heavy Support: Kakophoni of the Emperor's Children, The [Emperor's Children]
+- Heavy Support: The Kakophoni of the Emperor's Children [Emperor's Children]
 - Heavy Support: Kharybdis Assault Claw, Legion Unit
 - Heavy Support: Land Raider Battle Squadron, Legion
 - Heavy Support: Leviathan Siege Dreadnought Talon
