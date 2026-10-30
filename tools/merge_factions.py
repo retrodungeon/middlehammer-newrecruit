@@ -23,7 +23,7 @@ ED = {3: "3rd Ed", 4: "4th Ed", 5: "5th Ed", 6: "6th Ed", 7: "7th Ed"}
 # 5th Edition source includes 4th Edition codexes that were still current in 5th.
 # Names are the most common across 3rd-7th Edition (maintainer decision 2026-10-29).
 FACTIONS = {
-    "Space Marines": [(3, "Space Marines (1999)", "Codex: ")] + [
+    "Space Marines": [(3, "Space Marines (1999)", "Codex: Space Marines (1998)")] + [
         (3, n, "") for n in ("Salamanders (2000)", "White Scars (2002)", "Iron Hands (2001)",
                              "Imperial Fists (2003)", "Relictors (White Dwarf 281)",
                              "Cursed Foundings (Chapter Approved 2004)")] + [
@@ -33,10 +33,10 @@ FACTIONS = {
         (6, "Space Marines - Supplement - Clan Raukaan", "Clan Raukaan (supplement, 2013)"),
         (6, "Space Marines - Supplement - Sentinels of Terra", "Sentinels of Terra (supplement, 2013)"),
         (6, "Space Marines - FW - Siege Assault Vanguard", "Forge World: Siege Assault Vanguard (IA10, 6th Ed update)"),
+        (7, "Tyrant's Legion - FW - Defenders of Badab", "Forge World: Tyrant's Legion (IA9 update PDF, 2013)", 6),
         (7, "Legion of the Damned - Codex", "Codex: Legion of the Damned (2014)", 6),
         (7, "Space Marines - Codex (2015)", "Codex: Space Marines (2015)"),
-        (7, "Space Marines - FW - Siege Assault Vanguard", "Forge World: Siege Assault Vanguard"),
-        (7, "Tyrant's Legion - FW - Defenders of Badab", "Forge World: Tyrant's Legion (Defenders of Badab)")],
+        (7, "Space Marines - FW - Siege Assault Vanguard", "Forge World: Siege Assault Vanguard (IA10, with Codex: Space Marines 2015)")],
     "Blood Angels": [(3, "Blood Angels (1998)", "Codex: "),
                      (3, "Blood Angels Death Company (Chapter Approved 2001)", ""),
                      (4, "Blood Angels (4E)", "Codex: Blood Angels (White Dwarf 2007)"),
@@ -50,7 +50,7 @@ FACTIONS = {
                      (5, "Space Wolves", "Codex: Space Wolves (2009)"),
                      (7, "Space Wolves - Codex", "Codex: Space Wolves (2014)")],
     "Deathwatch": [(7, "Deathwatch - Codex", "Codex: Deathwatch (2016)")],
-    "Black Templars": [(3, "Black Templars (2000)", "Codex: "),
+    "Black Templars": [(3, "Black Templars (2000)", "Black Templars (Codex: Armageddon, 2000)"),
                        (5, "Black Templars", "Codex: Black Templars (2005)", 4)],
     "Imperial Guard": [(3, "Imperial Guard (1999)", "Codex: ")] + [
         (3, n, "") for n in ("Deathworld Veterans (2000)", "Catachan (2000)",
@@ -70,13 +70,13 @@ FACTIONS = {
         (5, "Imperial Guard", "Codex: Imperial Guard (2009)"),
         (7, "Astra Militarum - Codex", "Codex: Astra Militarum (2014)", 6),
         (7, "Militarum Tempestus - Codex", "Codex: Militarum Tempestus (2014)", 6),
-        (7, "Astra Militarum - FW - Armoured Battle Group", "Forge World: Armoured Battle Group"),
-        (7, "Astra Militarum - FW - Death Korps of Krieg Assault Brigade", "Forge World: Death Korps of Krieg Assault Brigade"),
-        (7, "Astra Militarum - FW - Death Korps of Krieg Siege Regiment", "Forge World: Death Korps of Krieg Siege Regiment"),
-        (7, "Astra Militarum - FW - Elysian", "Forge World: Elysian Drop Troops"),
-        (7, "Astra Militarum - FW - Elysian Detachment D-99", "Forge World: Elysian Detachment D-99"),
-        (7, "Adeptus Astra Telepathica", "Adeptus Astra Telepathica"),
-        (7, "Aeronautica Imperialis", "Aeronautica Imperialis"),
+        (7, "Astra Militarum - FW - Armoured Battle Group", "Forge World: Armoured Battle Group (IA1 2nd Ed, 2012)", 6),
+        (7, "Astra Militarum - FW - Elysian", "Forge World: Elysian Drop Troops (IA3 2nd Ed, 2013)", 6),
+        (7, "Astra Militarum - FW - Death Korps of Krieg Assault Brigade", "Forge World: Death Korps of Krieg Assault Brigade (IA12, 2013)", 6),
+        (7, "Astra Militarum - FW - Elysian Detachment D-99", "Forge World: Elysian Detachment D-99 (IA4 2nd Ed, 2014)"),
+        (7, "Astra Militarum - FW - Death Korps of Krieg Siege Regiment", "Forge World: Death Korps of Krieg Siege Regiment (Siege of Vraks, 2015)"),
+        (7, "Adeptus Astra Telepathica", "Astra Telepathica (Codex: Imperial Agents, 2016)"),
+        (7, "Aeronautica Imperialis", "Aeronautica Imperialis (Codex: Imperial Agents, 2016)"),
     ],
     "Chaos Space Marines": [(3, "Chaos Space Marines (1999)", "Codex: "),
                             (3, "Chaos Space Marines (2002)", "Codex: "),
@@ -89,7 +89,7 @@ FACTIONS = {
                       (6, "Chaos Daemons (40K) - Codex", "Codex: Chaos Daemons (2013)"),
                       (7, "Chaos Daemons (40K) - Codex", "Codex: Chaos Daemons – Daemonic Incursion Edition (2016)")],
     "Renegades & Heretics": [(3, "Lost and the Damned (Eye of Terror 2003)", ""),
-                             (7, "Renegades & Heretics", "Forge World: Renegades & Heretics")],
+                             (7, "Renegades & Heretics", "Forge World: Renegades & Heretics (IA13, 2014; Siege of Vraks, 2015)")],
     "Eldar": [(3, "Eldar (2000)", "Codex: ")] + [
         (3, n, "") for n in ("Biel-Tan Swordwind Army (2000)", "Saim-Hann Wild Rider Host (2000)",
                              "Rangers of Alaitoc (2000)", "Ulthwe The Damned (2000)",
@@ -98,12 +98,12 @@ FACTIONS = {
         (6, "Eldar - Codex", "Codex: Eldar (2013)"),
         (6, "Eldar - Supplement - Iyanden", "Iyanden (supplement, 2013)"),
         (7, "Eldar Craftworlds - Codex (2015)", "Codex: Craftworlds (2015)"),
-        (7, "Eldar - Corsairs (2015)", "Forge World: Eldar Corsairs")],
+        (7, "Eldar - Corsairs (2015)", "Forge World: Eldar Corsairs (Doom of Mymeara, 2015)")],
     "Ynnari": [(7, "Ynnari Aeldari - Supplement", "Ynnari (Gathering Storm: Fracture of Biel-Tan)")],
     "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: "), (3, "Dark Eldar Wych Cult (2001)", ""),
                    (5, "Dark Eldar", "Codex: Dark Eldar (2010)"),
                    (7, "Dark_Eldar_Codex_(2014)", "Codex: Dark Eldar (2014)"),
-                   (7, "Dark Eldar - Supplement - Haemonculus Covens", "Haemonculus Covens (supplement)")],
+                   (7, "Dark Eldar - Supplement - Haemonculus Covens", "Haemonculus Covens (supplement, 2014)")],
     "Harlequins": [(3, "Harlequins (2000)", ""), (7, "Harlequins - Codex", "Codex: Harlequins (2015)")],
     "Orks": [(3, "Orks (1999)", "Codex: "), (3, "Feral Orks (Chapter Approved 2004)", ""),
              (3, "Speed Freeks (Armageddon 2000)", ""),
@@ -117,14 +117,14 @@ FACTIONS = {
     "Genestealer Cults": [(3, "Genestealer Cults (Citadel Journal 40)", ""),
                           (7, "Genestealer Cults - Codex", "Codex: Genestealer Cults (2016)")],
     "Necrons": [(3, "Necrons (2002)", "Codex: "), (5, "Necrons", "Codex: Necrons (2011)"),
-                (7, "Necrons - Codex (2015)", "Codex: Necrons (2015)"),
-                (7, "Necrons - FW - Dark Harvest", "Forge World: Dark Harvest")],
-    "Tau Empire": [(3, "Tau (2001)", "Codex: "), (5, "Tau Empire", "Codex: Tau Empire (2005)", 4),
+                (7, "Necrons - FW - Dark Harvest", "Forge World: Dark Harvest (IA12, 2013)", 6),
+                (7, "Necrons - Codex (2015)", "Codex: Necrons (2015)")],
+    "Tau Empire": [(3, "Tau (2001)", "Codex: "), (5, "Tau Empire", "Codex: Tau Empire (2006)", 4),
                    (6, "Tau - Codex", "Codex: Tau Empire (2013)"),
                    (6, "Tau - Supplement - Farsight Enclaves", "Farsight Enclaves (supplement, 2013)"),
                    (7, "Tau - Codex (2015)", "Codex: Tau Empire (2015)")],
     "Kroot Mercenaries": [(3, "Kroot Mercenaries (Chapter Approved 2004)", "")],
-    "Sisters of Battle": [(3, "Witch Hunters (2003)", "Codex: "),
+    "Sisters of Battle": [(3, "Witch Hunters (2003)", "Codex: Witch Hunters (2004)"),
                           (3, "Sisters of Battle (Chapter Approved 2001)", ""),
                           (5, "Sisters of Battle", "Codex: Sisters of Battle (White Dwarf 2011)"),
                           (7, "Adepta Sororitas", "Codex: Adepta Sororitas (2013)", 6)],
@@ -133,13 +133,14 @@ FACTIONS = {
                      (7, "Grey Knights - Codex (2014)", "Codex: Grey Knights (2014)")],
     "Adeptus Mechanicus": [(7, "Skitarii - Codex", "Codex: Skitarii (2015)"),
                            (7, "Cult Mechanicus Codex 2015", "Codex: Cult Mechanicus (2015)")],
-    "Adeptus Custodes": [(7, "Adeptus Custodes Dataslate", "Adeptus Custodes (dataslate)"),
-                         (7, "Sisters of Silence Dataslate", "Sisters of Silence (dataslate)")],
+    "Adeptus Custodes": [(7, "Adeptus Custodes Dataslate", "Codex: Adeptus Custodes (2017)"),
+                         (7, "Sisters of Silence Dataslate", "Codex: Sisters of Silence (2017)")],
     "Imperial Knights": [(7, "Imperial Knights - Codex (2015)", "Codex: Imperial Knights (2015)"),
-                         (7, "Chaos Renegade Knights", "Renegade Knights")],
+                         (7, "Chaos Renegade Knights", "Renegade Knights (Imperial Knights: Renegade, 2016)")],
     # Assassins merged into Inquisition (decision 2026-10-29).
-    "Inquisition": [(3, "Codex Assassins (1999)", ""),
+    "Inquisition": [(3, "Codex Assassins (1999)", "Codex Assassins (White Dwarf 235, 1999)"),
                     (7, "Inquisition - Codex", "Codex: Inquisition (2013)", 6),
+                    (7, "Inquisition - Imperial Agents", "Inquisition (Codex: Imperial Agents, 2016)"),
                     (7, "Assassins Codex", "Officio Assassinorum")],
     "Adeptus Arbites": [(3, "Adeptus Arbites (Citadel Journal 29)", "")],
 }
@@ -239,7 +240,7 @@ def constraint(parent, kind, value, scope, cid):
 # option is hidden in the standard force (decision 2026-10-29).
 NOT_ON_STANDARD_CHART = {
     (3, "Codex Assassins (1999)"), (3, "Harlequins (2000)"),
-    (7, "Assassins Codex"), (7, "Inquisition - Codex"), (7, "Sisters of Silence Dataslate"),
+    (7, "Assassins Codex"), (7, "Inquisition - Codex"), (7, "Inquisition - Imperial Agents"), (7, "Sisters of Silence Dataslate"),
     (7, "Legion of the Damned - Codex"), (7, "Imperial Knights - Codex (2015)"), (7, "Chaos Renegade Knights"),
     (7, "Adeptus Astra Telepathica"), (7, "Aeronautica Imperialis"),
     (7, "Dark Eldar - Supplement - Haemonculus Covens"),
@@ -307,6 +308,34 @@ def restrict_to_owner(entry, own_forces):
             ET.SubElement(conds, q("condition"), {
                 "type": "instanceOf", "value": "1", "field": "selections", "scope": "force", "childId": f,
                 "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
+
+
+NO_STANDARD_EXTRA = {"Imperial Knights": " (or take a Knight as Lord of War in a 6th/7th Ed Imperium or Chaos list)"}
+
+
+def no_standard_list(sel, fname, root, report):
+    """A faction none of whose lists can fill the standard chart shows, in the Standard
+    Force, a placeholder that names the force types to use instead. It is always an error."""
+    forces = [f for f in root.iter(q("forceEntry"))]
+    names = sorted({f.get("name").rsplit(" (", 1)[0] for f in forces})
+    grp = sel.find(q("selectionEntryGroups")).find(q("selectionEntryGroup"))
+    pid = f"{sel.get('id')}-none"
+    text = (f"No {fname} list can use the Standard Force: add one of these forces instead: "
+            + ", ".join(names) + NO_STANDARD_EXTRA.get(fname, ""))
+    opt = ET.Element(q("selectionEntry"), {"type": "upgrade", "import": "true", "name": text,
+                                            "hidden": "false", "id": pid, "collective": "false"})
+    constraint(opt, "max", 0, "force", f"{pid}-max")
+    ET.SubElement(child(opt, "costs"), q("cost"), {"name": "Points", "typeId": MH_POINTS, "value": "0"})
+    m = ET.SubElement(child(opt, "modifiers", 0), q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
+    conds = ET.SubElement(ET.SubElement(ET.SubElement(m, q("conditionGroups")), q("conditionGroup"),
+                                        {"type": "or"}), q("conditions"))
+    for f in forces:
+        ET.SubElement(conds, q("condition"), {
+            "type": "instanceOf", "value": "1", "field": "selections", "scope": "force", "childId": f.get("id"),
+            "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
+    grp.find(q("selectionEntries")).insert(0, opt)
+    grp.set("defaultSelectionEntryId", pid)
+    report.setdefault("noStandardList", []).append(fname)
 
 
 def selector(fid, options, default=None):
@@ -592,6 +621,8 @@ def build_factions(members, game_system_id, report):
         restricted = {o: f for o, f in own_forces.items() if f}
         restricted[None] = not_standard
         restrict_to_owner(sel, restricted)
+        if all(o in not_standard for o, _, _ in options):
+            no_standard_list(sel, fname, root, report)
         restrict_allies_to_era(sel, ally_forces, {o: e for o, _, e in options})
         report.setdefault("allyForcesEraChecked", []).extend(
             f"{fname}: {next(f.get('name') for f in root.iter(q('forceEntry')) if f.get('id') == fid)}"
