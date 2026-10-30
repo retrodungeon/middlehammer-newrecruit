@@ -200,6 +200,21 @@ def gate(el, option_id):
             _unless(mods, c.get("id"), "0", option_id)
 
 
+def gate_shared_minimums(container, option_id, report):
+    """Force- or roster-wide minimums on a list's shared entries (e.g. the 3rd Edition Chaos
+    "Army Leader": one per force) apply only while that list is chosen. New Recruit checks
+    them in every roster of the faction otherwise (seen 2026-10-30: "The Chaos force must have
+    a single designated leader" in a 6th Edition Chaos Space Marines list)."""
+    for el in container.iter():
+        if lname(el.tag) not in ("selectionEntry", "selectionEntryGroup", "entryLink"):
+            continue
+        cons = el.find(q("constraints"))
+        for c in (list(cons) if cons is not None else []):
+            if c.get("type") == "min" and c.get("scope") in ("force", "roster") and float(c.get("value") or 0) > 0:
+                _unless(child(el, "modifiers", 0), c.get("id"), "0", option_id)
+                report.setdefault("sharedMinimumsGated", []).append(el.get("name"))
+
+
 def detach_from_new_force(el, report):
     """New Recruit adds a root entry with a default amount to every new force before it
     applies our Army List hide rules, and sorts by sortIndex. So: no root entry adds itself
@@ -599,6 +614,8 @@ def build_factions(members, game_system_id, report):
                 tag = lname(container.tag)
                 if tag in SKIP_CONTAINERS or not len(container):
                     continue
+                if tag in ("sharedSelectionEntries", "sharedSelectionEntryGroups"):
+                    gate_shared_minimums(container, oid, report)
                 dest = child(root, tag)
                 for el in list(container):
                     dest.append(el)

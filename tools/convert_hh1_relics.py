@@ -535,6 +535,32 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
         if not len(dest):
             block.remove(dest)
 
+    # Heresy army-construction leftovers: the "(Compulsory)" label and Compulsory categories
+    # (the Crusade chart's compulsory slots), and the requirement to have a Warlord (the
+    # Warlord option stays, for missions with Slay the Warlord, but is not required).
+    compulsory = {i for i, n in cats.items() if (n or "").startswith("Compulsory")}
+    par = {c: p for p in block.iter() for c in p}
+    dropped_mods = 0
+    for m in [m for m in block.iter(q("modifier"))]:
+        if (m.get("field") == "name" and "compulsory" in (m.get("value") or "").lower()) or \
+                (m.get("field") == "category" and m.get("value") in compulsory):
+            par[m].remove(m)
+            dropped_mods += 1
+    rep["compulsoryRulesRemoved"] = dropped_mods
+    for el in block.iter():
+        # "Master of the Legion" only lets a Praetor choose a Rite of War: not used.
+        if lname(el.tag) in ("selectionEntry", "entryLink") and (el.get("name") or "").startswith("Master of the Legion"):
+            el.set("hidden", "true")
+            for x in [x for x in el if lname(x.tag) in ("modifiers", "modifierGroups", "constraints")]:
+                el.remove(x)
+            rep["masterOfTheLegionHidden"] = rep.get("masterOfTheLegionHidden", 0) + 1
+        if lname(el.tag) in ("selectionEntry", "entryLink") and el.get("name") == "Warlord":
+            cons = el.find(q("constraints"))
+            for c in (list(cons) if cons is not None else []):
+                if c.get("type") == "min":
+                    cons.remove(c)
+                    rep["warlordMinimumRemoved"] = rep.get("warlordMinimumRemoved", 0) + 1
+
     # Legion traits are not used (decision 2026-10-30), wherever the source attaches them:
     # the Legiones Astartes category, and some units and options that also link them.
     traits = set()
@@ -765,6 +791,19 @@ def add_relics(factions, blocks, report):
             tag = lname(container.tag)
             if tag in ("selectionEntries", "entryLinks"):
                 continue
+            if tag in ("sharedSelectionEntries", "sharedSelectionEntryGroups"):
+                # Force-wide minimums apply only with the toggle on (see merge_factions).
+                for el in container.iter():
+                    cons = el.find(q("constraints"))
+                    for c in (list(cons) if cons is not None else []):
+                        if c.get("type") == "min" and c.get("scope") in ("force", "roster") and \
+                                float(c.get("value") or 0) > 0:
+                            mods = el.find(q("modifiers"))
+                            if mods is None:
+                                mods = ET.Element(q("modifiers"))
+                                el.insert(0, mods)
+                            m = ET.SubElement(mods, q("modifier"), {"type": "set", "field": c.get("id"), "value": "0"})
+                            ET.SubElement(ET.SubElement(m, q("conditions")), q("condition"), _cond("lessThan", oid))
             dest = root.find(q(tag))
             if dest is None:
                 dest = ET.SubElement(root, q(tag))
