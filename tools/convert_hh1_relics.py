@@ -411,12 +411,15 @@ def convert_for_host(source, mh_types, host, legions, rep):
 
     # 2. Legion-specific units in a multi-Legion host get their own copies of the shared
     #    entries they use, so that Legion-specific options inside them are folded for their Legion.
-    shared_ids = {e.get("id") for c in SHARED for cont in cat.findall(q(c)) for e in cont}
+    shared_order = [e.get("id") for c in SHARED for cont in cat.findall(q(c)) for e in cont]
+    shared_ids = set(shared_order)
     contexts = sorted({c for *_, c in plan if c != default})
     clones = {}
     for c in contexts:
         roots = [el for _, el, _, _, ctx in plan if ctx == c]
-        mine = [i for i in reachable(roots, defined) if i in shared_ids]
+        # Source document order, so that the output does not depend on set ordering.
+        reached = reachable(roots, defined)
+        mine = [i for i in shared_order if i in reached]
         suffix = "-" + slug(c)[:6]
         mapping = {}
         for i in mine:
