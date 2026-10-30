@@ -23,6 +23,10 @@ POINT_FIXES = {
     CODEX: {"Chaplain Ivanus Enkomi (IA12)": 145},
 }
 
+# Unique characters whose only limit in the data was a top-level "per parent" maximum
+# (removed by the converter): one per roster.
+UNIQUE = {CODEX: ["Cypher"]}
+
 # Characters of the update, matched by name in the Siege Assault Vanguard list.
 BADAB = ["Carab Culln", "Sevrin Loth", "Tyberos", "Titus", "Narvaez", "Tarnus Vale", "Issodon", "Blaylock",
          "Mir'san", "Ashmantle", "Harath Shen", "Redth", "Thulsa Kane", "Androcles", "Vaylund Cal", "Courbray",
@@ -159,6 +163,24 @@ def _renumber(el, prefix):
             x.set("targetId", new[x.get("targetId")])
 
 
+def _inline_chapter_tactics(char, sav):
+    """In the Siege Assault Vanguard list a character's Chapter Tactics is a selection whose
+    limit depends on that list's own Chapter choice, which a Codex: Space Marines force never
+    has (so it always showed an error). For the codex copies, the selection is replaced by the
+    rules it carries, shown on the character."""
+    ids = {x.get("id"): x for x in sav.iter() if x.get("id")}
+    par = {c: p for p in char.iter() for c in p}
+    for link in [l for l in char.iter(q("entryLink")) if (l.get("name") or "").startswith("Chapter Tactics - ")]:
+        target = ids.get(link.get("targetId"))
+        holder = par[par[link]]
+        info = holder.find(q("infoLinks"))
+        if info is None:
+            info = ET.SubElement(holder, q("infoLinks"))
+        for il in (target.iter(q("infoLink")) if target is not None else []):
+            info.append(copy.deepcopy(il))
+        par[link].remove(link)
+
+
 def apply(cats, gst, report):
     """cats: {source stem: converted catalogue root} (after ID suffixing)."""
     done = {"pointsFixed": [], "built": [], "copiedToCodex": []}
@@ -169,6 +191,16 @@ def apply(cats, gst, report):
                     if c.get("typeId") == POINTS:
                         c.set("value", str(fixes[e.get("name")]))
                 done["pointsFixed"].append(e.get("name"))
+    for stem, names in UNIQUE.items():
+        for e in cats[stem].find(q("selectionEntries")):
+            if e.get("name") in names:
+                cons = e.find(q("constraints"))
+                if cons is None:
+                    cons = ET.SubElement(e, q("constraints"))
+                ET.SubElement(cons, q("constraint"), {
+                    "type": "max", "value": "1", "field": "selections", "scope": "roster", "shared": "true",
+                    "id": f"{e.get('id')}-unique", "includeChildSelections": "true", "includeChildForces": "false"})
+                done.setdefault("madeUnique", []).append(e.get("name"))
     for spec in NEW_CHARACTERS:
         done["built"].append(build_character(cats[SAV], gst, spec))
     codex = cats[CODEX]
@@ -181,6 +213,7 @@ def apply(cats, gst, report):
         if any(k in h for k in BADAB for h in have if k in n):
             continue                       # the codex list already has its own version
         c = copy.deepcopy(e)
+        _inline_chapter_tactics(c, cats[SAV])
         _renumber(c, f"mh6-codex-{e.get('id')}")
         codex.find(q("selectionEntries")).append(c)
         done["copiedToCodex"].append(n)

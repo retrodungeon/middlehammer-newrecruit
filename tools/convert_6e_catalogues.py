@@ -112,6 +112,7 @@ class Translator:
         self.gst_ids = gst_ids            # forceType / category ids -> name
         self.unhandled = []
         self.root_minimums = []
+        self.root_maximums = []
 
     # -- helpers -----------------------------------------------------------------------
     def scope(self, parent_id):
@@ -263,6 +264,16 @@ class Translator:
                     ET.SubElement(box, q("modifier"), {"type": "set", "value": "0",
                                                       "field": f"{target.get('id')}-minSelections"})
                     self.root_minimums.append(self.name_of(l.get("targetId")))
+                if target is not None and float(target.get("maxSelections") or -1) >= 0 \
+                        and "maxSelections" not in self.modified_fields.get(target.get("id"), ()):
+                    # Likewise "per parent" maximums (e.g. Tactical Squad max 1 per force).
+                    box = out.find(q("modifiers"))
+                    if box is None:
+                        box = ET.Element(q("modifiers"))
+                        out.insert(0, box)
+                    ET.SubElement(box, q("modifier"), {"type": "set", "value": "-1",
+                                                      "field": f"{target.get('id')}-maxSelections"})
+                    self.root_maximums.append(self.name_of(l.get("targetId")))
         elif kind in ("profile", "rule"):
             out = ET.SubElement(info_links, q("infoLink"), {
                 "id": l.get("id"), "name": self.name_of(l.get("targetId")), "hidden": "false",
@@ -330,6 +341,10 @@ class Translator:
                     cons.remove(c)          # see link(): top-level "per parent" minimums
                     if float(c.get("value")) > 0:
                         self.root_minimums.append(e.get("name"))
+                elif c.get("id") == f"{e.get('id')}-maxSelections" and \
+                        "maxSelections" not in self.modified_fields.get(e.get("id"), ()):
+                    cons.remove(c)
+                    self.root_maximums.append(e.get("name"))
         return out
 
     def group(self, g, parent):
@@ -574,6 +589,7 @@ def convert_one(path, legacy_gst, gst_names, types, report):
     if left:
         raise ValueError(f"{path.stem}: conditions on force types remain: {left}")
     entry["topLevelMinimumsRemoved"] = sorted(set(tr.root_minimums))
+    entry["topLevelMaximumsRemoved"] = sorted(set(tr.root_maximums))
     entry["rulesText"] = fill_rules(cat, path.stem.split(" - ")[0], q)
     if tr.unhandled:
         raise ValueError(f"{path.stem}: unhandled legacy constructs: {sorted(set(tr.unhandled))}")
