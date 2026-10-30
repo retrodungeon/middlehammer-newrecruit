@@ -12,8 +12,10 @@ only need retargeting plus content fixes:
     is kept only where it hides something (APOCALYPSE_SWITCH_KEPT).
 Used by tools/build_middlehammer.py.
 """
-import xml.etree.ElementTree as ET
 from pathlib import Path
+import xml.etree.ElementTree as ET
+
+from imperial_armour_5e import add_imperial_armour
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
@@ -272,7 +274,7 @@ def convert_one(path, report):
                 if el.get("targetId") == CUSTOM_CONTENT:
                     r.remove(el)
                     entry["customContentRemoved"] = True
-    added = ADDED[name](cat) if name in ADDED else []
+    added = (ADDED[name](cat) if name in ADDED else []) + add_imperial_armour(cat, name)
     entry["troopsUnlocks"] = add_troops_unlocks(cat, name)
     cat.set("gameSystemId", MH_SYSTEM_ID)
     entry.update({"added": added, "homebrewHidden": sorted(set(hidden)), "excluded": sorted(removed),
