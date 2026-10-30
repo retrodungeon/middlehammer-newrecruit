@@ -125,8 +125,10 @@ FACTIONS = {
                          (7, "Sisters of Silence Dataslate", "Sisters of Silence (dataslate)")],
     "Imperial Knights": [(7, "Imperial Knights - Codex (2015)", "Codex: Imperial Knights (2015)"),
                          (7, "Chaos Renegade Knights", "Renegade Knights")],
-    "Inquisition": [(7, "Inquisition - Codex", "Inquisition (Codex: Inquisition, Imperial Agents)")],
-    "Assassins": [(3, "Codex Assassins (1999)", ""), (7, "Assassins Codex", "Officio Assassinorum")],
+    # Assassins merged into Inquisition (decision 2026-10-29).
+    "Inquisition": [(3, "Codex Assassins (1999)", ""),
+                    (7, "Inquisition - Codex", "Inquisition (Codex: Inquisition, Imperial Agents)"),
+                    (7, "Assassins Codex", "Officio Assassinorum")],
     "Adeptus Arbites": [(3, "Adeptus Arbites (Citadel Journal 29)", "")],
 }
 
@@ -191,12 +193,27 @@ def constraint(parent, kind, value, scope, cid):
         "shared": "true", "id": cid, "includeChildSelections": "false", "includeChildForces": "false"})
 
 
+# Lists that cannot fill the standard chart (no HQ or no Troops choice) and are fielded only
+# through their own force types (ally attachments or codex detachments). Their Army List
+# option is hidden in the standard force (decision 2026-10-29).
+NOT_ON_STANDARD_CHART = {
+    (3, "Codex Assassins (1999)"), (3, "Harlequins (2000)"),
+    (7, "Assassins Codex"), (7, "Inquisition - Codex"), (7, "Sisters of Silence Dataslate"),
+    (7, "Legion of the Damned - Codex"), (7, "Imperial Knights - Codex (2015)"), (7, "Chaos Renegade Knights"),
+    (7, "Adeptus Astra Telepathica"), (7, "Aeronautica Imperialis"),
+    (7, "Dark Eldar - Supplement - Haemonculus Covens"),
+}
+STANDARD_FORCE = "mh-test-force"
+
+
 def restrict_to_owner(entry, own_forces):
     """In a force type that belongs to one army list (e.g. 'Psykana Division', 'Daemon Hunter
     Allies'), only that list can be chosen: hide every other Army List option there."""
-    owner_of = {f: oid for oid, forces in own_forces.items() for f in forces}
+    owner_of = {f: oid for oid, forces in own_forces.items() if oid is not None for f in forces}
     for opt in entry.find(q("selectionEntryGroups")).iter(q("selectionEntry")):
         others = [f for f, oid in owner_of.items() if oid != opt.get("id")]
+        if opt.get("id") in own_forces.get(None, ()):
+            others.append(STANDARD_FORCE)
         if not others:
             continue
         m = ET.SubElement(child(opt, "modifiers", 0), q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
@@ -208,7 +225,7 @@ def restrict_to_owner(entry, own_forces):
                 "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
 
 
-def selector(fid, options):
+def selector(fid, options, default=None):
     sid = f"{fid}-armylist"
     entry = ET.Element(q("selectionEntry"), {
         "type": "upgrade", "import": "true", "name": "Army List", "hidden": "false",
@@ -220,7 +237,7 @@ def selector(fid, options):
         "targetId": CONFIGURATION, "primary": "true"})
     grp = ET.SubElement(child(entry, "selectionEntryGroups"), q("selectionEntryGroup"), {
         "name": "Army List", "hidden": "false", "id": f"{sid}-group", "collective": "false",
-        "import": "true", "defaultSelectionEntryId": options[0][0]})
+        "import": "true", "defaultSelectionEntryId": default or options[0][0]})
     constraint(grp, "min", 1, "parent", f"{sid}-group-min")
     constraint(grp, "max", 1, "parent", f"{sid}-group-max")
     entries = child(grp, "selectionEntries")
@@ -349,8 +366,13 @@ def build_factions(members, game_system_id, report):
                         "id": f"{fid}-link-{target}", "targetId": target, "type": "catalogue",
                         "importRootEntries": "false"})
             seen |= {x.get("id") for x in m.iter() if x.get("id")}
-        sel = selector(fid, options)
-        restrict_to_owner(sel, {o: f for o, f in own_forces.items() if f})
+        not_standard = [option_for[members[(m[0], m[1])].get("id")] for m in fm
+                        if (m[0], m[1]) in NOT_ON_STANDARD_CHART]
+        # Default to a list that can be shown in the standard force, where there is one.
+        sel = selector(fid, options, next((o for o, _ in options if o not in not_standard), None))
+        restricted = {o: f for o, f in own_forces.items() if f}
+        restricted[None] = not_standard
+        restrict_to_owner(sel, restricted)
         child(root, "selectionEntries").insert(0, sel)
         if not len(links):
             root.remove(links)

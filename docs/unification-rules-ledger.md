@@ -22,6 +22,18 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 | Castellans of the Imperium detachment patched out | Unification p. 13 | Removed with all other detachments. |
 | Super-heavies only by agreement | Unification p. 8 | "Hide super-heavies" switch, on by default. Not points-aware. |
 
+## Army construction decisions
+
+| Rule | Source | Implementation |
+|---|---|---|
+| Lists that cannot fill the standard chart (no HQ or no Troops choice) are fielded only through their own force types | Unification p. 8 (standard chart needs the compulsory HQ and Troops, 5th Ed rulebook p. 87); decision 2026-10-29 | Their Army List option is hidden in the standard force: 3rd Ed Codex Assassins and Harlequins (ally attachments), and 7th Ed Inquisition, Officio Assassinorum, Sisters of Silence, Legion of the Damned, Imperial and Renegade Knights, Astra Telepathica, Aeronautica Imperialis and Haemonculus Covens (codex detachments). Ally attachments are subject to the same-era rule (p. 8), which is not yet enforced. |
+
+## Questions for the Unification author
+
+1. Which 6th/7th Edition detachment special rules are Command Benefits (ignored) and which still apply? Psykana Division: Empyric Link; Imperial Navy Section: Air Superiority; Null-Maiden Task Force: Nauseating Aura, Rite of Annulment; Spectral Host: Saviours from Beyond. All are currently dropped.
+2. In an agreed multi-detachment game, may detachments come from different eras (e.g. a 3rd Ed Imperial Guard army plus a 7th Ed Psykana Division), or does the same-era rule for allies apply?
+3. 7th Ed Fallen Angels has no Troops, no detachment of its own, and its Formations and allied use are banned. Can it be fielded at all? It is currently offered on the standard chart, where it cannot be legal.
+
 ## Not yet enforced
 
 | Rule | Source | Notes on enforceability |
