@@ -109,6 +109,8 @@ FACTIONS = {
                 (7, "Necrons - Codex (2015)", "Codex: Necrons (2015)"),
                 (7, "Necrons - FW - Dark Harvest", "Forge World: Dark Harvest")],
     "Tau Empire": [(3, "Tau (2001)", "Codex: "), (5, "Tau Empire", "Codex: Tau Empire (2005)", 4),
+                   (6, "Tau - Codex", "Codex: Tau Empire (2013)"),
+                   (6, "Tau - Supplement - Farsight Enclaves", "Farsight Enclaves (supplement, 2013)"),
                    (7, "Tau - Codex (2015)", "Codex: Tau Empire (2015)")],
     "Kroot Mercenaries": [(3, "Kroot Mercenaries (Chapter Approved 2004)", "")],
     "Sisters of Battle": [(3, "Witch Hunters (2003)", "Codex: "),

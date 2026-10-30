@@ -4,7 +4,7 @@
   python tools/build_middlehammer.py            # writes to the repository root
 
 Steps: fetch pinned sources into upstream-cache/ (git), convert the 3rd, 4th, 5th
-and 7th Edition source catalogues (tools/convert_*e_catalogues.py), merge everything into one catalogue per faction
+6th and 7th Edition source catalogues (tools/convert_*e_catalogues.py), merge everything into one catalogue per faction
 (tools/merge_factions.py), then write the faction catalogues and game system.
 Revisions are bumped only for files whose content changed. Middlehammer
 catalogues at the root that are no longer produced are deleted.
@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from convert_3e_catalogues import convert_3e  # noqa: E402
 from convert_4e_catalogues import convert_4e  # noqa: E402
 from convert_5e_catalogues import convert_5e  # noqa: E402
+from convert_6e_catalogues import convert_6e, fetch_archive  # noqa: E402
 from convert_7e_catalogues import convert_7e  # noqa: E402
 from merge_factions import build_factions, ensure_era_categories  # noqa: E402
 
@@ -68,6 +69,7 @@ def write(root, path, ns, rev_attr_extra=None):
 def main():
     report = {}
     third, fourth, fifth, seventh = fetch(3), fetch(4), fetch(5), fetch(7)
+    sixth = fetch_archive(json.loads((ROOT / "sources/upstreams.json").read_text())["editions"]["6"], CACHE)
     gst_path = ROOT / "Middlehammer-Unification.gst"
     ET.register_namespace("", GST_NS)
     gst = ET.parse(gst_path).getroot()
@@ -79,6 +81,8 @@ def main():
         members[(4, e["sourceName"])] = t.getroot()
     for _, t, e in convert_5e(fifth, gst, report).values():
         members[(5, e["sourceName"])] = t.getroot()
+    for _, t, e in convert_6e(sixth, gst, report).values():
+        members[(6, e["sourceName"])] = t.getroot()
     for _, t, e in convert_7e(seventh, gst, report).values():
         members[(7, e["sourceName"])] = t.getroot()
     factions = build_factions(members, MH_SYSTEM_ID, report)

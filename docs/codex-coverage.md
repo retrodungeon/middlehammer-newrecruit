@@ -30,7 +30,7 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 | **Tyranids** | 5 | 3rd Ed – Codex: Tyranids (2001)<br>3rd Ed – Tyranid Seeding Swarm (Chapter Approved 2003)<br>4th Ed – Codex: Tyranids (2005)<br>5th Ed – Codex: Tyranids (2010)<br>6th Ed – Codex: Tyranids (2014) |
 | **Genestealer Cults** | 2 | 3rd Ed – Genestealer Cults (Citadel Journal 40)<br>7th Ed – Codex: Genestealer Cults (2016) |
 | **Necrons** | 4 | 3rd Ed – Codex: Necrons (2002)<br>5th Ed – Codex: Necrons (2011)<br>7th Ed – Codex: Necrons (2015)<br>7th Ed – Forge World: Dark Harvest |
-| **Tau Empire** | 3 | 3rd Ed – Codex: Tau (2001)<br>4th Ed – Codex: Tau Empire (2005)<br>7th Ed – Codex: Tau Empire (2015) |
+| **Tau Empire** | 5 | 3rd Ed – Codex: Tau (2001)<br>4th Ed – Codex: Tau Empire (2005)<br>6th Ed – Codex: Tau Empire (2013)<br>6th Ed – Farsight Enclaves (supplement, 2013)<br>7th Ed – Codex: Tau Empire (2015) |
 | **Kroot Mercenaries** | 1 | 3rd Ed – Kroot Mercenaries (Chapter Approved 2004) |
 | **Sisters of Battle** | 4 | 3rd Ed – Codex: Witch Hunters (2003)<br>3rd Ed – Sisters of Battle (Chapter Approved 2001)<br>5th Ed – Codex: Sisters of Battle (White Dwarf 2011)<br>7th Ed – Codex: Adepta Sororitas |
 | **Grey Knights** | 3 | 3rd Ed – Codex: Daemon Hunters (2003)<br>5th Ed – Codex: Grey Knights (2011)<br>7th Ed – Codex: Grey Knights (2014) |
@@ -112,9 +112,26 @@ All 5th Edition source books flagged in the audit have now been checked.
 | Tyranids (3rd Ed) | — | Skipped: hybrid of the 2001 codex with 5th Edition units; 2001 codex comes from the 3rd Edition source |
 | Witch Hunters | — | Skipped: duplicate of 3rd Edition source Witch Hunters (2003) |
 
-## 6th Edition — not started (40 source catalogues)
+## 6th Edition source — pilot (2 converted)
 
-Source: BSData/wh40k-7th-edition release v3.1.4 (BattleScribe 1.14b format). Needs `tools/convert_legacy_6e.py`; Space Marines 2013 is the experimental pilot and is currently blocked (see `docs/space-marines-2013-conversion.md`). Catalogue list to be recorded from the archive.
+Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_last_revision.bsr` (pinned by SHA-256 in `sources/upstreams.json`), BattleScribe 1.14b format. Translated to the current format by `tools/convert_6e_catalogues.py`, then adjusted for the Unification as the 7th Edition lists are: Formations, Battle Formations, Spearheads, Fortifications and extra-detachment markers removed; Lords of War reassigned (independent characters → HQ, super-heavies → Super-Heavy, others → Heavy Support); Apocalypse Legendary Units that repeat a Lord of War dropped; super-heavies behind the "Hide super-heavies" switch; conditions on the Primary Detachment always true, on Apocalypse following the switch, on other force types never true.
+
+| Source catalogue | Book | Status |
+|---|---|---|
+| Tau - Codex | Codex: Tau Empire (2013) | Converted (pilot) |
+| Tau - Supplement - Farsight Enclaves | Farsight Enclaves (2013) | Converted (pilot) |
+| Dark Angels - Codex | Codex: Dark Angels (2013) | To do |
+| Eldar - Codex, Eldar - Supplement - Iyanden | Codex: Eldar (2013), Iyanden (2013) | To do |
+| Space Marines - Codex, Supplements Clan Raukaan, Sentinels of Terra | Codex: Space Marines (2013) and supplements | To do |
+| Chaos Daemons (40K) - Codex | Codex: Chaos Daemons (2013) | To do |
+| Chaos Space Marines - Supplements Black Legion, Crimson Slaughter | Black Legion (2013), Crimson Slaughter (2014) | To do |
+| Orks - FW - Dread Mob | IA08 Dread Mob (2013) | To do |
+| Renegades & Heretics - FW - Defenders of Vraks, Servants of Decay, Servants of Slaughter; Eldar - FW - Corsairs | Forge World lists of 2008–2011 | To decide (earlier Forge World books than the 7th Edition source's) |
+| Adepta Sororitas, Chaos Space Marines - Codex, Inquisition - Codex, Legion of the Damned - Codex | Same books as the 7th Edition source (later revision there) | Not converted |
+| Astra Militarum and Forge World Guard / Space Marine / Necron lists | Same books as the 7th Edition source | Not converted |
+| Blood Angels, Dark Eldar, Grey Knights, Imperial Guard, Necrons, Orks, Space Wolves Codex | 5th Edition codexes (from the 5th Edition source) | Not converted |
+| Imperial Knights - Codex | Almost empty in the source | Not converted |
+| Imperial Guard - Apocalypse, Fortifications and Stronghold Assault | Apocalypse / fortifications | Not converted |
 
 ## 7th Edition source — 43 converted, 1 not used
 
