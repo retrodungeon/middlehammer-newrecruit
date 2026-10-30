@@ -12,7 +12,7 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 
 | Faction | Army List options | Options |
 |---|---:|---|
-| **Space Marines** | 16 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>6th Ed – Codex: Space Marines (2013)<br>6th Ed – Clan Raukaan (supplement, 2013)<br>6th Ed – Sentinels of Terra (supplement, 2013)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
+| **Space Marines** | 17 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>6th Ed – Codex: Space Marines (2013)<br>6th Ed – Clan Raukaan (supplement, 2013)<br>6th Ed – Sentinels of Terra (supplement, 2013)<br>6th Ed – Forge World: Siege Assault Vanguard (IA10, 6th Ed update)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
 | **Blood Angels** | 5 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>4th Ed – Codex: Blood Angels (White Dwarf 2007)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
 | **Dark Angels** | 3 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015) |
 | **Space Wolves** | 4 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003)<br>5th Ed – Codex: Space Wolves (2009)<br>7th Ed – Codex: Space Wolves (2014) |
@@ -120,11 +120,11 @@ No community data exists for Imperial Armour Volume Nine and Ten (The Badab War,
 |---|---|---|---|
 | Captain Mordaci Blaylock (Novamarines) | IA9 p. 171 | 5th Ed – Codex: Space Marines (2008), HQ | Added; to be checked against the book in New Recruit |
 
-## 6th Edition source — 5 converted
+## 6th Edition source — 6 converted
 
 Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_last_revision.bsr` (pinned by SHA-256 in `sources/upstreams.json`), BattleScribe 1.14b format. Translated to the current format by `tools/convert_6e_catalogues.py`, then adjusted for the Unification as the 7th Edition lists are: Formations, Battle Formations, Spearheads, Fortifications and extra-detachment markers removed; Lords of War reassigned (independent characters → HQ, super-heavies → Super-Heavy, others → Heavy Support); Apocalypse Legendary Units that repeat a Lord of War dropped; super-heavies behind the "Hide super-heavies" switch; conditions on the Primary Detachment always true, on Apocalypse following the switch, on other force types never true.
 
-Rules text: the 6th Edition source records most special rules by name only. Text is filled by `tools/rules_text_6e.py`, in order: rules written out in our own words from the maintainer's 6th Edition codexes (Codex: Space Marines 2013: Chapter Tactics, Combat Squads, character and unit rules); the 5th Edition core rules (universal special rules); the same faction's 7th Edition data; the 7th Edition core rules. Text from 7th Edition data ends "(7th Ed wording)". Still without text: mostly Forge World, Apocalypse and Escalation rules carried in the supplements, and Warlord Traits (not used). The build report lists every rule left empty.
+Rules text: the 6th Edition source records most special rules by name only. Text is filled by `tools/rules_text_6e.py`, in order: rules written out in our own words from the maintainer's books (Codex: Space Marines 2013: Chapter Tactics, Combat Squads, character and unit rules; Forge World's 6th Edition Chapter Tactics for Imperial Armour Chapters; the Siege Assault Vanguard and Badab War character updates); the 5th Edition core rules (universal special rules); the same faction's 7th Edition data; the 7th Edition core rules. Text from 7th Edition data ends "(7th Ed wording)". Still without text: mostly Forge World, Apocalypse and Escalation rules carried in the supplements, and Warlord Traits (not used). The build report lists every rule left empty.
 
 | Source catalogue | Book | Status |
 |---|---|---|
@@ -132,6 +132,7 @@ Rules text: the 6th Edition source records most special rules by name only. Text
 | Tau - Supplement - Farsight Enclaves | Farsight Enclaves (2013) | Converted (pilot) |
 | Dark Angels - Codex | Codex: Dark Angels (2013) | To do |
 | Eldar - Codex, Eldar - Supplement - Iyanden | Codex: Eldar (2013), Iyanden (2013) | To do |
+| Space Marines - FW - Siege Assault Vanguard | Imperial Armour 10 Siege Assault Vanguard, Forge World 6th Edition update | Converted. Its own force chart (1-2 HQ, 2-6 Troops, 0-3 Elites, 0-2 Fast Attack, 1-4 Heavy Support) is offered as a force type, slot limits only; the standard chart can also be used |
 | Space Marines - Codex, Supplements Clan Raukaan, Sentinels of Terra | Codex: Space Marines (2013), Clan Raukaan (2013), Sentinels of Terra (2013) | Converted. Uncategorised units (Command Squad, Honour Guard, Techmarine, Servitors, Damocles, Cypher) use no slot; the Allied Detachment Chapter Tactics entry is removed. "DEVASTATOR PLACEHOLDER (IA12)" is the source's container for Vigilator-Sergeant Hamath Kraatos and is kept as is |
 | Chaos Daemons (40K) - Codex | Codex: Chaos Daemons (2013) | To do |
 | Chaos Space Marines - Supplements Black Legion, Crimson Slaughter | Black Legion (2013), Crimson Slaughter (2014) | To do |

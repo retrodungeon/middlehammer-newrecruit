@@ -198,6 +198,111 @@ CODEX_TEXT = {"Space Marines": {
                         "range or less.",
 }, "Tau": {}}
 
+# Forge World: Space Marine Chapter Tactics for 6th Edition (Forge World PDF), for
+# Imperial Armour Chapters. Chapters not listed use a codex Chapter's tactics: Howling
+# Griffons, Fire Angels, Marines Errant, Novamarines and (before 991.M41) Angels Revenant
+# use Ultramarines; Sons of Medusa use Iron Hands; Exorcists pick any; Lamenters use Codex:
+# Blood Angels.
+FORGE_WORLD_TACTICS = {
+    "Purity Above All": "Red Scorpions. Any Tactical Squad Sergeant or Veteran Sergeant may be made an Apothecary, "
+                        "taking a narthecium for free (no other change to wargear, options or profile; must be shown "
+                        "on the model).",
+    "Fortitude and Contempt": "Red Scorpions. Models re-roll failed Pinning tests, but cannot voluntarily Go to Ground "
+                              "and cannot take camo cloaks.",
+    "Reavers of the Outer Darkness": "Carcharodons. Models have Fear. Any model in a Tactical Squad may swap its "
+                                     "boltgun for a close combat weapon (e.g. chainsword or combat blade) for free, or "
+                                     "add a close combat weapon for +1 point per model (must be shown on the model). "
+                                     "A Carcharodons force may only ally with other Imperial armies, always as "
+                                     "Desperate Allies.",
+    "Blood Hunger": "Carcharodons. A unit gains Rage (mark it) once it has destroyed an enemy infantry unit in an "
+                    "assault or forced one to Fall Back. A marked unit's Consolidation move must be towards the "
+                    "nearest enemy unit it can damage in an assault.",
+    "Legendary Marksmen": "Raptors (who also have Strike from the Shadows). A unit that did not move in its Movement "
+                          "phase may give its boltguns, bolt pistols and combi-weapons firing as boltguns Rending in "
+                          "that Shooting phase; those weapons then count as Heavy 1 instead of Rapid Fire or Pistol "
+                          "that turn.",
+    "Shadow Killers": "Mantis Warriors. Infantry in the detachment have Move Through Cover and Hammer of Wrath, and "
+                      "gain Furious Charge on a turn they charge from inside terrain that gives a cover save (not a "
+                      "bought Fortification). Not for units that include any Bulky model.",
+    "Children of Prophecy": "Mantis Warriors. If the primary detachment is Mantis Warriors you may re-roll a failed "
+                            "attempt to Seize the Initiative. Mantis Warriors Librarians may generate powers from "
+                            "Divination instead of their codex disciplines.",
+    "Bitter Mettle": "Executioners. Models ignore every negative modifier to their Leadership.",
+    "Headhunters": "Executioners. Characters with this rule inflict Instant Death on To Wound rolls of 6 in a "
+                   "challenge (roll saves for those separately). In each assault, the character with this rule and "
+                   "the highest WS (owner picks on a tie) must issue a challenge if possible.",
+    "A Legacy of Hatred": "Angels Revenant (after 991.M41). Models have Preferred Enemy (Necrons) and Hatred "
+                          "(Necrons). This is the detachment's only Chapter Tactic; if the enemy army has no models "
+                          "from Codex: Necrons, it has To the Last Breath instead.",
+    "To the Last Breath": "Angels Revenant (after 991.M41, against armies without Necrons). Once the detachment has "
+                          "lost half (rounding down) of its units, all its remaining units have Fearless.",
+    "Mnemonic Redaction Protocols": "Red Hunters. Models have Adamantium Will. Once per game, at the start of any "
+                                    "player turn, a number of Red Hunters units (Dreadnoughts included) equal to the "
+                                    "turn number each gain one of Counter-attack, Monster Hunter, Tank Hunters, "
+                                    "Hatred, Skyfire or Interceptor (your choice per unit) until the start of your "
+                                    "next turn.",
+    "By this Seal": "Red Hunters. For the Allies Matrix, the detachment treats Codex: Grey Knights and Sisters of "
+                    "Battle units as Battle Brothers, provided the allied detachment includes an Inquisitor.",
+    "Orbital Wave Attack": "Star Phantoms. Units arriving by Deep Strike may re-roll Reserve Rolls of 1.",
+    "Hail of Destruction": "Star Phantoms. Once per game, from the start of your Shooting phase until the start of "
+                           "your next one, the detachment's Rapid Fire, Assault, Salvo and Heavy weapons are "
+                           "twin-linked.",
+    "Unrelenting Assault": "Minotaurs. Models take no Panic tests from shooting attacks and re-roll failed Pinning "
+                           "tests.",
+    "Trample and Crush": "Minotaurs. Models have Crusader and add 1 to their charge distance rolls while in the enemy "
+                         "deployment zone.",
+    "On Wings of Fire": "Fire Hawks. Flamers, hand flamers and heavy flamers get +1 Strength on the turn their unit "
+                        "arrives by Deep Strike (including from a Drop Pod), and jump pack models get +1 Strength for "
+                        "Hammer of Wrath. Space Marines with this Chapter Tactic may also take a hand flamer for +5 "
+                        "points as a ranged weapon option.",
+    "Speed and Fury": "Fire Hawks. The detachment's Assault Squads and Vanguard Veteran Squads are scoring units.",
+    "Reckless Courage": "Astral Claws. Models have Stubborn and may never choose to automatically fail a Morale check.",
+    "Rapid Attack and Encirclement": "Astral Claws. Bikes have Skilled Rider; Fast Skimmer vehicles in the same "
+                                     "detachment have Scout.",
+    "The Badab Wars": "Astral Claws before and during the Badab War use Chapter Tactics (Astral Claws): Reckless "
+                      "Courage and Rapid Attack and Encirclement. After their fall (as the Red Corsairs) use Codex: "
+                      "Chaos Space Marines instead.",
+    "The Tyrant's Legion": "In a Tyrant's Legion army (Imperial Armour Volume Nine), every model with And They Shall "
+                           "Know No Fear also uses Chapter Tactics (Astral Claws).",
+}
+CODEX_TEXT["Space Marines"].update({f"Chapter Tactics: {k}": v for k, v in FORGE_WORLD_TACTICS.items()})
+
+# Forge World updates for 6th Edition: Siege Assault Vanguard army list (IA10) and the Badab
+# War character update (IA9/IA10).
+CODEX_TEXT["Space Marines"].update({
+    "Siege Master": "While the Siege Master is in play, the army may re-roll all Reserve Rolls, successful or not. At "
+                    "the start of the game he picks one friendly Infantry unit, or one non-Flyer vehicle or vehicle "
+                    "squadron, from Codex: Space Marines or the Siege Assault Vanguard list; it gains Tank Hunters, "
+                    "Monster Hunter, Interceptor or Furious Charge (your choice) for the game.",
+    "Siege Objective": "The Siege Assault Vanguard player supplies a 40mm Siege Objective marker, which the opponent "
+                       "places in their own deployment zone, by the normal objective placement rules, before "
+                       "deployment. It is controlled like other objectives but is worth no Victory Points. Unless the "
+                       "Siege Assault Vanguard player controls it at the end of the game or has wiped out the enemy, "
+                       "the best they can achieve is a draw.",
+    "Siege Dreadnought Talon": "Troops. Three Dreadnoughts, Ironclad (135 pts) or Siege (120 pts) in any mix. When "
+                               "first deployed (at the start or from Reserve) they must be placed within 6\" of each "
+                               "other; afterwards each acts individually and they are not a vehicle squadron.",
+    "Brethren of Ancients": "The army may include no more Siege Dreadnought Talons than half its Tactical and Siege "
+                            "Assault Squads. If more than half of all Dreadnoughts in the army (Talon or not) are "
+                            "destroyed, every remaining friendly Dreadnought that is not Immobilised gains Rage.",
+    "Siege Mantlets": "A Tactical Squad in a Siege Assault Vanguard may take siege mantlets (+50 points per squad; "
+                      "shown on the models as large shields): it re-rolls failed armour saves against shooting, has "
+                      "Bulky, may not Run or make Sweeping Advances, and may not take a Dedicated Transport. Independent "
+                      "Characters joining it gain the benefits and the restrictions.",
+    "The Tip of the Spear": "Siege Assault Squads may re-roll Sweeping Advance rolls. (Imperial Armour Volume 10 p. "
+                            "190; the 6th Edition update gives the squad Crusader instead.)",
+    "Assault Drill": "A Dreadnought close combat weapon that rolls an extra D6 for armour penetration against "
+                     "Buildings, Fortifications and vehicles that have not moved this turn. When it scores a "
+                     "penetrating hit on a Transport or Building, every model embarked takes one hit from the heavy "
+                     "flamer after all close combat attacks are resolved (once per phase, not once per hit).",
+    "Void Hardened Armour": "Anton Narvaez and any Command Squad with him count as wearing Void Hardened armour in "
+                            "Zone Mortalis / Blood in the Void games.",
+    "Unflinching Resolve": "Mir'san, and any friendly Codex: Space Marines unit with Chapter Tactics (Salamanders) he "
+                           "joins, may choose to automatically pass or fail any Morale check or Pinning test.",
+    "Weapon Mastery": "Tyberos may split his Attacks in an assault freely between Hunger and Slake (his profile "
+                      "already includes the extra Attack for two weapons).",
+})
+
 
 def norm(name):
     name = (name or "").lower().replace("salemanders", "salamanders").replace("tempars", "templars")
