@@ -225,6 +225,26 @@ def is_super_heavy(node, lookup=None):
     return False
 
 
+def is_setting(node, lookup):
+    """An army-wide setting (e.g. Chapter Tactics): no profiles anywhere in it, i.e. nothing
+    that is fielded. Like the test in convert_6e_catalogues (not imported: that module
+    imports this one), but entry types are not trusted: the 7th Edition Space Marines 2015
+    Chapter Tactics types its chapter choices "model" or "unit" (e.g. Howling Griffons,
+    Iron Hands) although they have no profiles."""
+    seen, todo = set(), [node]
+    while todo:
+        el = todo.pop()
+        if id(el) in seen:
+            continue
+        seen.add(id(el))
+        for x in el.iter():
+            if lname(x.tag) == "profile" or (lname(x.tag) == "infoLink" and x.get("type") == "profile"):
+                return False
+            if lname(x.tag) == "entryLink" and x.get("targetId") in lookup:
+                todo.append(lookup[x.get("targetId")])
+    return True
+
+
 def is_independent_character(node, lookup):
     for el in node.iter():
         target = lookup.get(el.get("targetId"))
@@ -476,6 +496,7 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report, 
 
     # Root entries: drop detachment machinery, map slots, reassign Lords of War.
     dropped, low, uncategorised, super_heavy = [], {"HQ": [], "Super-Heavy": [], "Heavy Support": []}, [], []
+    settings_moved = []
     dropped_ids, primary_ids, dropped_targets = set(), set(), set()
     # The game system's own fortifications (its root entry links).
     fortifications = {l.get("targetId") for l in source_gst.find(q("entryLinks", GST_NS))}
@@ -496,7 +517,14 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report, 
                 dropped_targets.add(el.get("targetId"))
                 continue
             if slot in SLOT:
-                set_slot(el, SLOT[slot])
+                mh = SLOT[slot]
+                # Army-wide settings the source files under "No Force Org Slot" (e.g. Codex:
+                # Space Marines 2015 Chapter Tactics) belong in Configuration, as elsewhere.
+                if mh == "No Force Org Slot" and target.get("type") == "upgrade" and \
+                        is_setting(target, {**gst_by_id, **ids}):
+                    mh = "Configuration"
+                    settings_moved.append(nm)
+                set_slot(el, mh)
                 continue
             sh = is_super_heavy(target, {**gst_by_id, **ids})
             if slot in LORDS_OF_WAR:
@@ -517,7 +545,8 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report, 
             set_slot(el, new)
             if new == "Super-Heavy":
                 super_heavy.append(el)
-    entry.update({"droppedRootEntries": dropped, "lordsOfWar": low, "uncategorised": uncategorised})
+    entry.update({"droppedRootEntries": dropped, "lordsOfWar": low, "uncategorised": uncategorised,
+                  "settingsMovedToConfiguration": settings_moved})
 
     # A removed formation or detachment is never selected; the standard force is always the
     # primary detachment. Targets of removed links count too unless still linked elsewhere.

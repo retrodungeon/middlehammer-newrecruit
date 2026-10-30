@@ -21,6 +21,7 @@ Pilot: **Legiones Astartes** only. Not yet tested in New Recruit. Still to do: M
 | Lords of War | Only Legion super-heavies (Fellblade, Falchion, Glaive, Typhon, Cerberus, Stormblade, Thunderhawks, Sokar Stormbird, Mastodon, Malcador). Super-heavies use the Super-Heavy section and the list's "Hide super-heavies" switch; others become Heavy Support (Unification p. 10). Titans, Knights and Imperial Army super-heavies wait for their own Heresy lists. |
 | No Hull Points; Structure Points for super-heavies | Hull Points are removed from profiles; super-heavies get Structure Points of 1/3 their Hull Points, rounded (Unification p. 9–10). |
 | No Warlord Traits; no fortifications | As for 7th Edition lists. |
+| Heresy army construction removed | The "(Compulsory)" labels and compulsory-slot categories of the Crusade chart are removed. The Warlord option stays (for Slay the Warlord) but is no longer required. "Master of the Legion" (Rite of War choice, one per 1,000 points) is hidden; Command Squads remain available. |
 | Not converted (content policy) | Fan-made: Necron, Asuryani and Mournival Units catalogues. Varangian Heresy Legions (provenance unverified). The Heresy copy of Codex: Chaos Daemons (2013), already in the data. |
 
 ## Units per faction
@@ -506,6 +507,8 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Troops: Tactical Support Squad, Legion
 
 ## Known issues
+
+- A Heresy Warlord and the host list's own Warlord option are separate, so the data does not stop a list from naming two Warlords. Pick one.
 
 - Several Heresy vehicles also exist as 40k Forge World units in the same lists (e.g. Sicaran, Spartan, Fellblade, Deredeo, Storm Eagle, Fire Raptor). Both versions are offered; the Heresy one is marked "(Heresy)".
 - Some rules have no text in the source and no match elsewhere: Exemplary Tribune, Extremely Bulky, Missile.
