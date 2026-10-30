@@ -112,6 +112,14 @@ All 5th Edition source books flagged in the audit have now been checked.
 | Tyranids (3rd Ed) | — | Skipped: hybrid of the 2001 codex with 5th Edition units; 2001 codex comes from the 3rd Edition source |
 | Witch Hunters | — | Skipped: duplicate of 3rd Edition source Witch Hunters (2003) |
 
+## Imperial Armour (hand-transcribed)
+
+No community data exists for Imperial Armour Volume Nine and Ten (The Badab War, 2010 and 2011, 5th Edition era). Entries are transcribed from the maintainer's copies in `tools/imperial_armour_5e.py` and added to the list each book names. They reuse the source list's weapon, wargear and rule profiles; new special rules are written out in full in our own words, so the list can be played from New Recruit alone. Profiles, points, wargear and options follow the book.
+
+| Entry | Book | Added to | Status |
+|---|---|---|---|
+| Captain Mordaci Blaylock (Novamarines) | IA9 p. 171 | 5th Ed – Codex: Space Marines (2008), HQ | Added; to be checked against the book in New Recruit |
+
 ## 6th Edition source — 5 converted
 
 Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_last_revision.bsr` (pinned by SHA-256 in `sources/upstreams.json`), BattleScribe 1.14b format. Translated to the current format by `tools/convert_6e_catalogues.py`, then adjusted for the Unification as the 7th Edition lists are: Formations, Battle Formations, Spearheads, Fortifications and extra-detachment markers removed; Lords of War reassigned (independent characters → HQ, super-heavies → Super-Heavy, others → Heavy Support); Apocalypse Legendary Units that repeat a Lord of War dropped; super-heavies behind the "Hide super-heavies" switch; conditions on the Primary Detachment always true, on Apocalypse following the switch, on other force types never true.
