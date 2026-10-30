@@ -21,7 +21,7 @@ As of 2026-10-29:
 - One build (`tools/build_middlehammer.py`) produces the game system and every faction catalogue from the sources pinned in `sources/upstreams.json`; CI checks the committed files equal a fresh build.
 - `Middlehammer-Unification.gst` is based on the 5th Edition source game system, with the standard 5e Force Organization Chart and the 3rd Edition definitions that converted lists need.
 - Catalogues are one per faction; each codex or variant list is an option of the faction's required "Army List" entry (`tools/merge_factions.py`).
-- Converted: all official 3rd Edition source lists, and the 5th Edition source (including the 4th Edition codexes it contains). 6th Edition is experimental; 7th Edition and the 4th Edition source are not started.
+- Converted: every official list in the 3rd, 5th and 7th Edition sources, and the 4th Edition books not available elsewhere. 6th Edition is not started.
 - Redistribution rights remain unconfirmed; the data is published for a small play group.
 
 ## Naming

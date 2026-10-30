@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="11" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="12" type="gameSystem">
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
@@ -73,7 +73,14 @@
     <categoryEntry name="Fast Vehicles" id="ddd4-d0a2-04f6-fba1" hidden="false" />
     <categoryEntry name="Cavalry" id="eb69-c8af-f212-635f" hidden="false" />
     <categoryEntry name="DW Special Weapon User" id="7257-1919-a6a4-e5b2" hidden="true" />
-  </categoryEntries>
+  <categoryEntry name="Forge World" id="087b-1c16-81ac-ce0d" hidden="false" />
+  <categoryEntry name="Character" id="c918-96c1-1ff1-3df1" hidden="false">
+      <infoLinks>
+        <infoLink name="Character" id="ef1a-f9b1-cc1d-691d" hidden="false" targetId="ff9d-2579-a056-981b" type="rule" />
+      </infoLinks>
+    </categoryEntry>
+    <categoryEntry name="Blood Angel" id="e39c-0852-74f1-402d" hidden="false" />
+    </categoryEntries>
   <costTypes>
     <costType name="Points" id="6f18-a8fc-2c5b-9517" defaultCostLimit="2000" />
   </costTypes>
@@ -275,7 +282,68 @@
         <characteristicType id="077c342f-d7b9-45c6-b8af-88e97cafd3a2" name="Type" />
       </characteristicTypes>
     </profileType>
-    </profileTypes>
+    <profileType name="Transport" id="307d-047f-ca13-706b" hidden="false" kind="model" sortIndex="3">
+      <characteristicTypes>
+        <characteristicType name="Capacity" id="8285-4205-b6cd-8473" />
+        <characteristicType name="Fire Points" id="b270-a7f9-22b2-3702" />
+        <characteristicType name="Access Points" id="d17b-0342-b1dc-b8e7" />
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Unit" id="556e697423232344415441232323" hidden="false" kind="model" sortIndex="1">
+      <characteristicTypes>
+        <characteristicType name="Unit Type" id="556e6974205479706523232344415441232323" kind="annotation" />
+        <characteristicType name="WS" id="5.753232323444154e+23" />
+        <characteristicType name="BS" id="4.2532323234441546e+23" />
+        <characteristicType name="S" id="5.323232344415441e+21" />
+        <characteristicType name="T" id="5.423232344415441e+21" />
+        <characteristicType name="W" id="5.723232344415441e+21" />
+        <characteristicType name="I" id="4.923232344415441e+21" />
+        <characteristicType name="A" id="4.123232344415441e+21" />
+        <characteristicType name="LD" id="4c4423232344415441232323" />
+        <characteristicType name="Sv" id="5.361766523232344e+27" />
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Vehicle" id="56656869636c6523232344415441232323" hidden="false" kind="model" sortIndex="2">
+      <characteristicTypes>
+        <characteristicType name="Front" id="46726f6e7423232344415441232323" />
+        <characteristicType name="Side" id="5.369646523232344e+27" />
+        <characteristicType name="Rear" id="5.265617223232345e+27" />
+        <characteristicType name="BS" id="a6a5-1595-da9e-6155" />
+        <characteristicType name="Type" id="5.479706523232345e+27" />
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Walker" id="57616c6b657223232344415441232323" hidden="false" kind="model" sortIndex="4">
+      <characteristicTypes>
+        <characteristicType name="Front" id="2c29-350b-f248-dd77" />
+        <characteristicType name="Side" id="0420-dd4d-5193-9751" />
+        <characteristicType name="Rear" id="261f-f688-43d2-6426" />
+        <characteristicType name="WS" id="cdb5-5759-7ba6-4165" />
+        <characteristicType name="BS" id="c2d0-06f8-ae22-6c79" />
+        <characteristicType name="S" id="c10b-81fc-f48d-cb9c" />
+        <characteristicType name="I" id="d3ac-4b4f-59d3-54d0" />
+        <characteristicType name="A" id="dd6f-2402-7687-9468" />
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Wargear" id="57617267656172204974656d23232344415441232323" hidden="false" kind="ability" sortIndex="5">
+      <characteristicTypes>
+        <characteristicType name="Description" id="4465736372697074696f6e23232344415441232323" />
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Weapon" id="576561706f6e23232344415441232323" hidden="false" kind="weapon" sortIndex="6">
+      <characteristicTypes>
+        <characteristicType name="Range" id="52616e676523232344415441232323" kind="annotation" />
+        <characteristicType name="Strength" id="537472656e67746823232344415441232323" kind="annotation" />
+        <characteristicType name="AP" id="4.1502323234441545e+23" kind="annotation" />
+        <characteristicType name="Type" id="8b10-045a-f593-605e" kind="annotation" />
+        <characteristicType name="Info" id="33e9-27bd-77e4-401d" kind="longText" />
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Melee Weapon" id="b729-49a4-4123-cf00" hidden="false" kind="weapon" sortIndex="7">
+      <characteristicTypes>
+        <characteristicType name="Details" id="acf3-d214-6e51-29fe" />
+      </characteristicTypes>
+    </profileType>
+  </profileTypes>
   <publications>
     <publication name="Warhammer 40,000 5e Rulebook" id="ad9c-8597-0188-2ba0" hidden="false" />
     <publication name="Codex: Imperial Guard" id="e1ac-28b4-5326-9bdf" hidden="false" />
@@ -4012,6 +4080,258 @@ If a gauss weapon inflicts a glancing hit on a vehicle in which only glancing hi
         <characteristic name="Type" typeId="077c342f-d7b9-45c6-b8af-88e97cafd3a2">Melee, Two-handed</characteristic>
       </characteristics>
     </profile>
+    <profile name="Plasma Pistol" id="00e2-6e56-5dfe-e202" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">12"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">7</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">2</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Pistol, Gets Hot!</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Heavy Bolter" id="0e61-328d-62cd-8b59" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">36"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">5</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">4</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 3</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Power Fist" id="180c-c683-5834-19cc" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">Doubles user's base Strength (to a maximum of 10). Ignores Armour Saves. Attacks are made at Initiative 1, ignoring modifiers.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Storm Shield" id="1b55-f520-4b9a-c7e7" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">A combat shield confers a 4+ Invulnerable Save to the bearer in close combat.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Multi-melta" id="1b9f-dc29-44a8-9237" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">24"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">8</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">1</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1, Melta</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Missile Launcher (Frag)" id="2774-242b-9be0-90f2" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">48"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">4</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">6</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1, Blast</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Force Weapon" id="29ac-7e83-0ba0-5fd3" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">Force weapons are treated as a power weapon, but can unleash a psychic attack that kills an opponent outright. Roll to hit and wound as normal, allowing any Invulnerable Saving throws the victim might have. As long as one wound has been inflicted, make a Psychic test for the Psyker against any one opponent wounded by the weapon. The normal rules for using psychic powers apply, and you may not use another psychic power in the same turn. Passing the test slays the opponent outright, no matter how many Wounds it has (count the actual number inflicted for determining who won the assault). Force weapons have no special effect against targets that don't have Wounds, such as vehicles.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Lightning Claw" id="5d6f-948a-8857-ed26" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">Lightning claws are commonly used as matched pairs, as only a second lightning claw can provide an additional close combat weapon attack bonus for a model equipped with one. Lightning claws ignore Armour Saves and re-roll any failed To Wound rolls.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Power Weapon" id="793f-3d45-00ad-58d2" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">Power weapons ignore Armour Saves, and some may give a Strength bonus or wound on a fixed dice score regardless of the enemy's Toughness characteristic (as detailed in the appropriate army Codex).</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Close Combat Weapon" id="7b3d-1932-99ef-f5c8" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">There is is a bewildering array of close combat weapons, all of which confer no bonus to the Strength of combatants. However, swords and pistols (or similar hand weapons) gain the wielder an additonal close combat attack. A plasma pistol can be used as a close combat weapon, though it confers no Strength bonus or particular armour penetration advantages.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Autocannon" id="7d29-c50b-9499-c31b" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">48"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">7</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">4</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 2</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Power of the Machine Spirit" id="8ed3-8d46-33de-8edb" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">If a vehicle with Power of the Machine Spirit suffers a Crew Stunned result on the Vehicle Damage table, the Machine Spirit allows the vehicle to move directly ahead up to its maximum speed. Also, the Machine Spirit can operate one weapon per turn as long as the vehicle has moved no more than 6" even if the vehicle suffers a Crew Shaken or Crew Stunned result. This is in addition to any weaponry that can normally fire. The Machine Spirit has a Ballistic Skill of 2.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Lascannon" id="a985-b7e4-1396-ce64" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">48"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">9</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">2</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Bolt Pistol" id="d2c2-d25d-9a03-afc4" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">12"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">4</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">5</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Pistol</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Assault Cannon" id="d4c2-a3d4-540a-5585" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">24"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">6</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">4</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 4, Rending</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Storm Bolter" id="d5e9-6e7d-416d-6b6a" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">24"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">4</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">5</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Assault 2</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Thunder Hammer" id="d847-93ef-b880-0cc8" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">Doubles user's base Strength (to a maximum of 10). Ignores Armour Saves. Attacks are made at Initiative 1, ignoring modifiers. Any model wounded but not killed by an attack with a Thunder Hammer has Initiative 1 in the next Assault Phase. Vehicles struck by a Thunder Hammer suffer a 'Crew Shaken' result in addition to any other damage results.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Missile Launcher (Krak)" id="db43-c0ed-46f2-39ab" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">48"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">8</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">3</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Heavy Flamer" id="e21b-79a4-8ddd-8617" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">Template</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">5</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">4</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Assault 1</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Flamer" id="e329-1729-419b-2bb6" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">Template</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">4</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">5</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Assault 1</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Bolter" id="fa34-07ff-1a5d-fe9f" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <alias>Boltgun</alias>
+      <alias>Bolt Gun</alias>
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">24"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">4</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">5</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Rapid Fire</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Smoke Launchers" id="0d56-36b2-c796-d2e6" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">One per game, after completing its move, a vehicle with smoke launchers can trigger them (no matter how far it moved), Place some cotton wool around the vehicle to show that it is concealed. The vehicle may not fire in the same turn as it used its smoke launchers, but any penetrating hits scored by the enemy in their next Shooting phase count as glancing hits. After the enemy's next turn, the smoke disperses with no further effect. Note that a vehicle may still use smoke launchers even if it suffers a Crew Shaken or Crew Stunned result.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Sniper Rifle" id="3cbe-c00f-3545-9f41" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">36"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">X</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">6</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1, Sniper, Pinning</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Plasma Gun" id="45fb-35fd-3a93-bc60" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">24"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">7</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">2</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Rapid Fire, Gets Hot!</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Meltagun" id="4771-d658-dd0f-2ccb" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">12"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">8</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">1</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Assault 1, Melta</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Combat Shield" id="574b-cd9f-a341-fa26" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">A combat shield confers a 5+ Invulnerable Save to the bearer in close combat.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Chainfist" id="7226-d535-3f43-b157" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+      <characteristics>
+        <characteristic name="Details" typeId="acf3-d214-6e51-29fe">A Chainfist is treated exactly like a Power Fist, but rolls 2D6 for Armour Penetration against Vehicles.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Demolisher Cannon" id="7894-54a9-6029-a069" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">24"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">10</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">2</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Ordnance 1, Large Blast</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Extra Armour" id="7bef-a5a7-7910-c078" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">A vehicle equipped with extra armour counts Crew Stunned results on the Vehicle Damage table as Crew Shaken instead.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Plasma Cannon" id="91c9-28be-f942-996e" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">36"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">7</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">2</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1, Blast, Gets Hot!</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Hunter-killer Missile" id="94a2-3ab9-3532-a92b" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">Unlimited</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">8</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">3</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Heavy 1, One Shot</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Shotgun" id="98b5-a4bd-0fce-affa" hidden="false" typeId="576561706f6e23232344415441232323" typeName="Weapon">
+      <characteristics>
+        <characteristic name="Range" typeId="52616e676523232344415441232323">12"</characteristic>
+        <characteristic name="Strength" typeId="537472656e67746823232344415441232323">3</characteristic>
+        <characteristic name="AP" typeId="4.1502323234441545e+23">-</characteristic>
+        <characteristic name="Type" typeId="8b10-045a-f593-605e">Assault 2</characteristic>
+        <characteristic name="Info" typeId="33e9-27bd-77e4-401d" />
+      </characteristics>
+    </profile>
+    <profile name="Searchlight" id="b613-8224-ea11-026e" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">Searchlights are only of any use in missions where the Night Fighting mission special rule is in effect. A vehicle equipped with a searchlight, it must still use the Night Fighting rules to pick a target, but firing at that unit will illuminate it with the searchlight. For the rest of the Shooting phase any other friendly unit that fires at the illuminated unit does not need to use the Night Fighting special rule. However, a vehicle that uses a searchlight can be targeted during the following enemy turn as if the Night Fighting rules were not in effect, as the enemy can see the searchlight.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Dozer Blade" id="c8cb-464f-91d4-d5b2" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+      <characteristics>
+        <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">A vehicle equipped with a dozer blade can re-roll a failed Difficult Terrain test as long as it does not move more than 6" that turn.</characteristic>
+      </characteristics>
+    </profile>
     </sharedProfiles>
   <sharedRules>
     <rule name="Rapid Fire" id="b8cf-e92b-ef14-d1e4" hidden="false" publicationId="ad9c-8597-0188-2ba0">
@@ -6112,6 +6432,146 @@ Force is a blessing psychic power that targets the Psyker and his unit. All of t
       <infoLinks />
       <modifiers />
       <description>Models disembarking from Access Points on a building can charge on the turn they do so, even on a turn the building was destroyed.</description>
+    </rule>
+    <rule name="Counter-Attack" id="06c2-8316-1f60-2153" hidden="false">
+      <description>This special rule is automatically lost by an independent character joining a unit that does not have this special rule, and vice versa.
+
+Troops with this skill believe that attack is always the best form of defence. If charged, they will spring forward themselves and counter-attack the enemy. To represent this, unengaged models from a unit that has been charged by the enemy must move up to 6" to get into base-to-base contact with the enemy. Treat the counter-attack as you would an Assault move, so take terrain into account as normal. Models that counter-attack do not receive the +1 attack bonus for charging but will be able to fight with their full complement of attacks. You may not counter0attack if the unit was charged as part of a Consolidation move.</description>
+    </rule>
+    <rule name="Master-crafted" id="55c5-f2b8-a4a7-b734" hidden="false">
+      <description>A master-crafted weapon may re-roll one failed to-hit roll per turn. A master crafted ranged weapon may only re-roll hits for ranged attacks even if the weapon can also be used in close combat (such as pistols).</description>
+    </rule>
+    <rule name="Fleet" id="56d8-9340-2dc6-cd37" hidden="false">
+      <description>This special rule is automatically lost by an independent character joining a unit that does not have this special rule, and vice versa.
+
+There are many variants of this rule: Fleet of Foot, Fleet of Claw, even Fleet of Hoof. Title aside, all models with these abilities are treated similarly. In a turn in which models with this rule do not shoot or use a psychic power that replaces shooting, they can move an additional D6" in the Shooting phase, ignoring penalties for difficult terrain.</description>
+    </rule>
+    <rule name="Night Vision/Acute Senses" id="7113-3723-c835-726b" hidden="false">
+      <description>Warriors in certain parts of the galaxy have developed nocturnal tendencies by fighting in perpetual night, or perhaps carry equipment that gives them such abilities. When the Night Fighting mission special rules are in use, such models may choose to reroll the test to determine how far they can see, but must abide by the new result. Such troops make excellent sentries, and when used in this role, they have a spotting distance equal to double their Initiative rating.
+
+Characters with this rule confer it onto any unit they join, as long as they are part of the unit. Units with this rule confer it onto any characters joining them, as long as they are part of the unit.</description>
+      <alias>Night Vision</alias>
+      <alias>Acute Senses</alias>
+    </rule>
+    <rule name="Stealth" id="744d-4143-694e-f87f" hidden="false">
+      <description>The ability to make maximum use of available cover has saved many a warrior from discovery and death. The unit's Cover Save is improved by +1 if they are in cover.</description>
+    </rule>
+    <rule name="Turbo-Boosters" id="793e-3ba7-feb3-8ad4" hidden="false">
+      <description>This special rule is automatically lost by an independent character joining a unit that does not have this special rule, and vice versa.
+
+Units mounted on bikes and jetbikes may utilise turbo-boosters to move at extreme speed. When using their turbo-boosers they may move up to 24" in the movement phase. Controlling their bike at such speeds takes all their concentration and skill, however, so they may not move through difficult terrain, shoot, launch assaults, or move in the Assault phase in the same turn. In the following enemy shooting phase, treat the bike's Armour Save as being an Invulnerable Save, to represent the difficulty of hitting such fast-moving targets. A unit using turbo-boosters must end its move at least 18" away from its starting position to claim this Invulnerable Save, as it relies on flat-out speed.</description>
+    </rule>
+    <rule name="Hit &amp; Run" id="79a9-ed86-80c5-a94a" hidden="false">
+      <description>This special rule is automatically lost by an independent character joining a unit that does not have this special rule, and vice versa.
+
+Models with this ability may choose to leave close combat. Declare this at the end of the Close Combat phase. The unit using the Hit &amp; Run ability must be involved in combat, and will immediately move 3D6" in a straight line in any direction, ignoring the units they are locked with. This move may not be used to move into contact with any enemy models. The break-off move is automatically successful and is not subject to sweeping advance. The enemy can consolidate normally, however.</description>
+      <alias>Hit and Run</alias>
+    </rule>
+    <rule name="And They Shall Know No Fear" id="8eaf-de62-f965-125b" hidden="false">
+      <description>Space Marines automatically pass Morale tests to regroup, and can take such tests even if the squad has been reduced to less than 50% by casualties, though all other criteria apply. If Space Marines are caught by a sweeping advance, they are not destroyed and will instead continue to fight normally. If this happens, then the unit is subject to the No Retreat! rule in this round of close combat and may therefore lose additional casualties if outnumbered. Usually troops that regroup may not move normally and always count as moving whether they do or not, but these restrictions do not apply to models with this special rule.
+Units that include Servitors and Familiars are still subject to this rule as long as the unit contains at least one Space Marine.
+Space Marines are still subject to Last Man Standing tests. They will always regroup after each Fall Back move to 'reassess' the situation however.</description>
+    </rule>
+    <rule name="Assault Vehicle" id="9b2f-9ece-4171-4f3b" hidden="false">
+      <description>Models disembarking from any access point may launch an assault on the turn they do so.</description>
+    </rule>
+    <rule name="Move Through Cover" id="b24c-f56b-5867-01e7" hidden="false">
+      <description>Some units of infantry are especially adept  at moving through difficult terrain. Accordingly, roll an extra D6 when rolling to move through difficult terrain. In most circumstances this will mean that they roll 3D6 and pick the dice with the highest score.</description>
+    </rule>
+    <rule name="Rending" id="b4f7-137b-d90e-4ac9" hidden="false">
+      <description>Any roll to hit of 6 with a rending weapon automatically causes a wound with no Armour Saving throw allowed. Against a vehicle, any Penetration roll of 6 allows a further D6 to be rolled and the result added to the total score. note that only one extra dice is ever rolled, even if the additional roll is also a 6; no further dice are added.</description>
+    </rule>
+    <rule name="Preferred Enemy" id="b6b9-28e7-4a3f-5334" hidden="false">
+      <description>Some warriors are able to predict the moves of the enemies they are used to fighting. In close combat they have developed special techniques that enable them to counter such enemies more effectively. Such troops will always hit their designated preferred enemy on 3+ in close combat, regardless of the comparative Weapon Skills. This ability will not help when attempting to hit independent characters, monstrous creatures or vehicles without a Weapon Skill characteristic.</description>
+    </rule>
+    <rule name="Tank Hunters" id="bb6f-77dc-26ac-51ab" hidden="false">
+      <description>Tank Hunters are especially skilled at finding and exploiting weaknesses in the armour of enemy vehicles. They add +1 to their Armour Penetration rolls whenever they hit a vehicle (with any weapon), and automatically pass Morale checks caused by Tank Shock</description>
+    </rule>
+    <rule name="Deep Strike" id="bbf5-b1c2-49b0-f3c2" hidden="false">
+      <description>Some units are allowed to enter play via tunnelling, teleportation, flying, or some other extraordinary means. Where this is the case it will be noted in their special rules. Some units always have the option; others only have the option in missions where Deep Strike special rule is in effect. If you wish to use this option then the units in question begin the game in reserve - it does not matter whether the Reserves special rule is in effect for the mission. Roll for arrival of these units as specified in the Reserves rules and then deploy them as follows:
+
+Place one model from the unit anywhere on the table, in the position you would like the unit to arrive, and roll the Scatter dice. If you roll a HIT the model stays where it is, but if an arrow is shown this determines the direction the model is scattered in. If a scatter occurs, roll 2D6" to see how far the model scatters. If the first model scatters off the table the entire unit is destroyed.
+
+All Deep Striking models are arranged around the first model. Models must be placed in base contact with the original model in a circle around it. When the first circle is complete, a further circle should be placed with each model touched the circle inside it. Each circle should include as many models as will fit, and they may be facing in any direction. You may not place models within 1" of any enemy. If you are unable to complete a circle of models without any of them coming within 1" of the enemy, entering impassable terrain, or going off-table, the surplus models are destroyed.
+
+Units arriving via Deep Strike may not move or assault on the turn they arrive. They may shoot as normal, but count as having moved.</description>
+      <alias>Deep Striking</alias>
+    </rule>
+    <rule name="Infiltrate" id="c27d-09d4-6a09-1bcd" hidden="false">
+      <description>This special rule is automatically lost by an independent character joining a unit that does not have this special rule, and vice versa.
+
+In the right circumstances, stealthy troops have the ability to work their way into a forward position on the battlefield. To represent this, units with the Infiltrate ability may set up in accordance with the Infiltrate special rule in any mission that uses this special rule. If the mission does not allow troops to use the Infiltrate rule then the troops in question must set up normally with the rest of the army. The Infiltrate ability does not allow units that would normally be in reserve to deploy on the table. If a unit with this ability is equipped with a transport vehicle, it loses the Infiltrate ability.
+
+Any infiltrators deployed on the table at the start of the game are deployed after all other units. If both sides have infiltrators, toss a coin to determine who goes first and alternate deploying these units. Infiltrators may be set up anywhere on the table that is more than 12" away from an enemy unit, if no deployed enemy unit can draw a line of sight to them. Alternatively, they may be set up anywhere on the table that is more than 18" from an enemy unit, even if they can be seen.</description>
+    </rule>
+    <rule name="Psyker" id="cfa5-875e-3f68-8b2b" hidden="false">
+      <description>In order to use one of his powers, a Psyker must make a Psychic test by rolling equal to or under his Leadership on 2D6. If he fails, then his concentration is broken and he cannot use the power that turn. A pass means the power me be used as described in the special rules for the Psyker in his Codex.
+Unless specified otherwise, psychic abilities are subject to the usual Shooting rules, so the Psyker must be able to see the target, all attacks must be directed against a single target unit, etc. While most psychic powers are used instead of shooting, there are a number of psychic abilities that may take effect in other phases.
+
+If a Psyker rolls a 2 or 12 when making their Psychic test, the Psyker is subject to Perils of the Warp - he suffers one automatic hit at Strength 6 with no saves (of any sort) allowed. Note that on a Psychic test roll of a 2 the psychic power still works, even though the Psyker has been attacked or killed.</description>
+      <alias>psychic power</alias>
+      <alias>psychic test</alias>
+    </rule>
+    <rule name="Furious Charge" id="d9b8-5d21-f44f-80d3" hidden="false">
+      <description>Models with this skill are known for the wild ferocity of their charges. In a player turn in which they charged into close combat they and +1 to both there Initiative and Strength characteristics. This ability does not affect sweeping advances.</description>
+    </rule>
+    <rule name="Fearless" id="db33-1068-512b-6958" hidden="false">
+      <description>Fearless troops never have to fall back and are assumed to automatically pass any morale test they are required to take. They can never be pinned. This special rule is gained by any independent character joining a Fearless unit. Also, as long as a Fearless character stays inside a non-Fearless unit, he loses this special rule.</description>
+    </rule>
+    <rule name="True Grit" id="e516-c268-82d7-433d" hidden="false">
+      <description>Bolters have a 'pistol grip', allowing them to be fired with a single hand. This takes considerable practice and skill and is not normally encouraged. Units noted as having the True Grit skill in their army list, however, have trained how to used their bolters in this manner. In game terms, this means that they may count their bolter as a bolt pistol in close combat, and will therefore be allowed to roll an extra Attack dice as if they have been equipped with an additional pistol or close combat weapon. However, a model using their bolter in this manner does not receive the +1 attack bonus for charging, as a bolter is too unwieldy to be fired with one hand while simultaneously hurling yourself at the enemy. This ability is not usable with combi-weapons of any sort. It is usable with storm bolters, but only by Space Marines of the Grey Knights Chapter for whom this is a long-standing specialisation.</description>
+    </rule>
+    <rule name="Stubborn" id="e74d-09c0-8669-dbfa" hidden="false">
+      <description>Stubborn resistance against impossible odds is a feature of some races. Stubborn models function as Fearless, except that they still have to test for pinning as normal.
+
+This special rule is gained by any independent character joining a Stubborn unit. Characters that are stubborn confer the ability onto any unit that they lead, as long as the character is part of the unit.</description>
+    </rule>
+    <rule name="Scouts" id="ec7c-9e8c-06ac-06b7" hidden="false">
+      <description>This special rule is automatically lost by an independent character joining a unit that does not have this special rule, and vice versa.
+
+Scouts are used to reconnoitre ahead and are always used in the vanguard of the army. To represent this, any Scouts in the army may be deployed as the start of the battle, even in scenarios where they could not normally be deployed. For example, if you are using a mission variant with the Escalation special rule, then your Scouts would set up at the start of the battle instead of being places in reserve. In addition to this rule, after both sides have deployed (including Infiltrators), any Scouts may make a 'free move'. The move happens before rolling to see who goes first. All of the normal Movement rules apply.
+
+This rule does not apply if the Scouts begin the game embarked on a Transport.</description>
+    </rule>
+    <rule name="Feel No Pain" id="f312-bf1e-afd7-0346" hidden="false">
+      <description>Some warriors are so blood-frenzied that they can ignore injuries that would incapacitate even a battle-hardened Space Marine. If a model with this ability loses a wound, roll a dice. On a 1, 2 or 3, take the wound as normal, removing the model if it loses its final wound. On a 4, 5 or 6, the injury is ignored and the model continues fighting. This ability cannot be used against weapons that inflict Instant Death (those with a Strength double or more the model's Toughness) or against close combat weapons that allow no Armour Save (such as power fists, power swords, Dreadnought close combat weapons, rending attacks that roll a 6 to hit, etc).</description>
+    </rule>
+    <rule name="Skilled Rider" id="f5d4-5cda-70b3-469d" hidden="false">
+      <description>The model may re-roll the dice for Dangerous Terrain tests.</description>
+    </rule>
+    <rule name="Combi-weapon" id="0c5f-0c8f-a76b-1245" hidden="false">
+      <description>A model armed with a combi-weapon may choose which of the weapons it is going to use in the Shooting phase. The bolter may be fired any number of time, but the other weapon may only be fired once per battle. Note that you may not choose to fire both weapons at once.</description>
+    </rule>
+    <rule name="Anti-Aircraft Mount" id="257c-c3b6-2c15-0be7" hidden="false">
+      <description>An anti-aircraft mount allows the weapon to shoot at flyers using its normal BS, rather than only hitting on a 6. It allows ordnance and barrage weapons to fire at flyers. For ordnance or barrage weapons roll the Scatter dice, on a 'Hit' result the flyer is is, otherwise the shot misses. Do not roll for scatter.
+
+Weapons fitting in anti-aircraft mounts may not fire at all if the vehicle moved, and preclude the use of any other weapons on the vehicle in the turn that they fired, unless they are fitted to a super heavy vehicle.</description>
+      <alias>AA Mount</alias>
+    </rule>
+    <rule name="Character" id="ff9d-2579-a056-981b" hidden="false" page="50" publicationId="c0d3-c074-f54c-9ec4">
+      <description>Characters follow rules for models of their type.
+All characters have the Move Through Cover and Skilled Rider special rules. This advantage does not extend to vehicles they may be traveling in.
+
+Characters are allowed to move freely around the battlefield and can temporarily join other units. While a character is part of a unit, he must obey the usual Coherency rules until he leaves the unit, as detailed below. The combined unit moves and assaults at the speed of the slowest model while they stay together. In order to join a unit, an independent character simply has to move within the 2" coherency distance of the unit during his Movement phase and be declared as joining that unit. Note that a lone character cannot join another character to create a character unit.
+- An independent character can leave a unit during the Movement phase by moving out of coherence distance with it.
+- An independent character may only join or leave a unit during the Movement phase - once assaults are launched it is too late to join in or duck out!
+- A character may not join or leave a unit while it is falling back - he/she/it must wait until the unit has regrouped.
+- If the unit has been pinned, the character may not leave it until it is no longer pinned.
+When an independent character joins a unit, it might have different special rules from those of the unit. Unless specified in the rule itself (like in the Stubborn special rule), the unit's special rules are not conferred upon the character, and the character's special rules are not conferred upon the unit.
+In some cases, the character or the unit may lose their special rules as a result of the character joining. For example, if a character that does not have the Infiltrate special rule joins of unit of Infiltrators, the unit loses the Infiltrate rule.
+
+Any Leadership tests made by a unit joined by a character are made using the character's Leadership value, if it is superior to the unit's. Remember, if a character is part of a unit that falls back, he may not leave the unit until it regroups. Characters never need to take Last Man Standing tests, as they are used to fighting heroically on their own.
+
+Some characters are able to lead a special retinue, bodyguard, or other HQ unit in battle. If a character is fielded with such a unit, he may not leave them and join another unit while they remain a live. Should the unit be destroyed, the character may once again move between units.
+
+Characters who have joined a unit are considered part of that unit and so may not normally be picked out as targets. Characters that are not part of a unit can only be chosen as targets if they are the closest target to the firing unit. Characters that are Monstrous Creatures can always be picked out as separate targets unless they have joined a unit of monstrous creatures or a unit with special rules that offer them protection, such as the Tyranid Tyrant Guard.
+
+All characters shoot just like ordinary troopers, although in many cases they will have better Ballistic Skills or exotic weaponry that sets them apart. Where this is the case, either roll for them separately or use different coloured dice to differentiate their shooting. Characters must still fire at the same target as any unit they are with.
+
+If a unit including a character charges into close combat, the character must charge too. A character on his own can charge into close combat if within range of the enemy in the Assault phase.
+Characters are treated as a separate unit when resolving close combats, following the normal rules for multiple combats. This means that they MUST be in base-to-base contact with an enemy model in order to fight, and may not make attacks for being within 2" of another friendly model. If the unit they have joined is locked in combat with the enemy, the character is locked with them. However, wounds suffered by a unit never carry over onto a character that joined them.
+This also means that only the enemy models that are engaged with the character may allocate their attacks against it and can be hurt by its attacks.</description>
+      <alias>Independent Character</alias>
     </rule>
     </sharedRules>
   <sharedSelectionEntries>
@@ -16972,6 +17432,406 @@ Each projected void shield has an Armour Value of 12. A glancing or penetrating 
       <costs>
         <cost name="Points" value="0.0" typeId="6f18-a8fc-2c5b-9517" />
       </costs>
+    </selectionEntry>
+    <selectionEntry name="Anti-Aircraft Mount" id="022e-1119-c5c0-8414" hidden="false" import="true" type="upgrade">
+      <constraints>
+        <constraint id="713d-5833-9063-9d0a" automatic="true" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+      </constraints>
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="10" />
+      </costs>
+      <infoLinks>
+        <infoLink name="Anti-Aircraft Mount" id="799c-d798-0613-337f" hidden="false" targetId="257c-c3b6-2c15-0be7" type="rule" />
+      </infoLinks>
+      <modifiers>
+        <modifier affects="profiles.Weapon" field="8b10-045a-f593-605e" join=", " scope="parent" type="append" value="AA Mount" />
+      </modifiers>
+    </selectionEntry>
+  <selectionEntry name="Multi-melta" id="0e43-0f25-d320-8e55" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Multi-melta" id="3830-4c1a-770e-69e1" hidden="false" targetId="1b9f-dc29-44a8-9237" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Combi-flamer" id="1738-0373-fa71-f97b" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Bolter" id="a34b-a269-c08b-f838" hidden="false" targetId="fa34-07ff-1a5d-fe9f" type="profile" />
+        <infoLink name="Flamer" id="eb7d-719f-eb47-d433" hidden="false" targetId="e329-1729-419b-2bb6" type="profile">
+          <modifiers>
+            <modifier affects="profiles.Weapon" field="8b10-045a-f593-605e" join=", " type="append" value="One Shot" />
+          </modifiers>
+        </infoLink>
+        <infoLink name="Combi-weapon" id="0ca0-6139-4f75-a6e9" hidden="false" targetId="0c5f-0c8f-a76b-1245" type="rule" />
+      </infoLinks>
+      <modifiers>
+        <modifier affects="profiles.Weapon" field="name" join=" - " type="prepend" value="Combi-flamer" />
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry name="Storm Bolter" id="1ed7-654d-07b2-1121" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Storm Bolter" id="83af-483d-e0c9-7122" hidden="false" targetId="d5e9-6e7d-416d-6b6a" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Bolter" id="1fcb-2c8e-4cc2-c033" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Bolter" id="4b38-2e8d-47fe-45a8" hidden="false" targetId="fa34-07ff-1a5d-fe9f" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Dreadnought close combat weapon" id="271b-32b1-d9ab-6fae" hidden="false" import="true" type="upgrade">
+      <modifiers>
+        <modifier affects="profiles.Walker" field="c10b-81fc-f48d-cb9c" scope="parent" type="append" value="(10)" />
+        <modifier affects="profiles.Walker" arg="(10) (10)" field="c10b-81fc-f48d-cb9c" scope="parent" type="replace" value="(10)" />
+      </modifiers>
+      <profiles>
+        <profile name="Dreadnought close combat weapon" id="6eff-6aa7-a3a5-34d3" hidden="false" typeId="b729-49a4-4123-cf00" typeName="Melee Weapon">
+          <characteristics>
+            <characteristic name="Details" typeId="acf3-d214-6e51-29fe">A dreadnought close combat weapon doubles the walker's Strength in close combat (to a maximum of 10) and ignores Armour Saving throws. A Dreadnought armed with two close combat weapons gains an extra Attack. If one of the weapons is destroyed, the bonus attack is lost. Further Weapon Destroyed results do not affect the walker's Attacks characteristic, but will prevent it gaining the benefits of Dreadnought close combat weapons if that weapon is destroyed (so, the walker will fight at its base Strength, and wounded enemies will be allowed to take their Armour Saves).</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry name="Frag Grenades" id="2d20-fb36-3564-0dbe" hidden="false" import="true" type="upgrade">
+      <constraints>
+        <constraint id="87d4-9645-16c0-1898" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+      </constraints>
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="0" />
+      </costs>
+      <profiles>
+        <profile name="Frag Grenades" id="03d9-ffef-c80f-5272" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+          <characteristics>
+            <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">Models armed with frag grenades that are charging an enemy in or behind cover fight with Initiative 10, so they strike blows simultaneously with the defenders.
+Against vehicles, frag grenades roll D6+4 for armour penetration.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry name="Plasma Gun" id="31e2-9687-ef98-263e" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Plasma Gun" id="23d9-1386-5c5f-5292" hidden="false" targetId="45fb-35fd-3a93-bc60" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Lascannon" id="3790-c6ab-c5e5-9f0b" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Lascannon" id="1e67-49dc-5367-5789" hidden="false" targetId="a985-b7e4-1396-ce64" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Flamer" id="4036-58f6-4c1e-1965" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Flamer" id="527a-4dae-12fe-ce35" hidden="false" targetId="e329-1729-419b-2bb6" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Tech Servitor" id="4095-6c0a-07cd-25ee" hidden="false" import="true" type="model">
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="10" />
+      </costs>
+      <entryLinks>
+        <entryLink name="Close Combat Weapon" id="e337-30b5-5418-39b6" hidden="false" import="true" targetId="a936-e00e-833c-89aa" type="selectionEntry">
+          <constraints>
+            <constraint id="cd7b-80d2-dc9f-c1a3-min" field="selections" includeChildSelections="false" scope="parent" shared="true" type="min" value="1" />
+            <constraint id="cd7b-80d2-dc9f-c1a3-max" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <profiles>
+        <profile name="Tech Servitor" id="26e7-b761-2c45-98ef" hidden="false" typeId="556e697423232344415441232323" typeName="Unit">
+          <characteristics>
+            <characteristic name="Unit Type" typeId="556e6974205479706523232344415441232323">Infantry</characteristic>
+            <characteristic name="WS" typeId="5.753232323444154e+23">3</characteristic>
+            <characteristic name="BS" typeId="4.2532323234441546e+23">3</characteristic>
+            <characteristic name="S" typeId="5.323232344415441e+21">3</characteristic>
+            <characteristic name="T" typeId="5.423232344415441e+21">3</characteristic>
+            <characteristic name="W" typeId="5.723232344415441e+21">1</characteristic>
+            <characteristic name="I" typeId="4.923232344415441e+21">3</characteristic>
+            <characteristic name="A" typeId="4.123232344415441e+21">1</characteristic>
+            <characteristic name="LD" typeId="4c4423232344415441232323">8</characteristic>
+            <characteristic name="Sv" typeId="5.361766523232344e+27">5+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry name="Sniper Rifle" id="41a4-2ccc-b269-fa51" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Sniper Rifle" id="34d8-66ce-2fa3-655c" hidden="false" targetId="3cbe-c00f-3545-9f41" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Combi-melta" id="41b7-2235-bd40-76d3" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Bolter" id="67b9-a4e2-7d2e-148c" hidden="false" targetId="fa34-07ff-1a5d-fe9f" type="profile" />
+        <infoLink name="Meltagun" id="b97f-7570-c4a7-8a14" hidden="false" targetId="4771-d658-dd0f-2ccb" type="profile">
+          <modifiers>
+            <modifier affects="profiles.Weapon" field="8b10-045a-f593-605e" join=", " type="append" value="One Shot" />
+          </modifiers>
+        </infoLink>
+        <infoLink name="Combi-weapon" id="53bf-e1b5-ccbf-2ba6" hidden="false" targetId="0c5f-0c8f-a76b-1245" type="rule" />
+      </infoLinks>
+      <modifiers>
+        <modifier affects="profiles.Weapon" field="name" join=" - " type="prepend" value="Combi-melta" />
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry name="Plasma Pistol" id="43f8-0d25-b271-4d6c" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Plasma Pistol" id="ac6a-8fe8-b2ee-93fa" hidden="false" targetId="00e2-6e56-5dfe-e202" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Shotgun" id="477b-10b1-2505-2525" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Shotgun" id="481d-269c-2f0c-a46b" hidden="false" targetId="98b5-a4bd-0fce-affa" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Smoke Launchers" id="4aad-7fe7-9acb-1ad4" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Smoke Launchers" id="45cb-566a-604a-5460" hidden="false" targetId="0d56-36b2-c796-d2e6" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Thunder Hammer" id="4ce1-2ed4-e3fd-0cb2" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Thunder Hammer" id="5f5c-6610-636c-7294" hidden="false" targetId="d847-93ef-b880-0cc8" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Power Fist" id="57ca-c59f-1fa9-e1b5" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Power Fist" id="3ef5-d826-43fc-1a1f" hidden="false" targetId="180c-c683-5834-19cc" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Meltagun" id="58bb-9069-868e-4a79" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Meltagun" id="ba43-14d0-f329-2f28" hidden="false" targetId="4771-d658-dd0f-2ccb" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Demolisher Cannon" id="5aa6-c70b-fb43-b739" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Demolisher Cannon" id="889e-0361-61e6-b9a9" hidden="false" targetId="7894-54a9-6029-a069" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Heavy Flamer" id="681f-43e9-f3d6-73e0" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Heavy Flamer" id="e2c5-d6fc-6cbd-aa51" hidden="false" targetId="e21b-79a4-8ddd-8617" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Lightning Claw" id="6b1a-3431-7f5b-300d" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Lightning Claw" id="79e8-394b-73f7-7f3d" hidden="false" targetId="5d6f-948a-8857-ed26" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Extra Armour" id="7b24-f9b1-5eb5-8bbd" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Extra Armour" id="f2c6-355d-3333-f2ad" hidden="false" targetId="7bef-a5a7-7910-c078" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Combat Shield" id="7f9c-fe6e-9acb-7e6d" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Combat Shield" id="f5cb-2453-a22f-d185" hidden="false" targetId="574b-cd9f-a341-fa26" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Heavy Bolter" id="8303-6167-50de-5177" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Heavy Bolter" id="fd33-fa6a-6f68-17f0" hidden="false" targetId="0e61-328d-62cd-8b59" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Storm Shield" id="8380-823e-3be1-0a52" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Storm Shield" id="4712-2a73-4061-f2b4" hidden="false" targetId="1b55-f520-4b9a-c7e7" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Autocannon" id="86a2-0312-b8a2-646e" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Autocannon" id="18ca-59f8-b9db-3f02" hidden="false" targetId="7d29-c50b-9499-c31b" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Assault Cannon" id="958c-db25-e5af-3db5" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Assault Cannon" id="959d-6309-5fb6-a8a3" hidden="false" targetId="d4c2-a3d4-540a-5585" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Dozer Blade" id="99b1-d567-bb76-a744" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Dozer Blade" id="4072-a6cd-2b47-6853" hidden="false" targetId="c8cb-464f-91d4-d5b2" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Combi-plasma" id="a177-d140-7d8c-4d42" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Plasma Gun" id="b751-55b0-312c-96d5" hidden="false" targetId="45fb-35fd-3a93-bc60" type="profile">
+          <modifiers>
+            <modifier affects="profiles.Weapon" field="8b10-045a-f593-605e" join=", " type="append" value="One Shot" />
+          </modifiers>
+        </infoLink>
+        <infoLink name="Bolter" id="0dbc-dad3-e73e-48cd" hidden="false" targetId="fa34-07ff-1a5d-fe9f" type="profile" />
+        <infoLink name="Combi-weapon" id="d02a-c3fe-87fd-84bb" hidden="false" targetId="0c5f-0c8f-a76b-1245" type="rule" />
+      </infoLinks>
+      <modifiers>
+        <modifier affects="profiles.Weapon" field="name" join=" - " type="prepend" value="Combi-plasma" />
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry name="Melta Bombs" id="a1bb-d7bf-d627-b59f" hidden="false" import="true" type="upgrade">
+      <constraints>
+        <constraint id="a36e-b3be-4080-1373" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+      </constraints>
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="0" />
+      </costs>
+      <profiles>
+        <profile name="Melta Bombs" id="966b-eeda-876f-1104" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+          <characteristics>
+            <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">Melta bombs are used offensively against vehicles, rolling 2D6+8 for armour penetration.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry name="Close Combat Weapon" id="a936-e00e-833c-89aa" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Close Combat Weapon" id="dee0-7d23-8526-bee2" hidden="false" targetId="7b3d-1932-99ef-f5c8" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Power Weapon" id="b28f-478a-74fb-ec87" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Power Weapon" id="c608-40d7-da6f-6400" hidden="false" targetId="793f-3d45-00ad-58d2" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Bolt Pistol" id="b4d3-5dc3-8317-362c" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Bolt Pistol" id="6533-e935-affc-5af0" hidden="false" targetId="d2c2-d25d-9a03-afc4" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Gun Servitor" id="ba0d-c0d5-5228-2ee8" hidden="false" import="true" type="model">
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="10" />
+      </costs>
+      <profiles>
+        <profile name="Gun Servitor" id="6df0-b3e8-a591-8c1c" hidden="false" typeId="556e697423232344415441232323" typeName="Unit">
+          <characteristics>
+            <characteristic name="Unit Type" typeId="556e6974205479706523232344415441232323">Infantry</characteristic>
+            <characteristic name="WS" typeId="5.753232323444154e+23">3</characteristic>
+            <characteristic name="BS" typeId="4.2532323234441546e+23">4</characteristic>
+            <characteristic name="S" typeId="5.323232344415441e+21">3</characteristic>
+            <characteristic name="T" typeId="5.423232344415441e+21">3</characteristic>
+            <characteristic name="W" typeId="5.723232344415441e+21">1</characteristic>
+            <characteristic name="I" typeId="4.923232344415441e+21">3</characteristic>
+            <characteristic name="A" typeId="4.123232344415441e+21">1</characteristic>
+            <characteristic name="LD" typeId="4c4423232344415441232323">8</characteristic>
+            <characteristic name="Sv" typeId="5.361766523232344e+27">4+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Weapon" id="0250-45f1-de7b-3d7e" flatten="true" hidden="false">
+          <constraints>
+            <constraint id="9c93-d46e-1a14-6bd4-min" automatic="true" field="selections" includeChildSelections="false" scope="parent" shared="true" type="min" value="1" />
+            <constraint id="9c93-d46e-1a14-6bd4-max" automatic="true" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+          </constraints>
+          <entryLinks>
+            <entryLink name="Heavy Bolter" id="1b9c-36a1-b5cb-134f" hidden="false" import="true" targetId="8303-6167-50de-5177" type="selectionEntry">
+              <constraints>
+                <constraint id="a0d1-6d57-e835-f5e9" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+              </constraints>
+              <costs>
+                <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="15" />
+              </costs>
+            </entryLink>
+            <entryLink name="Multi-melta" id="8d91-bbc8-6141-c3d2" hidden="false" import="true" targetId="0e43-0f25-d320-8e55" type="selectionEntry">
+              <constraints>
+                <constraint id="fa20-a11c-59cc-35e8" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+              </constraints>
+              <costs>
+                <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="25" />
+              </costs>
+            </entryLink>
+            <entryLink name="Plasma Cannon" id="eb28-0152-c569-fa81" hidden="false" import="true" targetId="dafc-5431-7eff-6557" type="selectionEntry">
+              <constraints>
+                <constraint id="c2ce-a87d-ff5b-ff3a" field="selections" includeChildSelections="true" scope="root-entry" shared="true" type="max" value="1" />
+              </constraints>
+              <costs>
+                <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="35" />
+              </costs>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntry>
+    <selectionEntry name="Force Weapon" id="bede-9886-e7e7-1175" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Force Weapon" id="9a4b-f4fc-2e00-8c2c" hidden="false" targetId="29ac-7e83-0ba0-5fd3" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Plasma Cannon" id="dafc-5431-7eff-6557" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Plasma Cannon" id="f756-ec11-b57b-81d5" hidden="false" targetId="91c9-28be-f942-996e" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Combat Servitor" id="ee0b-807f-0ab6-d42f" hidden="false" import="true" type="model">
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="25" />
+      </costs>
+      <entryLinks>
+        <entryLink name="Close Combat Weapon" id="cdd4-cd90-7953-5cd5" hidden="false" import="true" targetId="a936-e00e-833c-89aa" type="selectionEntry">
+          <constraints>
+            <constraint id="1d90-178f-26d8-e2c7-min" field="selections" includeChildSelections="false" scope="parent" shared="true" type="min" value="1" />
+            <constraint id="1d90-178f-26d8-e2c7-max" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+          </constraints>
+        </entryLink>
+        <entryLink name="Power Fist" id="a6e6-4d5e-b08f-47bd" hidden="false" import="true" targetId="57ca-c59f-1fa9-e1b5" type="selectionEntry">
+          <constraints>
+            <constraint id="a623-d916-ae4f-b5f2-min" field="selections" includeChildSelections="false" scope="parent" shared="true" type="min" value="1" />
+            <constraint id="a623-d916-ae4f-b5f2-max" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <profiles>
+        <profile name="Combat Servitor" id="ee6e-02a2-6378-e89b" hidden="false" typeId="556e697423232344415441232323" typeName="Unit">
+          <characteristics>
+            <characteristic name="Unit Type" typeId="556e6974205479706523232344415441232323">Infantry</characteristic>
+            <characteristic name="WS" typeId="5.753232323444154e+23">4</characteristic>
+            <characteristic name="BS" typeId="4.2532323234441546e+23">3</characteristic>
+            <characteristic name="S" typeId="5.323232344415441e+21">3</characteristic>
+            <characteristic name="T" typeId="5.423232344415441e+21">3</characteristic>
+            <characteristic name="W" typeId="5.723232344415441e+21">1</characteristic>
+            <characteristic name="I" typeId="4.923232344415441e+21">3</characteristic>
+            <characteristic name="A" typeId="4.123232344415441e+21">1</characteristic>
+            <characteristic name="LD" typeId="4c4423232344415441232323">8</characteristic>
+            <characteristic name="Sv" typeId="5.361766523232344e+27">3+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry name="Power of the Machine Spirit" id="f0dd-db2d-3fc8-f8b7" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Power of the Machine Spirit" id="e68a-f777-8467-de0c" hidden="false" targetId="8ed3-8d46-33de-8edb" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Krak Grenades" id="f95f-36b5-33b7-c0f3" hidden="false" import="true" type="upgrade">
+      <constraints>
+        <constraint id="3a8a-6839-b4ec-bd8b" field="selections" includeChildSelections="false" scope="parent" shared="true" type="max" value="1" />
+      </constraints>
+      <costs>
+        <cost name="Points" typeId="6f18-a8fc-2c5b-9517" value="0" />
+      </costs>
+      <profiles>
+        <profile name="Krak Grenades" id="433d-b280-086f-a17b" hidden="false" typeId="57617267656172204974656d23232344415441232323" typeName="Wargear">
+          <characteristics>
+            <characteristic name="Description" typeId="4465736372697074696f6e23232344415441232323">Krak grenades are used offensively against vehicles, rolling D6+6 for armour penetration.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry name="Searchlight" id="f9e5-52e8-1300-2a4a" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Searchlight" id="a119-e126-03af-dd08" hidden="false" targetId="b613-8224-ea11-026e" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Missile Launcher" id="fbc2-9198-981d-6d4c" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Missile Launcher (Frag)" id="39ff-1ff0-efd7-e9d2" hidden="false" targetId="2774-242b-9be0-90f2" type="profile" />
+        <infoLink name="Missile Launcher (Krak)" id="dd20-d448-cde7-332b" hidden="false" targetId="db43-c0ed-46f2-39ab" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Chainfist" id="fe39-28ae-f570-e2f5" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Chainfist" id="9ff4-3ef4-fd55-70cc" hidden="false" targetId="7226-d535-3f43-b157" type="profile" />
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry name="Hunter-killer Missile" id="ff72-89fa-37d7-07a2" hidden="false" import="true" type="upgrade">
+      <infoLinks>
+        <infoLink name="Hunter-killer Missile" id="3d2e-d9f5-aeab-60f4" hidden="false" targetId="94a2-3ab9-3532-a92b" type="profile" />
+      </infoLinks>
     </selectionEntry>
     </sharedSelectionEntries>
 <sharedSelectionEntryGroups><selectionEntryGroup name="Special Bolter Ammo" id="d1ae-412e-11af-2265" collective="false" hidden="false" import="true">

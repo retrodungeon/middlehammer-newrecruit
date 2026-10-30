@@ -12,8 +12,8 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 
 | Faction | Army List options | Options |
 |---|---:|---|
-| **Space Marines** | 12 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>5th Ed – Codex: Space Marines (2008)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
-| **Blood Angels** | 4 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
+| **Space Marines** | 13 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
+| **Blood Angels** | 5 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>4th Ed – Codex: Blood Angels (White Dwarf 2007)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
 | **Dark Angels** | 4 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015)<br>7th Ed – Fallen Angels (supplement) |
 | **Space Wolves** | 4 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003)<br>5th Ed – Codex: Space Wolves (2009)<br>7th Ed – Codex: Space Wolves (2014) |
 | **Deathwatch** | 1 | 7th Ed – Codex: Deathwatch (2016) |
@@ -27,7 +27,7 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 | **Dark Eldar** | 5 | 3rd Ed – Codex: Dark Eldar (2001)<br>3rd Ed – Dark Eldar Wych Cult (2001)<br>5th Ed – Codex: Dark Eldar (2010)<br>7th Ed – Codex: Dark Eldar (2014)<br>7th Ed – Haemonculus Covens (supplement) |
 | **Harlequins** | 2 | 3rd Ed – Harlequins (2000)<br>7th Ed – Codex: Harlequins (2015) |
 | **Orks** | 5 | 3rd Ed – Codex: Orks (1999)<br>3rd Ed – Feral Orks (Chapter Approved 2004)<br>3rd Ed – Speed Freeks (Armageddon 2000)<br>4th Ed – Codex: Orks (2008)<br>7th Ed – Codex: Orks (2014) |
-| **Tyranids** | 4 | 3rd Ed – Codex: Tyranids (2001)<br>3rd Ed – Tyranid Seeding Swarm (Chapter Approved 2003)<br>5th Ed – Codex: Tyranids (2010)<br>6th Ed – Codex: Tyranids (2014) |
+| **Tyranids** | 5 | 3rd Ed – Codex: Tyranids (2001)<br>3rd Ed – Tyranid Seeding Swarm (Chapter Approved 2003)<br>4th Ed – Codex: Tyranids (2005)<br>5th Ed – Codex: Tyranids (2010)<br>6th Ed – Codex: Tyranids (2014) |
 | **Genestealer Cults** | 2 | 3rd Ed – Genestealer Cults (Citadel Journal 40)<br>7th Ed – Codex: Genestealer Cults (2016) |
 | **Necrons** | 4 | 3rd Ed – Codex: Necrons (2002)<br>5th Ed – Codex: Necrons (2011)<br>7th Ed – Codex: Necrons (2015)<br>7th Ed – Forge World: Dark Harvest |
 | **Tau Empire** | 3 | 3rd Ed – Codex: Tau (2001)<br>4th Ed – Codex: Tau Empire (2005)<br>7th Ed – Codex: Tau Empire (2015) |
@@ -55,7 +55,17 @@ Source: KSnyder1986/Warhammer-40k-3rd-Edition. Excluded as homebrew/unofficial: 
 
 The 5th Edition source includes seven 4th Edition codexes that were still current during 5th Edition (Black Templars 2005, Tau Empire 2005, Eldar 2006, Chaos Space Marines 2007, Dark Angels 2007, Chaos Daemons 2008, Orks 2008). They are converted from that source and labelled "4th Ed".
 
-Not started: the 4th Edition source (Kothra/Warhammer-40-000-4th-Edition-for-NewRecruit, 13 catalogues). Most of its codexes are the same books as above, so only books not already covered should be added (e.g. its Space Marines 2004, Blood Angels/Dark Angels/Space Wolves variants, Tyranids 2005), after comparing the two sources for the overlapping books.
+Source: Kothra/Warhammer-40-000-4th-Edition-for-NewRecruit (pinned), converted by `tools/convert_4e_catalogues.py`. Only the books no other source provides are converted:
+
+| Source catalogue | Book | Result |
+|---|---|---|
+| Space Marines (4E) | Codex: Space Marines (2004) | Converted. Forge World switch always on; chapter-specific characters (Calgar, Tigurius, Cassius, Shrike, Lysander, Tyrannic War Veterans) appear when their chapter is chosen, as in the source |
+| Tyranids (4E) | Codex: Tyranids (2005) | Converted |
+| Blood Angels (4E) | Codex: Blood Angels (White Dwarf 2007) | Converted. The source names no publication; the label needs confirming |
+| Black Templars, Chaos Daemons, Chaos Space Marines, Dark Angels, Eldar, Orks, Tau Empire (4E) | — | Not converted: the same books come from the 5th Edition source |
+| Blood Angels, Dark Angels, Space Wolves (3E) | — | Not converted: 3rd Edition books, which come from the 3rd Edition source |
+
+Source fixes: conditions that point at entries of other 4th Edition books (left over from copying entries between catalogues) can never be true inside one book and are removed.
 
 ## 5th Edition source — 16 converted, 6 skipped
 
