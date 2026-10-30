@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="12" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="13" type="gameSystem">
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
@@ -80,7 +80,7 @@
       </infoLinks>
     </categoryEntry>
     <categoryEntry name="Blood Angel" id="e39c-0852-74f1-402d" hidden="false" />
-    </categoryEntries>
+    <categoryEntry name="Era: 3rd-5th Edition" id="mh-era-3-5" hidden="false" /><categoryEntry name="Era: 6th-7th Edition" id="mh-era-6-7" hidden="false" /></categoryEntries>
   <costTypes>
     <costType name="Points" id="6f18-a8fc-2c5b-9517" defaultCostLimit="2000" />
   </costTypes>

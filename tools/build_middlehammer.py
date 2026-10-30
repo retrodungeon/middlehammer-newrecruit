@@ -21,7 +21,7 @@ from convert_3e_catalogues import convert_3e  # noqa: E402
 from convert_4e_catalogues import convert_4e  # noqa: E402
 from convert_5e_catalogues import convert_5e  # noqa: E402
 from convert_7e_catalogues import convert_7e  # noqa: E402
-from merge_factions import build_factions     # noqa: E402
+from merge_factions import build_factions, ensure_era_categories  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "upstream-cache"
@@ -82,6 +82,7 @@ def main():
     for _, t, e in convert_7e(seventh, gst, report).values():
         members[(7, e["sourceName"])] = t.getroot()
     factions = build_factions(members, MH_SYSTEM_ID, report)
+    ensure_era_categories(gst)
 
     gst_changed = digest(gst) != before
     gst.set("revision", str(int(gst.get("revision")) + (1 if gst_changed else 0)))
