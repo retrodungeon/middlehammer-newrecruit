@@ -12,19 +12,19 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 
 | Faction | Army List options | Options |
 |---|---:|---|
-| **Space Marines** | 11 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>5th Ed – Codex: Space Marines (2008)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab) |
+| **Space Marines** | 12 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>5th Ed – Codex: Space Marines (2008)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
 | **Blood Angels** | 4 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
-| **Dark Angels** | 3 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015) |
+| **Dark Angels** | 4 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015)<br>7th Ed – Fallen Angels (supplement) |
 | **Space Wolves** | 4 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003)<br>5th Ed – Codex: Space Wolves (2009)<br>7th Ed – Codex: Space Wolves (2014) |
 | **Deathwatch** | 1 | 7th Ed – Codex: Deathwatch (2016) |
 | **Black Templars** | 2 | 3rd Ed – Codex: Black Templars (2000)<br>4th Ed – Codex: Black Templars (2005) |
-| **Imperial Guard** | 24 | 3rd Ed – Codex: Imperial Guard (1999)<br>3rd Ed – Deathworld Veterans (2000)<br>3rd Ed – Catachan (2000)<br>3rd Ed – Armageddon Ork Hunters (Chapter Approved 2003)<br>3rd Ed – Tanith First and Only (Chapter Approved 2003)<br>3rd Ed – Cityfighting Imperial Guard (Chapter Approved 2003)<br>3rd Ed – Planetary Defence Regiment (Armageddon 2000)<br>3rd Ed – Steel Legion Mechanised Infantry (Armageddon 2000)<br>3rd Ed – Death Korps of Krieg (Chapter Approved 2003)<br>3rd Ed – Elysian Drop Troops (Chapter Approved 2003)<br>3rd Ed – Armoured Company (Chapter Approved 2001)<br>3rd Ed – Cadian Shock Troops (Eye of Terror 2003)<br>3rd Ed – Salvar Chem-Dogs (Chapter Approved 2003)<br>3rd Ed – Codex: Imperial Guard (2003)<br>3rd Ed – Imperial Guard Armoured Company (Chapter Approved 2004)<br>3rd Ed – Armoured Battle Group (IA 2003)<br>5th Ed – Codex: Imperial Guard (2009)<br>6th Ed – Codex: Astra Militarum (2014)<br>6th Ed – Codex: Militarum Tempestus (2014)<br>7th Ed – Forge World: Armoured Battle Group<br>7th Ed – Forge World: Death Korps of Krieg Assault Brigade<br>7th Ed – Forge World: Death Korps of Krieg Siege Regiment<br>7th Ed – Forge World: Elysian Drop Troops<br>7th Ed – Forge World: Elysian Detachment D-99 |
+| **Imperial Guard** | 26 | 3rd Ed – Codex: Imperial Guard (1999)<br>3rd Ed – Deathworld Veterans (2000)<br>3rd Ed – Catachan (2000)<br>3rd Ed – Armageddon Ork Hunters (Chapter Approved 2003)<br>3rd Ed – Tanith First and Only (Chapter Approved 2003)<br>3rd Ed – Cityfighting Imperial Guard (Chapter Approved 2003)<br>3rd Ed – Planetary Defence Regiment (Armageddon 2000)<br>3rd Ed – Steel Legion Mechanised Infantry (Armageddon 2000)<br>3rd Ed – Death Korps of Krieg (Chapter Approved 2003)<br>3rd Ed – Elysian Drop Troops (Chapter Approved 2003)<br>3rd Ed – Armoured Company (Chapter Approved 2001)<br>3rd Ed – Cadian Shock Troops (Eye of Terror 2003)<br>3rd Ed – Salvar Chem-Dogs (Chapter Approved 2003)<br>3rd Ed – Codex: Imperial Guard (2003)<br>3rd Ed – Imperial Guard Armoured Company (Chapter Approved 2004)<br>3rd Ed – Armoured Battle Group (IA 2003)<br>5th Ed – Codex: Imperial Guard (2009)<br>6th Ed – Codex: Astra Militarum (2014)<br>6th Ed – Codex: Militarum Tempestus (2014)<br>7th Ed – Forge World: Armoured Battle Group<br>7th Ed – Forge World: Death Korps of Krieg Assault Brigade<br>7th Ed – Forge World: Death Korps of Krieg Siege Regiment<br>7th Ed – Forge World: Elysian Drop Troops<br>7th Ed – Forge World: Elysian Detachment D-99<br>7th Ed – Adeptus Astra Telepathica<br>7th Ed – Aeronautica Imperialis |
 | **Chaos Space Marines** | 5 | 3rd Ed – Codex: Chaos Space Marines (1999)<br>3rd Ed – Codex: Chaos Space Marines (2002)<br>4th Ed – Codex: Chaos Space Marines (2007)<br>7th Ed – Codex: Chaos Space Marines (2015)<br>7th Ed – Codex: Khorne Daemonkin (2015) |
 | **Chaos Daemons** | 2 | 4th Ed – Codex: Chaos Daemons (2008)<br>7th Ed – Codex: Chaos Daemons (2015) |
 | **Renegades & Heretics** | 2 | 3rd Ed – Lost and the Damned (Eye of Terror 2003)<br>7th Ed – Forge World: Renegades & Heretics |
 | **Eldar** | 10 | 3rd Ed – Codex: Eldar (2000)<br>3rd Ed – Biel-Tan Swordwind Army (2000)<br>3rd Ed – Saim-Hann Wild Rider Host (2000)<br>3rd Ed – Rangers of Alaitoc (2000)<br>3rd Ed – Ulthwe The Damned (2000)<br>3rd Ed – Ulthwe Strike Force (Eye of Terror 2003)<br>3rd Ed – Iyanden Ghost Warriors (2000)<br>4th Ed – Codex: Eldar (2006)<br>7th Ed – Codex: Craftworlds (2015)<br>7th Ed – Forge World: Eldar Corsairs |
 | **Ynnari** | 1 | 7th Ed – Ynnari (Gathering Storm: Fracture of Biel-Tan) |
-| **Dark Eldar** | 4 | 3rd Ed – Codex: Dark Eldar (2001)<br>3rd Ed – Dark Eldar Wych Cult (2001)<br>5th Ed – Codex: Dark Eldar (2010)<br>7th Ed – Codex: Dark Eldar (2014) |
+| **Dark Eldar** | 5 | 3rd Ed – Codex: Dark Eldar (2001)<br>3rd Ed – Dark Eldar Wych Cult (2001)<br>5th Ed – Codex: Dark Eldar (2010)<br>7th Ed – Codex: Dark Eldar (2014)<br>7th Ed – Haemonculus Covens (supplement) |
 | **Harlequins** | 2 | 3rd Ed – Harlequins (2000)<br>7th Ed – Codex: Harlequins (2015) |
 | **Orks** | 5 | 3rd Ed – Codex: Orks (1999)<br>3rd Ed – Feral Orks (Chapter Approved 2004)<br>3rd Ed – Speed Freeks (Armageddon 2000)<br>4th Ed – Codex: Orks (2008)<br>7th Ed – Codex: Orks (2014) |
 | **Tyranids** | 4 | 3rd Ed – Codex: Tyranids (2001)<br>3rd Ed – Tyranid Seeding Swarm (Chapter Approved 2003)<br>5th Ed – Codex: Tyranids (2010)<br>6th Ed – Codex: Tyranids (2014) |
@@ -35,11 +35,13 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 | **Sisters of Battle** | 4 | 3rd Ed – Codex: Witch Hunters (2003)<br>3rd Ed – Sisters of Battle (Chapter Approved 2001)<br>5th Ed – Codex: Sisters of Battle (White Dwarf 2011)<br>7th Ed – Codex: Adepta Sororitas |
 | **Grey Knights** | 3 | 3rd Ed – Codex: Daemon Hunters (2003)<br>5th Ed – Codex: Grey Knights (2011)<br>7th Ed – Codex: Grey Knights (2014) |
 | **Adeptus Mechanicus** | 2 | 7th Ed – Codex: Skitarii (2015)<br>7th Ed – Codex: Cult Mechanicus (2015) |
-| **Adeptus Custodes** | 1 | 7th Ed – Adeptus Custodes (dataslate) |
-| **Assassins** | 1 | 3rd Ed – Codex Assassins (1999) |
+| **Adeptus Custodes** | 2 | 7th Ed – Adeptus Custodes (dataslate)<br>7th Ed – Sisters of Silence (dataslate) |
+| **Imperial Knights** | 2 | 7th Ed – Codex: Imperial Knights (2015)<br>7th Ed – Renegade Knights |
+| **Inquisition** | 1 | 7th Ed – Inquisition (Codex: Inquisition, Imperial Agents) |
+| **Assassins** | 2 | 3rd Ed – Codex Assassins (1999)<br>7th Ed – Officio Assassinorum |
 | **Adeptus Arbites** | 1 | 3rd Ed – Adeptus Arbites (Citadel Journal 29) |
 
-Faction decisions (2026-10-29): Ynnari is its own faction; Skitarii and Cult Mechanicus form Adeptus Mechanicus; Deathwatch and Adeptus Custodes are new factions; Militarum Tempestus and the Forge World Guard lists are Imperial Guard options; Khorne Daemonkin is a Chaos Space Marines option; Corsairs are an Eldar option. Blood Angels, Dark Angels, Space Wolves and Black Templars are separate factions; Witch Hunters → Sisters of Battle; Daemon Hunters → Grey Knights; Lost and the Damned → Renegades & Heretics (7th Ed Forge World list joins later); Kroot Mercenaries separate; a future 7th Ed Inquisition codex gets its own faction.
+Faction decisions (2026-10-29): Ynnari is its own faction; Skitarii and Cult Mechanicus form Adeptus Mechanicus; Deathwatch and Adeptus Custodes are new factions; Militarum Tempestus and the Forge World Guard lists are Imperial Guard options; Khorne Daemonkin is a Chaos Space Marines option; Corsairs are an Eldar option. Blood Angels, Dark Angels, Space Wolves and Black Templars are separate factions; Witch Hunters → Sisters of Battle; Daemon Hunters → Grey Knights; Lost and the Damned → Renegades & Heretics (7th Ed Forge World list joins later); Kroot Mercenaries separate; the 7th Ed Inquisition list is its own faction.
 
 Source fix: Codex Assassins (1999) defines the Officio Assassinorum Operative but never offers it in its army list; the build adds the missing entry (Elites).
 
@@ -105,15 +107,15 @@ All 5th Edition source books flagged in the audit have now been checked.
 
 Source: BSData/wh40k-7th-edition release v3.1.4 (BattleScribe 1.14b format). Needs `tools/convert_legacy_6e.py`; Space Marines 2013 is the experimental pilot and is currently blocked (see `docs/space-marines-2013-conversion.md`). Catalogue list to be recorded from the archive.
 
-## 7th Edition source — 34 converted, 10 pending
+## 7th Edition source — all 44 converted
 
 Source: BSData/wh40k-7th-edition (pinned), converted by `tools/convert_7e_catalogues.py`. Book editions in the Army List labels follow the maintainer's library: Astra Militarum, Militarum Tempestus and Tyranids (2014) are 6th Edition books; the rest are 7th Edition.
 
 What the converter does (see the rules ledger for page references):
 - Translates the source's BattleScribe 2.00 format to the 2.03 format used here.
-- Removes Formations, Battle Formations, Decurion-style Command/Core/Auxiliary slots, Flyer Wings, Spearheads and Primary Detachment markers, and all 7th Edition detachments with their Command Benefits (863 top-level entries). Rules that depended on the Combined Arms Detachment now depend on the standard force; rules that depended on any other detachment or formation never apply.
+- Removes Formations, Battle Formations, Decurion-style Command/Core/Auxiliary slots, Flyer Wings, Spearheads and Primary Detachment markers, and every 7th Edition detachment except the codex detachments listed below (890 top-level entries). Rules that depended on the Combined Arms Detachment now depend on the standard force; rules that depended on any other detachment or formation never apply.
 - Hides Warlord Traits.
-- Lords of War: 8 independent characters → HQ; 287 super-heavies (by unit type, or 9+ Hull Points) → super-heavy allowance; 35 others → Heavy Support.
+- Lords of War: 8 independent characters → HQ; 301 super-heavies (by unit type, or 9+ Hull Points) → super-heavy allowance; 36 others → Heavy Support.
 - Super-heavies are hidden by a **Super-heavies → Hide super-heavies** switch (Configuration), on by default; untick when both players agree. Rules that depended on the Apocalypse detachment follow this switch.
 - Fortifications are removed (decision 2026-10-29; may be revisited).
 - Forge World and dataslate switches are treated as always on.
@@ -123,6 +125,23 @@ To verify against the books:
 - Lords of War classified as Heavy Support because the source does not mark them as independent characters or super-heavies: (FW) Sokar Pattern Stormbird, (Y) The Yncarne, Avatar of Ynnead, * Caestus Assault Ram, Avatar of Khaine, Gargantuan Squiggoth, Giant Chaos Spawn, Giant Chaos Spawns, Imotekh the Stormlord, Magnus the Red, Roboute Guilliman, Primarch of the Ultramarines, Sokar Pattern Stormbird, Spined Chaos Beast, Spined Chaos Beasts, The Yncarne, Avatar of Ynnead, [FW] Cor'bax Utterblight, [FW] Samus. In particular Imotekh the Stormlord (likely an independent character) and the Sokar Pattern Stormbird (likely super-heavy) look wrong in the source.
 - Entries the source leaves uncategorised, kept with no force organisation slot as in the source: * Damocles Command Rhino, Belisarius Cawl, Celestine, The Living Saint (FoC), Cypher, Lord of the Fallen, Drop Sentinel Squadron, Imperial Navy Lightnings (DftS), Imperial Navy Thunderbolts (DftS), Inquisitor Greyfax, [FW] Ferrum Infernus Chaos Dreadnought.
 
-Pending (need their own detachments, decision 2026-10-29): Imperial Knights, Chaos Renegade Knights, Inquisition, Assassins, Sisters of Silence, Legion of the Damned, Adeptus Astra Telepathica, Aeronautica Imperialis, Haemonculus Covens, Fallen Angels.
+Codex detachments (decision 2026-10-29). The ten smaller lists can use the standard chart and also keep their own detachments, offered as extra force types for their faction. Only slot limits are kept: all detachment special rules (Command Benefits and the like) are dropped, and the Legion of the Damned detachment's "cannot be your Primary Detachment" limit is not enforced. In a detachment, only its own list can be chosen as the Army List. Lord of War slots apply to the Super-Heavy section, where this data puts every Knight; Knights are still hidden by the super-heavy switch until it is unticked. Not kept: Castellans of the Imperium (patched out) and the Adeptus Mechanicus convocations (built from Formations). Fallen Angels has no detachment in the source and uses the standard chart only.
+  - Oathsworn Detachment (Imperial Knights): Super-Heavy 1-3
+  - Household Detachment (Imperial Knights): Super-Heavy 3-5
+  - Forsworn Knight Detachment (Renegade Knights): Super-Heavy 1-3
+  - Inquisitorial Detachment (Inquisition): HQ 1-2, Elites 0-3, Fast Attack 0-1
+  - Inquisitorial Representative (Inquisition): HQ 1-1, Elites 0-3
+  - Officio Assassinorum Detachment (Assassins): Elites 1-1
+  - Assassinorum Operative (Assassins): Elites 1-1
+  - Null-Maiden Task Force (Sisters of Silence): Elites 1-3
+  - Legion of the Damned Detachment (Legion of the Damned): Elites 1-4
+  - Spectral Host (Legion of the Damned): Elites 1-4
+  - Psykana Division (Astra Telepathica): HQ 1-1, Elites 0-3
+  - Imperial Navy Section (Aeronautica Imperialis): HQ 0-1, Fast Attack 1-1
+  - Covenite Coterie Detachment (Haemonculus Covens): No Force Org Slot 0-any, HQ 2-6, Elites 2-8, Heavy Support 0-4
+
+Placement: Imperial Knights and Renegade Knights → Imperial Knights faction; Inquisition → Inquisition faction; Officio Assassinorum → Assassins; Sisters of Silence → Adeptus Custodes; Astra Telepathica and Aeronautica Imperialis → Imperial Guard; Legion of the Damned → Space Marines; Haemonculus Covens → Dark Eldar; Fallen Angels → Dark Angels.
+
+To verify: the book edition shown for Inquisition, Legion of the Damned, Officio Assassinorum, Astra Telepathica, Aeronautica Imperialis, Renegade Knights and Fallen Angels (labelled 7th Ed after the source; some may be 6th Edition publications). The Null-Maiden Rhino is a Fast Attack choice in the source, so it is not available in a Null-Maiden Task Force. The Inquisition source also offers the Gathering Storm characters (Guilliman, Celestine, Cawl, Voldus, Cypher), as the other 7th Edition Imperium lists do.
 
 **File size:** the 7th Edition sources are large (Astra Militarum plus six Forge World lists is about 10 MB). The Imperial Guard faction file is about 14 MB and Space Marines about 10 MB; performance on phones needs testing.

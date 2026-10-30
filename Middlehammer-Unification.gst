@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="10" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" name="Middlehammer Unification" id="sys-middlehammer-2026" battleScribeVersion="2.03" library="false" revision="11" type="gameSystem">
   <forceEntries>
     <forceEntry name="Standard Force Organization (5th Edition)" id="mh-test-force" hidden="false">
       <categoryLinks>
@@ -3998,6 +3998,18 @@ If a gauss weapon inflicts a glancing hit on a vehicle in which only glancing hi
       <modifiers />
       <characteristics>
         <characteristic name="Description" typeId="21befb24-fc85-4f52-a745-64b2e48f8228">Dangerous Terrain. A model in cover behind tanglewire has a 6+ cover save.</characteristic>
+      </characteristics>
+    </profile>
+    <profile id="e209-5038-fc25-4927" name="Heavy Chainsword" page="" hidden="false" typeId="d5f97c0b-9fc9-478d-aa34-a7c414d3ea48">
+      <profiles />
+      <rules />
+      <infoLinks />
+      <modifiers />
+      <characteristics>
+        <characteristic name="Range" typeId="6fa97fa8-ea74-4a27-a0fb-bc4e5f367464">-</characteristic>
+        <characteristic name="Strength" typeId="a6383362-5aa8-4ff0-b1d0-00e059fc9d45">+2</characteristic>
+        <characteristic name="AP" typeId="6abee736-f8d3-498e-97ac-a5c68445609f">5</characteristic>
+        <characteristic name="Type" typeId="077c342f-d7b9-45c6-b8af-88e97cafd3a2">Melee, Two-handed</characteristic>
       </characteristics>
     </profile>
     </sharedProfiles>

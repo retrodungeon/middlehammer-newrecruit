@@ -30,14 +30,16 @@ FACTIONS = {
         (5, "Space Marines", "Codex: Space Marines (2008)"),
         (7, "Space Marines - Codex (2015)", "Codex: Space Marines (2015)"),
         (7, "Space Marines - FW - Siege Assault Vanguard", "Forge World: Siege Assault Vanguard"),
-        (7, "Tyrant's Legion - FW - Defenders of Badab", "Forge World: Tyrant's Legion (Defenders of Badab)")],
+        (7, "Tyrant's Legion - FW - Defenders of Badab", "Forge World: Tyrant's Legion (Defenders of Badab)"),
+        (7, "Legion of the Damned - Codex", "Legion of the Damned")],
     "Blood Angels": [(3, "Blood Angels (1998)", "Codex: "),
                      (3, "Blood Angels Death Company (Chapter Approved 2001)", ""),
                      (5, "Blood Angels", "Codex: Blood Angels (2010)"),
                      (7, "Blood Angels - Codex (2014)", "Codex: Blood Angels (2014)")],
     "Dark Angels": [(3, "Dark Angels (1999)", "Codex: "),
                     (5, "Dark Angels", "Codex: Dark Angels (2007)", 4),
-                    (7, "Dark Angels - Codex (2015)", "Codex: Dark Angels (2015)")],
+                    (7, "Dark Angels - Codex (2015)", "Codex: Dark Angels (2015)"),
+                    (7, "Fallen Angels - Supplement", "Fallen Angels (supplement)")],
     "Space Wolves": [(3, "Space Wolves (2000)", "Codex: "), (3, "Space Wolves 13th Company (2003)", ""),
                      (5, "Space Wolves", "Codex: Space Wolves (2009)"),
                      (7, "Space Wolves - Codex", "Codex: Space Wolves (2014)")],
@@ -67,6 +69,8 @@ FACTIONS = {
         (7, "Astra Militarum - FW - Death Korps of Krieg Siege Regiment", "Forge World: Death Korps of Krieg Siege Regiment"),
         (7, "Astra Militarum - FW - Elysian", "Forge World: Elysian Drop Troops"),
         (7, "Astra Militarum - FW - Elysian Detachment D-99", "Forge World: Elysian Detachment D-99"),
+        (7, "Adeptus Astra Telepathica", "Adeptus Astra Telepathica"),
+        (7, "Aeronautica Imperialis", "Aeronautica Imperialis"),
     ],
     "Chaos Space Marines": [(3, "Chaos Space Marines (1999)", "Codex: "),
                             (3, "Chaos Space Marines (2002)", "Codex: "),
@@ -87,7 +91,8 @@ FACTIONS = {
     "Ynnari": [(7, "Ynnari Aeldari - Supplement", "Ynnari (Gathering Storm: Fracture of Biel-Tan)")],
     "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: "), (3, "Dark Eldar Wych Cult (2001)", ""),
                    (5, "Dark Eldar", "Codex: Dark Eldar (2010)"),
-                   (7, "Dark_Eldar_Codex_(2014)", "Codex: Dark Eldar (2014)")],
+                   (7, "Dark_Eldar_Codex_(2014)", "Codex: Dark Eldar (2014)"),
+                   (7, "Dark Eldar - Supplement - Haemonculus Covens", "Haemonculus Covens (supplement)")],
     "Harlequins": [(3, "Harlequins (2000)", ""), (7, "Harlequins - Codex", "Codex: Harlequins (2015)")],
     "Orks": [(3, "Orks (1999)", "Codex: "), (3, "Feral Orks (Chapter Approved 2004)", ""),
              (3, "Speed Freeks (Armageddon 2000)", ""),
@@ -113,8 +118,12 @@ FACTIONS = {
                      (7, "Grey Knights - Codex (2014)", "Codex: Grey Knights (2014)")],
     "Adeptus Mechanicus": [(7, "Skitarii - Codex", "Codex: Skitarii (2015)"),
                            (7, "Cult Mechanicus Codex 2015", "Codex: Cult Mechanicus (2015)")],
-    "Adeptus Custodes": [(7, "Adeptus Custodes Dataslate", "Adeptus Custodes (dataslate)")],
-    "Assassins": [(3, "Codex Assassins (1999)", "")],
+    "Adeptus Custodes": [(7, "Adeptus Custodes Dataslate", "Adeptus Custodes (dataslate)"),
+                         (7, "Sisters of Silence Dataslate", "Sisters of Silence (dataslate)")],
+    "Imperial Knights": [(7, "Imperial Knights - Codex (2015)", "Codex: Imperial Knights (2015)"),
+                         (7, "Chaos Renegade Knights", "Renegade Knights")],
+    "Inquisition": [(7, "Inquisition - Codex", "Inquisition (Codex: Inquisition, Imperial Agents)")],
+    "Assassins": [(3, "Codex Assassins (1999)", ""), (7, "Assassins Codex", "Officio Assassinorum")],
     "Adeptus Arbites": [(3, "Adeptus Arbites (Citadel Journal 29)", "")],
 }
 
@@ -177,6 +186,23 @@ def constraint(parent, kind, value, scope, cid):
     ET.SubElement(child(parent, "constraints"), q("constraint"), {
         "type": kind, "value": str(value), "field": "selections", "scope": scope,
         "shared": "true", "id": cid, "includeChildSelections": "false", "includeChildForces": "false"})
+
+
+def restrict_to_owner(entry, own_forces):
+    """In a force type that belongs to one army list (e.g. 'Psykana Division', 'Daemon Hunter
+    Allies'), only that list can be chosen: hide every other Army List option there."""
+    owner_of = {f: oid for oid, forces in own_forces.items() for f in forces}
+    for opt in entry.find(q("selectionEntryGroups")).iter(q("selectionEntry")):
+        others = [f for f, oid in owner_of.items() if oid != opt.get("id")]
+        if not others:
+            continue
+        m = ET.SubElement(child(opt, "modifiers", 0), q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
+        conds = ET.SubElement(ET.SubElement(ET.SubElement(m, q("conditionGroups")), q("conditionGroup"),
+                                            {"type": "or"}), q("conditions"))
+        for f in others:
+            ET.SubElement(conds, q("condition"), {
+                "type": "instanceOf", "value": "1", "field": "selections", "scope": "force", "childId": f,
+                "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
 
 
 def selector(fid, options):
@@ -288,7 +314,7 @@ def build_factions(members, game_system_id, report):
             f"{ED[m[0]]} source: {m[1]}" for m in fm)
         links = ET.SubElement(root, q("catalogueLinks"))
         seen = {fid}
-        options = []
+        options, own_forces = [], {}
         for spec in fm:
             e, s, prefix = spec[:3]
             book_edition = spec[3] if len(spec) > 3 else e
@@ -297,6 +323,7 @@ def build_factions(members, game_system_id, report):
             rename_collisions(seen, m, report)
             oid = option_for[mid]
             options.append((oid, label(book_edition, s, prefix)))
+            own_forces[oid] = [f.get("id") for f in m.iter(q("forceEntry"))]
             for cont in ("selectionEntries", "entryLinks"):
                 src = m.find(q(cont))
                 for el in (list(src) if src is not None else []):
@@ -319,7 +346,9 @@ def build_factions(members, game_system_id, report):
                         "id": f"{fid}-link-{target}", "targetId": target, "type": "catalogue",
                         "importRootEntries": "false"})
             seen |= {x.get("id") for x in m.iter() if x.get("id")}
-        child(root, "selectionEntries").insert(0, selector(fid, options))
+        sel = selector(fid, options)
+        restrict_to_owner(sel, {o: f for o, f in own_forces.items() if f})
+        child(root, "selectionEntries").insert(0, sel)
         if not len(links):
             root.remove(links)
         out[fname] = root

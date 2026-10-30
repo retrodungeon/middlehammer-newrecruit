@@ -14,7 +14,7 @@ The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar
 | 4th | 7 | 4th Edition codexes still used in 5th (from the 5th Edition source) |
 | 5th | 9 | Including Imperial Guard 2009 |
 | 6th | 3 | Astra Militarum, Militarum Tempestus and Tyranids (2014), from the 7th Edition source |
-| 7th | 31 | From the 7th Edition source; 10 smaller lists still to come |
+| 7th | 41 | All lists in the 7th Edition source |
 
 Faction structure and Army List selection were tested in New Recruit on 2026-10-29. Most individual lists have not yet been played through.
 
@@ -28,9 +28,9 @@ Unit options and points come from the community source data (`sources/upstreams.
 
 One force type is available: **Standard Force Organization (5th Edition)** — HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 (5th Edition rulebook, p. 87). These limits have been tested in New Recruit. The force also shows Configuration (first), Dedicated Transport, Unique, Super-Heavy and No Force Org Slot sections, without limits, matching the 5th Edition source data. Super-heavies are hidden by default: Imperial Guard 2009 has **Custom Content → Hide Apocalypse Units**, and every 7th Edition list with super-heavies has **Super-heavies → Hide super-heavies**. Untick when both players agree.
 
-Some lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host).
+Some lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host, and the 7th Edition codex detachments such as the Imperial Knights Household Detachment or the Psykana Division). In those force types only their own list can be chosen as the Army List.
 
-For 7th Edition lists, Formations, detachments and Command Benefits are removed, Warlord Traits hidden and Lords of War reassigned. Era-restricted allies and points-based super-heavy limits are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
+For 7th Edition lists, Formations and Command Benefits are removed, codex detachments are kept only for the smaller lists, Warlord Traits hidden and Lords of War reassigned. Era-restricted allies and points-based super-heavy limits are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
 
 ### In progress
 

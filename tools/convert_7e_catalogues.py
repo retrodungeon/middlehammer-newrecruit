@@ -39,8 +39,8 @@ MH = {
     "Configuration": "525f-0a42-3f5c-5613",
 }
 
-# 7th Edition lists that can use the standard 5th Edition chart (have HQ and Troops).
-# The other 10 source lists need their own detachments and are handled separately.
+# 7th Edition lists. All can use the standard 5th Edition chart (Unification p. 8); the
+# smaller lists also keep their own detachments (DETACHMENTS) without Command Benefits (p. 9).
 CONVERTED = [
     "Adepta Sororitas", "Adeptus Custodes Dataslate", "Astra Militarum - Codex",
     "Astra Militarum - FW - Armoured Battle Group", "Astra Militarum - FW - Death Korps of Krieg Assault Brigade",
@@ -53,7 +53,41 @@ CONVERTED = [
     "Orks - Codex", "Renegades & Heretics", "Skitarii - Codex", "Space Marines - Codex (2015)",
     "Space Marines - FW - Siege Assault Vanguard", "Space Wolves - Codex", "Tau - Codex (2015)",
     "Tyranids - Codex", "Tyrant's Legion - FW - Defenders of Badab", "Ynnari Aeldari - Supplement",
+    "Imperial Knights - Codex (2015)", "Chaos Renegade Knights", "Inquisition - Codex", "Assassins Codex",
+    "Sisters of Silence Dataslate", "Legion of the Damned - Codex", "Adeptus Astra Telepathica",
+    "Aeronautica Imperialis", "Dark Eldar - Supplement - Haemonculus Covens", "Fallen Angels - Supplement",
 ]
+
+# Codex detachments kept, as {source list: {source name: Middlehammer name}}. Only their slot
+# limits are kept: detachment special rules (Command Benefits, Warlord Trait rerolls) are
+# dropped (decision 2026-10-29). Not kept: Castellans of the Imperium (patched out,
+# Unification p. 13) and the Adeptus Mechanicus convocations (built from Formations).
+DETACHMENTS = {
+    "Imperial Knights - Codex (2015)": {"IK Oathsworn Detachment": "Oathsworn Detachment",
+                                        "IK Household Detachment": "Household Detachment"},
+    "Chaos Renegade Knights": {"Chaos RK Forsworn Knight Detachment": "Forsworn Knight Detachment"},
+    "Inquisition - Codex": {"Inquisitorial Detachment": "Inquisitorial Detachment",
+                            "Inquisitorial Representative (C:IA)": "Inquisitorial Representative"},
+    "Assassins Codex": {"Officio Assassinorum Detachment": "Officio Assassinorum Detachment",
+                        "Assassinorum Operative": "Assassinorum Operative"},
+    "Sisters of Silence Dataslate": {"Null-Maiden Task Force": "Null-Maiden Task Force"},
+    "Legion of the Damned - Codex": {"LotD Legion of the Damned Detachment": "Legion of the Damned Detachment",
+                                     "Spectral Host": "Spectral Host"},
+    "Adeptus Astra Telepathica": {"Psykana Division": "Psykana Division"},
+    "Aeronautica Imperialis": {"Imperial Navy Section": "Imperial Navy Section"},
+    "Dark Eldar - Supplement - Haemonculus Covens": {"DE Covenite Coterie Detachment": "Covenite Coterie Detachment"},
+}
+# Shown after a detachment's name in the force picker.
+LIST_NAMES = {"Imperial Knights - Codex (2015)": "Imperial Knights", "Chaos Renegade Knights": "Renegade Knights",
+              "Inquisition - Codex": "Inquisition", "Assassins Codex": "Assassins",
+              "Sisters of Silence Dataslate": "Sisters of Silence", "Legion of the Damned - Codex": "Legion of the Damned",
+              "Adeptus Astra Telepathica": "Astra Telepathica", "Aeronautica Imperialis": "Aeronautica Imperialis",
+              "Dark Eldar - Supplement - Haemonculus Covens": "Haemonculus Covens"}
+# Detachment slots. Lords of War in these lists are all super-heavies, which this data
+# places in the Super-Heavy section; the Lord of War limits apply to it.
+DETACHMENT_SLOT = {"HQ": "HQ", "Troops": "Troops", "Elites": "Elites", "Fast Attack": "Fast Attack",
+                   "Heavy Support": "Heavy Support", "No Force Org Slot": "No Force Org Slot",
+                   "Lord of War": "Super-Heavy"}
 
 SLOT = {"HQ": "HQ", "Troops": "Troops", "Elites": "Elites", "Fast Attack": "Fast Attack",
         "Heavy Support": "Heavy Support", "No Force Org Slot": "No Force Org Slot", "No FOC": "No Force Org Slot",
@@ -304,6 +338,39 @@ def hide_when_switch_on(el, oid):
         "shared": "true", "includeChildSelections": "true", "includeChildForces": "false"})
 
 
+def make_detachment(fe, mh_name, list_name):
+    """A 7e codex detachment as a Middlehammer force: its slot limits only."""
+    fid = fe.get("id")
+    out = ET.Element(q("forceEntry"), {"name": f"{mh_name} ({list_name})", "id": fid, "hidden": "false"})
+    links = ET.SubElement(out, q("categoryLinks"))
+    ET.SubElement(links, q("categoryLink"), {"name": "Configuration", "hidden": "false",
+                                             "id": f"{fid}-configuration", "targetId": MH["Configuration"]})
+    slots, skipped = [], []
+    cats = fe.find(q("categoryEntries"))
+    for ce in (list(cats) if cats is not None else []):
+        n = ce.get("name")
+        if n == "Primary Detachment":
+            skipped.append(n)
+            continue
+        mh = DETACHMENT_SLOT[n]
+        lid = f"{fid}-{mh.lower().replace(' ', '-')}"
+        link = ET.SubElement(links, q("categoryLink"), {"name": mh, "hidden": "false", "id": lid,
+                                                       "targetId": MH[mh]})
+        limits = {}
+        for c in ce.iter(q("constraint")):
+            limits[c.get("type")] = int(float(c.get("value")))
+        cons = None
+        for kind in ("min", "max"):
+            if kind in limits and not (kind == "min" and limits[kind] == 0):
+                if cons is None:
+                    cons = ET.SubElement(link, q("constraints"))
+                ET.SubElement(cons, q("constraint"), {
+                    "type": kind, "value": str(limits[kind]), "field": "selections", "scope": "force",
+                    "shared": "true", "id": f"{lid}-{kind}"})
+        slots.append(f"{mh} {limits.get('min', 0)}-{limits.get('max', 'any')}")
+    return out, {"name": out.get("name"), "slots": slots, "notKept": skipped}
+
+
 def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report):
     tree = ET.parse(path)
     cat = tree.getroot()
@@ -446,12 +513,29 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report):
     entry["apocalypseConditionsRewired"] = rewired
     entry["superHeavySwitch"] = bool(oid)
 
-    # Catalogue force types (detachments and formations) are not used. Conditions that
-    # test for them can never be true; their IDs are recorded for the validator.
-    entry["retiredIds"] = sorted({f.get("id") for f in cat.iter(q("forceEntry"))} |
+    # Codex detachments listed in DETACHMENTS are kept as forces; every other catalogue force
+    # type (detachments and formations) is not used. Conditions that test for those can
+    # never be true; their IDs are recorded for the validator.
+    wanted = DETACHMENTS.get(path.stem, {})
+    kept, details = [], []
+    for top in cat.findall(q("forceEntries")):
+        for fe in top:
+            if fe.get("name") in wanted:
+                force, info = make_detachment(fe, wanted[fe.get("name")], LIST_NAMES[path.stem])
+                kept.append(force)
+                details.append(info)
+    if len(kept) != len(wanted):
+        raise ValueError(f"{path.stem}: detachments not found: {set(wanted) - {i['name'] for i in details}}")
+    kept_ids = {f.get("id") for f in kept}
+    entry["detachments"] = details
+    entry["retiredIds"] = sorted(({f.get("id") for f in cat.iter(q("forceEntry"))} - kept_ids) |
                                  {c.get("id") for fe in cat.iter(q("forceEntry")) for c in fe.iter(q("categoryEntry"))})
     for fe in cat.findall(q("forceEntries")):
         cat.remove(fe)
+    if kept:
+        container = ET.Element(q("forceEntries"))
+        container.extend(kept)
+        cat.insert(list(cat).index(cat.find(q("selectionEntries"))), container)
 
     entry["legacyConstraintIdsReplaced"] = unique_constraint_ids(cat)
     known = set(ids) | set(gst_by_id)
