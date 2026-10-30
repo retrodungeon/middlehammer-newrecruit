@@ -14,7 +14,7 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 |---|---:|---|
 | **Space Marines** | 13 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
 | **Blood Angels** | 5 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>4th Ed – Codex: Blood Angels (White Dwarf 2007)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
-| **Dark Angels** | 4 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015)<br>7th Ed – Fallen Angels (supplement) |
+| **Dark Angels** | 3 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015) |
 | **Space Wolves** | 4 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003)<br>5th Ed – Codex: Space Wolves (2009)<br>7th Ed – Codex: Space Wolves (2014) |
 | **Deathwatch** | 1 | 7th Ed – Codex: Deathwatch (2016) |
 | **Black Templars** | 2 | 3rd Ed – Codex: Black Templars (2000)<br>4th Ed – Codex: Black Templars (2005) |
@@ -116,7 +116,7 @@ All 5th Edition source books flagged in the audit have now been checked.
 
 Source: BSData/wh40k-7th-edition release v3.1.4 (BattleScribe 1.14b format). Needs `tools/convert_legacy_6e.py`; Space Marines 2013 is the experimental pilot and is currently blocked (see `docs/space-marines-2013-conversion.md`). Catalogue list to be recorded from the archive.
 
-## 7th Edition source — all 44 converted
+## 7th Edition source — 43 converted, 1 not used
 
 Source: BSData/wh40k-7th-edition (pinned), converted by `tools/convert_7e_catalogues.py`. Book editions in the Army List labels follow the maintainer's library: Astra Militarum, Militarum Tempestus and Tyranids (2014) are 6th Edition books; the rest are 7th Edition.
 
@@ -134,7 +134,7 @@ To verify against the books:
 - Lords of War classified as Heavy Support because the source does not mark them as independent characters or super-heavies: (FW) Sokar Pattern Stormbird, (Y) The Yncarne, Avatar of Ynnead, * Caestus Assault Ram, Avatar of Khaine, Gargantuan Squiggoth, Giant Chaos Spawn, Giant Chaos Spawns, Imotekh the Stormlord, Magnus the Red, Roboute Guilliman, Primarch of the Ultramarines, Sokar Pattern Stormbird, Spined Chaos Beast, Spined Chaos Beasts, The Yncarne, Avatar of Ynnead, [FW] Cor'bax Utterblight, [FW] Samus. In particular Imotekh the Stormlord (likely an independent character) and the Sokar Pattern Stormbird (likely super-heavy) look wrong in the source.
 - Entries the source leaves uncategorised, kept with no force organisation slot as in the source: * Damocles Command Rhino, Belisarius Cawl, Celestine, The Living Saint (FoC), Cypher, Lord of the Fallen, Drop Sentinel Squadron, Imperial Navy Lightnings (DftS), Imperial Navy Thunderbolts (DftS), Inquisitor Greyfax, [FW] Ferrum Infernus Chaos Dreadnought.
 
-Codex detachments (decision 2026-10-29). The ten smaller lists can use the standard chart and also keep their own detachments, offered as extra force types for their faction. Only slot limits are kept: all detachment special rules (Command Benefits and the like) are dropped, and the Legion of the Damned detachment's "cannot be your Primary Detachment" limit is not enforced. In a detachment, only its own list can be chosen as the Army List. Lord of War slots apply to the Super-Heavy section, where this data puts every Knight; Knights are still hidden by the super-heavy switch until it is unticked. Not kept: Castellans of the Imperium (patched out) and the Adeptus Mechanicus convocations (built from Formations). Fallen Angels has no detachment in the source and uses the standard chart only.
+Codex detachments (decision 2026-10-29). The nine smaller lists keep their own detachments, offered as extra force types for their faction. None of them has both an HQ and a Troops choice, so they are fielded only through these detachments (their Army List option is hidden in the standard force). Only slot limits are kept: all detachment special rules (Command Benefits and the like) are dropped, and the Legion of the Damned detachment's "cannot be your Primary Detachment" limit is not enforced. In a detachment, only its own list can be chosen as the Army List. Lord of War slots apply to the Super-Heavy section, where this data puts every Knight; Knights are still hidden by the super-heavy switch until it is unticked. Not kept: Castellans of the Imperium (patched out) and the Adeptus Mechanicus convocations (built from Formations). Fallen Angels (supplement) is not converted: it could only be fielded as a Formation, which the Unification bans (author's ruling, 2026-10-29).
   - Oathsworn Detachment (Imperial Knights): Super-Heavy 1-3
   - Household Detachment (Imperial Knights): Super-Heavy 3-5
   - Forsworn Knight Detachment (Renegade Knights): Super-Heavy 1-3
@@ -149,8 +149,8 @@ Codex detachments (decision 2026-10-29). The ten smaller lists can use the stand
   - Imperial Navy Section (Aeronautica Imperialis): HQ 0-1, Fast Attack 1-1
   - Covenite Coterie Detachment (Haemonculus Covens): No Force Org Slot 0-any, HQ 2-6, Elites 2-8, Heavy Support 0-4
 
-Placement: Imperial Knights and Renegade Knights → Imperial Knights faction; Inquisition and Officio Assassinorum → Inquisition faction; Sisters of Silence → Adeptus Custodes; Astra Telepathica and Aeronautica Imperialis → Imperial Guard; Legion of the Damned → Space Marines; Haemonculus Covens → Dark Eldar; Fallen Angels → Dark Angels.
+Placement: Imperial Knights and Renegade Knights → Imperial Knights faction; Inquisition and Officio Assassinorum → Inquisition faction; Sisters of Silence → Adeptus Custodes; Astra Telepathica and Aeronautica Imperialis → Imperial Guard; Legion of the Damned → Space Marines; Haemonculus Covens → Dark Eldar.
 
-To verify: the book edition shown for Inquisition, Legion of the Damned, Officio Assassinorum, Astra Telepathica, Aeronautica Imperialis, Renegade Knights and Fallen Angels (labelled 7th Ed after the source; some may be 6th Edition publications). The Null-Maiden Rhino is a Fast Attack choice in the source, so it is not available in a Null-Maiden Task Force. The Inquisition source also offers the Gathering Storm characters (Guilliman, Celestine, Cawl, Voldus, Cypher), as the other 7th Edition Imperium lists do.
+To verify: the book edition shown for Inquisition, Legion of the Damned, Officio Assassinorum, Astra Telepathica, Aeronautica Imperialis, and Renegade Knights (labelled 7th Ed after the source; some may be 6th Edition publications). The Null-Maiden Rhino is a Fast Attack choice in the source, so it is not available in a Null-Maiden Task Force. The Inquisition source also offers the Gathering Storm characters (Guilliman, Celestine, Cawl, Voldus, Cypher), as the other 7th Edition Imperium lists do.
 
 **File size:** the 7th Edition sources are large (Astra Militarum plus six Forge World lists is about 10 MB). The Imperial Guard faction file is about 14 MB and Space Marines about 10 MB; performance on phones needs testing.

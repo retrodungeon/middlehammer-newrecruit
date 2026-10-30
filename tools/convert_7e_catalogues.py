@@ -55,8 +55,10 @@ CONVERTED = [
     "Tyranids - Codex", "Tyrant's Legion - FW - Defenders of Badab", "Ynnari Aeldari - Supplement",
     "Imperial Knights - Codex (2015)", "Chaos Renegade Knights", "Inquisition - Codex", "Assassins Codex",
     "Sisters of Silence Dataslate", "Legion of the Damned - Codex", "Adeptus Astra Telepathica",
-    "Aeronautica Imperialis", "Dark Eldar - Supplement - Haemonculus Covens", "Fallen Angels - Supplement",
+    "Aeronautica Imperialis", "Dark Eldar - Supplement - Haemonculus Covens",
 ]
+# Not converted: "Fallen Angels - Supplement" can only be fielded as a Formation, which the
+# Unification bans (author's ruling, 2026-10-29).
 
 # Codex detachments kept, as {source list: {source name: Middlehammer name}}. Only their slot
 # limits are kept: detachment special rules (Command Benefits, Warlord Trait rerolls) are

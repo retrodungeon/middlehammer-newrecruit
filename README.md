@@ -14,7 +14,7 @@ The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar
 | 4th | 10 | Seven from the 5th Edition source; Space Marines (2004), Tyranids (2005) and Blood Angels (2007) from the 4th Edition source |
 | 5th | 9 | Including Imperial Guard 2009 |
 | 6th | 3 | Astra Militarum, Militarum Tempestus and Tyranids (2014), from the 7th Edition source |
-| 7th | 41 | All lists in the 7th Edition source |
+| 7th | 40 | All lists in the 7th Edition source except Fallen Angels (Formation only) |
 
 Faction structure and Army List selection were tested in New Recruit on 2026-10-29. Most individual lists have not yet been played through.
 
@@ -30,7 +30,7 @@ One force type is available: **Standard Force Organization (5th Edition)** — H
 
 Some lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host, and the 7th Edition codex detachments such as the Imperial Knights Household Detachment or the Psykana Division). In those force types only their own list can be chosen as the Army List.
 
-For 7th Edition lists, Formations and Command Benefits are removed, codex detachments are kept only for the smaller lists, Warlord Traits hidden and Lords of War reassigned. Era-restricted allies and points-based super-heavy limits are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
+For 7th Edition lists, Formations and Command Benefits are removed, codex detachments are kept only for the smaller lists, Warlord Traits hidden and Lords of War reassigned. Allies are restricted to the same era (3rd–5th or 6th–7th); points-based super-heavy limits are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
 
 ### In progress
 
