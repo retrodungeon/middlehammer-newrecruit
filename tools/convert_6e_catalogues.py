@@ -44,6 +44,7 @@ import xml.etree.ElementTree as ET
 
 from convert_7e_catalogues import simplify_modifier, make_switch, hide_when_switch_on
 from rules_text_6e import fill_rules
+import sixth_additions
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
@@ -63,7 +64,7 @@ MH = {
 # empty Imperial Knights file, Apocalypse and fortification data.
 CONVERTED = ["Tau - Codex", "Tau - Supplement - Farsight Enclaves",
              "Space Marines - Codex", "Space Marines - Supplement - Clan Raukaan",
-             "Space Marines - Supplement - Sentinels of Terra"]
+             "Space Marines - Supplement - Sentinels of Terra", "Space Marines - FW - Siege Assault Vanguard"]
 
 # 6th Edition categories (by name in the source game system) -> Middlehammer slot.
 SLOT = {"HQ": "HQ", "Troops": "Troops", "Elites": "Elites", "Elite": "Elites", "Fast Attack": "Fast Attack",
@@ -577,7 +578,47 @@ def convert_one(path, legacy_gst, gst_names, types, report):
     if tr.unhandled:
         raise ValueError(f"{path.stem}: unhandled legacy constructs: {sorted(set(tr.unhandled))}")
     entry["idsMadeUnique"] = suffix_ids(cat)
+    entry["listForce"] = add_list_force(cat, path.stem)
     return cat, entry
+
+
+# Codex-specific force organisation charts kept as force types (Unification p. 9), with
+# only their slot limits: {source catalogue: (name, {slot: (min, max)})}.
+LIST_FORCES = {
+    "Space Marines - FW - Siege Assault Vanguard": (
+        "Siege Assault Vanguard (Imperial Armour 10, 6th Ed update)",
+        {"HQ": (1, 2), "Troops": (2, 6), "Elites": (0, 3), "Fast Attack": (0, 2), "Heavy Support": (1, 4)}),
+}
+EXTRA_SECTIONS = [("Dedicated Transport", "168b-a772-94f7-83f5"), ("Unique", "1f0d-7d41-7ef9-ce4a"),
+                  ("Super-Heavy", MH["Super-Heavy"]), ("No Force Org Slot", MH["No Force Org Slot"])]
+
+
+def add_list_force(cat, stem):
+    if stem not in LIST_FORCES:
+        return None
+    name, slots = LIST_FORCES[stem]
+    fid = f"mh-force-{cat.get('id')}"
+    fe = ET.Element(q("forceEntry"), {"name": name, "id": fid, "hidden": "false"})
+    links = ET.SubElement(fe, q("categoryLinks"))
+    ET.SubElement(links, q("categoryLink"), {"name": "Configuration", "hidden": "false",
+                                             "id": f"{fid}-configuration", "targetId": MH["Configuration"]})
+    for slot, (lo, hi) in slots.items():
+        lid = f"{fid}-{slot.lower().replace(' ', '-')}"
+        link = ET.SubElement(links, q("categoryLink"), {"name": slot, "hidden": "false", "id": lid,
+                                                       "targetId": MH[slot]})
+        cons = ET.SubElement(link, q("constraints"))
+        for kind, v in (("min", lo), ("max", hi)):
+            if kind == "min" and v == 0:
+                continue
+            ET.SubElement(cons, q("constraint"), {"type": kind, "value": str(v), "field": "selections",
+                                                  "scope": "force", "shared": "true", "id": f"{lid}-{kind}"})
+    for n, t in EXTRA_SECTIONS:
+        ET.SubElement(links, q("categoryLink"), {"name": n, "hidden": "false",
+                                                 "id": f"{fid}-{n.lower().replace(' ', '-')}", "targetId": t})
+    box = ET.Element(q("forceEntries"))
+    box.append(fe)
+    cat.insert(list(cat).index(cat.find(q("selectionEntries"))), box)
+    return name
 
 
 FORCE_NAMES = {"Primary Detachment", "Allied Detachment", "Formation Detachment", "Inquisitorial Detachment",
@@ -622,6 +663,7 @@ def convert_6e(source, gst, report):
         p = source / f"{name}.cat"
         cat, entry = convert_one(p, legacy_gst, gst_names, (type_ids, type_names, char_ids), report)
         out[cat.get("id")] = (p, ET.ElementTree(cat), entry)
+    sixth_additions.apply({p.stem: t.getroot() for p, t, _ in out.values()}, gst, report)
     report["converted6e"] = [e for _, _, e in out.values()]
     return out
 
