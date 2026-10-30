@@ -13,7 +13,7 @@ The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar
 | 3rd | 56 | All official lists in the 3rd Edition source |
 | 4th | 10 | Seven from the 5th Edition source; Space Marines (2004), Tyranids (2005) and Blood Angels (2007) from the 4th Edition source |
 | 5th | 9 | Including Imperial Guard 2009 |
-| 6th | 3 | Astra Militarum, Militarum Tempestus and Tyranids (2014), from the 7th Edition source |
+| 6th | 5 | Astra Militarum, Militarum Tempestus and Tyranids (2014) from the 7th Edition source; Tau Empire (2013) and Farsight Enclaves from the 6th Edition source (pilot) |
 | 7th | 40 | All lists in the 7th Edition source except Fallen Angels (Formation only) |
 
 Faction structure and Army List selection were tested in New Recruit on 2026-10-29. Most individual lists have not yet been played through.
@@ -34,7 +34,7 @@ For 7th Edition lists, Formations and Command Benefits are removed, codex detach
 
 ### In progress
 
-- **Space Marines (6th Edition, 2013):** the only available 6th Edition data uses the old BattleScribe 1.14b format and needs a custom translator (`tools/convert_legacy_6e.py`). Output is built only as a GitHub Actions artifact and is gated by `tools/space_marines_release_gate.py`; it is not published. See [`docs/space-marines-2013-conversion.md`](docs/space-marines-2013-conversion.md).
+- **6th Edition:** the 6th Edition data is in the old BattleScribe 1.14b format and is translated by `tools/convert_6e_catalogues.py`. Tau Empire (2013) and Farsight Enclaves are the pilot; the other 6th Edition books follow once the pilot is tested in New Recruit. (The earlier experimental Space Marines translator, `tools/convert_legacy_6e.py`, is superseded.)
 
 ## Repository layout
 

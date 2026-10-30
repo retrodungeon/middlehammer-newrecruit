@@ -33,10 +33,12 @@
       "commit_date": "2026-10-20"
     },
     "6": {
-      "status": "accepted_archive_pending_extraction",
+      "status": "accepted",
       "repository": "BSData/wh40k-7th-edition",
       "release": "v3.1.4",
-      "asset": "Warhammer_40000_6th_Ed_last_revision.bsr"
+      "asset": "Warhammer_40000_6th_Ed_last_revision.bsr",
+      "sha256": "23d1d05a54c5fe65e5841eac93fe8bfe27d1a5030f3c70ecca1db7606fd10889",
+      "format": "BattleScribe 1.14b (zip of .cat/.gst)"
     },
     "7": {
       "status": "accepted",
