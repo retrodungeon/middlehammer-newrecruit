@@ -23,6 +23,11 @@ TAG = " (7th Ed wording)"
 SEVENTH = {
     "Space Marines": "wh40k-7th-edition/Space Marines - Codex (2015).cat",
     "Tau": "wh40k-7th-edition/Tau - Codex (2015).cat",
+    "Dark Angels": "wh40k-7th-edition/Dark Angels - Codex (2015).cat",
+    "Eldar": "wh40k-7th-edition/Eldar Craftworlds - Codex (2015).cat",
+    "Chaos Daemons (40K)": "wh40k-7th-edition/Chaos Daemons (40K) - Codex.cat",
+    "Chaos Space Marines": "wh40k-7th-edition/Chaos Space Marines - Codex.cat",
+    "Orks": "wh40k-7th-edition/Orks - Codex.cat",
 }
 
 # {faction key: {rule name: text}}. Written from the 6th Edition codexes (Codex: Space

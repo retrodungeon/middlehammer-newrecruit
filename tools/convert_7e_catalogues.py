@@ -189,6 +189,8 @@ def is_super_heavy(node, lookup=None):
                   and l.get("targetId") in lookup]
     if any(SH_RE.search(v) for n in nodes for v in chars_of(n)):
         return True
+    if re.search(r"gargantuan", node.get("name") or "", re.I):   # e.g. Gargantuan Squiggoth
+        return True
     # 7th Edition gives 9+ Hull Points only to super-heavies; some sources omit the type
     # word (e.g. Thunderhawk Gunship, Sokar Pattern Stormbird).
     for n in nodes:
