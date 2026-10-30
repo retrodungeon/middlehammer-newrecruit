@@ -124,6 +124,8 @@ No community data exists for Imperial Armour Volume Nine and Ten (The Badab War,
 
 Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_last_revision.bsr` (pinned by SHA-256 in `sources/upstreams.json`), BattleScribe 1.14b format. Translated to the current format by `tools/convert_6e_catalogues.py`, then adjusted for the Unification as the 7th Edition lists are: Formations, Battle Formations, Spearheads, Fortifications and extra-detachment markers removed; Lords of War reassigned (independent characters → HQ, super-heavies → Super-Heavy, others → Heavy Support); Apocalypse Legendary Units that repeat a Lord of War dropped; super-heavies behind the "Hide super-heavies" switch; conditions on the Primary Detachment always true, on Apocalypse following the switch, on other force types never true.
 
+Rules text: the 6th Edition source records most special rules by name only. Text is filled by `tools/rules_text_6e.py`, in order: rules written out in our own words from the maintainer's 6th Edition codexes (Codex: Space Marines 2013: Chapter Tactics, Combat Squads, character and unit rules); the 5th Edition core rules (universal special rules); the same faction's 7th Edition data; the 7th Edition core rules. Text from 7th Edition data ends "(7th Ed wording)". Still without text: mostly Forge World, Apocalypse and Escalation rules carried in the supplements, and Warlord Traits (not used). The build report lists every rule left empty.
+
 | Source catalogue | Book | Status |
 |---|---|---|
 | Tau - Codex | Codex: Tau Empire (2013) | Converted (pilot) |
