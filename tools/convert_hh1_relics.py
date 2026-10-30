@@ -234,6 +234,30 @@ def possibly_visible(*nodes):
     return True
 
 
+def possibly_selectable(*nodes):
+    """After folding: False if a maximum of the entry is certainly 0 (set to 0 by a rule that
+    always applies and raised by none), e.g. units that only a Rite of War allows."""
+    for node in nodes:
+        mods = node.find(q("modifiers"))
+        mods = list(mods) if mods is not None else []
+        for c in node.findall(f"{q('constraints')}/{q('constraint')}"):
+            if c.get("type") != "max":
+                continue
+            value, sure = float(c.get("value") or 0), True
+            for m in mods:
+                if m.get("field") != c.get("id"):
+                    continue
+                if m.find(q("conditions")) is not None or m.find(q("conditionGroups")) is not None:
+                    sure = False
+                elif m.get("type") == "set":
+                    value = float(m.get("value") or 0)
+                else:
+                    sure = False
+            if sure and value == 0:   # -1 means no limit
+                return False
+    return True
+
+
 def root_probe(node):
     """Copy of node without its contents, for testing root-level visibility."""
     p = copy.deepcopy(node)
@@ -331,11 +355,16 @@ def reachable(nodes, defined):
     return seen
 
 
+INVERTED = re.compile(r"^(.*?), (The|Legion)(?: Unit)?(\s*\(.*\))?\s*$")
+
+
 def tidy_name(name):
-    """'Ebon Keshig, The' -> 'The Ebon Keshig' (keeping any bracketed tag after it)."""
+    """Source names in index order read naturally: 'Ebon Keshig, The' -> 'The Ebon Keshig',
+    'Praetor, Legion' -> 'Legion Praetor', 'Spartan Assault Tank, Legion Unit' -> 'Legion
+    Spartan Assault Tank' (as the Heresy books name them); a bracketed tag stays at the end."""
     name = name.strip()
-    m = re.match(r"^(.*?), The(\s*\(.*\))?\s*$", name)
-    return f"The {m.group(1).strip()}{m.group(2) or ''}" if m else name
+    m = INVERTED.match(name)
+    return f"{m.group(2)} {m.group(1).strip()}{m.group(3) or ''}" if m else name
 
 
 def shared_tops(cat, hh_gst):
@@ -388,7 +417,7 @@ def convert_for_host(source, mh_types, host, legions, rep):
 
     # 1. Root entries offered to this host, each with the Legion context it is shown in.
     plan, skipped = [], {k: [] for k in ("named", "notUnits", "heresyOnlySlot", "otherLordsOfWar",
-                                         "otherLegion", "neverVisible")}
+                                         "otherLegion", "neverVisible", "onlyWithRiteOfWar")}
     for cont in ("selectionEntries", "entryLinks"):
         for el in list(cat.find(q(cont))):
             target = defined.get(el.get("targetId"), el)
@@ -477,17 +506,19 @@ def convert_for_host(source, mh_types, host, legions, rep):
         for cont, el, name, slot, context in current:
             fold(el, Context(context, traitor, absent, forces))
             target = defined.get(el.get("targetId"), el)
-            if possibly_visible(el, target):
-                kept.append((cont, el, name, slot, context))
-            else:
+            if not possibly_visible(el, target):
                 skipped["neverVisible"].append(name)
+            elif not possibly_selectable(el, target):
+                skipped["onlyWithRiteOfWar"].append(name)   # e.g. Master of Armour (Armoured Breakthrough)
+            else:
+                kept.append((cont, el, name, slot, context))
         if len(kept) == len(current):
             break
         current = kept
 
     # 5. Build the content block.
     block = build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep)
-    rep["units"] = sorted(f"{SLOT.get(s, s)}: {n.strip()}" + (f" [{c}]" if c and c != default else "")
+    rep["units"] = sorted(f"{SLOT.get(s, s)}: {tidy_name(n)}" + (f" [{c}]" if c and c != default else "")
                           for _, _, n, s, c in kept)
     rep["notConverted"] = {k: sorted(set(v)) for k, v in skipped.items() if v}
     return block
@@ -517,7 +548,8 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
         target = defined.get(el.get("targetId"), el)
         # New Recruit shows the linked entry's name, so both carry the tag.
         for n in {id(el): el, id(target): target}.values():
-            n.set("name", tidy_name(n.get("name") or name) + NAME_SUFFIX)
+            base = tidy_name(n.get("name") or name)
+            n.set("name", base if base.endswith(NAME_SUFFIX) else base + NAME_SUFFIX)   # shared targets: once
         if slot == "Lords of War":
             sh = any(is_super_heavy_profile(p) for n in (el, target) for p in n.iter(q("profile")))
             new = "Super-Heavy" if sh else "Heavy Support"
@@ -685,7 +717,7 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
                     notes.add(f"{target.get('name')}: {name} modifier dropped")
     rep["profileNotes"] = sorted(notes)
     for x in block.iter():
-        if x.get("name") and ", The" in x.get("name"):
+        if x.get("name") and INVERTED.match(x.get("name")):
             x.set("name", tidy_name(x.get("name")))
 
     # Empty rule texts are filled as for 7th Edition lists: 5th Edition core first.

@@ -26,9 +26,9 @@ Pilot: **Legiones Astartes** only. Not yet tested in New Recruit. Still to do: M
 
 ## Units per faction
 
-Names are as in the source, except that names like "Ebon Keshig, The" read "The Ebon Keshig", and every unit ends in "(Heresy)".
+Names follow the Heresy books ("Legion Praetor", "The Ebon Keshig"); every unit ends in "(Heresy)". Master of Armour is not offered: it needs the Armoured Breakthrough Rite of War.
 
-### Space Marines (101 entries)
+### Space Marines (100 entries)
 
 Entries in square brackets are Legion-specific. A unit listed twice can be taken in either section.
 
@@ -38,363 +38,356 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Elites: Contemptor-Mortis Dreadnought
 - Elites: Dark Sons of Death Squad (Karaoghlanlar) [White Scars]
 - Elites: Deliverer Squad [Raven Guard]
-- Elites: Destroyer Squad, Legion
-- Elites: Dreadnought Talon, Legion
-- Elites: The Ebon Keshig [White Scars]
 - Elites: Firedrake Terminator Squad [Salamanders]
-- Elites: The Golden Keshig [White Scars]
 - Elites: Gorgon Terminator Squad [Iron Hands]
 - Elites: Invictarus Suzerain Squad [Ultramarines]
+- Elites: Legion Destroyer Squad
+- Elites: Legion Dreadnought Talon
+- Elites: Legion Mortis Dreadnought
+- Elites: Legion Nullificators
+- Elites: Legion Quad Launcher Support Battery
+- Elites: Legion Rapier Weapons Battery
+- Elites: Legion Terminator Squad
+- Elites: Legion Veteran Tactical Squad
 - Elites: Medusan Immortals [Iron Hands]
 - Elites: Mor Deythan Strike Squad [Raven Guard]
-- Elites: Mortis Dreadnought, Legion
 - Elites: Nemesis Destroyer Squad [Ultramarines]
-- Elites: Nullificators, Legion
-- Elites: Quad Launcher Support Battery, Legion
-- Elites: Rapier Weapons Battery, Legion
 - Elites: Techmarine Covenant
 - Elites: Templar Brethren [Imperial Fists]
-- Elites: Terminator Squad, Legion
-- Elites: Veteran Tactical Squad, Legion
+- Elites: The Ebon Keshig [White Scars]
+- Elites: The Golden Keshig [White Scars]
 - Fast Attack: Anvillus Pattern Dreadclaw Drop Pod Unit
-- Fast Attack: Attack Bike Squadron, Legion
 - Fast Attack: Dark Fury Assault Squad [Raven Guard]
 - Fast Attack: Darkwing Storm Eagle [Raven Guard]
-- Fast Attack: The Falcon's Claws [White Scars]
-- Fast Attack: Javelin Attack Speeder Squadron, Legion
-- Fast Attack: Jetbike Sky Hunter Squadron, Legion
-- Fast Attack: Land Speeder Squadron, Legion
+- Fast Attack: Legion Attack Bike Squadron
+- Fast Attack: Legion Javelin Attack Speeder Squadron
+- Fast Attack: Legion Jetbike Sky Hunter Squadron
+- Fast Attack: Legion Land Speeder Squadron
+- Fast Attack: Legion Outrider Squad
+- Fast Attack: Legion Seeker Squad
+- Fast Attack: Legion Storm Eagle Assault Gunship
+- Fast Attack: Legion Tarantula Sentry Gun Battery
 - Fast Attack: Locutarus Storm Squad [Ultramarines]
-- Fast Attack: Outrider Squad, Legion
 - Fast Attack: Phalanx Warder Squad [Imperial Fists]
 - Fast Attack: Primaris-Lightning Strike Fighter
 - Fast Attack: Sabre Strike Tank Squadron
-- Fast Attack: Seeker Squad, Legion
-- Fast Attack: Storm Eagle Assault Gunship, Legion Unit
-- Fast Attack: Tarantula Sentry Gun Battery, Legion
 - Fast Attack: Terrax Pattern Termite Assault Drill Unit
+- Fast Attack: The Falcon's Claws [White Scars]
 - Fast Attack: White Scars Kyzagan Assault Speeder [White Scars]
 - Fast Attack: Xiphon Interceptor
-- HQ: Centurion, Legion
 - HQ: Damocles Command Rhino
 - HQ: Huscarl Squad [Imperial Fists]
 - HQ: Knight-Errant
-- HQ: Master of Armour
+- HQ: Legion Centurion
+- HQ: Legion Praetor
+- HQ: Legion Praetor Tribune
 - HQ: Navigator
-- HQ: Praetor Tribune, Legion
-- HQ: Praetor, Legion
 - Heavy Support: Achilles-Alpha Pattern Land Raider
 - Heavy Support: Arquitor Bombard
-- Heavy Support: Artillery Tank Squadron, Legion
-- Heavy Support: Caestus Assault Ram, Legion
 - Heavy Support: Castellax Class Battle-Automata Maniple
 - Heavy Support: Deathstorm Drop Pod
 - Heavy Support: Deredeo Pattern Dreadnought
-- Heavy Support: Fire Raptor Gunship, Legion
 - Heavy Support: Fulmentarus Terminator Squad [Ultramarines]
-- Heavy Support: Heavy Support Squad, Legion
-- Heavy Support: Jetbike Sky Slayer Support Squadron, Legion
-- Heavy Support: Kharybdis Assault Claw, Legion Unit
-- Heavy Support: Land Raider Battle Squadron, Legion
+- Heavy Support: Legion Artillery Tank Squadron
+- Heavy Support: Legion Caestus Assault Ram
+- Heavy Support: Legion Fire Raptor Gunship
+- Heavy Support: Legion Heavy Support Squad
+- Heavy Support: Legion Jetbike Sky Slayer Support Squadron
+- Heavy Support: Legion Kharybdis Assault Claw
+- Heavy Support: Legion Land Raider Battle Squadron
+- Heavy Support: Legion Malcador Assault Tank Squadron
+- Heavy Support: Legion Predator Strike Armoured Squadron
+- Heavy Support: Legion Spartan Assault Tank
+- Heavy Support: Legion Vindicator Siege Tank Squadron
+- Heavy Support: Legion Whirlwind Scorpius
 - Heavy Support: Leviathan Siege Dreadnought Talon
-- Heavy Support: Malcador Assault Tank Squadron, Legion
-- Heavy Support: Predator Strike Armoured Squadron, Legion
 - Heavy Support: Pyroclast Squad [Salamanders]
 - Heavy Support: Sicaran Arcus Strike Tank
 - Heavy Support: Sicaran Battle Tank Squadron
 - Heavy Support: Sicaran Omega Tank Destroyer Squadron
 - Heavy Support: Sicaran Punisher Assault Tank Squadron
 - Heavy Support: Sicaran Venator Tank Destroyer Squadron
-- Heavy Support: Spartan Assault Tank, Legion Unit
 - Heavy Support: Thallax Cohort
-- Heavy Support: Vindicator Siege Tank Squadron, Legion
 - Heavy Support: Vorax Class Battle-automata Maniple
-- Heavy Support: Whirlwind Scorpius, Legion
-- Lords of War: Cerberus Heavy Tank Destroyer, Legion
-- Lords of War: Falchion Super-heavy Tank Destroyer, Legion
-- Lords of War: Fellblade, Legion
-- Lords of War: Glaive Special Weapons Tank, Legion
-- Lords of War: Malcador Assault Tank, Legion
+- Lords of War: Legion Cerberus Heavy Tank Destroyer
+- Lords of War: Legion Falchion Super-heavy Tank Destroyer
+- Lords of War: Legion Fellblade
+- Lords of War: Legion Glaive Special Weapons Tank
+- Lords of War: Legion Malcador Assault Tank
+- Lords of War: Legion Stormblade
+- Lords of War: Legion Thunderhawk Gunship
+- Lords of War: Legion Thunderhawk Transporter
+- Lords of War: Legion Typhon Heavy Siege Tank
 - Lords of War: Mastadon Heavy Assault Transport
 - Lords of War: Sokar Pattern Stormbird
-- Lords of War: Stormblade, Legion
-- Lords of War: Thunderhawk Gunship, Legion
-- Lords of War: Thunderhawk Transporter, Legion
-- Lords of War: Typhon Heavy Siege Tank, Legion
-- No Force Org Slot: Command Squad, Legion
 - No Force Org Slot: Dark Sons of Death Squad (Karaoghlanlar) [White Scars]
 - No Force Org Slot: Huscarl Squad [Imperial Fists]
 - No Force Org Slot: Invictarus Suzerain Squad [Ultramarines]
-- Troops: Assault Squad, Legion
-- Troops: Breacher Siege Squad, Legion
-- Troops: Hussar Squadron, Legion
-- Troops: Jetbike Sky Seeker Squadron, Legion
-- Troops: Nullificators, Legion
-- Troops: Reconnaissance Squad, Legion
-- Troops: Tactical Squad, Legion
-- Troops: Tactical Support Squad, Legion
+- No Force Org Slot: Legion Command Squad
+- Troops: Legion Assault Squad
+- Troops: Legion Breacher Siege Squad
+- Troops: Legion Hussar Squadron
+- Troops: Legion Jetbike Sky Seeker Squadron
+- Troops: Legion Nullificators
+- Troops: Legion Reconnaissance Squad
+- Troops: Legion Tactical Squad
+- Troops: Legion Tactical Support Squad
 
-### Dark Angels (84 entries)
-
+### Dark Angels (83 entries)
 
 - Elites: Apothecarion Detachment
 - Elites: Contemptor Dreadnought Talon
 - Elites: Contemptor-Cortus Class Dreadnought Talon
 - Elites: Contemptor-Mortis Dreadnought
-- Elites: Destroyer Squad, Legion
-- Elites: Dreadnought Talon, Legion
 - Elites: Dreadwing Interemptor Squad
 - Elites: Inner Circle Knights Cenobium
 - Elites: Inner Circle Knights Cenobium - Order of the Broken Claws
-- Elites: Mortis Dreadnought, Legion
-- Elites: Nullificators, Legion
-- Elites: Quad Launcher Support Battery, Legion
-- Elites: Rapier Weapons Battery, Legion
+- Elites: Legion Destroyer Squad
+- Elites: Legion Dreadnought Talon
+- Elites: Legion Mortis Dreadnought
+- Elites: Legion Nullificators
+- Elites: Legion Quad Launcher Support Battery
+- Elites: Legion Rapier Weapons Battery
+- Elites: Legion Terminator Squad
+- Elites: Legion Veteran Tactical Squad
 - Elites: Techmarine Covenant
-- Elites: Terminator Squad, Legion
-- Elites: Veteran Tactical Squad, Legion
 - Fast Attack: Anvillus Pattern Dreadclaw Drop Pod Unit
-- Fast Attack: Attack Bike Squadron, Legion
 - Fast Attack: Firewing Enigmatus Cabal
-- Fast Attack: Javelin Attack Speeder Squadron, Legion
-- Fast Attack: Jetbike Sky Hunter Squadron, Legion
-- Fast Attack: Land Speeder Squadron, Legion
-- Fast Attack: Outrider Squad, Legion
+- Fast Attack: Legion Attack Bike Squadron
+- Fast Attack: Legion Javelin Attack Speeder Squadron
+- Fast Attack: Legion Jetbike Sky Hunter Squadron
+- Fast Attack: Legion Land Speeder Squadron
+- Fast Attack: Legion Outrider Squad
+- Fast Attack: Legion Seeker Squad
+- Fast Attack: Legion Storm Eagle Assault Gunship
+- Fast Attack: Legion Tarantula Sentry Gun Battery
 - Fast Attack: Primaris-Lightning Strike Fighter
 - Fast Attack: Sabre Strike Tank Squadron
-- Fast Attack: Seeker Squad, Legion
-- Fast Attack: Storm Eagle Assault Gunship, Legion Unit
-- Fast Attack: Tarantula Sentry Gun Battery, Legion
 - Fast Attack: Terrax Pattern Termite Assault Drill Unit
 - Fast Attack: Xiphon Interceptor
-- HQ: Centurion, Legion
 - HQ: Damocles Command Rhino
 - HQ: Knight-Errant
-- HQ: Master of Armour
+- HQ: Legion Centurion
+- HQ: Legion Praetor
+- HQ: Legion Praetor Tribune
 - HQ: Navigator
-- HQ: Praetor Tribune, Legion
-- HQ: Praetor, Legion
 - Heavy Support: Achilles-Alpha Pattern Land Raider
 - Heavy Support: Arquitor Bombard
-- Heavy Support: Artillery Tank Squadron, Legion
-- Heavy Support: Caestus Assault Ram, Legion
 - Heavy Support: Castellax Class Battle-Automata Maniple
 - Heavy Support: Deathstorm Drop Pod
 - Heavy Support: Deredeo Pattern Dreadnought
-- Heavy Support: Fire Raptor Gunship, Legion
-- Heavy Support: Heavy Support Squad, Legion
 - Heavy Support: Ironwing Excindio Class Battle-Automata
-- Heavy Support: Jetbike Sky Slayer Support Squadron, Legion
-- Heavy Support: Kharybdis Assault Claw, Legion Unit
-- Heavy Support: Land Raider Battle Squadron, Legion
+- Heavy Support: Legion Artillery Tank Squadron
+- Heavy Support: Legion Caestus Assault Ram
+- Heavy Support: Legion Fire Raptor Gunship
+- Heavy Support: Legion Heavy Support Squad
+- Heavy Support: Legion Jetbike Sky Slayer Support Squadron
+- Heavy Support: Legion Kharybdis Assault Claw
+- Heavy Support: Legion Land Raider Battle Squadron
+- Heavy Support: Legion Malcador Assault Tank Squadron
+- Heavy Support: Legion Predator Strike Armoured Squadron
+- Heavy Support: Legion Spartan Assault Tank
+- Heavy Support: Legion Vindicator Siege Tank Squadron
+- Heavy Support: Legion Whirlwind Scorpius
 - Heavy Support: Leviathan Siege Dreadnought Talon
-- Heavy Support: Malcador Assault Tank Squadron, Legion
-- Heavy Support: Predator Strike Armoured Squadron, Legion
 - Heavy Support: Sicaran Arcus Strike Tank
 - Heavy Support: Sicaran Battle Tank Squadron
 - Heavy Support: Sicaran Omega Tank Destroyer Squadron
 - Heavy Support: Sicaran Punisher Assault Tank Squadron
 - Heavy Support: Sicaran Venator Tank Destroyer Squadron
-- Heavy Support: Spartan Assault Tank, Legion Unit
 - Heavy Support: Thallax Cohort
-- Heavy Support: Vindicator Siege Tank Squadron, Legion
 - Heavy Support: Vorax Class Battle-automata Maniple
-- Heavy Support: Whirlwind Scorpius, Legion
-- Lords of War: Cerberus Heavy Tank Destroyer, Legion
-- Lords of War: Falchion Super-heavy Tank Destroyer, Legion
-- Lords of War: Fellblade, Legion
-- Lords of War: Glaive Special Weapons Tank, Legion
-- Lords of War: Malcador Assault Tank, Legion
+- Lords of War: Legion Cerberus Heavy Tank Destroyer
+- Lords of War: Legion Falchion Super-heavy Tank Destroyer
+- Lords of War: Legion Fellblade
+- Lords of War: Legion Glaive Special Weapons Tank
+- Lords of War: Legion Malcador Assault Tank
+- Lords of War: Legion Stormblade
+- Lords of War: Legion Thunderhawk Gunship
+- Lords of War: Legion Thunderhawk Transporter
+- Lords of War: Legion Typhon Heavy Siege Tank
 - Lords of War: Mastadon Heavy Assault Transport
 - Lords of War: Sokar Pattern Stormbird
-- Lords of War: Stormblade, Legion
-- Lords of War: Thunderhawk Gunship, Legion
-- Lords of War: Thunderhawk Transporter, Legion
-- Lords of War: Typhon Heavy Siege Tank, Legion
-- No Force Org Slot: Command Squad, Legion
 - No Force Org Slot: Deathwing Companions Detachment
-- Troops: Assault Squad, Legion
-- Troops: Breacher Siege Squad, Legion
-- Troops: Hussar Squadron, Legion
-- Troops: Jetbike Sky Seeker Squadron, Legion
-- Troops: Nullificators, Legion
-- Troops: Reconnaissance Squad, Legion
-- Troops: Tactical Squad, Legion
-- Troops: Tactical Support Squad, Legion
+- No Force Org Slot: Legion Command Squad
+- Troops: Legion Assault Squad
+- Troops: Legion Breacher Siege Squad
+- Troops: Legion Hussar Squadron
+- Troops: Legion Jetbike Sky Seeker Squadron
+- Troops: Legion Nullificators
+- Troops: Legion Reconnaissance Squad
+- Troops: Legion Tactical Squad
+- Troops: Legion Tactical Support Squad
 
-### Blood Angels (82 entries)
+### Blood Angels (81 entries)
 
-
-- Elites: The Angel's Tears
 - Elites: Apothecarion Detachment
 - Elites: Contemptor Dreadnought Talon
 - Elites: Contemptor-Cortus Class Dreadnought Talon
 - Elites: Contemptor-Mortis Dreadnought
 - Elites: Crimson Paladins
 - Elites: Dawnbreaker Cohort
-- Elites: Destroyer Squad, Legion
-- Elites: Dreadnought Talon, Legion
-- Elites: Mortis Dreadnought, Legion
-- Elites: Nullificators, Legion
-- Elites: Quad Launcher Support Battery, Legion
-- Elites: Rapier Weapons Battery, Legion
+- Elites: Legion Destroyer Squad
+- Elites: Legion Dreadnought Talon
+- Elites: Legion Mortis Dreadnought
+- Elites: Legion Nullificators
+- Elites: Legion Quad Launcher Support Battery
+- Elites: Legion Rapier Weapons Battery
+- Elites: Legion Terminator Squad
+- Elites: Legion Veteran Tactical Squad
 - Elites: Techmarine Covenant
-- Elites: Terminator Squad, Legion
-- Elites: Veteran Tactical Squad, Legion
+- Elites: The Angel's Tears
 - Fast Attack: Anvillus Pattern Dreadclaw Drop Pod Unit
-- Fast Attack: Attack Bike Squadron, Legion
 - Fast Attack: Contemptor Incaendius Class Dreadnought
-- Fast Attack: Javelin Attack Speeder Squadron, Legion
-- Fast Attack: Jetbike Sky Hunter Squadron, Legion
-- Fast Attack: Land Speeder Squadron, Legion
-- Fast Attack: Outrider Squad, Legion
+- Fast Attack: Legion Attack Bike Squadron
+- Fast Attack: Legion Javelin Attack Speeder Squadron
+- Fast Attack: Legion Jetbike Sky Hunter Squadron
+- Fast Attack: Legion Land Speeder Squadron
+- Fast Attack: Legion Outrider Squad
+- Fast Attack: Legion Seeker Squad
+- Fast Attack: Legion Storm Eagle Assault Gunship
+- Fast Attack: Legion Tarantula Sentry Gun Battery
 - Fast Attack: Primaris-Lightning Strike Fighter
 - Fast Attack: Sabre Strike Tank Squadron
-- Fast Attack: Seeker Squad, Legion
-- Fast Attack: Storm Eagle Assault Gunship, Legion Unit
-- Fast Attack: Tarantula Sentry Gun Battery, Legion
 - Fast Attack: Terrax Pattern Termite Assault Drill Unit
 - Fast Attack: Xiphon Interceptor
-- HQ: Centurion, Legion
 - HQ: Damocles Command Rhino
 - HQ: Knight-Errant
-- HQ: Master of Armour
+- HQ: Legion Centurion
+- HQ: Legion Praetor
+- HQ: Legion Praetor Tribune
 - HQ: Navigator
-- HQ: Praetor Tribune, Legion
-- HQ: Praetor, Legion
 - Heavy Support: Achilles-Alpha Pattern Land Raider
 - Heavy Support: Arquitor Bombard
-- Heavy Support: Artillery Tank Squadron, Legion
-- Heavy Support: Caestus Assault Ram, Legion
 - Heavy Support: Castellax Class Battle-Automata Maniple
 - Heavy Support: Deathstorm Drop Pod
 - Heavy Support: Deredeo Pattern Dreadnought
-- Heavy Support: Fire Raptor Gunship, Legion
-- Heavy Support: Heavy Support Squad, Legion
-- Heavy Support: Jetbike Sky Slayer Support Squadron, Legion
-- Heavy Support: Kharybdis Assault Claw, Legion Unit
-- Heavy Support: Land Raider Battle Squadron, Legion
+- Heavy Support: Legion Artillery Tank Squadron
+- Heavy Support: Legion Caestus Assault Ram
+- Heavy Support: Legion Fire Raptor Gunship
+- Heavy Support: Legion Heavy Support Squad
+- Heavy Support: Legion Jetbike Sky Slayer Support Squadron
+- Heavy Support: Legion Kharybdis Assault Claw
+- Heavy Support: Legion Land Raider Battle Squadron
+- Heavy Support: Legion Malcador Assault Tank Squadron
+- Heavy Support: Legion Predator Strike Armoured Squadron
+- Heavy Support: Legion Spartan Assault Tank
+- Heavy Support: Legion Vindicator Siege Tank Squadron
+- Heavy Support: Legion Whirlwind Scorpius
 - Heavy Support: Leviathan Siege Dreadnought Talon
-- Heavy Support: Malcador Assault Tank Squadron, Legion
-- Heavy Support: Predator Strike Armoured Squadron, Legion
 - Heavy Support: Sicaran Arcus Strike Tank
 - Heavy Support: Sicaran Battle Tank Squadron
 - Heavy Support: Sicaran Omega Tank Destroyer Squadron
 - Heavy Support: Sicaran Punisher Assault Tank Squadron
 - Heavy Support: Sicaran Venator Tank Destroyer Squadron
-- Heavy Support: Spartan Assault Tank, Legion Unit
 - Heavy Support: Thallax Cohort
-- Heavy Support: Vindicator Siege Tank Squadron, Legion
 - Heavy Support: Vorax Class Battle-automata Maniple
-- Heavy Support: Whirlwind Scorpius, Legion
-- Lords of War: Cerberus Heavy Tank Destroyer, Legion
-- Lords of War: Falchion Super-heavy Tank Destroyer, Legion
-- Lords of War: Fellblade, Legion
-- Lords of War: Glaive Special Weapons Tank, Legion
-- Lords of War: Malcador Assault Tank, Legion
+- Lords of War: Legion Cerberus Heavy Tank Destroyer
+- Lords of War: Legion Falchion Super-heavy Tank Destroyer
+- Lords of War: Legion Fellblade
+- Lords of War: Legion Glaive Special Weapons Tank
+- Lords of War: Legion Malcador Assault Tank
+- Lords of War: Legion Stormblade
+- Lords of War: Legion Thunderhawk Gunship
+- Lords of War: Legion Thunderhawk Transporter
+- Lords of War: Legion Typhon Heavy Siege Tank
 - Lords of War: Mastadon Heavy Assault Transport
 - Lords of War: Sokar Pattern Stormbird
-- Lords of War: Stormblade, Legion
-- Lords of War: Thunderhawk Gunship, Legion
-- Lords of War: Thunderhawk Transporter, Legion
-- Lords of War: Typhon Heavy Siege Tank, Legion
-- No Force Org Slot: Command Squad, Legion
-- Troops: Assault Squad, Legion
-- Troops: Breacher Siege Squad, Legion
-- Troops: Hussar Squadron, Legion
-- Troops: Jetbike Sky Seeker Squadron, Legion
-- Troops: Nullificators, Legion
-- Troops: Reconnaissance Squad, Legion
-- Troops: Tactical Squad, Legion
-- Troops: Tactical Support Squad, Legion
+- No Force Org Slot: Legion Command Squad
+- Troops: Legion Assault Squad
+- Troops: Legion Breacher Siege Squad
+- Troops: Legion Hussar Squadron
+- Troops: Legion Jetbike Sky Seeker Squadron
+- Troops: Legion Nullificators
+- Troops: Legion Reconnaissance Squad
+- Troops: Legion Tactical Squad
+- Troops: Legion Tactical Support Squad
 
-### Space Wolves (82 entries)
-
+### Space Wolves (81 entries)
 
 - Elites: Apothecarion Detachment
 - Elites: Contemptor Dreadnought Talon
 - Elites: Contemptor-Cortus Class Dreadnought Talon
 - Elites: Contemptor-Mortis Dreadnought
-- Elites: The Deathsworn
-- Elites: Destroyer Squad, Legion
-- Elites: Dreadnought Talon, Legion
-- Elites: Mortis Dreadnought, Legion
-- Elites: Nullificators, Legion
-- Elites: Quad Launcher Support Battery, Legion
-- Elites: Rapier Weapons Battery, Legion
+- Elites: Legion Destroyer Squad
+- Elites: Legion Dreadnought Talon
+- Elites: Legion Mortis Dreadnought
+- Elites: Legion Nullificators
+- Elites: Legion Quad Launcher Support Battery
+- Elites: Legion Rapier Weapons Battery
+- Elites: Legion Terminator Squad
+- Elites: Legion Veteran Tactical Squad
 - Elites: Techmarine Covenant
-- Elites: Terminator Squad, Legion
+- Elites: The Deathsworn
 - Elites: Varagyr Wolf Guard Terminator Squad
-- Elites: Veteran Tactical Squad, Legion
 - Fast Attack: Anvillus Pattern Dreadclaw Drop Pod Unit
-- Fast Attack: Attack Bike Squadron, Legion
-- Fast Attack: Javelin Attack Speeder Squadron, Legion
-- Fast Attack: Jetbike Sky Hunter Squadron, Legion
-- Fast Attack: Land Speeder Squadron, Legion
-- Fast Attack: Outrider Squad, Legion
+- Fast Attack: Legion Attack Bike Squadron
+- Fast Attack: Legion Javelin Attack Speeder Squadron
+- Fast Attack: Legion Jetbike Sky Hunter Squadron
+- Fast Attack: Legion Land Speeder Squadron
+- Fast Attack: Legion Outrider Squad
+- Fast Attack: Legion Seeker Squad
+- Fast Attack: Legion Storm Eagle Assault Gunship
+- Fast Attack: Legion Tarantula Sentry Gun Battery
 - Fast Attack: Primaris-Lightning Strike Fighter
 - Fast Attack: Sabre Strike Tank Squadron
-- Fast Attack: Seeker Squad, Legion
-- Fast Attack: Storm Eagle Assault Gunship, Legion Unit
-- Fast Attack: Tarantula Sentry Gun Battery, Legion
 - Fast Attack: Terrax Pattern Termite Assault Drill Unit
 - Fast Attack: Xiphon Interceptor
-- HQ: Centurion, Legion
 - HQ: Damocles Command Rhino
 - HQ: Knight-Errant
-- HQ: Master of Armour
+- HQ: Legion Centurion
+- HQ: Legion Praetor
+- HQ: Legion Praetor Tribune
 - HQ: Navigator
-- HQ: Praetor Tribune, Legion
-- HQ: Praetor, Legion
 - HQ: Priest of Fenris
 - Heavy Support: Achilles-Alpha Pattern Land Raider
 - Heavy Support: Arquitor Bombard
-- Heavy Support: Artillery Tank Squadron, Legion
-- Heavy Support: Caestus Assault Ram, Legion
 - Heavy Support: Castellax Class Battle-Automata Maniple
 - Heavy Support: Deathstorm Drop Pod
 - Heavy Support: Deredeo Pattern Dreadnought
-- Heavy Support: Fire Raptor Gunship, Legion
-- Heavy Support: Heavy Support Squad, Legion
-- Heavy Support: Jetbike Sky Slayer Support Squadron, Legion
-- Heavy Support: Kharybdis Assault Claw, Legion Unit
-- Heavy Support: Land Raider Battle Squadron, Legion
+- Heavy Support: Legion Artillery Tank Squadron
+- Heavy Support: Legion Caestus Assault Ram
+- Heavy Support: Legion Fire Raptor Gunship
+- Heavy Support: Legion Heavy Support Squad
+- Heavy Support: Legion Jetbike Sky Slayer Support Squadron
+- Heavy Support: Legion Kharybdis Assault Claw
+- Heavy Support: Legion Land Raider Battle Squadron
+- Heavy Support: Legion Malcador Assault Tank Squadron
+- Heavy Support: Legion Predator Strike Armoured Squadron
+- Heavy Support: Legion Spartan Assault Tank
+- Heavy Support: Legion Vindicator Siege Tank Squadron
+- Heavy Support: Legion Whirlwind Scorpius
 - Heavy Support: Leviathan Siege Dreadnought Talon
-- Heavy Support: Malcador Assault Tank Squadron, Legion
-- Heavy Support: Predator Strike Armoured Squadron, Legion
 - Heavy Support: Sicaran Arcus Strike Tank
 - Heavy Support: Sicaran Battle Tank Squadron
 - Heavy Support: Sicaran Omega Tank Destroyer Squadron
 - Heavy Support: Sicaran Punisher Assault Tank Squadron
 - Heavy Support: Sicaran Venator Tank Destroyer Squadron
-- Heavy Support: Spartan Assault Tank, Legion Unit
 - Heavy Support: Thallax Cohort
-- Heavy Support: Vindicator Siege Tank Squadron, Legion
 - Heavy Support: Vorax Class Battle-automata Maniple
-- Heavy Support: Whirlwind Scorpius, Legion
-- Lords of War: Cerberus Heavy Tank Destroyer, Legion
-- Lords of War: Falchion Super-heavy Tank Destroyer, Legion
-- Lords of War: Fellblade, Legion
-- Lords of War: Glaive Special Weapons Tank, Legion
-- Lords of War: Malcador Assault Tank, Legion
+- Lords of War: Legion Cerberus Heavy Tank Destroyer
+- Lords of War: Legion Falchion Super-heavy Tank Destroyer
+- Lords of War: Legion Fellblade
+- Lords of War: Legion Glaive Special Weapons Tank
+- Lords of War: Legion Malcador Assault Tank
+- Lords of War: Legion Stormblade
+- Lords of War: Legion Thunderhawk Gunship
+- Lords of War: Legion Thunderhawk Transporter
+- Lords of War: Legion Typhon Heavy Siege Tank
 - Lords of War: Mastadon Heavy Assault Transport
 - Lords of War: Sokar Pattern Stormbird
-- Lords of War: Stormblade, Legion
-- Lords of War: Thunderhawk Gunship, Legion
-- Lords of War: Thunderhawk Transporter, Legion
-- Lords of War: Typhon Heavy Siege Tank, Legion
-- No Force Org Slot: Command Squad, Legion
-- Troops: Assault Squad, Legion
-- Troops: Breacher Siege Squad, Legion
+- No Force Org Slot: Legion Command Squad
 - Troops: Grey Slayer Pack
-- Troops: Hussar Squadron, Legion
-- Troops: Jetbike Sky Seeker Squadron, Legion
-- Troops: Nullificators, Legion
-- Troops: Reconnaissance Squad, Legion
-- Troops: Tactical Squad, Legion
-- Troops: Tactical Support Squad, Legion
+- Troops: Legion Assault Squad
+- Troops: Legion Breacher Siege Squad
+- Troops: Legion Hussar Squadron
+- Troops: Legion Jetbike Sky Seeker Squadron
+- Troops: Legion Nullificators
+- Troops: Legion Reconnaissance Squad
+- Troops: Legion Tactical Squad
+- Troops: Legion Tactical Support Squad
 
-### Chaos Space Marines (109 entries)
+### Chaos Space Marines (108 entries)
 
 Entries in square brackets are Legion-specific. A unit listed twice can be taken in either section.
 
@@ -406,107 +399,106 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Elites: Contemptor-Cortus Class Dreadnought Talon
 - Elites: Contemptor-Mortis Dreadnought
 - Elites: Deathshroud Terminator Squad [Death Guard]
-- Elites: Destroyer Squad, Legion
 - Elites: Dominator Cohort [Iron Warriors]
-- Elites: Dreadnought Talon, Legion
 - Elites: Gal Vorbak Dark Brethren [Word Bearers]
 - Elites: Justaerin Terminator Squad [Sons of Horus]
 - Elites: Khenetai Blade Occult Cabal [Thousand Sons]
+- Elites: Legion Destroyer Squad
+- Elites: Legion Dreadnought Talon
+- Elites: Legion Mortis Dreadnought
+- Elites: Legion Nullificators
+- Elites: Legion Quad Launcher Support Battery
+- Elites: Legion Rapier Weapons Battery
+- Elites: Legion Terminator Squad
+- Elites: Legion Veteran Tactical Squad
 - Elites: Lernaean Terminator Squad [Alpha Legion]
 - Elites: Mhara Gal Tainted Dreadnought [Word Bearers]
-- Elites: Mortis Dreadnought, Legion
 - Elites: Mortus Poisoner Squad [Death Guard]
-- Elites: Nullificators, Legion
 - Elites: Palatine Blade Squad [Emperor's Children]
 - Elites: Phoenix Terminator Squad [Emperor's Children]
-- Elites: Quad Launcher Support Battery, Legion
 - Elites: Rampager Squads [World Eaters]
-- Elites: Rapier Weapons Battery, Legion
 - Elites: Red Butchers [World Eaters]
 - Elites: Red Hand Destroyer Assault Squad [World Eaters]
 - Elites: Sekhmet Terminator Cabal [Thousand Sons]
 - Elites: Techmarine Covenant
-- Elites: Terminator Squad, Legion
 - Elites: Terror Squad [Night Lords]
-- Elites: Veteran Tactical Squad, Legion
 - Fast Attack: Ammitara Occult Intercession Cabal [Thousand Sons]
 - Fast Attack: Anvillus Pattern Dreadclaw Drop Pod Unit
-- Fast Attack: The Ashen Circle [Word Bearers]
-- Fast Attack: Attack Bike Squadron, Legion
 - Fast Attack: Headhunter Kill Teams [Alpha Legion]
-- Fast Attack: Javelin Attack Speeder Squadron, Legion
-- Fast Attack: Jetbike Sky Hunter Squadron, Legion
-- Fast Attack: Land Speeder Squadron, Legion
+- Fast Attack: Legion Attack Bike Squadron
+- Fast Attack: Legion Javelin Attack Speeder Squadron
+- Fast Attack: Legion Jetbike Sky Hunter Squadron
+- Fast Attack: Legion Land Speeder Squadron
+- Fast Attack: Legion Outrider Squad
+- Fast Attack: Legion Seeker Squad
+- Fast Attack: Legion Storm Eagle Assault Gunship
+- Fast Attack: Legion Tarantula Sentry Gun Battery
 - Fast Attack: Night Raptor Squad [Night Lords]
-- Fast Attack: Outrider Squad, Legion
 - Fast Attack: Primaris-Lightning Strike Fighter
 - Fast Attack: Rampager Squads [World Eaters]
 - Fast Attack: Reaver Attack Squad [Sons of Horus]
 - Fast Attack: Sabre Strike Tank Squadron
-- Fast Attack: Seeker Squad, Legion
-- Fast Attack: Storm Eagle Assault Gunship, Legion Unit
-- Fast Attack: Tarantula Sentry Gun Battery, Legion
 - Fast Attack: Terrax Pattern Termite Assault Drill Unit
+- Fast Attack: The Ashen Circle [Word Bearers]
 - Fast Attack: Xiphon Interceptor
-- HQ: Centurion, Legion
 - HQ: Contekar Terminator Elite [Night Lords]
 - HQ: Damocles Command Rhino
 - HQ: Deathshroud Terminator Squad [Death Guard]
-- HQ: Master of Armour
+- HQ: Legion Centurion
+- HQ: Legion Praetor
+- HQ: Legion Praetor Tribune
 - HQ: Navigator
-- HQ: Praetor Tribune, Legion
-- HQ: Praetor, Legion
 - Heavy Support: Achilles-Alpha Pattern Land Raider
 - Heavy Support: Arquitor Bombard
-- Heavy Support: Artillery Tank Squadron, Legion
-- Heavy Support: Caestus Assault Ram, Legion
 - Heavy Support: Castellax Class Battle-Automata Maniple
 - Heavy Support: Castellax-Achea Battle Maniple [Thousand Sons]
 - Heavy Support: Deathstorm Drop Pod
 - Heavy Support: Deredeo Pattern Dreadnought
-- Heavy Support: Fire Raptor Gunship, Legion
 - Heavy Support: Grave Warden Terminator Squad [Death Guard]
-- Heavy Support: Heavy Support Squad, Legion
 - Heavy Support: Iron Havoc Support Squad [Iron Warriors]
-- Heavy Support: Jetbike Sky Slayer Support Squadron, Legion
-- Heavy Support: The Kakophoni of the Emperor's Children [Emperor's Children]
-- Heavy Support: Kharybdis Assault Claw, Legion Unit
-- Heavy Support: Land Raider Battle Squadron, Legion
+- Heavy Support: Legion Artillery Tank Squadron
+- Heavy Support: Legion Caestus Assault Ram
+- Heavy Support: Legion Fire Raptor Gunship
+- Heavy Support: Legion Heavy Support Squad
+- Heavy Support: Legion Jetbike Sky Slayer Support Squadron
+- Heavy Support: Legion Kharybdis Assault Claw
+- Heavy Support: Legion Land Raider Battle Squadron
+- Heavy Support: Legion Malcador Assault Tank Squadron
+- Heavy Support: Legion Predator Strike Armoured Squadron
+- Heavy Support: Legion Spartan Assault Tank
+- Heavy Support: Legion Vindicator Siege Tank Squadron
+- Heavy Support: Legion Whirlwind Scorpius
 - Heavy Support: Leviathan Siege Dreadnought Talon
-- Heavy Support: Malcador Assault Tank Squadron, Legion
-- Heavy Support: Predator Strike Armoured Squadron, Legion
 - Heavy Support: Sicaran Arcus Strike Tank
 - Heavy Support: Sicaran Battle Tank Squadron
 - Heavy Support: Sicaran Omega Tank Destroyer Squadron
 - Heavy Support: Sicaran Punisher Assault Tank Squadron
 - Heavy Support: Sicaran Venator Tank Destroyer Squadron
-- Heavy Support: Spartan Assault Tank, Legion Unit
 - Heavy Support: Sun Killer Squad [Emperor's Children]
 - Heavy Support: Thallax Cohort
+- Heavy Support: The Kakophoni of the Emperor's Children [Emperor's Children]
 - Heavy Support: Tyrant Siege Terminator Squad [Iron Warriors]
-- Heavy Support: Vindicator Siege Tank Squadron, Legion
 - Heavy Support: Vorax Class Battle-automata Maniple
-- Heavy Support: Whirlwind Scorpius, Legion
-- Lords of War: Cerberus Heavy Tank Destroyer, Legion
-- Lords of War: Falchion Super-heavy Tank Destroyer, Legion
-- Lords of War: Fellblade, Legion
-- Lords of War: Glaive Special Weapons Tank, Legion
-- Lords of War: Malcador Assault Tank, Legion
+- Lords of War: Legion Cerberus Heavy Tank Destroyer
+- Lords of War: Legion Falchion Super-heavy Tank Destroyer
+- Lords of War: Legion Fellblade
+- Lords of War: Legion Glaive Special Weapons Tank
+- Lords of War: Legion Malcador Assault Tank
+- Lords of War: Legion Stormblade
+- Lords of War: Legion Thunderhawk Gunship
+- Lords of War: Legion Thunderhawk Transporter
+- Lords of War: Legion Typhon Heavy Siege Tank
 - Lords of War: Mastadon Heavy Assault Transport
 - Lords of War: Sokar Pattern Stormbird
-- Lords of War: Stormblade, Legion
-- Lords of War: Thunderhawk Gunship, Legion
-- Lords of War: Thunderhawk Transporter, Legion
-- Lords of War: Typhon Heavy Siege Tank, Legion
-- No Force Org Slot: Command Squad, Legion
-- Troops: Assault Squad, Legion
-- Troops: Breacher Siege Squad, Legion
-- Troops: Hussar Squadron, Legion
-- Troops: Jetbike Sky Seeker Squadron, Legion
-- Troops: Nullificators, Legion
-- Troops: Reconnaissance Squad, Legion
-- Troops: Tactical Squad, Legion
-- Troops: Tactical Support Squad, Legion
+- No Force Org Slot: Legion Command Squad
+- Troops: Legion Assault Squad
+- Troops: Legion Breacher Siege Squad
+- Troops: Legion Hussar Squadron
+- Troops: Legion Jetbike Sky Seeker Squadron
+- Troops: Legion Nullificators
+- Troops: Legion Reconnaissance Squad
+- Troops: Legion Tactical Squad
+- Troops: Legion Tactical Support Squad
 
 ## Known issues
 
