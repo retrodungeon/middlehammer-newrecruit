@@ -205,6 +205,46 @@ NOT_ON_STANDARD_CHART = {
 }
 STANDARD_FORCE = "mh-test-force"
 
+# Allies only within the same era (Unification p. 8): 3rd-5th Edition codexes ally with each
+# other, 6th-7th with each other. Every Army List option carries its era as a category; an
+# ally force type is an error in a roster that also contains a list from the other era.
+ERA_CATEGORIES = {"3rd-5th": ("mh-era-3-5", "Era: 3rd-5th Edition"),
+                  "6th-7th": ("mh-era-6-7", "Era: 6th-7th Edition")}
+ALLY_FORCES = {"Adeptus Arbites Allies", "Assassin Attachment", "Daemon Hunter Allies",
+               "Harlequin Allies", "Kroot Auxiliaries", "Witch Hunter Allies"}
+
+
+def era(book_edition):
+    return "3rd-5th" if book_edition <= 5 else "6th-7th"
+
+
+def ensure_era_categories(gst):
+    gns = "http://www.battlescribe.net/schema/gameSystemSchema"
+    cats = gst.find(f"{{{gns}}}categoryEntries")
+    have = {c.get("id") for c in cats}
+    for cid, name in ERA_CATEGORIES.values():
+        if cid not in have:
+            ET.SubElement(cats, f"{{{gns}}}categoryEntry", {"name": name, "id": cid, "hidden": "false"})
+
+
+def restrict_allies_to_era(entry, ally_forces, option_era):
+    """ally_forces: {force id: owning option id}. Selecting that list in its ally force while
+    the roster holds a list of the other era breaks the option's max constraint."""
+    for opt in entry.find(q("selectionEntryGroups")).iter(q("selectionEntry")):
+        for fid, oid in ally_forces.items():
+            if oid != opt.get("id"):
+                continue
+            other = ERA_CATEGORIES["6th-7th" if option_era[oid] == "3rd-5th" else "3rd-5th"][0]
+            m = ET.SubElement(child(opt, "modifiers", 0), q("modifier"),
+                              {"type": "set", "field": f"{oid}-max", "value": "0"})
+            conds = ET.SubElement(m, q("conditions"))
+            ET.SubElement(conds, q("condition"), {
+                "type": "instanceOf", "value": "1", "field": "selections", "scope": "force", "childId": fid,
+                "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
+            ET.SubElement(conds, q("condition"), {
+                "type": "atLeast", "value": "1", "field": "selections", "scope": "roster", "childId": other,
+                "shared": "true", "includeChildSelections": "true", "includeChildForces": "true"})
+
 
 def restrict_to_owner(entry, own_forces):
     """In a force type that belongs to one army list (e.g. 'Psykana Division', 'Daemon Hunter
@@ -241,10 +281,13 @@ def selector(fid, options, default=None):
     constraint(grp, "min", 1, "parent", f"{sid}-group-min")
     constraint(grp, "max", 1, "parent", f"{sid}-group-max")
     entries = child(grp, "selectionEntries")
-    for oid, name in options:
+    for oid, name, option_era in options:
         opt = ET.SubElement(entries, q("selectionEntry"), {
             "type": "upgrade", "import": "true", "name": name, "hidden": "false",
             "id": oid, "collective": "false"})
+        cid, cname = ERA_CATEGORIES[option_era]
+        ET.SubElement(child(opt, "categoryLinks"), q("categoryLink"), {
+            "name": cname, "hidden": "false", "id": f"{oid}-era", "targetId": cid, "primary": "false"})
         constraint(opt, "max", 1, "parent", f"{oid}-max")
         ET.SubElement(child(opt, "costs"), q("cost"), {"name": "Points", "typeId": MH_POINTS, "value": "0"})
     ET.SubElement(child(entry, "costs"), q("cost"), {"name": "Points", "typeId": MH_POINTS, "value": "0"})
@@ -334,7 +377,7 @@ def build_factions(members, game_system_id, report):
             f"{ED[m[0]]} source: {m[1]}" for m in fm)
         links = ET.SubElement(root, q("catalogueLinks"))
         seen = {fid}
-        options, own_forces = [], {}
+        options, own_forces, ally_forces = [], {}, {}
         for spec in fm:
             e, s, prefix = spec[:3]
             book_edition = spec[3] if len(spec) > 3 else e
@@ -342,8 +385,11 @@ def build_factions(members, game_system_id, report):
             mid = m.get("id")
             rename_collisions(seen, m, report)
             oid = option_for[mid]
-            options.append((oid, label(book_edition, s, prefix)))
+            options.append((oid, label(book_edition, s, prefix), era(book_edition)))
             own_forces[oid] = [f.get("id") for f in m.iter(q("forceEntry"))]
+            for f in m.iter(q("forceEntry")):
+                if f.get("name") in ALLY_FORCES:
+                    ally_forces[f.get("id")] = oid
             for cont in ("selectionEntries", "entryLinks"):
                 src = m.find(q(cont))
                 for el in (list(src) if src is not None else []):
@@ -369,13 +415,17 @@ def build_factions(members, game_system_id, report):
         not_standard = [option_for[members[(m[0], m[1])].get("id")] for m in fm
                         if (m[0], m[1]) in NOT_ON_STANDARD_CHART]
         # Default to a list that can be shown in the standard force, where there is one.
-        sel = selector(fid, options, next((o for o, _ in options if o not in not_standard), None))
+        sel = selector(fid, options, next((o for o, _, _ in options if o not in not_standard), None))
         restricted = {o: f for o, f in own_forces.items() if f}
         restricted[None] = not_standard
         restrict_to_owner(sel, restricted)
+        restrict_allies_to_era(sel, ally_forces, {o: e for o, _, e in options})
+        report.setdefault("allyForcesEraChecked", []).extend(
+            f"{fname}: {next(f.get('name') for f in root.iter(q('forceEntry')) if f.get('id') == fid)}"
+            for fid in ally_forces)
         child(root, "selectionEntries").insert(0, sel)
         if not len(links):
             root.remove(links)
         out[fname] = root
-        report.setdefault("factions", {})[fname] = [n for _, n in options]
+        report.setdefault("factions", {})[fname] = [n for _, n, _ in options]
     return out
