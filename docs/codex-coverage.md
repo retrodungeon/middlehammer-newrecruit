@@ -12,7 +12,7 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 
 | Faction | Army List options | Options |
 |---|---:|---|
-| **Space Marines** | 13 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
+| **Space Marines** | 16 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>6th Ed – Codex: Space Marines (2013)<br>6th Ed – Clan Raukaan (supplement, 2013)<br>6th Ed – Sentinels of Terra (supplement, 2013)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
 | **Blood Angels** | 5 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>4th Ed – Codex: Blood Angels (White Dwarf 2007)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
 | **Dark Angels** | 3 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015) |
 | **Space Wolves** | 4 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003)<br>5th Ed – Codex: Space Wolves (2009)<br>7th Ed – Codex: Space Wolves (2014) |
@@ -112,7 +112,7 @@ All 5th Edition source books flagged in the audit have now been checked.
 | Tyranids (3rd Ed) | — | Skipped: hybrid of the 2001 codex with 5th Edition units; 2001 codex comes from the 3rd Edition source |
 | Witch Hunters | — | Skipped: duplicate of 3rd Edition source Witch Hunters (2003) |
 
-## 6th Edition source — pilot (2 converted)
+## 6th Edition source — 5 converted
 
 Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_last_revision.bsr` (pinned by SHA-256 in `sources/upstreams.json`), BattleScribe 1.14b format. Translated to the current format by `tools/convert_6e_catalogues.py`, then adjusted for the Unification as the 7th Edition lists are: Formations, Battle Formations, Spearheads, Fortifications and extra-detachment markers removed; Lords of War reassigned (independent characters → HQ, super-heavies → Super-Heavy, others → Heavy Support); Apocalypse Legendary Units that repeat a Lord of War dropped; super-heavies behind the "Hide super-heavies" switch; conditions on the Primary Detachment always true, on Apocalypse following the switch, on other force types never true.
 
@@ -122,7 +122,7 @@ Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_l
 | Tau - Supplement - Farsight Enclaves | Farsight Enclaves (2013) | Converted (pilot) |
 | Dark Angels - Codex | Codex: Dark Angels (2013) | To do |
 | Eldar - Codex, Eldar - Supplement - Iyanden | Codex: Eldar (2013), Iyanden (2013) | To do |
-| Space Marines - Codex, Supplements Clan Raukaan, Sentinels of Terra | Codex: Space Marines (2013) and supplements | To do |
+| Space Marines - Codex, Supplements Clan Raukaan, Sentinels of Terra | Codex: Space Marines (2013), Clan Raukaan (2013), Sentinels of Terra (2013) | Converted. Uncategorised units (Command Squad, Honour Guard, Techmarine, Servitors, Damocles, Cypher) use no slot; the Allied Detachment Chapter Tactics entry is removed. "DEVASTATOR PLACEHOLDER (IA12)" is the source's container for Vigilator-Sergeant Hamath Kraatos and is kept as is |
 | Chaos Daemons (40K) - Codex | Codex: Chaos Daemons (2013) | To do |
 | Chaos Space Marines - Supplements Black Legion, Crimson Slaughter | Black Legion (2013), Crimson Slaughter (2014) | To do |
 | Orks - FW - Dread Mob | IA08 Dread Mob (2013) | To do |

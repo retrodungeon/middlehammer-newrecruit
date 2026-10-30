@@ -60,11 +60,15 @@ MH = {
 # source carries in a later revision (Chaos Space Marines 2012, Adepta Sororitas 2013,
 # Inquisition 2013, Legion of the Damned 2014, Astra Militarum and Forge World lists), an
 # empty Imperial Knights file, Apocalypse and fortification data.
-CONVERTED = ["Tau - Codex", "Tau - Supplement - Farsight Enclaves"]
+CONVERTED = ["Tau - Codex", "Tau - Supplement - Farsight Enclaves",
+             "Space Marines - Codex", "Space Marines - Supplement - Clan Raukaan",
+             "Space Marines - Supplement - Sentinels of Terra"]
 
 # 6th Edition categories (by name in the source game system) -> Middlehammer slot.
 SLOT = {"HQ": "HQ", "Troops": "Troops", "Elites": "Elites", "Elite": "Elites", "Fast Attack": "Fast Attack",
         "Heavy Support": "Heavy Support", "No Force Org Slot": "No Force Org Slot"}
+# Settings that only exist for Allied Detachments (banned, Unification p. 9).
+DROPPED_NAMES = ("Allied Detachment",)
 LORDS_OF_WAR = {"Lords of War"}
 LEGENDARY = {"Legendary Unit", "Knights"}
 DROPPED = {"Formation", "Battle Formation", "Spearhead", "Fortification", "Extra Detachment",
@@ -397,6 +401,24 @@ def is_super_heavy(node, lookup):
     return any(re.search(r"super[- ]?heavy|gargantuan", n, re.I) for n in names)
 
 
+def is_setting(node, lookup):
+    """An army-wide setting (e.g. Chapter Tactics): no models, units or profiles anywhere in it."""
+    seen, todo = set(), [node]
+    while todo:
+        el = todo.pop()
+        if id(el) in seen:
+            continue
+        seen.add(id(el))
+        for x in el.iter():
+            if lname(x.tag) == "selectionEntry" and x.get("type") in ("model", "unit"):
+                return False
+            if lname(x.tag) == "profile" or (lname(x.tag) == "infoLink" and x.get("type") == "profile"):
+                return False
+            if lname(x.tag) == "entryLink" and x.get("targetId") in lookup:
+                todo.append(lookup[x.get("targetId")])
+    return True
+
+
 def is_independent_character(node, lookup):
     for el in [node] + [lookup.get(l.get("targetId")) for l in node.iter(q("entryLink"))]:
         if el is None:
@@ -446,7 +468,7 @@ def convert_one(path, legacy_gst, gst_names, types, report):
             src = el.attrib.pop("mhSourceCategory", "(No Category)")
             nm = el.get("name")
             target = lookup.get(el.get("targetId"), el)
-            if src in DROPPED:
+            if src in DROPPED or any(n in (nm or "") for n in DROPPED_NAMES):
                 box.remove(el)
                 dropped.append(f"{src}: {nm}")
                 removed_ids |= {el.get("id"), el.get("targetId")} - {None}
@@ -470,7 +492,7 @@ def convert_one(path, legacy_gst, gst_names, types, report):
                 new = "Super-Heavy" if sh else ("HQ" if is_independent_character(target, lookup) else "Heavy Support")
                 low[new].append(nm)
             elif src == "(No Category)":
-                new = "Super-Heavy" if sh else ("Configuration" if target.get("type") == "upgrade" else "No Force Org Slot")
+                new = "Super-Heavy" if sh else ("Configuration" if is_setting(target, lookup) else "No Force Org Slot")
                 uncategorised.append(f"{nm} -> {new}")
             else:
                 raise ValueError(f"{path.stem}: unknown category {src!r} for {nm}")
