@@ -34,7 +34,7 @@ For 7th Edition lists, Formations and Command Benefits are removed, codex detach
 
 ### Optional add-on: Relics of the Age of Darkness
 
-Horus Heresy 1st Edition units for 6th/7th Edition lists, off by default: tick **Configuration → Relics of the Age of Darkness** in a 6th or 7th Edition list. First part (Legion units for Space Marines, Dark Angels, Blood Angels, Space Wolves and Chaos Space Marines) built, not yet tested in New Recruit. See [`docs/relics-of-the-age-of-darkness.md`](docs/relics-of-the-age-of-darkness.md).
+Horus Heresy 1st Edition units for 6th/7th Edition lists, off by default: tick **Configuration → Relics of the Age of Darkness** in a 6th or 7th Edition list. First part (Legion units for Space Marines, Dark Angels, Blood Angels, Space Wolves and Chaos Space Marines) built, not yet tested in New Recruit. See [`docs/relics-of-the-age-of-darkness.md`](docs/relics-of-the-age-of-darkness.md), and the players' rules document [`docs/Relics_of_the_Age_of_Darkness.pdf`](docs/Relics_of_the_Age_of_Darkness.pdf) (rebuilt with the data).
 
 ### In progress
 
@@ -43,7 +43,7 @@ Horus Heresy 1st Edition units for 6th/7th Edition lists, off by default: tick *
 ## Repository layout
 
 - `*.gst`, `*.cat` (repository root) — the files New Recruit reads.
-- `tools/` — Python scripts for building, converting and auditing data. `build_middlehammer.py` rebuilds every Middlehammer catalogue from the pinned sources (`convert_3e_catalogues.py`, `convert_5e_catalogues.py`, `convert_7e_catalogues.py`, then `merge_factions.py`); `validate_middlehammer.py` checks every published catalogue. The 6th Edition translator (`convert_legacy_6e.py` and related) is experimental.
+- `tools/` — Python scripts for building, converting and auditing data. `tools/relics_book/` builds the Relics of the Age of Darkness PDF (needs `reportlab`, `pillow`, `pypdf`). `build_middlehammer.py` rebuilds every Middlehammer catalogue from the pinned sources (`convert_3e_catalogues.py`, `convert_5e_catalogues.py`, `convert_7e_catalogues.py`, then `merge_factions.py`); `validate_middlehammer.py` checks every published catalogue. The 6th Edition translator (`convert_legacy_6e.py` and related) is experimental.
 - `.github/workflows/` — `validate.yml` (structural checks), `build-check.yml` (pull requests: the committed files must equal a fresh build), `upstream-audit.yml` and `inspect-sixth-edition.yml` (source inspection). No workflow writes to the repository.
 - `sources/upstreams.json` — the upstream repositories each edition is drawn from.
 - `docs/` — rules ledger, conversion notes and audit results.

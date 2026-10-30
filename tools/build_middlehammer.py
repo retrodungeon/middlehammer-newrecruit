@@ -6,7 +6,8 @@
 Steps: fetch pinned sources into upstream-cache/ (git), convert the 3rd, 4th, 5th
 6th and 7th Edition source catalogues (tools/convert_*e_catalogues.py), merge everything into one catalogue per faction
 (tools/merge_factions.py), add the optional Horus Heresy 1st Edition units (tools/convert_hh1_relics.py),
-then write the faction catalogues and game system.
+then write the faction catalogues and game system, and rebuild the Relics of the Age of Darkness
+book (docs/Relics_of_the_Age_of_Darkness.pdf, tools/relics_book/) from the same data.
 Revisions are bumped only for files whose content changed. Middlehammer
 catalogues at the root that are no longer produced are deleted.
 """
@@ -25,6 +26,8 @@ from convert_6e_catalogues import convert_6e, fetch_archive  # noqa: E402
 from convert_7e_catalogues import convert_7e  # noqa: E402
 from merge_factions import build_factions, ensure_era_categories, ensure_knight_category  # noqa: E402
 from convert_hh1_relics import add_relics, convert_relics  # noqa: E402
+sys.path.insert(0, str(Path(__file__).parent / "relics_book"))
+import build_book  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "upstream-cache"
@@ -116,8 +119,11 @@ def main():
         "ids": report.get("retired7eIds", [])}, indent=1) + "\n")
     (ROOT / "build").mkdir(exist_ok=True)
     (ROOT / "build/middlehammer-build-report.json").write_text(json.dumps(report, indent=2) + "\n")
+    # The Relics of the Age of Darkness book lists the Heresy units: rebuilt with the data.
+    book_changed = build_book.build_if_changed(build_book.OUTPUT, report["relicsHH1"])
     print(f"{len(factions)} faction catalogues; game system revision {gst_rev}"
-          f"{' (changed)' if gst_changed else ''}; removed {len(removed)} old files")
+          f"{' (changed)' if gst_changed else ''}; removed {len(removed)} old files; "
+          f"Relics book {'updated' if book_changed else 'unchanged'}")
 
 
 if __name__ == "__main__":

@@ -10,8 +10,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Rebuild every Middlehammer catalogue from the pinned sources
+      - name: Install the PDF tools for the Relics book (pinned)
+        run: pip install reportlab==5.0.1 pillow==12.3.0 pypdf==6.17.0
+      - name: Rebuild every Middlehammer catalogue and the Relics book from the pinned sources
         run: python tools/build_middlehammer.py
       - name: Fail if the committed files differ from the rebuild
-        run: git diff --stat --exit-code -- '*.gst' '*.cat'
+        run: git diff --stat --exit-code -- '*.gst' '*.cat' docs/Relics_of_the_Age_of_Darkness.pdf
       - run: python tools/validate_middlehammer.py

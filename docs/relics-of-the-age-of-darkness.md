@@ -4,6 +4,10 @@ Horus Heresy 1st Edition units for 6th and 7th Edition Army Lists. **Off by defa
 
 Source: [BSData/horus-heresy-1st-edition](https://github.com/BSData/horus-heresy-1st-edition), pinned in `sources/upstreams.json` (the archived, final Heresy 1st Edition data). Built by `tools/convert_hh1_relics.py`.
 
+## Rules document
+
+[`Relics_of_the_Age_of_Darkness.pdf`](Relics_of_the_Age_of_Darkness.pdf) is the players' version of these rulings, styled after the Horus Heresy Red Books. It is rebuilt by `tools/build_middlehammer.py` from the same data as the catalogues, so its unit tables always match them; build-check fails if the committed PDF is out of date. Its rules text lives in `tools/relics_book/build_book.py`: when a ruling below changes, change it there too. A new Heresy list (e.g. Mechanicum) needs its own section in the book; the build stops with an error until it has one.
+
 ## Status
 
 Pilot: **Legiones Astartes** only. Not yet tested in New Recruit. Still to do: Mechanicum (→ Adeptus Mechanicus), Questoris Knights (→ Imperial Knights), Solar Auxilia and Imperialis Militia (→ Imperial Guard; Militia and Dark Compliance also → Renegades & Heretics), Talons of the Emperor (→ Adeptus Custodes), Daemons of the Ruinstorm (→ Chaos Daemons), Agents of the Emperor (→ Inquisition).
