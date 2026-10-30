@@ -109,6 +109,7 @@ class Translator:
         self.ids = {e.get("id"): e for e in legacy.iter() if e.get("id")}
         self.gst_ids = gst_ids            # forceType / category ids -> name
         self.unhandled = []
+        self.root_minimums = []
 
     # -- helpers -----------------------------------------------------------------------
     def scope(self, parent_id):
@@ -249,6 +250,17 @@ class Translator:
             self.modifiers(l, out, l)
             if root:
                 self.root_category(out, l)
+                target = self.ids.get(l.get("targetId"))
+                if target is not None and float(target.get("minSelections") or 0) > 0:
+                    # Old "per parent" minimums mean nothing at the top level (they made e.g.
+                    # Cypher compulsory in every force); switch the target's off on this link.
+                    box = out.find(q("modifiers"))
+                    if box is None:
+                        box = ET.Element(q("modifiers"))
+                        out.insert(0, box)
+                    ET.SubElement(box, q("modifier"), {"type": "set", "value": "0",
+                                                      "field": f"{target.get('id')}-minSelections"})
+                    self.root_minimums.append(self.name_of(l.get("targetId")))
         elif kind in ("profile", "rule"):
             out = ET.SubElement(info_links, q("infoLink"), {
                 "id": l.get("id"), "name": self.name_of(l.get("targetId")), "hidden": "false",
@@ -309,6 +321,13 @@ class Translator:
         if root:
             self.root_category(out, e)
         self.entry_body(e, out)
+        if root:
+            cons = out.find(q("constraints"))
+            for c in (list(cons) if cons is not None else []):
+                if c.get("id") == f"{e.get('id')}-minSelections":
+                    cons.remove(c)          # see link(): top-level "per parent" minimums
+                    if float(c.get("value")) > 0:
+                        self.root_minimums.append(e.get("name"))
         return out
 
     def group(self, g, parent):
@@ -552,6 +571,7 @@ def convert_one(path, legacy_gst, gst_names, types, report):
     left = sorted({c.get("childId") for c in cat.iter(q("condition")) if c.get("childId") in forces})
     if left:
         raise ValueError(f"{path.stem}: conditions on force types remain: {left}")
+    entry["topLevelMinimumsRemoved"] = sorted(set(tr.root_minimums))
     if tr.unhandled:
         raise ValueError(f"{path.stem}: unhandled legacy constructs: {sorted(set(tr.unhandled))}")
     entry["idsMadeUnique"] = suffix_ids(cat)
