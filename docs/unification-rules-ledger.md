@@ -15,7 +15,7 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 
 | Rule | Source | Implementation |
 |---|---|---|
-| No Allied Detachments; codex detachments allowed but Command Benefits ignored | Unification p. 9 | All 7th Edition detachments are removed and the standard chart is used. Codex detachments for lists that need them are pending. |
+| No Allied Detachments; codex detachments allowed but Command Benefits ignored | Unification p. 9 | The standard chart is used for every list. The ten smaller lists (Imperial and Renegade Knights, Inquisition, Assassins, Sisters of Silence, Legion of the Damned, Astra Telepathica, Aeronautica Imperialis, Haemonculus Covens) also keep their codex detachments as extra force types, with slot limits only; all detachment special rules are dropped. Other 7th Edition detachments are removed. The detachment limit of the game is not enforced. |
 | No Formations | Unification p. 9 | Formation, Battle Formation, Decurion-style and Flyer Wing entries removed; formation-only options never apply. |
 | No Warlord Traits | Unification p. 10 | Warlord Trait entries hidden. |
 | Lords of War: independent characters → HQ; super-heavies → super-heavy allowance; others → Heavy Support | Unification p. 10 | Applied per unit from its profile (unit type, or 9+ Hull Points for super-heavy). |
