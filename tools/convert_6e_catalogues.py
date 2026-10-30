@@ -44,6 +44,7 @@ import xml.etree.ElementTree as ET
 
 from convert_7e_catalogues import simplify_modifier, make_switch, hide_when_switch_on
 from rules_text_6e import fill_rules
+import sixth_additions
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
@@ -662,6 +663,7 @@ def convert_6e(source, gst, report):
         p = source / f"{name}.cat"
         cat, entry = convert_one(p, legacy_gst, gst_names, (type_ids, type_names, char_ids), report)
         out[cat.get("id")] = (p, ET.ElementTree(cat), entry)
+    sixth_additions.apply({p.stem: t.getroot() for p, t, _ in out.values()}, gst, report)
     report["converted6e"] = [e for _, _, e in out.values()]
     return out
 
