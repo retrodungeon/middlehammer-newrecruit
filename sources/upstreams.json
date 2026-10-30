@@ -49,5 +49,23 @@
       "commit_date": "2020-06-29"
     }
   },
-  "note": "Pinned 2026-10-29. Accuracy of upstream data is assumed, not verified against printed codexes. Homebrew content is excluded during conversion."
+  "note": "Pinned 2026-10-29. Accuracy of upstream data is assumed, not verified against printed codexes. Homebrew content is excluded during conversion.",
+  "addons": {
+    "relics-hh1": {
+      "status": "accepted",
+      "description": "Relics of the Age of Darkness: Horus Heresy 1st Edition units for 6th/7th Edition lists (optional, behind a toggle).",
+      "repository": "BSData/horus-heresy-1st-edition",
+      "branch": "master",
+      "game_system": "The Horus Heresy.gst",
+      "commit": "0a4c10da15f4ea40eea0932090fadafe3b90b696",
+      "commit_date": "2023-07-29",
+      "excluded": [
+        "(HH) Necron Army List.cat (fan-made)",
+        "(HH) Craftworld Eldar - Asuryani Army List.cat (fan-made)",
+        "(HH) Mournival Units.cat (fan-made)",
+        "(HH) Varangian Heresy Legions.cat (provenance unverified)",
+        "(HH) Chaos Daemons Army List.cat (copy of Codex: Chaos Daemons 2013, already included)"
+      ]
+    }
+  }
 }

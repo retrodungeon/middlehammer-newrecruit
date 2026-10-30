@@ -32,6 +32,10 @@ Some lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters 
 
 For 7th Edition lists, Formations and Command Benefits are removed, codex detachments are kept only for the smaller lists, Warlord Traits hidden and Lords of War reassigned. Allies are restricted to the same era (3rd–5th or 6th–7th); points-based super-heavy limits are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
 
+### Optional add-on: Relics of the Age of Darkness
+
+Horus Heresy 1st Edition units for 6th/7th Edition lists, off by default: tick **Configuration → Relics of the Age of Darkness** in a 6th or 7th Edition list. First part (Legion units for Space Marines, Dark Angels, Blood Angels, Space Wolves and Chaos Space Marines) built, not yet tested in New Recruit. See [`docs/relics-of-the-age-of-darkness.md`](docs/relics-of-the-age-of-darkness.md).
+
 ### In progress
 
 - **6th Edition:** the 6th Edition data is in the old BattleScribe 1.14b format and is translated by `tools/convert_6e_catalogues.py`. Converted so far: Tau Empire (2013) with Farsight Enclaves, and Space Marines (2013) with Clan Raukaan and Sentinels of Terra; the rest are listed in the coverage document. (The earlier experimental Space Marines translator, `tools/convert_legacy_6e.py`, is superseded.)
@@ -48,7 +52,7 @@ For 7th Edition lists, Formations and Command Benefits are removed, codex detach
 
 - The Book of the Unification v1.7.2
 - Middlehammer Mission Pack v1.4.1
-- Community BattleScribe/New Recruit data for each edition (see `sources/upstreams.json` and [`docs/compatibility-matrix.md`](docs/compatibility-matrix.md))
+- Community BattleScribe/New Recruit data for each edition (see `sources/upstreams.json` and [`docs/compatibility-matrix.md`](docs/compatibility-matrix.md)), and BSData's archived Horus Heresy 1st Edition data for the add-on
 
 The rulebooks and codexes themselves are not included in this repository.
 
