@@ -37,11 +37,10 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 | **Adeptus Mechanicus** | 2 | 7th Ed – Codex: Skitarii (2015)<br>7th Ed – Codex: Cult Mechanicus (2015) |
 | **Adeptus Custodes** | 2 | 7th Ed – Adeptus Custodes (dataslate)<br>7th Ed – Sisters of Silence (dataslate) |
 | **Imperial Knights** | 2 | 7th Ed – Codex: Imperial Knights (2015)<br>7th Ed – Renegade Knights |
-| **Inquisition** | 1 | 7th Ed – Inquisition (Codex: Inquisition, Imperial Agents) |
-| **Assassins** | 2 | 3rd Ed – Codex Assassins (1999)<br>7th Ed – Officio Assassinorum |
+| **Inquisition** | 3 | 3rd Ed – Codex Assassins (1999)<br>7th Ed – Inquisition (Codex: Inquisition, Imperial Agents)<br>7th Ed – Officio Assassinorum |
 | **Adeptus Arbites** | 1 | 3rd Ed – Adeptus Arbites (Citadel Journal 29) |
 
-Faction decisions (2026-10-29): Ynnari is its own faction; Skitarii and Cult Mechanicus form Adeptus Mechanicus; Deathwatch and Adeptus Custodes are new factions; Militarum Tempestus and the Forge World Guard lists are Imperial Guard options; Khorne Daemonkin is a Chaos Space Marines option; Corsairs are an Eldar option. Blood Angels, Dark Angels, Space Wolves and Black Templars are separate factions; Witch Hunters → Sisters of Battle; Daemon Hunters → Grey Knights; Lost and the Damned → Renegades & Heretics (7th Ed Forge World list joins later); Kroot Mercenaries separate; the 7th Ed Inquisition list is its own faction.
+Faction decisions (2026-10-29): Ynnari is its own faction; Skitarii and Cult Mechanicus form Adeptus Mechanicus; Deathwatch and Adeptus Custodes are new factions; Militarum Tempestus and the Forge World Guard lists are Imperial Guard options; Khorne Daemonkin is a Chaos Space Marines option; Corsairs are an Eldar option. Blood Angels, Dark Angels, Space Wolves and Black Templars are separate factions; Witch Hunters → Sisters of Battle; Daemon Hunters → Grey Knights; Lost and the Damned → Renegades & Heretics (7th Ed Forge World list joins later); Kroot Mercenaries separate; the 7th Ed Inquisition list is its own faction, and both Assassins lists are part of it.
 
 Source fix: Codex Assassins (1999) defines the Officio Assassinorum Operative but never offers it in its army list; the build adds the missing entry (Elites).
 
@@ -150,7 +149,7 @@ Codex detachments (decision 2026-10-29). The ten smaller lists can use the stand
   - Imperial Navy Section (Aeronautica Imperialis): HQ 0-1, Fast Attack 1-1
   - Covenite Coterie Detachment (Haemonculus Covens): No Force Org Slot 0-any, HQ 2-6, Elites 2-8, Heavy Support 0-4
 
-Placement: Imperial Knights and Renegade Knights → Imperial Knights faction; Inquisition → Inquisition faction; Officio Assassinorum → Assassins; Sisters of Silence → Adeptus Custodes; Astra Telepathica and Aeronautica Imperialis → Imperial Guard; Legion of the Damned → Space Marines; Haemonculus Covens → Dark Eldar; Fallen Angels → Dark Angels.
+Placement: Imperial Knights and Renegade Knights → Imperial Knights faction; Inquisition and Officio Assassinorum → Inquisition faction; Sisters of Silence → Adeptus Custodes; Astra Telepathica and Aeronautica Imperialis → Imperial Guard; Legion of the Damned → Space Marines; Haemonculus Covens → Dark Eldar; Fallen Angels → Dark Angels.
 
 To verify: the book edition shown for Inquisition, Legion of the Damned, Officio Assassinorum, Astra Telepathica, Aeronautica Imperialis, Renegade Knights and Fallen Angels (labelled 7th Ed after the source; some may be 6th Edition publications). The Null-Maiden Rhino is a Fast Attack choice in the source, so it is not available in a Null-Maiden Task Force. The Inquisition source also offers the Gathering Storm characters (Guilliman, Celestine, Cawl, Voldus, Cypher), as the other 7th Edition Imperium lists do.
 
