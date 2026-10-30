@@ -21,6 +21,8 @@ Pilot: **Legiones Astartes** only. Not yet tested in New Recruit. Still to do: M
 | Lords of War | Only Legion super-heavies (Fellblade, Falchion, Glaive, Typhon, Cerberus, Stormblade, Thunderhawks, Sokar Stormbird, Mastodon, Malcador). Super-heavies use the Super-Heavy section and the list's "Hide super-heavies" switch; others become Heavy Support (Unification p. 10). Titans, Knights and Imperial Army super-heavies wait for their own Heresy lists. |
 | No Hull Points; Structure Points for super-heavies | Hull Points are removed from profiles; super-heavies get Structure Points of 1/3 their Hull Points, rounded (Unification p. 9–10). |
 | No Warlord Traits; no fortifications | As for 7th Edition lists. |
+| Bodyguards take no slot, one per leader | Command Squads and Legion retinues (Invictarus, Huscarls, Dark Sons of Death, Deathwing Companions) are in No Force Org, as in the source; each is limited to one per model with Master of the Legion in the force (Legion Praetor, Praetor Tribune, or a Centurion with the Herald or Delegatus Consul). The source has no limit. |
+| Army-level Heresy choices removed from units | Legion and allegiance choices, army themes (Shattered Legions, Army of Dark Compliance) and Rites of War are removed, including stray links to them inside units (the source offers "Shattered Legions" inside Legion Terminator Squads). Legion Inductees / Praevian's Legiones Astartes (Legion traits for a Praevian's automata) are removed like other Legion traits. |
 | Heresy army construction removed | The Crusade chart's compulsory choices do not apply under the 5th Edition chart: the "(Compulsory)" labels, compulsory-slot categories and "Compulsory" options are removed (unit rules that mention compulsory HQ or Troops choices are kept, as the 5th Edition chart has compulsory choices too). The Warlord option stays (for Slay the Warlord) but is no longer required. "Master of the Legion" (Rite of War choice, one per 1,000 points) is hidden; Command Squads remain available. |
 | Not converted (content policy) | Fan-made: Necron, Asuryani and Mournival Units catalogues. Varangian Heresy Legions (provenance unverified). The Heresy copy of Codex: Chaos Daemons (2013), already in the data. |
 
@@ -501,6 +503,10 @@ Entries in square brackets are Legion-specific. A unit listed twice can be taken
 - Troops: Legion Tactical Support Squad
 
 ## Known issues
+
+- **Super-heavy limit.** The Unification takes a Lord of War "as the '1 per detachment' Super-Heavy" (p. 10). As for every other list in this data, the number of super-heavies is not limited; only the "Hide super-heavies" switch applies.
+- In-game amendments (Unification p. 9–10) are not written into rule texts: Heresy rules that mention Hull Points, Overwatch, Snap Shots, Challenges, Warp Charge or Warlord Traits are read with those amendments, as for 7th Edition lists. D-strength weapons (Falchion volcano cannon, Thunderhawk turbo-laser, Sokar orbital strikes) use the Unification's D-Strength rule.
+- Unit availability (e.g. Thallax, Castellax and Vorax in Legion lists) follows the source data and has not been checked against the books.
 
 - A Heresy Warlord and the host list's own Warlord option are separate, so the data does not stop a list from naming two Warlords. Pick one.
 

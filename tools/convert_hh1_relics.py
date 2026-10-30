@@ -111,6 +111,12 @@ NAMED = {
     "Cor’bax Utterblight, Daemon Prince of the Ruinstorm", "Samus, Daemon Prince of the Ruinstorm",
 }
 # Not units, or Heresy army machinery.
+# Army-level Heresy choices (Legion, allegiance, army themes such as Shattered Legions, Rites
+# of War): with their linked entries they do not exist in a Middlehammer list, and links to
+# them from units (the source links "Shattered Legions" from Legion Terminator Squads) go.
+ARMY_LEVEL = {"Legion and Allegiance", "Rite of War", "Warlord Traits", "Allied Detachment"}
+# Options inside units that give a Legion's traits (Praevian's automata): not used, as traits.
+TRAIT_OPTIONS = {"Legion Inductees", "Praevian's Legiones Astartes"}
 NOT_UNITS = {"Legion and Allegiance", "Rite of War", "Warlord Traits", "Allied Detachment",
              "Dedicated Transports Restrictions", "The Rewards of Treason", "War Machine Detachment",
              "Sub-orbital Strike Wing"}
@@ -446,6 +452,33 @@ def convert_for_host(source, mh_types, host, legions, rep):
                     context = mine[0]
                 plan.append((cont, el, name, slot, context))
 
+    # 1b. Army-level choices and Legion-trait options are removed from the content.
+    army = set()
+    for cont in ("selectionEntries", "entryLinks"):
+        for el in cat.find(q(cont)):
+            target = defined.get(el.get("targetId"), el)
+            if (el.get("name") or target.get("name")) in ARMY_LEVEL:
+                for n in (el, target):
+                    for x in n.iter():
+                        if x.get("id"):
+                            army.add(x.get("id"))
+                        t = defined.get(x.get("targetId"))
+                        if t is not None and lname(x.tag) == "entryLink":
+                            army |= {y.get("id") for y in t.iter() if y.get("id")}
+    army -= set(LEGIONS) | {LOYALIST, TRAITOR}
+    par_all = {c: p for r in (cat, hh_gst) for p in r.iter() for c in p}
+    stray = 0
+    for r in (cat, hh_gst):
+        for x in list(r.iter()):
+            if x not in par_all:
+                continue
+            if (lname(x.tag) == "entryLink" and x.get("targetId") in army and x.get("id") not in army) or \
+                    (lname(x.tag) in ("selectionEntry", "selectionEntryGroup", "entryLink") and x.get("name") in TRAIT_OPTIONS):
+                if x in list(par_all[x]):
+                    par_all[x].remove(x)
+                    stray += 1
+    rep["armyLevelLinksAndTraitOptionsRemoved"] = stray
+
     # 2. Legion-specific units in a multi-Legion host get their own copies of the shared
     #    entries they use, so that Legion-specific options inside them are folded for their Legion.
     shared_order = [e.get("id") for c in SHARED for cont in cat.findall(q(c)) for e in cont]
@@ -490,6 +523,7 @@ def convert_for_host(source, mh_types, host, legions, rep):
         alive = reachable([el for _, el, *_ in current], defined)
         absent = {i for i in defined if i not in alive} - set(LEGIONS) - {LOYALIST, TRAITOR} - set(cats) - set(forces)
         absent |= {i for i, n in cats.items() if DEAD_CATEGORY.match(n or "") or COMPULSORY.search(n or "")}
+        absent |= army
         absent |= {x.get("id") for i, e in defined.items() if COMPULSORY.search(e.get("name") or "")
                    and lname(e.tag) in ("selectionEntry", "selectionEntryGroup", "entryLink")
                    for x in e.iter() if x.get("id")}
@@ -566,6 +600,7 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
         (roots if cont == "selectionEntries" else links).append(el)
     rep["lordsOfWar"] = {k: v for k, v in lords.items() if v}
 
+
     # Shared content reachable from the kept roots: the list's and the game system's.
     top_of = shared_tops(cat, hh_gst)
     alive = closure(list(roots) + list(links), defined, top_of)
@@ -620,6 +655,41 @@ def build_block(host, cat, hh_gst, kept, defined, cats, mh_types, rep):
                 if c.get("type") == "min":
                     cons.remove(c)
                     rep["warlordMinimumRemoved"] = rep.get("warlordMinimumRemoved", 0) + 1
+
+    # Bodyguards (Command Squads and Legion retinues such as Invictarus or Huscarls) take no
+    # slot: a model with Master of the Legion "may also take a Command Squad". Each bodyguard
+    # unit is limited to one per such model in the force (the source has no limit).
+    # Models with the rule: the entry holding each Master of the Legion link, i.e. the
+    # Praetor and Praetor Tribune themselves, or a Centurion's Herald or Delegatus Consul option.
+    bpar = {c: p for p in block.iter() for c in p}
+    leaders = []
+    for x in block.iter():
+        if lname(x.tag) in ("entryLink", "selectionEntry") and (x.get("name") or "").startswith("Master of the Legion"):
+            p = bpar.get(x)
+            while p is not None and lname(p.tag) != "selectionEntry":
+                p = bpar.get(p)
+            if p is not None and p.get("id") not in leaders:
+                leaders.append(p.get("id"))
+    guards = [el for _, el, _, slot, _ in kept if slot == "Bodyguard"]
+    for el in guards:
+        cid = el.get("id") + "-per-leader"
+        cons = el.find(q("constraints"))
+        if cons is None:
+            cons = ET.SubElement(el, q("constraints"))
+        ET.SubElement(cons, q("constraint"), {"type": "max", "value": "0", "field": "selections", "scope": "force",
+                                              "shared": "true", "id": cid, "includeChildSelections": "false",
+                                              "includeChildForces": "false"})
+        mods = el.find(q("modifiers"))
+        if mods is None:
+            mods = ET.Element(q("modifiers"))
+            el.insert(0, mods)
+        for lid in leaders:
+            m = ET.SubElement(mods, q("modifier"), {"type": "increment", "field": cid, "value": "1"})
+            ET.SubElement(ET.SubElement(m, q("repeats")), q("repeat"), {
+                "field": "selections", "scope": "force", "value": "1", "repeats": "1", "childId": lid,
+                "shared": "true", "roundUp": "false", "includeChildSelections": "false", "includeChildForces": "false"})
+    rep["bodyguardsPerMasterOfTheLegion"] = {"bodyguards": len(guards),
+                                             "leaders": sorted(defined[i].get("name") for i in leaders if i in defined)}
 
     # Legion traits are not used (decision 2026-10-30), wherever the source attaches them:
     # the Legiones Astartes category, and some units and options that also link them.
