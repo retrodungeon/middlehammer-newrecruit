@@ -376,3 +376,84 @@ def fill_rules(cat, faction, q):
         d.text = text
         used[label] = used.get(label, 0) + 1
     return {"filled": used, "stillEmpty": sorted(missing)}
+
+
+def core_5e():
+    """Rule texts from the 5th Edition core game system (the Unification's base rules)."""
+    if "__5e_core__" not in _cache:
+        five = {}
+        for p in (CACHE / "WH40K5E").glob("*.gst"):
+            five.update(_texts(p))
+        _cache["__5e_core__"] = five
+    return _cache["__5e_core__"]
+
+
+def texts_of(root):
+    """{normalised rule name: text} for every rule and ability profile with text in root."""
+    out = {}
+    for e in root.iter():
+        t = e.tag.rsplit("}", 1)[-1]
+        if t == "rule":
+            text = (e.findtext("{*}description") or "").strip()
+        elif t == "profile" and (e.get("typeName") or "") in ("Abilities", "Special Rule", "Special Rules"):
+            text = " ".join((c.text or "") for c in e.iter() if c.tag.endswith("characteristic")).strip()
+        else:
+            continue
+        if text and norm(e.get("name")) not in out:
+            out[norm(e.get("name"))] = text
+    return out
+
+
+def fill_from(root, q, tables):
+    """Fill empty rule descriptions in root from tables [(label, {norm name: text})], in
+    order; the exact name is tried before the name without its bracket. Returns a report."""
+    used, missing = {}, set()
+    for r in root.iter(q("rule")):
+        d = r.find(q("description"))
+        if d is not None and (d.text or "").strip():
+            continue
+        hit = next(((label, table[key]) for key in (norm(r.get("name")), norm(base(r.get("name"))))
+                    for label, table in tables if key and key in table), None)
+        if hit is None:
+            missing.add(r.get("name"))
+            continue
+        if d is None:
+            d = ET.SubElement(r, q("description"))
+        d.text = hit[1]
+        used[hit[0]] = used.get(hit[0], 0) + 1
+    return {"filled": used, "stillEmpty": sorted(missing)}
+
+
+def _rule_texts_raw(path):
+    """Rule texts from a BattleScribe 1.x file (6th Edition archive), read as text."""
+    out = {}
+    t = Path(path).read_text(encoding="utf-8", errors="ignore")
+    for m in re.finditer(r'<rule [^>]*name="([^"]*)"[^>]*>(.*?)</rule>', t, re.S):
+        d = re.search(r"<description>(.*?)</description>", m.group(2), re.S)
+        if d and d.group(1).strip():
+            text = (d.group(1).strip().replace("&apos;", "'").replace("&quot;", '"')
+                    .replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&"))
+            out.setdefault(norm(m.group(1).replace("&apos;", "'").replace("&amp;", "&")), text)
+    return out
+
+
+def seventh_all():
+    """Rule texts from every 7th Edition source catalogue (same edition, other lists)."""
+    if "__7e_all__" not in _cache:
+        out = {}
+        for p in sorted((CACHE / "wh40k-7th-edition").glob("*.cat")):
+            for k, v in texts_of(ET.parse(p).getroot()).items():
+                out.setdefault(k, v)
+        _cache["__7e_all__"] = out
+    return _cache["__7e_all__"]
+
+
+def sixth_all(archive_dir):
+    """Rule texts from every 6th Edition source file, tagged as 6th Edition wording."""
+    if "__6e_all__" not in _cache:
+        out = {}
+        for p in sorted(Path(archive_dir).glob("*.[cg][as]*")):
+            for k, v in _rule_texts_raw(p).items():
+                out.setdefault(k, v + " (6th Ed wording)")
+        _cache["__6e_all__"] = out
+    return _cache["__6e_all__"]

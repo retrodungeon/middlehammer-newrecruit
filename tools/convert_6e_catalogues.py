@@ -43,7 +43,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 from convert_7e_catalogues import simplify_modifier, make_switch, hide_when_switch_on
-from rules_text_6e import fill_rules
+from rules_text_6e import TAG, fill_from, fill_rules, seventh_all
 import sixth_additions
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
@@ -595,6 +595,10 @@ def convert_one(path, legacy_gst, gst_names, types, report):
     entry["topLevelMinimumsRemoved"] = sorted(set(tr.root_minimums))
     entry["topLevelMaximumsRemoved"] = sorted(set(tr.root_maximums))
     entry["rulesText"] = fill_rules(cat, path.stem.split(" - ")[0], q)
+    # Then the same rule in any 7th Edition list (e.g. Forge World rules), tagged.
+    more = fill_from(cat, q, [("7th Ed other lists", {k: v + TAG for k, v in seventh_all().items()})])
+    entry["rulesText"]["filled"].update(more["filled"])
+    entry["rulesText"]["stillEmpty"] = more["stillEmpty"]
     if tr.unhandled:
         raise ValueError(f"{path.stem}: unhandled legacy constructs: {sorted(set(tr.unhandled))}")
     entry["idsMadeUnique"] = suffix_ids(cat)
