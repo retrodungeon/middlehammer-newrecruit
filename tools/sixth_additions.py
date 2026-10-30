@@ -181,6 +181,69 @@ def _inline_chapter_tactics(char, sav):
         par[link].remove(link)
 
 
+# Chapter choice in Codex: Space Marines (2013): Forge World Chapters with their own tactics
+# (Forge World "Space Marine Chapter Tactics" for 6th Edition) are added as options, and every
+# option shows its rules. {option: (rules in FORGE_WORLD_TACTICS or codex key, note)}.
+FW_CHAPTERS = {
+    "Red Scorpions": ["Purity Above All", "Fortitude and Contempt"],
+    "Carcharodons": ["Reavers of the Outer Darkness", "Blood Hunger"],
+    "Raptors": ["Legendary Marksmen"],
+    "Mantis Warriors": ["Shadow Killers", "Children of Prophecy"],
+    "Executioners": ["Bitter Mettle", "Headhunters"],
+    "Angels Revenant (after 991.M41)": ["A Legacy of Hatred", "To the Last Breath"],
+    "Red Hunters": ["Mnemonic Redaction Protocols", "By this Seal"],
+    "Star Phantoms": ["Orbital Wave Attack", "Hail of Destruction"],
+    "Minotaurs": ["Unrelenting Assault", "Trample and Crush"],
+    "Fire Hawks": ["On Wings of Fire", "Speed and Fury"],
+    "Astral Claws": ["Reckless Courage", "Rapid Attack and Encirclement"],
+}
+CODEX_CHAPTER_NOTES = {
+    "Ultramarines": "Also used by the Howling Griffons, Fire Angels, Marines Errant, Novamarines and (before "
+                    "991.M41) Angels Revenant.",
+    "Iron Hands": "Also used by the Sons of Medusa.",
+    "Raven Guard": "The Raptors use Strike from the Shadows plus Legendary Marksmen (choose Raptors).",
+}
+
+
+def _rule(parent, rid, name, text):
+    box = parent.find(q("rules"))
+    if box is None:
+        box = ET.SubElement(parent, q("rules"))
+    r = ET.SubElement(box, q("rule"), {"id": rid, "name": name, "hidden": "false"})
+    ET.SubElement(r, q("description")).text = text
+
+
+def extend_chapter_choice(codex):
+    from rules_text_6e import CODEX_TEXT, FORGE_WORLD_TACTICS
+    sm = CODEX_TEXT["Space Marines"]
+    ct = next(e for e in codex.find(q("selectionEntries")) if e.get("name") == "Chapter Tactics")
+    group = next(g for g in ct.iter(q("selectionEntryGroup")) if g.get("name") == "Must Pick One")
+    entries = group.find(q("selectionEntries"))
+    for opt in entries:
+        name = opt.get("name")
+        text = sm.get(f"Chapter Tactics ({name})")
+        if text:
+            _rule(opt, f"{opt.get('id')}-rules", f"Chapter Tactics ({name})",
+                  text + (" " + CODEX_CHAPTER_NOTES[name] if name in CODEX_CHAPTER_NOTES else ""))
+    added = []
+    for chapter, rules in FW_CHAPTERS.items():
+        oid = f"mh6-chapter-{chapter.lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '')}"
+        opt = ET.SubElement(entries, q("selectionEntry"), {"id": oid, "name": f"{chapter} (Forge World)",
+                                                          "hidden": "false", "collective": "false",
+                                                          "import": "true", "type": "upgrade"})
+        ET.SubElement(ET.SubElement(opt, q("costs")), q("cost"), {"name": "Points", "typeId": POINTS, "value": "0"})
+        ET.SubElement(ET.SubElement(opt, q("constraints")), q("constraint"), {
+            "type": "max", "value": "1", "field": "selections", "scope": "parent", "shared": "true",
+            "id": f"{oid}-max", "includeChildSelections": "false", "includeChildForces": "false"})
+        if chapter == "Raptors":
+            _rule(opt, f"{oid}-shadows", "Strike from the Shadows",
+                  sm["Chapter Tactics: Strike from the Shadows"])
+        for i, r in enumerate(rules):
+            _rule(opt, f"{oid}-{i}", r, FORGE_WORLD_TACTICS[r])
+        added.append(chapter)
+    return added
+
+
 def apply(cats, gst, report):
     """cats: {source stem: converted catalogue root} (after ID suffixing)."""
     done = {"pointsFixed": [], "built": [], "copiedToCodex": []}
@@ -217,4 +280,5 @@ def apply(cats, gst, report):
         _renumber(c, f"mh6-codex-{e.get('id')}")
         codex.find(q("selectionEntries")).append(c)
         done["copiedToCodex"].append(n)
+    done["forgeWorldChapters"] = extend_chapter_choice(codex)
     report["sixthAdditions"] = done
