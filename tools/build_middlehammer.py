@@ -3,9 +3,8 @@
 
   python tools/build_middlehammer.py            # writes to the repository root
 
-Steps: fetch pinned sources into upstream-cache/ (git), convert 3rd Edition
-catalogues (tools/convert_3e_catalogues.py) and 5th Edition source catalogues
-(tools/convert_5e_catalogues.py), merge everything into one catalogue per faction
+Steps: fetch pinned sources into upstream-cache/ (git), convert the 3rd, 4th, 5th
+and 7th Edition source catalogues (tools/convert_*e_catalogues.py), merge everything into one catalogue per faction
 (tools/merge_factions.py), then write the faction catalogues and game system.
 Revisions are bumped only for files whose content changed. Middlehammer
 catalogues at the root that are no longer produced are deleted.
@@ -19,6 +18,7 @@ import xml.etree.ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).parent))
 from convert_3e_catalogues import convert_3e  # noqa: E402
+from convert_4e_catalogues import convert_4e  # noqa: E402
 from convert_5e_catalogues import convert_5e  # noqa: E402
 from convert_7e_catalogues import convert_7e  # noqa: E402
 from merge_factions import build_factions     # noqa: E402
@@ -67,7 +67,7 @@ def write(root, path, ns, rev_attr_extra=None):
 
 def main():
     report = {}
-    third, fifth, seventh = fetch(3), fetch(5), fetch(7)
+    third, fourth, fifth, seventh = fetch(3), fetch(4), fetch(5), fetch(7)
     gst_path = ROOT / "Middlehammer-Unification.gst"
     ET.register_namespace("", GST_NS)
     gst = ET.parse(gst_path).getroot()
@@ -75,6 +75,8 @@ def main():
 
     trees = convert_3e(third, gst, report)
     members = {(3, e["sourceName"]): t.getroot() for _, t, e in trees.values()}
+    for _, t, e in convert_4e(fourth, gst, report).values():
+        members[(4, e["sourceName"])] = t.getroot()
     for _, t, e in convert_5e(fifth, gst, report).values():
         members[(5, e["sourceName"])] = t.getroot()
     for _, t, e in convert_7e(seventh, gst, report).values():

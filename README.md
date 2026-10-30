@@ -11,7 +11,7 @@ The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar
 | Edition (of the book) | Army lists available | Notes |
 |---|---:|---|
 | 3rd | 56 | All official lists in the 3rd Edition source |
-| 4th | 7 | 4th Edition codexes still used in 5th (from the 5th Edition source) |
+| 4th | 10 | Seven from the 5th Edition source; Space Marines (2004), Tyranids (2005) and Blood Angels (2007) from the 4th Edition source |
 | 5th | 9 | Including Imperial Guard 2009 |
 | 6th | 3 | Astra Militarum, Militarum Tempestus and Tyranids (2014), from the 7th Edition source |
 | 7th | 41 | All lists in the 7th Edition source |

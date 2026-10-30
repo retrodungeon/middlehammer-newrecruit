@@ -27,6 +27,7 @@ FACTIONS = {
         (3, n, "") for n in ("Salamanders (2000)", "White Scars (2002)", "Iron Hands (2001)",
                              "Imperial Fists (2003)", "Relictors (White Dwarf 281)",
                              "Cursed Foundings (Chapter Approved 2004)")] + [
+        (4, "Space Marines (4E)", "Codex: Space Marines (2004)"),
         (5, "Space Marines", "Codex: Space Marines (2008)"),
         (7, "Space Marines - Codex (2015)", "Codex: Space Marines (2015)"),
         (7, "Space Marines - FW - Siege Assault Vanguard", "Forge World: Siege Assault Vanguard"),
@@ -34,6 +35,7 @@ FACTIONS = {
         (7, "Legion of the Damned - Codex", "Legion of the Damned")],
     "Blood Angels": [(3, "Blood Angels (1998)", "Codex: "),
                      (3, "Blood Angels Death Company (Chapter Approved 2001)", ""),
+                     (4, "Blood Angels (4E)", "Codex: Blood Angels (White Dwarf 2007)"),
                      (5, "Blood Angels", "Codex: Blood Angels (2010)"),
                      (7, "Blood Angels - Codex (2014)", "Codex: Blood Angels (2014)")],
     "Dark Angels": [(3, "Dark Angels (1999)", "Codex: "),
@@ -99,6 +101,7 @@ FACTIONS = {
              (5, "Orks", "Codex: Orks (2008)", 4),
              (7, "Orks - Codex", "Codex: Orks (2014)")],
     "Tyranids": [(3, "Tyranids (2001)", "Codex: "), (3, "Tyranid Seeding Swarm (Chapter Approved 2003)", ""),
+                 (4, "Tyranids (4E)", "Codex: Tyranids (2005)"),
                  (5, "Tyranids", "Codex: Tyranids (2010)"),
                  (7, "Tyranids - Codex", "Codex: Tyranids (2014)", 6)],
     "Genestealer Cults": [(3, "Genestealer Cults (Citadel Journal 40)", ""),
