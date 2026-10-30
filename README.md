@@ -39,7 +39,7 @@ Each list is labelled with the edition and year of the book it comes from. The f
 - **6th and 7th Edition lists:** Formations and Command Benefits removed, Warlord Traits hidden, Lords of War moved to HQ, Super-Heavy or Heavy Support as the Unification directs.
 - **Allies:** only within the same era (3rd–5th together, 6th–7th together).
 - **Knights:** 6th and 7th Edition Imperium lists may take one Imperial Knight, and Chaos lists one Renegade Knight, as their Lord of War.
-- **Super-heavies** are hidden by default. Untick **Super-heavies → Hide super-heavies (untick only when both players agree)** (or **Custom Content → Hide Apocalypse Units** in Imperial Guard 2009) when both players agree.
+- **Super-heavies** are hidden by default. Untick **Super-heavies → Hide super-heavies** (or **Custom Content → Hide Apocalypse Units** in Imperial Guard 2009) when both players agree.
 
 In-game rules (no Hull Points, melee AP conversion, psychic changes and so on) are not applied to profiles; play them from the Book of the Unification. Full status of every rule: [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md).
 
