@@ -64,7 +64,10 @@ MH = {
 # empty Imperial Knights file, Apocalypse and fortification data.
 CONVERTED = ["Tau - Codex", "Tau - Supplement - Farsight Enclaves",
              "Space Marines - Codex", "Space Marines - Supplement - Clan Raukaan",
-             "Space Marines - Supplement - Sentinels of Terra", "Space Marines - FW - Siege Assault Vanguard"]
+             "Space Marines - Supplement - Sentinels of Terra", "Space Marines - FW - Siege Assault Vanguard",
+             "Dark Angels - Codex", "Eldar - Codex", "Eldar - Supplement - Iyanden", "Chaos Daemons (40K) - Codex",
+             "Chaos Space Marines - Supplement - Black Legion", "Chaos Space Marines - Supplement - Crimson Slaughter",
+             "Orks - FW - Dread Mob"]
 
 # 6th Edition categories (by name in the source game system) -> Middlehammer slot.
 SLOT = {"HQ": "HQ", "Troops": "Troops", "Elites": "Elites", "Elite": "Elites", "Fast Attack": "Fast Attack",
@@ -434,6 +437,7 @@ def is_super_heavy(node, lookup):
                 if c.get("name") == "HP" and (c.text or "").strip().isdigit() and int(c.text) >= 9:
                     return True
         names.append(unit_type_text(el))
+    names.append(node.get("name") or "")      # e.g. Gargantuan Squiggoth
     return any(re.search(r"super[- ]?heavy|gargantuan", n, re.I) for n in names)
 
 

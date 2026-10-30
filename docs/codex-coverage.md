@@ -14,19 +14,19 @@ Status: faction structure and Army List selection tested in New Recruit on 2026-
 |---|---:|---|
 | **Space Marines** | 17 | 3rd Ed – Codex: Space Marines (1999)<br>3rd Ed – Salamanders (2000)<br>3rd Ed – White Scars (2002)<br>3rd Ed – Iron Hands (2001)<br>3rd Ed – Imperial Fists (2003)<br>3rd Ed – Relictors (White Dwarf 281)<br>3rd Ed – Cursed Foundings (Chapter Approved 2004)<br>4th Ed – Codex: Space Marines (2004)<br>5th Ed – Codex: Space Marines (2008)<br>6th Ed – Codex: Space Marines (2013)<br>6th Ed – Clan Raukaan (supplement, 2013)<br>6th Ed – Sentinels of Terra (supplement, 2013)<br>6th Ed – Forge World: Siege Assault Vanguard (IA10, 6th Ed update)<br>7th Ed – Codex: Space Marines (2015)<br>7th Ed – Forge World: Siege Assault Vanguard<br>7th Ed – Forge World: Tyrant's Legion (Defenders of Badab)<br>7th Ed – Legion of the Damned |
 | **Blood Angels** | 5 | 3rd Ed – Codex: Blood Angels (1998)<br>3rd Ed – Blood Angels Death Company (Chapter Approved 2001)<br>4th Ed – Codex: Blood Angels (White Dwarf 2007)<br>5th Ed – Codex: Blood Angels (2010)<br>7th Ed – Codex: Blood Angels (2014) |
-| **Dark Angels** | 3 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>7th Ed – Codex: Dark Angels (2015) |
+| **Dark Angels** | 4 | 3rd Ed – Codex: Dark Angels (1999)<br>4th Ed – Codex: Dark Angels (2007)<br>6th Ed – Codex: Dark Angels (2013)<br>7th Ed – Codex: Dark Angels (2015) |
 | **Space Wolves** | 4 | 3rd Ed – Codex: Space Wolves (2000)<br>3rd Ed – Space Wolves 13th Company (2003)<br>5th Ed – Codex: Space Wolves (2009)<br>7th Ed – Codex: Space Wolves (2014) |
 | **Deathwatch** | 1 | 7th Ed – Codex: Deathwatch (2016) |
 | **Black Templars** | 2 | 3rd Ed – Codex: Black Templars (2000)<br>4th Ed – Codex: Black Templars (2005) |
 | **Imperial Guard** | 26 | 3rd Ed – Codex: Imperial Guard (1999)<br>3rd Ed – Deathworld Veterans (2000)<br>3rd Ed – Catachan (2000)<br>3rd Ed – Armageddon Ork Hunters (Chapter Approved 2003)<br>3rd Ed – Tanith First and Only (Chapter Approved 2003)<br>3rd Ed – Cityfighting Imperial Guard (Chapter Approved 2003)<br>3rd Ed – Planetary Defence Regiment (Armageddon 2000)<br>3rd Ed – Steel Legion Mechanised Infantry (Armageddon 2000)<br>3rd Ed – Death Korps of Krieg (Chapter Approved 2003)<br>3rd Ed – Elysian Drop Troops (Chapter Approved 2003)<br>3rd Ed – Armoured Company (Chapter Approved 2001)<br>3rd Ed – Cadian Shock Troops (Eye of Terror 2003)<br>3rd Ed – Salvar Chem-Dogs (Chapter Approved 2003)<br>3rd Ed – Codex: Imperial Guard (2003)<br>3rd Ed – Imperial Guard Armoured Company (Chapter Approved 2004)<br>3rd Ed – Armoured Battle Group (IA 2003)<br>5th Ed – Codex: Imperial Guard (2009)<br>6th Ed – Codex: Astra Militarum (2014)<br>6th Ed – Codex: Militarum Tempestus (2014)<br>7th Ed – Forge World: Armoured Battle Group<br>7th Ed – Forge World: Death Korps of Krieg Assault Brigade<br>7th Ed – Forge World: Death Korps of Krieg Siege Regiment<br>7th Ed – Forge World: Elysian Drop Troops<br>7th Ed – Forge World: Elysian Detachment D-99<br>7th Ed – Adeptus Astra Telepathica<br>7th Ed – Aeronautica Imperialis |
-| **Chaos Space Marines** | 5 | 3rd Ed – Codex: Chaos Space Marines (1999)<br>3rd Ed – Codex: Chaos Space Marines (2002)<br>4th Ed – Codex: Chaos Space Marines (2007)<br>7th Ed – Codex: Chaos Space Marines (2015)<br>7th Ed – Codex: Khorne Daemonkin (2015) |
-| **Chaos Daemons** | 2 | 4th Ed – Codex: Chaos Daemons (2008)<br>7th Ed – Codex: Chaos Daemons (2015) |
+| **Chaos Space Marines** | 7 | 3rd Ed – Codex: Chaos Space Marines (1999)<br>3rd Ed – Codex: Chaos Space Marines (2002)<br>4th Ed – Codex: Chaos Space Marines (2007)<br>6th Ed – Black Legion (supplement, 2013)<br>6th Ed – Crimson Slaughter (supplement, 2014)<br>7th Ed – Codex: Chaos Space Marines (2015)<br>7th Ed – Codex: Khorne Daemonkin (2015) |
+| **Chaos Daemons** | 3 | 4th Ed – Codex: Chaos Daemons (2008)<br>6th Ed – Codex: Chaos Daemons (2013)<br>7th Ed – Codex: Chaos Daemons (2015) |
 | **Renegades & Heretics** | 2 | 3rd Ed – Lost and the Damned (Eye of Terror 2003)<br>7th Ed – Forge World: Renegades & Heretics |
-| **Eldar** | 10 | 3rd Ed – Codex: Eldar (2000)<br>3rd Ed – Biel-Tan Swordwind Army (2000)<br>3rd Ed – Saim-Hann Wild Rider Host (2000)<br>3rd Ed – Rangers of Alaitoc (2000)<br>3rd Ed – Ulthwe The Damned (2000)<br>3rd Ed – Ulthwe Strike Force (Eye of Terror 2003)<br>3rd Ed – Iyanden Ghost Warriors (2000)<br>4th Ed – Codex: Eldar (2006)<br>7th Ed – Codex: Craftworlds (2015)<br>7th Ed – Forge World: Eldar Corsairs |
+| **Eldar** | 12 | 3rd Ed – Codex: Eldar (2000)<br>3rd Ed – Biel-Tan Swordwind Army (2000)<br>3rd Ed – Saim-Hann Wild Rider Host (2000)<br>3rd Ed – Rangers of Alaitoc (2000)<br>3rd Ed – Ulthwe The Damned (2000)<br>3rd Ed – Ulthwe Strike Force (Eye of Terror 2003)<br>3rd Ed – Iyanden Ghost Warriors (2000)<br>4th Ed – Codex: Eldar (2006)<br>6th Ed – Codex: Eldar (2013)<br>6th Ed – Iyanden (supplement, 2013)<br>7th Ed – Codex: Craftworlds (2015)<br>7th Ed – Forge World: Eldar Corsairs |
 | **Ynnari** | 1 | 7th Ed – Ynnari (Gathering Storm: Fracture of Biel-Tan) |
 | **Dark Eldar** | 5 | 3rd Ed – Codex: Dark Eldar (2001)<br>3rd Ed – Dark Eldar Wych Cult (2001)<br>5th Ed – Codex: Dark Eldar (2010)<br>7th Ed – Codex: Dark Eldar (2014)<br>7th Ed – Haemonculus Covens (supplement) |
 | **Harlequins** | 2 | 3rd Ed – Harlequins (2000)<br>7th Ed – Codex: Harlequins (2015) |
-| **Orks** | 5 | 3rd Ed – Codex: Orks (1999)<br>3rd Ed – Feral Orks (Chapter Approved 2004)<br>3rd Ed – Speed Freeks (Armageddon 2000)<br>4th Ed – Codex: Orks (2008)<br>7th Ed – Codex: Orks (2014) |
+| **Orks** | 6 | 3rd Ed – Codex: Orks (1999)<br>3rd Ed – Feral Orks (Chapter Approved 2004)<br>3rd Ed – Speed Freeks (Armageddon 2000)<br>4th Ed – Codex: Orks (2008)<br>6th Ed – Forge World: Dread Mob (IA8, 2013)<br>7th Ed – Codex: Orks (2014) |
 | **Tyranids** | 5 | 3rd Ed – Codex: Tyranids (2001)<br>3rd Ed – Tyranid Seeding Swarm (Chapter Approved 2003)<br>4th Ed – Codex: Tyranids (2005)<br>5th Ed – Codex: Tyranids (2010)<br>6th Ed – Codex: Tyranids (2014) |
 | **Genestealer Cults** | 2 | 3rd Ed – Genestealer Cults (Citadel Journal 40)<br>7th Ed – Codex: Genestealer Cults (2016) |
 | **Necrons** | 4 | 3rd Ed – Codex: Necrons (2002)<br>5th Ed – Codex: Necrons (2011)<br>7th Ed – Codex: Necrons (2015)<br>7th Ed – Forge World: Dark Harvest |
@@ -120,7 +120,7 @@ No community data exists for Imperial Armour Volume Nine and Ten (The Badab War,
 |---|---|---|---|
 | Captain Mordaci Blaylock (Novamarines) | IA9 p. 171 | 5th Ed – Codex: Space Marines (2008), HQ | Added; to be checked against the book in New Recruit |
 
-## 6th Edition source — 6 converted
+## 6th Edition source — 13 converted
 
 Source: BSData/wh40k-7th-edition release v3.1.4, asset `Warhammer_40000_6th_Ed_last_revision.bsr` (pinned by SHA-256 in `sources/upstreams.json`), BattleScribe 1.14b format. Translated to the current format by `tools/convert_6e_catalogues.py`, then adjusted for the Unification as the 7th Edition lists are: Formations, Battle Formations, Spearheads, Fortifications and extra-detachment markers removed; Lords of War reassigned (independent characters → HQ, super-heavies → Super-Heavy, others → Heavy Support); Apocalypse Legendary Units that repeat a Lord of War dropped; super-heavies behind the "Hide super-heavies" switch; conditions on the Primary Detachment always true, on Apocalypse following the switch, on other force types never true.
 
@@ -130,14 +130,14 @@ Rules text: the 6th Edition source records most special rules by name only. Text
 |---|---|---|
 | Tau - Codex | Codex: Tau Empire (2013) | Converted (pilot) |
 | Tau - Supplement - Farsight Enclaves | Farsight Enclaves (2013) | Converted (pilot) |
-| Dark Angels - Codex | Codex: Dark Angels (2013) | To do |
-| Eldar - Codex, Eldar - Supplement - Iyanden | Codex: Eldar (2013), Iyanden (2013) | To do |
+| Dark Angels - Codex | Codex: Dark Angels (2013) | Converted |
+| Eldar - Codex, Eldar - Supplement - Iyanden | Codex: Eldar (2013), Iyanden (2013) | Converted |
 | Space Marines - FW - Siege Assault Vanguard | Imperial Armour 10 Siege Assault Vanguard, Forge World 6th Edition update | Converted. Its own force chart (1-2 HQ, 2-6 Troops, 0-3 Elites, 0-2 Fast Attack, 1-4 Heavy Support) is offered as a force type, slot limits only; the standard chart can also be used |
 | (Badab War Characters Update, Forge World, 6th Ed) | Imperial Armour 9 and 10 characters | 22 characters as HQ choices in both the Siege Assault Vanguard (IA10) and Codex: Space Marines (2013) lists. Tyberos and Lias Issodon are hand-built from the update (`tools/sixth_additions.py`); the others come from the 6th Edition data. Points corrected to the update: Androcles 145 (data: 155), Enkomi 145 (data: 155). Not included: Malakim Phoros (Lamenters use Codex: Blood Angels; no 6th Edition Blood Angels list here) and Carnac Commodus (Tyrant's Legion list, not converted) |
 | Space Marines - Codex, Supplements Clan Raukaan, Sentinels of Terra | Codex: Space Marines (2013), Clan Raukaan (2013), Sentinels of Terra (2013) | Converted. Uncategorised units (Command Squad, Honour Guard, Techmarine, Servitors, Damocles, Cypher) use no slot; the Allied Detachment Chapter Tactics entry is removed. "DEVASTATOR PLACEHOLDER (IA12)" is the source's container for Vigilator-Sergeant Hamath Kraatos and is kept as is |
-| Chaos Daemons (40K) - Codex | Codex: Chaos Daemons (2013) | To do |
-| Chaos Space Marines - Supplements Black Legion, Crimson Slaughter | Black Legion (2013), Crimson Slaughter (2014) | To do |
-| Orks - FW - Dread Mob | IA08 Dread Mob (2013) | To do |
+| Chaos Daemons (40K) - Codex | Codex: Chaos Daemons (2013) | Converted |
+| Chaos Space Marines - Supplements Black Legion, Crimson Slaughter | Black Legion (2013), Crimson Slaughter (2014) | Converted |
+| Orks - FW - Dread Mob | IA08 Dread Mob (2013) | Converted. Gargantuan Squiggoth is treated as a super-heavy (Gargantuan Creature) |
 | Renegades & Heretics - FW - Defenders of Vraks, Servants of Decay, Servants of Slaughter; Eldar - FW - Corsairs | Forge World lists of 2008–2011 | To decide (earlier Forge World books than the 7th Edition source's) |
 | Adepta Sororitas, Chaos Space Marines - Codex, Inquisition - Codex, Legion of the Damned - Codex | Same books as the 7th Edition source (later revision there) | Not converted |
 | Astra Militarum and Forge World Guard / Space Marine / Necron lists | Same books as the 7th Edition source | Not converted |
