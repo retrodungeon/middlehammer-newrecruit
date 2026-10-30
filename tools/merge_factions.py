@@ -310,6 +310,34 @@ def restrict_to_owner(entry, own_forces):
                 "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
 
 
+NO_STANDARD_EXTRA = {"Imperial Knights": " (or take a Knight as Lord of War in a 6th/7th Ed Imperium or Chaos list)"}
+
+
+def no_standard_list(sel, fname, root, report):
+    """A faction none of whose lists can fill the standard chart shows, in the Standard
+    Force, a placeholder that names the force types to use instead. It is always an error."""
+    forces = [f for f in root.iter(q("forceEntry"))]
+    names = sorted({f.get("name").rsplit(" (", 1)[0] for f in forces})
+    grp = sel.find(q("selectionEntryGroups")).find(q("selectionEntryGroup"))
+    pid = f"{sel.get('id')}-none"
+    text = (f"No {fname} list can use the Standard Force: add one of these forces instead: "
+            + ", ".join(names) + NO_STANDARD_EXTRA.get(fname, ""))
+    opt = ET.Element(q("selectionEntry"), {"type": "upgrade", "import": "true", "name": text,
+                                            "hidden": "false", "id": pid, "collective": "false"})
+    constraint(opt, "max", 0, "force", f"{pid}-max")
+    ET.SubElement(child(opt, "costs"), q("cost"), {"name": "Points", "typeId": MH_POINTS, "value": "0"})
+    m = ET.SubElement(child(opt, "modifiers", 0), q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
+    conds = ET.SubElement(ET.SubElement(ET.SubElement(m, q("conditionGroups")), q("conditionGroup"),
+                                        {"type": "or"}), q("conditions"))
+    for f in forces:
+        ET.SubElement(conds, q("condition"), {
+            "type": "instanceOf", "value": "1", "field": "selections", "scope": "force", "childId": f.get("id"),
+            "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
+    grp.find(q("selectionEntries")).insert(0, opt)
+    grp.set("defaultSelectionEntryId", pid)
+    report.setdefault("noStandardList", []).append(fname)
+
+
 def selector(fid, options, default=None):
     sid = f"{fid}-armylist"
     entry = ET.Element(q("selectionEntry"), {
@@ -593,6 +621,8 @@ def build_factions(members, game_system_id, report):
         restricted = {o: f for o, f in own_forces.items() if f}
         restricted[None] = not_standard
         restrict_to_owner(sel, restricted)
+        if all(o in not_standard for o, _, _ in options):
+            no_standard_list(sel, fname, root, report)
         restrict_allies_to_era(sel, ally_forces, {o: e for o, _, e in options})
         report.setdefault("allyForcesEraChecked", []).extend(
             f"{fname}: {next(f.get('name') for f in root.iter(q('forceEntry')) if f.get('id') == fid)}"
