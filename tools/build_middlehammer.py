@@ -22,7 +22,7 @@ from convert_4e_catalogues import convert_4e  # noqa: E402
 from convert_5e_catalogues import convert_5e  # noqa: E402
 from convert_6e_catalogues import convert_6e, fetch_archive  # noqa: E402
 from convert_7e_catalogues import convert_7e  # noqa: E402
-from merge_factions import build_factions, ensure_era_categories  # noqa: E402
+from merge_factions import build_factions, ensure_era_categories, ensure_knight_category  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "upstream-cache"
@@ -87,6 +87,7 @@ def main():
         members[(7, e["sourceName"])] = t.getroot()
     factions = build_factions(members, MH_SYSTEM_ID, report)
     ensure_era_categories(gst)
+    ensure_knight_category(gst)
 
     gst_changed = digest(gst) != before
     gst.set("revision", str(int(gst.get("revision")) + (1 if gst_changed else 0)))

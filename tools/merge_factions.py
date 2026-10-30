@@ -373,6 +373,132 @@ def drop_empty_condition_groups(root):
     return fixed
 
 
+# Unification p. 8: "6th and 7th edition Imperium or Chaos codices specifically are allowed to
+# take an Imperial Knight or Renegade Knight as their Lord of War choice."
+KNIGHT_LOW_CATEGORY = ("mh-knight-low", "Knight Lord of War")
+KNIGHTS_FOR = {
+    "Imperial": ["Space Marines", "Blood Angels", "Dark Angels", "Space Wolves", "Deathwatch", "Imperial Guard",
+                 "Grey Knights", "Sisters of Battle", "Adeptus Mechanicus", "Adeptus Custodes"],
+    "Chaos": ["Chaos Space Marines", "Chaos Daemons", "Renegades & Heretics"],
+}
+RENEGADE = {"Renegade Knight"}
+
+
+def ensure_knight_category(gst):
+    gns = "http://www.battlescribe.net/schema/gameSystemSchema"
+    cid, name = KNIGHT_LOW_CATEGORY
+    cats = gst.find(f"{{{gns}}}categoryEntries")
+    if cid not in {c.get("id") for c in cats}:
+        ET.SubElement(cats, f"{{{gns}}}categoryEntry", {"name": name, "id": cid, "hidden": "false"})
+    force = next(f for f in gst.iter(f"{{{gns}}}forceEntry") if f.get("id") == STANDARD_FORCE)
+    links = force.find(f"{{{gns}}}categoryLinks")
+    if cid not in {l.get("targetId") for l in links}:
+        link = ET.SubElement(links, f"{{{gns}}}categoryLink", {"name": name, "hidden": "false",
+                                                                "id": f"mh-foc-{cid}", "targetId": cid})
+        ET.SubElement(ET.SubElement(link, f"{{{gns}}}constraints"), f"{{{gns}}}constraint", {
+            "type": "max", "value": "1", "field": "selections", "scope": "force", "shared": "true",
+            "id": f"mh-foc-{cid}-max", "includeChildSelections": "false", "includeChildForces": "false"})
+
+
+def _cond(kind, child, value="1"):
+    return {"type": kind, "value": value, "field": "selections", "scope": "force", "childId": child,
+            "shared": "true", "includeChildSelections": "true", "includeChildForces": "false"}
+
+
+def _switch(option_id):
+    """Configuration 'Super-heavies' switch, as the 7th Edition converter makes them."""
+    sid, oid = f"mh-sh-{option_id}", f"mh-sh-{option_id}-hide"
+    entry = ET.Element(q("selectionEntry"), {"name": "Super-heavies", "id": sid, "hidden": "false",
+                                              "type": "upgrade", "import": "true", "collective": "false"})
+    constraint(entry, "min", 1, "force", f"{sid}-min")
+    constraint(entry, "max", 1, "force", f"{sid}-max")
+    ET.SubElement(child(entry, "categoryLinks"), q("categoryLink"), {
+        "id": f"{sid}-cat", "hidden": "false", "targetId": CONFIGURATION, "primary": "true"})
+    opt = ET.SubElement(child(entry, "selectionEntries"), q("selectionEntry"), {
+        "name": "Hide super-heavies (untick only when both players agree)", "id": oid, "hidden": "false",
+        "type": "upgrade", "import": "true", "collective": "false", "defaultAmount": "1"})
+    constraint(opt, "max", 1, "parent", f"{oid}-max")
+    for e in (entry, opt):
+        ET.SubElement(child(e, "costs"), q("cost"), {"name": "Points", "typeId": MH_POINTS, "value": "0"})
+    return entry
+
+
+def add_knight_lords_of_war(factions, report):
+    ik = factions.get("Imperial Knights")
+    if ik is None:
+        return
+    ik_id = ik.get("id")
+    shared = {e.get("id") for e in ik.find(q("sharedSelectionEntries"))}
+    knights = [(l.get("name"), l.get("targetId")) for l in ik.find(q("entryLinks"))
+               if l.get("targetId") in shared]
+    done = {}
+    for side, names in KNIGHTS_FOR.items():
+        allowed = [(n, t) for n, t in knights if (n in RENEGADE) == (side == "Chaos")]
+        for fname in names:
+            root = factions[fname]
+            fid = root.get("id")
+            al = next(e for e in root.find(q("selectionEntries")) if e.get("name") == "Army List")
+            # Lists fielded only through their own detachments (no Super-Heavy section) are left out.
+            standard_hidden = {o.get("id") for o in al.iter(q("selectionEntry"))
+                               if any(c.get("childId") == STANDARD_FORCE for c in o.iter(q("condition")))}
+            eligible = [o.get("id") for o in al.find(q("selectionEntryGroups")).iter(q("selectionEntry"))
+                        if o.get("name", "").startswith(("6th Ed", "7th Ed")) and o.get("id") not in standard_hidden]
+            if not eligible:
+                continue
+            # Each eligible list needs a "Hide super-heavies" switch (agreement, p. 8); lists
+            # without super-heavies of their own had none.
+            roots = root.find(q("selectionEntries"))
+            have = set()
+            for e in roots:
+                if e.get("name") == "Super-heavies":
+                    have |= {c.get("childId") for c in e.iter(q("condition"))}
+            for o in eligible:
+                if o not in have:
+                    sw_root = _switch(o)
+                    gate(sw_root, o)
+                    roots.append(sw_root)
+                    report.setdefault("superHeavySwitchesAdded", []).append(
+                        next(x.get("name") for x in al.iter(q("selectionEntry")) if x.get("id") == o))
+            switches = [e.get("id") for e in root.iter(q("selectionEntry"))
+                        if (e.get("name") or "").startswith("Hide super-heavies")]
+            links = root.find(q("catalogueLinks"))
+            if links is None:
+                links = ET.Element(q("catalogueLinks"))
+                root.insert(1, links)
+            if ik_id not in {l.get("targetId") for l in links}:
+                ET.SubElement(links, q("catalogueLink"), {"name": "Imperial Knights", "id": f"{fid}-link-{ik_id}",
+                                                         "targetId": ik_id, "type": "catalogue",
+                                                         "importRootEntries": "false"})
+            box = root.find(q("entryLinks"))
+            if box is None:
+                box = ET.SubElement(root, q("entryLinks"))
+            for i, (n, target) in enumerate(allowed):
+                lid = f"mh-klow-{fid}-{i}"
+                link = ET.SubElement(box, q("entryLink"), {
+                    "name": f"{n} (Lord of War)", "id": lid, "hidden": "true", "collective": "false",
+                    "import": "true", "targetId": target, "type": "selectionEntry"})
+                mods = ET.SubElement(link, q("modifiers"))
+                show = ET.SubElement(mods, q("modifier"), {"type": "set", "field": "hidden", "value": "false"})
+                conds = ET.SubElement(ET.SubElement(ET.SubElement(show, q("conditionGroups")), q("conditionGroup"),
+                                                    {"type": "or"}), q("conditions"))
+                for o in eligible:
+                    ET.SubElement(conds, q("condition"), _cond("atLeast", o))
+                if switches:    # super-heavies only when both players agree (Unification p. 8)
+                    hide = ET.SubElement(mods, q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
+                    hc = ET.SubElement(ET.SubElement(ET.SubElement(hide, q("conditionGroups")), q("conditionGroup"),
+                                                     {"type": "or"}), q("conditions"))
+                    for sw in switches:
+                        ET.SubElement(hc, q("condition"), _cond("atLeast", sw))
+                cl = ET.SubElement(link, q("categoryLinks"))
+                ET.SubElement(cl, q("categoryLink"), {"name": "Super-Heavy", "hidden": "false", "id": f"{lid}-slot",
+                                                      "targetId": "5968-f35e-18fd-612b", "primary": "true"})
+                ET.SubElement(cl, q("categoryLink"), {"name": KNIGHT_LOW_CATEGORY[1], "hidden": "false",
+                                                      "id": f"{lid}-low", "targetId": KNIGHT_LOW_CATEGORY[0],
+                                                      "primary": "false"})
+            done[fname] = {"knights": len(allowed), "lists": len(eligible), "superHeavySwitches": len(switches)}
+    report["knightLordsOfWar"] = done
+
+
 def build_factions(members, game_system_id, report):
     """members: {(edition, source name): catalogue root}. Returns {faction name: root}."""
     assigned = {(m[0], m[1]) for fm in FACTIONS.values() for m in fm}
@@ -475,4 +601,5 @@ def build_factions(members, game_system_id, report):
             root.remove(links)
         out[fname] = root
         report.setdefault("factions", {})[fname] = [n for _, n, _ in options]
+    add_knight_lords_of_war(out, report)
     return out
