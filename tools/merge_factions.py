@@ -90,7 +90,7 @@ FACTIONS = {
                       (7, "Chaos Daemons (40K) - Codex", "Codex: Chaos Daemons – Daemonic Incursion Edition (2016)")],
     "Renegades & Heretics": [(3, "Lost and the Damned (Eye of Terror 2003)", ""),
                              (7, "Renegades & Heretics", "Forge World: Renegades & Heretics (IA13, 2014; Siege of Vraks, 2015)")],
-    "Eldar": [(3, "Eldar (2000)", "Codex: ")] + [
+    "Eldar": [(3, "Eldar (2000)", "Codex: Eldar (1999)")] + [
         (3, n, "") for n in ("Biel-Tan Swordwind Army (2000)", "Saim-Hann Wild Rider Host (2000)",
                              "Rangers of Alaitoc (2000)", "Ulthwe The Damned (2000)",
                              "Ulthwe Strike Force (Eye of Terror 2003)", "Iyanden Ghost Warriors (2000)")] + [
@@ -100,7 +100,7 @@ FACTIONS = {
         (7, "Eldar Craftworlds - Codex (2015)", "Codex: Craftworlds (2015)"),
         (7, "Eldar - Corsairs (2015)", "Forge World: Eldar Corsairs (Doom of Mymeara, 2015)")],
     "Ynnari": [(7, "Ynnari Aeldari - Supplement", "Ynnari (Gathering Storm: Fracture of Biel-Tan)")],
-    "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: "), (3, "Dark Eldar Wych Cult (2001)", ""),
+    "Dark Eldar": [(3, "Dark Eldar (2001)", "Codex: Dark Eldar (1998)"), (3, "Dark Eldar Wych Cult (2001)", ""),
                    (5, "Dark Eldar", "Codex: Dark Eldar (2010)"),
                    (7, "Dark_Eldar_Codex_(2014)", "Codex: Dark Eldar (2014)"),
                    (7, "Dark Eldar - Supplement - Haemonculus Covens", "Haemonculus Covens (supplement, 2014)")],
@@ -141,7 +141,7 @@ FACTIONS = {
     "Inquisition": [(3, "Codex Assassins (1999)", "Codex Assassins (White Dwarf 235, 1999)"),
                     (7, "Inquisition - Codex", "Codex: Inquisition (2013)", 6),
                     (7, "Inquisition - Imperial Agents", "Inquisition (Codex: Imperial Agents, 2016)"),
-                    (7, "Assassins Codex", "Officio Assassinorum")],
+                    (7, "Assassins Codex", "Dataslate: Officio Assassinorum (2014)")],
     "Adeptus Arbites": [(3, "Adeptus Arbites (Citadel Journal 29)", "")],
 }
 

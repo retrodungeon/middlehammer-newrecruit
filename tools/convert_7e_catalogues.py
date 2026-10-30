@@ -27,6 +27,8 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from rules_text_6e import CACHE, core_5e, fill_from, seventh_all, sixth_all, texts_of
+
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
 SOURCE_SYSTEM_ID = "e1ebd931-a209-3ce4-87b4-d9918d25530b"
@@ -603,6 +605,13 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report, 
             broken.append(l.get("name") or l.get("targetId"))
     entry["brokenSourceLinksRemoved"] = broken
     translate(cat)
+    # Rule texts: the 7th Edition source leaves many empty (page references only). Fill them
+    # from the 5th Edition core rules (the Unification's base rules), then from the same rule
+    # elsewhere in this list, the 7th Edition core game system, other 7th Edition lists, and
+    # last the 6th Edition source (tagged "(6th Ed wording)").
+    entry["rulesText"] = fill_from(cat, q, [
+        ("5th Ed core", core_5e()), ("same list", texts_of(cat)), ("7th Ed core", texts_of(source_gst)),
+        ("7th Ed other lists", seventh_all()), ("6th Ed source", sixth_all(CACHE / "wh40k-6th-edition"))])
     entry["idsMadeUnique"] = make_ids_unique(cat)
     cat.set("gameSystemId", MH_SYSTEM_ID)
     cat.set("battleScribeVersion", "2.03")
