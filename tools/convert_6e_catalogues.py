@@ -43,6 +43,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 from convert_7e_catalogues import simplify_modifier, make_switch, hide_when_switch_on
+from rules_text_6e import fill_rules
 
 CAT_NS = "http://www.battlescribe.net/schema/catalogueSchema"
 GST_NS = "http://www.battlescribe.net/schema/gameSystemSchema"
@@ -572,6 +573,7 @@ def convert_one(path, legacy_gst, gst_names, types, report):
     if left:
         raise ValueError(f"{path.stem}: conditions on force types remain: {left}")
     entry["topLevelMinimumsRemoved"] = sorted(set(tr.root_minimums))
+    entry["rulesText"] = fill_rules(cat, path.stem.split(" - ")[0], q)
     if tr.unhandled:
         raise ValueError(f"{path.stem}: unhandled legacy constructs: {sorted(set(tr.unhandled))}")
     entry["idsMadeUnique"] = suffix_ids(cat)
