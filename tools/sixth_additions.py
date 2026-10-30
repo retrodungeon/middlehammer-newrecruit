@@ -244,6 +244,43 @@ def extend_chapter_choice(codex):
     return added
 
 
+# Chapter Tactics each Badab character requires (Badab War Characters Update). In Codex: Space
+# Marines (2013) a character is only offered when the force's Chapter choice matches.
+# Alberec (Exorcists) takes whichever Chapter Tactics represent the Exorcists, so any.
+CHARACTER_CHAPTER = {
+    "Carab Culln": "Red Scorpions", "Sevrin Loth": "Red Scorpions", "Tyberos": "Carcharodons",
+    "Titus": "Ultramarines", "Narvaez": "Ultramarines", "Tarnus Vale": "Ultramarines", "Blaylock": "Ultramarines",
+    "Issodon": "Raptors", "Mir'san": "Salamanders", "Ashmantle": "Salamanders", "Harath Shen": "Salamanders",
+    "Redth": "Mantis Warriors", "Thulsa Kane": "Executioners", "Androcles": "Star Phantoms",
+    "Vaylund Cal": "Iron Hands", "Courbray": "Fire Hawks", "Huron": "Astral Claws", "Sumatris": "Astral Claws",
+    "Valthex": "Astral Claws", "Moloc": "Minotaurs", "Enkomi": "Minotaurs",
+}
+
+
+def require_chapter(codex):
+    group = next(g for g in codex.iter(q("selectionEntryGroup")) if g.get("name") == "Must Pick One")
+    options = {}
+    for o in group.find(q("selectionEntries")):
+        options[o.get("name").replace(" (Forge World)", "")] = o.get("id")
+    done = []
+    for e in codex.find(q("selectionEntries")):
+        n = e.get("name") or ""
+        key = next((k for k in CHARACTER_CHAPTER if k in n), None)
+        if key is None or n.startswith(NOT_BADAB):
+            continue
+        mods = e.find(q("modifiers"))
+        if mods is None:
+            mods = ET.Element(q("modifiers"))
+            e.insert(0, mods)
+        m = ET.SubElement(mods, q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
+        ET.SubElement(ET.SubElement(m, q("conditions")), q("condition"), {
+            "type": "equalTo", "value": "0", "field": "selections", "scope": "force",
+            "childId": options[CHARACTER_CHAPTER[key]], "shared": "true",
+            "includeChildSelections": "true", "includeChildForces": "false"})
+        done.append(f"{n} -> {CHARACTER_CHAPTER[key]}")
+    return done
+
+
 def apply(cats, gst, report):
     """cats: {source stem: converted catalogue root} (after ID suffixing)."""
     done = {"pointsFixed": [], "built": [], "copiedToCodex": []}
@@ -281,4 +318,5 @@ def apply(cats, gst, report):
         codex.find(q("selectionEntries")).append(c)
         done["copiedToCodex"].append(n)
     done["forgeWorldChapters"] = extend_chapter_choice(codex)
+    done["chapterRequired"] = require_chapter(codex)
     report["sixthAdditions"] = done
