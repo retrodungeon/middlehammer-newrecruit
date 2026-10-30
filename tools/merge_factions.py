@@ -191,6 +191,19 @@ def gate(el, option_id):
             _unless(mods, c.get("id"), "0", option_id)
 
 
+def detach_from_new_force(el, report):
+    """New Recruit adds a root entry with a default amount to every new force before it
+    applies our Army List hide rules, and sorts by sortIndex. So: no root entry adds itself
+    (the 4th Edition Chapter Traits did, in every Space Marines list), and every list's own
+    sort order comes after the Army List entry (sortIndex 1)."""
+    if el.attrib.pop("defaultAmount", None) is not None:
+        report.setdefault("rootDefaultAmountsRemoved", []).append(el.get("name"))
+    for c in el.findall(f"{q('constraints')}/{q('constraint')}"):
+        c.attrib.pop("automatic", None)
+    if el.get("sortIndex") is not None:
+        el.set("sortIndex", str(int(el.get("sortIndex")) + 2))
+
+
 def constraint(parent, kind, value, scope, cid):
     ET.SubElement(child(parent, "constraints"), q("constraint"), {
         "type": kind, "value": str(value), "field": "selections", "scope": scope,
@@ -400,6 +413,7 @@ def build_factions(members, game_system_id, report):
             for cont in ("selectionEntries", "entryLinks"):
                 src = m.find(q(cont))
                 for el in (list(src) if src is not None else []):
+                    detach_from_new_force(el, report)
                     gate(el, oid)
                     child(root, cont).append(el)
             for container in list(m):
