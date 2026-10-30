@@ -1,65 +1,92 @@
 # Middlehammer — New Recruit Game Data
 
-Unofficial community data for playing **The Book of the Unification** (Middlehammer) in [New Recruit](https://www.newrecruit.eu/). The Unification uses Warhammer 40,000 5th Edition as its core and lets codexes from 3rd through 7th Edition be used together.
+Unofficial community data for playing **The Book of the Unification** (Middlehammer) in [New Recruit](https://www.newrecruit.eu/). The Unification uses Warhammer 40,000 5th Edition as its core rules and lets codexes from 3rd through 7th Edition be used together. This data builds army lists under those rules.
 
-## Status
+**Status: playtest.** 132 army lists across 27 factions are converted and pass the structural checks. Faction selection, Army List selection and the Force Organization Chart have been tested in New Recruit; most individual lists have not yet been played through. Reports of errors are the most useful thing right now — see [Reporting problems](#reporting-problems).
 
-**Usable.** Import this repository into New Recruit as a GitHub data source and choose the **Middlehammer Unification** game system.
+## Installing in New Recruit
 
-The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar…). After creating a list, choose the codex or variant list in the **Army List** entry under Configuration, e.g. "3rd Ed – Codex: Imperial Guard (1999)", "3rd Ed – Steel Legion Mechanised Infantry (Armageddon 2000)" or "5th Ed – Codex: Imperial Guard (2009)". Only that list's units are shown.
+<!-- Maintainer: confirm the menu wording in step 1 against New Recruit before sharing. -->
 
-| Edition (of the book) | Army lists available | Notes |
+1. In New Recruit, add a game system from a GitHub repository and give it this repository: `https://github.com/retrodungeon/middlehammer-newrecruit`
+2. Choose the **Middlehammer Unification** game system.
+3. Create a list and pick a faction (Space Marines, Imperial Guard, Eldar…).
+4. Open the **Army List** entry in the **Configuration** section and choose the codex or variant list, e.g. "3rd Ed – Codex: Imperial Guard (1999)" or "5th Ed – Codex: Imperial Guard (2009)". Only that list's units are then shown.
+
+You still need the Book of the Unification v1.7.2 and the Middlehammer Mission Pack v1.4.1 to play. You do not need the codexes at the table: unit rules text is included in the data.
+
+## What's included
+
+| Edition (of the book) | Army lists | Notes |
 |---|---:|---|
-| 3rd | 56 | All official lists in the 3rd Edition source |
+| 3rd | 56 | Every official list in the 3rd Edition source, including Chapter Approved, White Dwarf, Citadel Journal, campaign and Imperial Armour lists |
 | 4th | 10 | Seven from the 5th Edition source; Space Marines (2004), Tyranids (2005) and Blood Angels (2007) from the 4th Edition source |
-| 5th | 9 | Including Imperial Guard 2009 |
-| 6th | 16 | Astra Militarum, Militarum Tempestus and Tyranids (2014) from the 7th Edition source; Space Marines (2013) with Clan Raukaan, Sentinels of Terra and the Siege Assault Vanguard, Tau Empire (2013) with Farsight Enclaves, Dark Angels (2013), Eldar (2013) with Iyanden, Chaos Daemons (2013), Black Legion, Crimson Slaughter and Dread Mob from the 6th Edition source |
-| 7th | 40 | All lists in the 7th Edition source except Fallen Angels (Formation only) |
+| 5th | 9 | Including Imperial Guard (2009) |
+| 6th | 25 | Space Marines (2013) with Clan Raukaan, Sentinels of Terra, Siege Assault Vanguard, Tyrant's Legion and Legion of the Damned; Dark Angels (2013); Astra Militarum, Militarum Tempestus and three Forge World Guard lists; Chaos Space Marines (2012) with Black Legion and Crimson Slaughter; Chaos Daemons (2013); Eldar (2013) with Iyanden; Dread Mob; Tyranids (2014); Dark Harvest; Tau Empire (2013) with Farsight Enclaves; Adepta Sororitas; Inquisition |
+| 7th | 32 | The 7th Edition source's lists, less those whose book is 6th Edition (labelled 6th Ed above) and Fallen Angels (Formation only) |
 
-Faction structure and Army List selection were tested in New Recruit on 2026-10-29. Most individual lists have not yet been played through.
+Each list is labelled with the edition and year of the book it comes from. The full list of factions and options is in [`docs/codex-coverage.md`](docs/codex-coverage.md).
 
-Full per-list status: [`docs/codex-coverage.md`](docs/codex-coverage.md).
+**Content policy:** all official material is included — Forge World / Imperial Armour, White Dwarf, Chapter Approved and campaign books. Homebrew is excluded, as are homebrew units inside official lists.
 
-**Content policy:** all official material is included, including Forge World / Imperial Armour, White Dwarf and Chapter Approved content. Homebrew and unofficial lists and units are excluded.
+**Imperial Armour: The Badab War.** The 22 Badab War characters from Forge World's 6th Edition update are HQ choices in Codex: Space Marines (2013) and the Siege Assault Vanguard. Captain Mordaci Blaylock (IA9) is in Codex: Space Marines (2008). Further Imperial Armour 9 and 10 entries are being transcribed from the books.
 
-Unit options and points come from the community source data (`sources/upstreams.json`). They have not been checked line by line against the printed books; report errors as issues.
+**Points and options** come from the community source data (see [Sources](#sources)) with corrections where checked. They have not been checked line by line against the printed books.
 
-### Army construction currently enforced
+## Unification rules applied to list building
 
-One force type is available: **Standard Force Organization (5th Edition)** — HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 (5th Edition rulebook, p. 87). These limits have been tested in New Recruit. The force also shows Configuration (first), Dedicated Transport, Unique, Super-Heavy and No Force Org Slot sections, without limits, matching the 5th Edition source data. Super-heavies are hidden by default: Imperial Guard 2009 has **Custom Content → Hide Apocalypse Units**, and every 7th Edition list with super-heavies has **Super-heavies → Hide super-heavies**. Untick when both players agree.
+- **Force Organization Chart:** one standard chart, HQ 1–2, Troops 2–6, Elites 0–3, Fast Attack 0–3, Heavy Support 0–3 (5th Edition rulebook p. 87). Some lists add their own force types (Daemon Hunter and Witch Hunter allies, Kroot auxiliaries, Saim-Hann Wild Rider Host, the Siege Assault Vanguard chart, 7th Edition codex detachments such as the Imperial Knights Household Detachment); in those, only that list can be chosen.
+- **6th and 7th Edition lists:** Formations and Command Benefits removed, Warlord Traits hidden, Lords of War moved to HQ, Super-Heavy or Heavy Support as the Unification directs.
+- **Allies:** only within the same era (3rd–5th together, 6th–7th together).
+- **Knights:** 6th and 7th Edition Imperium lists may take one Imperial Knight, and Chaos lists one Renegade Knight, as their Lord of War.
+- **Super-heavies** are hidden by default. Untick **Super-heavies → Hide super-heavies** (or **Custom Content → Hide Apocalypse Units** in Imperial Guard 2009) when both players agree.
 
-Some lists also bring their own force types (e.g. Daemon Hunters, Witch Hunters and Harlequin allies, Assassin attachments, Kroot auxiliaries, Saim-Hann Wild Rider Host, and the 7th Edition codex detachments such as the Imperial Knights Household Detachment or the Psykana Division). In those force types only their own list can be chosen as the Army List.
+In-game rules (no Hull Points, melee AP conversion, psychic changes and so on) are not applied to profiles; play them from the Book of the Unification. Full status of every rule: [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md).
 
-For 7th Edition lists, Formations and Command Benefits are removed, codex detachments are kept only for the smaller lists, Warlord Traits hidden and Lords of War reassigned. Allies are restricted to the same era (3rd–5th or 6th–7th); points-based super-heavy limits are **not yet enforced**. See [`docs/unification-rules-ledger.md`](docs/unification-rules-ledger.md) for the full list and status.
+## Optional add-on: Relics of the Age of Darkness
 
-### Optional add-on: Relics of the Age of Darkness
+Horus Heresy 1st Edition units for 6th and 7th Edition lists, by agreement. Off by default: tick **Configuration → Relics of the Age of Darkness** in a 6th or 7th Edition list. 5th Edition Force Organization Chart only; no Rites of War, named characters or Primarchs.
 
-Horus Heresy 1st Edition units for 6th/7th Edition lists, off by default: tick **Configuration → Relics of the Age of Darkness** in a 6th or 7th Edition list. First part (Legion units for Space Marines, Dark Angels, Blood Angels, Space Wolves and Chaos Space Marines) built, not yet tested in New Recruit. See [`docs/relics-of-the-age-of-darkness.md`](docs/relics-of-the-age-of-darkness.md), and the players' rules document [`docs/Relics_of_the_Age_of_Darkness.pdf`](docs/Relics_of_the_Age_of_Darkness.pdf) (rebuilt with the data).
+Built so far: Legiones Astartes units for Space Marines, Dark Angels, Blood Angels, Space Wolves and Chaos Space Marines. Not yet tested in New Recruit. Mechanicum, Questoris Knights, Solar Auxilia and Militia, Talons of the Emperor, Daemons of the Ruinstorm and Agents of the Emperor are to follow.
 
-### In progress
+Players' rules: [`docs/Relics_of_the_Age_of_Darkness.pdf`](docs/Relics_of_the_Age_of_Darkness.pdf), rebuilt with every update to the data. Details: [`docs/relics-of-the-age-of-darkness.md`](docs/relics-of-the-age-of-darkness.md).
 
-- **6th Edition:** the 6th Edition data is in the old BattleScribe 1.14b format and is translated by `tools/convert_6e_catalogues.py`. Converted so far: Tau Empire (2013) with Farsight Enclaves, and Space Marines (2013) with Clan Raukaan and Sentinels of Terra; the rest are listed in the coverage document. (The earlier experimental Space Marines translator, `tools/convert_legacy_6e.py`, is superseded.)
+## Known limitations
+
+- The 1500-point limit on super-heavies is not enforced; it is left to the players' agreement through the switches above.
+- A codex without a super-heavy of its own cannot yet take one from Imperial Armour (Unification p. 8).
+- Lists that bring their own force type (e.g. Daemon Hunter allies) offer it whenever that faction is used, not only when that list is chosen.
+- Two 3rd Edition ally force types in one roster satisfy each other's era requirement.
+- Not yet converted: the earlier Forge World lists of 2008–2011 (Vraks Renegades, Corsairs) and Apocalypse / fortification data.
+
+## Reporting problems
+
+Open an [issue](https://github.com/retrodungeon/middlehammer-newrecruit/issues) with:
+
+- the faction and the exact **Army List** label;
+- the unit, option or rule;
+- what New Recruit shows, and what the book says (with the page, if you have it).
+
+Not on GitHub? Send the same details to the maintainer.
 
 ## Repository layout
 
-- `*.gst`, `*.cat` (repository root) — the files New Recruit reads.
-- `tools/` — Python scripts for building, converting and auditing data. `tools/relics_book/` builds the Relics of the Age of Darkness PDF (needs `reportlab`, `pillow`, `pypdf`). `build_middlehammer.py` rebuilds every Middlehammer catalogue from the pinned sources (`convert_3e_catalogues.py`, `convert_5e_catalogues.py`, `convert_7e_catalogues.py`, then `merge_factions.py`); `validate_middlehammer.py` checks every published catalogue. The 6th Edition translator (`convert_legacy_6e.py` and related) is experimental.
+- `*.gst`, `*.cat` (repository root) — the files New Recruit reads. Built, not hand-edited: `tools/build_middlehammer.py` rebuilds them from the pinned sources.
+- `tools/` — conversion, build and validation scripts. `validate_middlehammer.py` checks every published catalogue; `tools/relics_book/` builds the Relics PDF (needs `reportlab`, `pillow`, `pypdf`).
 - `.github/workflows/` — `validate.yml` (structural checks), `build-check.yml` (pull requests: the committed files must equal a fresh build), `upstream-audit.yml` and `inspect-sixth-edition.yml` (source inspection). No workflow writes to the repository.
-- `sources/upstreams.json` — the upstream repositories each edition is drawn from.
-- `docs/` — rules ledger, conversion notes and audit results.
+- `sources/upstreams.json` — the upstream data, pinned by commit or checksum.
+- `docs/` — coverage, rules ledger, conversion notes and audits.
 
 ## Sources
 
 - The Book of the Unification v1.7.2
 - Middlehammer Mission Pack v1.4.1
-- Community BattleScribe/New Recruit data for each edition (see `sources/upstreams.json` and [`docs/compatibility-matrix.md`](docs/compatibility-matrix.md)), and BSData's archived Horus Heresy 1st Edition data for the add-on
+- Community BattleScribe / New Recruit data for each edition: KSnyder1986 (3rd), Kothra (4th), AnonymousCheese (5th), BSData (6th and 7th, and the archived Horus Heresy 1st Edition data). Pinned versions: [`sources/upstreams.json`](sources/upstreams.json).
 
 The rulebooks and codexes themselves are not included in this repository.
 
-## Open issues
+## Distribution
 
-- **Redistribution rights.** None of the source repositories has a licence file. This data is published for a small play group, and permission is being assumed pending confirmation from the upstream authors.
-
-## Disclaimer
+This data is published for a small play group; the repository is public so New Recruit can read it. None of the source repositories has a licence file, and permission from their authors is assumed pending confirmation.
 
 Unofficial fan project. Not affiliated with or endorsed by Games Workshop or New Recruit.
