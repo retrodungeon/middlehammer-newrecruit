@@ -204,6 +204,22 @@ def detach_from_new_force(el, report):
         el.set("sortIndex", str(int(el.get("sortIndex")) + 2))
 
 
+def ensure_configuration_first(fe, report):
+    """Every force needs the Configuration section, first, to hold the Army List choice.
+    Some 3rd Edition ally force types (e.g. Assassin Attachment) lack it, so no list, and
+    therefore no unit, could be chosen in them."""
+    links = child(fe, "categoryLinks", 0)
+    config = [l for l in links if l.get("targetId") == CONFIGURATION]
+    if config:
+        links.remove(config[0])
+        links.insert(0, config[0])
+        return
+    links.insert(0, ET.Element(q("categoryLink"), {"name": "Configuration", "hidden": "false",
+                                                   "id": f"{fe.get('id')}-configuration",
+                                                   "targetId": CONFIGURATION}))
+    report.setdefault("configurationAddedToForces", []).append(fe.get("name"))
+
+
 def constraint(parent, kind, value, scope, cid):
     ET.SubElement(child(parent, "constraints"), q("constraint"), {
         "type": kind, "value": str(value), "field": "selections", "scope": scope,
@@ -436,6 +452,8 @@ def build_factions(members, game_system_id, report):
         not_standard = [option_for[members[(m[0], m[1])].get("id")] for m in fm
                         if (m[0], m[1]) in NOT_ON_STANDARD_CHART]
         # Default to a list that can be shown in the standard force, where there is one.
+        for fe in root.iter(q("forceEntry")):
+            ensure_configuration_first(fe, report)
         sel = selector(fid, options, next((o for o, _, _ in options if o not in not_standard), None))
         restricted = {o: f for o, f in own_forces.items() if f}
         restricted[None] = not_standard
