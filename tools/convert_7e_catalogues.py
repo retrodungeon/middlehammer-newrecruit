@@ -22,6 +22,7 @@ detachments. For each catalogue in CONVERTED:
 Used by tools/build_middlehammer.py.
 """
 import copy
+import hashlib
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -60,6 +61,24 @@ CONVERTED = [
 # Not converted: "Fallen Angels - Supplement" can only be fielded as a Formation, which the
 # Unification bans (author's ruling, 2026-10-29).
 
+# One source list fielded as two Army List options (decision 2026-10-30): {list name:
+# (source catalogue, keep(root entry name))}. The 7th Edition Inquisition data holds both
+# the Codex: Inquisition (2013) units and their Codex: Imperial Agents (2016) versions,
+# marked "(C:IA)". Gathering Storm characters (2017) go with Imperial Agents; Forge World
+# units are in both. The Adepta Sororitas data's three "(C:IA)" copies are dropped.
+IMPERIAL_AGENTS = "(C:IA)"
+GATHERING_STORM = {"Inquisitor Greyfax", "Roboute Guilliman, Primarch of the Ultramarines", "Belisarius Cawl",
+                   "Celestine, The Living Saint (FoC)", "Cypher, Lord of the Fallen",
+                   "Grand Master Voldus, Warden of the Librarius", "Triumvirate of the Imperium"}
+SPLITS = {
+    "Inquisition - Codex": ("Inquisition - Codex",
+                            lambda n: IMPERIAL_AGENTS not in n and n not in GATHERING_STORM),
+    "Inquisition - Imperial Agents": ("Inquisition - Codex",
+                                      lambda n: IMPERIAL_AGENTS in n or n in GATHERING_STORM or "(FW)" in n
+                                      or n == "Inquisitor-Lord Hector Rex"),
+    "Adepta Sororitas": ("Adepta Sororitas", lambda n: IMPERIAL_AGENTS not in n),
+}
+
 # Codex detachments kept, as {source list: {source name: Middlehammer name}}. Only their slot
 # limits are kept: detachment special rules (Command Benefits, Warlord Trait rerolls) are
 # dropped (decision 2026-10-29). Not kept: Castellans of the Imperium (patched out,
@@ -68,8 +87,9 @@ DETACHMENTS = {
     "Imperial Knights - Codex (2015)": {"IK Oathsworn Detachment": "Oathsworn Detachment",
                                         "IK Household Detachment": "Household Detachment"},
     "Chaos Renegade Knights": {"Chaos RK Forsworn Knight Detachment": "Forsworn Knight Detachment"},
-    "Inquisition - Codex": {"Inquisitorial Detachment": "Inquisitorial Detachment",
-                            "Inquisitorial Representative (C:IA)": "Inquisitorial Representative"},
+    "Inquisition - Codex": {"Inquisitorial Detachment": "Inquisitorial Detachment"},
+    "Inquisition - Imperial Agents": {"Inquisitorial Detachment": "Inquisitorial Detachment",
+                                      "Inquisitorial Representative (C:IA)": "Inquisitorial Representative"},
     "Assassins Codex": {"Officio Assassinorum Detachment": "Officio Assassinorum Detachment",
                         "Assassinorum Operative": "Assassinorum Operative"},
     "Sisters of Silence Dataslate": {"Null-Maiden Task Force": "Null-Maiden Task Force"},
@@ -81,7 +101,8 @@ DETACHMENTS = {
 }
 # Shown after a detachment's name in the force picker.
 LIST_NAMES = {"Imperial Knights - Codex (2015)": "Imperial Knights", "Chaos Renegade Knights": "Renegade Knights",
-              "Inquisition - Codex": "Inquisition", "Assassins Codex": "Assassins",
+              "Inquisition - Codex": "Inquisition", "Inquisition - Imperial Agents": "Imperial Agents",
+              "Assassins Codex": "Assassins",
               "Sisters of Silence Dataslate": "Sisters of Silence", "Legion of the Damned - Codex": "Legion of the Damned",
               "Adeptus Astra Telepathica": "Astra Telepathica", "Aeronautica Imperialis": "Aeronautica Imperialis",
               "Dark Eldar - Supplement - Haemonculus Covens": "Haemonculus Covens"}
@@ -375,12 +396,43 @@ def make_detachment(fe, mh_name, list_name):
     return out, {"name": out.get("name"), "slots": slots, "notKept": skipped}
 
 
-def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report):
+def root_name(el, ids, gst_by_id):
+    target = ids.get(el.get("targetId"), gst_by_id.get(el.get("targetId"), el))
+    nm = el.get("name")
+    return (nm if nm not in (None, "", "None", "New EntryLink") else target.get("name")) or ""
+
+
+def split_roots(cat, keep, gst_by_id):
+    """Keep only the root entries whose name passes keep(name). The others stay in the file
+    (other entries' conditions refer to them) but are always hidden and never required."""
+    ids = {e.get("id"): e for e in cat.iter() if e.get("id")}
+    removed = []
+    for cont in ("selectionEntries", "entryLinks"):
+        c = cat.find(q(cont))
+        for el in list(c if c is not None else []):
+            nm = root_name(el, ids, gst_by_id)
+            if not keep(nm):
+                el.set("hidden", "true")
+                for tag in ("modifiers", "modifierGroups", "constraints"):
+                    for x in el.findall(q(tag)):
+                        el.remove(x)
+                removed.append(nm)
+    return removed
+
+
+def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report, stem=None):
     tree = ET.parse(path)
     cat = tree.getroot()
     if cat.get("gameSystemId") != SOURCE_SYSTEM_ID:
         raise SystemExit(f"{path.name}: not a 7th Edition catalogue")
-    entry = {"edition": 7, "source": path.name, "sourceName": path.stem, "id": cat.get("id")}
+    stem = stem or path.stem
+    entry = {"edition": 7, "source": path.name, "sourceName": stem, "id": cat.get("id")}
+    if stem in SPLITS:
+        source_stem, keep = SPLITS[stem]
+        if stem != source_stem:
+            cat.set("id", f"{cat.get('id')[:-4]}{hashlib.sha1(stem.encode()).hexdigest()[:4]}")
+            entry["id"] = cat.get("id")
+        entry["splitRemoved"] = split_roots(cat, keep, gst_by_id)
     ids = {e.get("id"): e for e in cat.iter() if e.get("id")}
     par = {c: p for p in cat.iter() for c in p}
     for cont in ("selectionEntries", "entryLinks"):
@@ -459,7 +511,7 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report):
                 new = "Super-Heavy" if sh else ("Configuration" if target.get("type") == "upgrade" else "No Force Org Slot")
                 uncategorised.append(f"{nm} -> {new}")
             else:
-                raise ValueError(f"{path.stem}: unknown slot {slot!r} for {nm}")
+                raise ValueError(f"{stem}: unknown slot {slot!r} for {nm}")
             set_slot(el, new)
             if new == "Super-Heavy":
                 super_heavy.append(el)
@@ -508,7 +560,7 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report):
         elif c.get("childId") == apoc:
             kind = c.get("type")
             if kind not in ("instanceOf", "notInstanceOf", "atLeast"):
-                raise ValueError(f"{path.stem}: unexpected Apocalypse condition {c.attrib}")
+                raise ValueError(f"{stem}: unexpected Apocalypse condition {c.attrib}")
             c.attrib.update({"childId": oid, "scope": "force", "field": "selections", "shared": "true",
                              "includeChildSelections": "true",
                              "type": "equalTo" if kind in ("instanceOf", "atLeast") else "atLeast",
@@ -520,16 +572,16 @@ def convert_one(path, source_gst, names, rule_names, gst_by_id, forces, report):
     # Codex detachments listed in DETACHMENTS are kept as forces; every other catalogue force
     # type (detachments and formations) is not used. Conditions that test for those can
     # never be true; their IDs are recorded for the validator.
-    wanted = DETACHMENTS.get(path.stem, {})
+    wanted = DETACHMENTS.get(stem, {})
     kept, details = [], []
     for top in cat.findall(q("forceEntries")):
         for fe in top:
             if fe.get("name") in wanted:
-                force, info = make_detachment(fe, wanted[fe.get("name")], LIST_NAMES[path.stem])
+                force, info = make_detachment(fe, wanted[fe.get("name")], LIST_NAMES[stem])
                 kept.append(force)
                 details.append(info)
     if len(kept) != len(wanted):
-        raise ValueError(f"{path.stem}: detachments not found: {set(wanted) - {i['name'] for i in details}}")
+        raise ValueError(f"{stem}: detachments not found: {set(wanted) - {i['name'] for i in details}}")
     kept_ids = {f.get("id") for f in kept}
     entry["detachments"] = details
     entry["retiredIds"] = sorted(({f.get("id") for f in cat.iter(q("forceEntry"))} - kept_ids) |
@@ -603,6 +655,10 @@ def convert_7e(source, gst, report):
     for p in paths:
         tree, entry = convert_one(p, source_gst, names, rule_names, gst_by_id, forces, report)
         trees[entry["id"]] = (p, tree, entry)
+        for stem, (src, _) in SPLITS.items():
+            if src == p.stem and stem != p.stem:
+                tree, entry = convert_one(p, source_gst, names, rule_names, gst_by_id, forces, report, stem)
+                trees[entry["id"]] = (p, tree, entry)
     # Retired 7e detachments and their categories: conditions on them never apply.
     retired = set(forces) | {c.get("id") for f in source_gst.iter(q("forceEntry", GST_NS))
                              for c in f.iter(q("categoryEntry", GST_NS))}
