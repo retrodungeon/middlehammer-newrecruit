@@ -40,8 +40,7 @@ FACTIONS = {
                      (7, "Blood Angels - Codex (2014)", "Codex: Blood Angels (2014)")],
     "Dark Angels": [(3, "Dark Angels (1999)", "Codex: "),
                     (5, "Dark Angels", "Codex: Dark Angels (2007)", 4),
-                    (7, "Dark Angels - Codex (2015)", "Codex: Dark Angels (2015)"),
-                    (7, "Fallen Angels - Supplement", "Fallen Angels (supplement)")],
+                    (7, "Dark Angels - Codex (2015)", "Codex: Dark Angels (2015)")],
     "Space Wolves": [(3, "Space Wolves (2000)", "Codex: "), (3, "Space Wolves 13th Company (2003)", ""),
                      (5, "Space Wolves", "Codex: Space Wolves (2009)"),
                      (7, "Space Wolves - Codex", "Codex: Space Wolves (2014)")],
@@ -207,7 +206,7 @@ STANDARD_FORCE = "mh-test-force"
 
 # Allies only within the same era (Unification p. 8): 3rd-5th Edition codexes ally with each
 # other, 6th-7th with each other. Every Army List option carries its era as a category; an
-# ally force type is an error in a roster that also contains a list from the other era.
+# ally force type is an error unless the roster contains another list of its own era.
 ERA_CATEGORIES = {"3rd-5th": ("mh-era-3-5", "Era: 3rd-5th Edition"),
                   "6th-7th": ("mh-era-6-7", "Era: 6th-7th Edition")}
 ALLY_FORCES = {"Adeptus Arbites Allies", "Assassin Attachment", "Daemon Hunter Allies",
@@ -228,13 +227,16 @@ def ensure_era_categories(gst):
 
 
 def restrict_allies_to_era(entry, ally_forces, option_era):
-    """ally_forces: {force id: owning option id}. Selecting that list in its ally force while
-    the roster holds a list of the other era breaks the option's max constraint."""
+    """ally_forces: {force id: owning option id}. An ally force must join an army of its own
+    era: selecting its list breaks the option's max constraint unless the roster holds
+    another list of the same era (the ally's own Army List counts once). Lists of other eras
+    may also be present: the author allows any mix of detachments in multi-detachment games
+    (2026-10-29)."""
     for opt in entry.find(q("selectionEntryGroups")).iter(q("selectionEntry")):
         for fid, oid in ally_forces.items():
             if oid != opt.get("id"):
                 continue
-            other = ERA_CATEGORIES["6th-7th" if option_era[oid] == "3rd-5th" else "3rd-5th"][0]
+            same = ERA_CATEGORIES[option_era[oid]][0]
             m = ET.SubElement(child(opt, "modifiers", 0), q("modifier"),
                               {"type": "set", "field": f"{oid}-max", "value": "0"})
             conds = ET.SubElement(m, q("conditions"))
@@ -242,7 +244,7 @@ def restrict_allies_to_era(entry, ally_forces, option_era):
                 "type": "instanceOf", "value": "1", "field": "selections", "scope": "force", "childId": fid,
                 "shared": "true", "includeChildSelections": "false", "includeChildForces": "false"})
             ET.SubElement(conds, q("condition"), {
-                "type": "atLeast", "value": "1", "field": "selections", "scope": "roster", "childId": other,
+                "type": "lessThan", "value": "2", "field": "selections", "scope": "roster", "childId": same,
                 "shared": "true", "includeChildSelections": "true", "includeChildForces": "true"})
 
 

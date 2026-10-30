@@ -14,7 +14,7 @@ The picker shows **one entry per faction** (Space Marines, Imperial Guard, Eldar
 | 4th | 10 | Seven from the 5th Edition source; Space Marines (2004), Tyranids (2005) and Blood Angels (2007) from the 4th Edition source |
 | 5th | 9 | Including Imperial Guard 2009 |
 | 6th | 3 | Astra Militarum, Militarum Tempestus and Tyranids (2014), from the 7th Edition source |
-| 7th | 41 | All lists in the 7th Edition source |
+| 7th | 40 | All lists in the 7th Edition source except Fallen Angels (Formation only) |
 
 Faction structure and Army List selection were tested in New Recruit on 2026-10-29. Most individual lists have not yet been played through.
 

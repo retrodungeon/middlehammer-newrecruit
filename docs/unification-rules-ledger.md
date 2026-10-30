@@ -27,13 +27,13 @@ Most of the Unification changes how the game is played (wound allocation, vehicl
 | Rule | Source | Implementation |
 |---|---|---|
 | Lists that cannot fill the standard chart (no HQ or no Troops choice) are fielded only through their own force types | Unification p. 8 (standard chart needs the compulsory HQ and Troops, 5th Ed rulebook p. 87); decision 2026-10-29 | Their Army List option is hidden in the standard force: 3rd Ed Codex Assassins and Harlequins (ally attachments), and 7th Ed Inquisition, Officio Assassinorum, Sisters of Silence, Legion of the Damned, Imperial and Renegade Knights, Astra Telepathica, Aeronautica Imperialis and Haemonculus Covens (codex detachments). Ally attachments are subject to the same-era rule below. |
-| Allies only within the same era: 3rd–5th with 3rd–5th, 6th–7th with 6th–7th | Unification p. 8 | Every Army List option carries an era category (by book edition). The ally force types (Adeptus Arbites Allies, Assassin Attachment, Daemon Hunter Allies, Harlequin Allies, Kroot Auxiliaries, Witch Hunter Allies, all 3rd Edition) show an error on their Army List when the roster also contains a 6th–7th Edition list. Not yet tested in New Recruit. Does not cover codex detachments, which are separate armies (author question 2). |
+| Allies only within the same era: 3rd–5th with 3rd–5th, 6th–7th with 6th–7th | Unification p. 8; author's ruling 2026-10-29 | Every Army List option carries an era category (by book edition). The ally force types (Adeptus Arbites Allies, Assassin Attachment, Daemon Hunter Allies, Harlequin Allies, Kroot Auxiliaries, Witch Hunter Allies, all 3rd Edition) show an error on their Army List unless the roster also contains another 3rd–5th Edition list for them to join. Lists of other eras may also be in the roster: in multi-detachment games, detachments may come from any edition (author). Limitation: two 3rd Edition ally forces count for each other. Not yet tested in New Recruit. |
 
 ## Questions for the Unification author
 
 1. Which 6th/7th Edition detachment special rules are Command Benefits (ignored) and which still apply? Psykana Division: Empyric Link; Imperial Navy Section: Air Superiority; Null-Maiden Task Force: Nauseating Aura, Rite of Annulment; Spectral Host: Saviours from Beyond. All are currently dropped.
-2. In an agreed multi-detachment game, may detachments come from different eras (e.g. a 3rd Ed Imperial Guard army plus a 7th Ed Psykana Division), or does the same-era rule for allies apply?
-3. 7th Ed Fallen Angels has no Troops, no detachment of its own, and its Formations and allied use are banned. Can it be fielded at all? It is currently offered on the standard chart, where it cannot be legal.
+2. ~~May detachments from different eras be mixed?~~ **Answered (2026-10-29):** "If you have multiple detachments, take whatever from whatever. No standard game type of 5th gave players multiple detachments anyhow."
+3. ~~Can 7th Ed Fallen Angels be fielded?~~ **Answered (2026-10-29):** "Fallen angels do not work. They could only be taken as a formation." Removed.
 
 ## Not yet enforced
 
