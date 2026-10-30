@@ -87,7 +87,7 @@ FACTIONS = {
                             (7, "Chaos Khorne Daemonkin", "Codex: Khorne Daemonkin (2015)")],
     "Chaos Daemons": [(5, "Chaos Daemons", "Codex: Chaos Daemons (2008)", 4),
                       (6, "Chaos Daemons (40K) - Codex", "Codex: Chaos Daemons (2013)"),
-                      (7, "Chaos Daemons (40K) - Codex", "Codex: Chaos Daemons (2015)")],
+                      (7, "Chaos Daemons (40K) - Codex", "Codex: Chaos Daemons – Daemonic Incursion Edition (2016)")],
     "Renegades & Heretics": [(3, "Lost and the Damned (Eye of Terror 2003)", ""),
                              (7, "Renegades & Heretics", "Forge World: Renegades & Heretics")],
     "Eldar": [(3, "Eldar (2000)", "Codex: ")] + [
