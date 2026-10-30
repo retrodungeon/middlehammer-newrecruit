@@ -23,6 +23,10 @@ POINT_FIXES = {
     CODEX: {"Chaplain Ivanus Enkomi (IA12)": 145},
 }
 
+# Unique characters whose only limit in the data was a top-level "per parent" maximum
+# (removed by the converter): one per roster.
+UNIQUE = {CODEX: ["Cypher"]}
+
 # Characters of the update, matched by name in the Siege Assault Vanguard list.
 BADAB = ["Carab Culln", "Sevrin Loth", "Tyberos", "Titus", "Narvaez", "Tarnus Vale", "Issodon", "Blaylock",
          "Mir'san", "Ashmantle", "Harath Shen", "Redth", "Thulsa Kane", "Androcles", "Vaylund Cal", "Courbray",
@@ -159,6 +163,124 @@ def _renumber(el, prefix):
             x.set("targetId", new[x.get("targetId")])
 
 
+def _inline_chapter_tactics(char, sav):
+    """In the Siege Assault Vanguard list a character's Chapter Tactics is a selection whose
+    limit depends on that list's own Chapter choice, which a Codex: Space Marines force never
+    has (so it always showed an error). For the codex copies, the selection is replaced by the
+    rules it carries, shown on the character."""
+    ids = {x.get("id"): x for x in sav.iter() if x.get("id")}
+    par = {c: p for p in char.iter() for c in p}
+    for link in [l for l in char.iter(q("entryLink")) if (l.get("name") or "").startswith("Chapter Tactics - ")]:
+        target = ids.get(link.get("targetId"))
+        holder = par[par[link]]
+        info = holder.find(q("infoLinks"))
+        if info is None:
+            info = ET.SubElement(holder, q("infoLinks"))
+        for il in (target.iter(q("infoLink")) if target is not None else []):
+            info.append(copy.deepcopy(il))
+        par[link].remove(link)
+
+
+# Chapter choice in Codex: Space Marines (2013): Forge World Chapters with their own tactics
+# (Forge World "Space Marine Chapter Tactics" for 6th Edition) are added as options, and every
+# option shows its rules. {option: (rules in FORGE_WORLD_TACTICS or codex key, note)}.
+FW_CHAPTERS = {
+    "Red Scorpions": ["Purity Above All", "Fortitude and Contempt"],
+    "Carcharodons": ["Reavers of the Outer Darkness", "Blood Hunger"],
+    "Raptors": ["Legendary Marksmen"],
+    "Mantis Warriors": ["Shadow Killers", "Children of Prophecy"],
+    "Executioners": ["Bitter Mettle", "Headhunters"],
+    "Angels Revenant (after 991.M41)": ["A Legacy of Hatred", "To the Last Breath"],
+    "Red Hunters": ["Mnemonic Redaction Protocols", "By this Seal"],
+    "Star Phantoms": ["Orbital Wave Attack", "Hail of Destruction"],
+    "Minotaurs": ["Unrelenting Assault", "Trample and Crush"],
+    "Fire Hawks": ["On Wings of Fire", "Speed and Fury"],
+    "Astral Claws": ["Reckless Courage", "Rapid Attack and Encirclement"],
+}
+CODEX_CHAPTER_NOTES = {
+    "Ultramarines": "Also used by the Howling Griffons, Fire Angels, Marines Errant, Novamarines and (before "
+                    "991.M41) Angels Revenant.",
+    "Iron Hands": "Also used by the Sons of Medusa.",
+    "Raven Guard": "The Raptors use Strike from the Shadows plus Legendary Marksmen (choose Raptors).",
+}
+
+
+def _rule(parent, rid, name, text):
+    box = parent.find(q("rules"))
+    if box is None:
+        box = ET.SubElement(parent, q("rules"))
+    r = ET.SubElement(box, q("rule"), {"id": rid, "name": name, "hidden": "false"})
+    ET.SubElement(r, q("description")).text = text
+
+
+def extend_chapter_choice(codex):
+    from rules_text_6e import CODEX_TEXT, FORGE_WORLD_TACTICS
+    sm = CODEX_TEXT["Space Marines"]
+    ct = next(e for e in codex.find(q("selectionEntries")) if e.get("name") == "Chapter Tactics")
+    group = next(g for g in ct.iter(q("selectionEntryGroup")) if g.get("name") == "Must Pick One")
+    entries = group.find(q("selectionEntries"))
+    for opt in entries:
+        name = opt.get("name")
+        text = sm.get(f"Chapter Tactics ({name})")
+        if text:
+            _rule(opt, f"{opt.get('id')}-rules", f"Chapter Tactics ({name})",
+                  text + (" " + CODEX_CHAPTER_NOTES[name] if name in CODEX_CHAPTER_NOTES else ""))
+    added = []
+    for chapter, rules in FW_CHAPTERS.items():
+        oid = f"mh6-chapter-{chapter.lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '')}"
+        opt = ET.SubElement(entries, q("selectionEntry"), {"id": oid, "name": f"{chapter} (Forge World)",
+                                                          "hidden": "false", "collective": "false",
+                                                          "import": "true", "type": "upgrade"})
+        ET.SubElement(ET.SubElement(opt, q("costs")), q("cost"), {"name": "Points", "typeId": POINTS, "value": "0"})
+        ET.SubElement(ET.SubElement(opt, q("constraints")), q("constraint"), {
+            "type": "max", "value": "1", "field": "selections", "scope": "parent", "shared": "true",
+            "id": f"{oid}-max", "includeChildSelections": "false", "includeChildForces": "false"})
+        if chapter == "Raptors":
+            _rule(opt, f"{oid}-shadows", "Strike from the Shadows",
+                  sm["Chapter Tactics: Strike from the Shadows"])
+        for i, r in enumerate(rules):
+            _rule(opt, f"{oid}-{i}", r, FORGE_WORLD_TACTICS[r])
+        added.append(chapter)
+    return added
+
+
+# Chapter Tactics each Badab character requires (Badab War Characters Update). In Codex: Space
+# Marines (2013) a character is only offered when the force's Chapter choice matches.
+# Alberec (Exorcists) takes whichever Chapter Tactics represent the Exorcists, so any.
+CHARACTER_CHAPTER = {
+    "Carab Culln": "Red Scorpions", "Sevrin Loth": "Red Scorpions", "Tyberos": "Carcharodons",
+    "Titus": "Ultramarines", "Narvaez": "Ultramarines", "Tarnus Vale": "Ultramarines", "Blaylock": "Ultramarines",
+    "Issodon": "Raptors", "Mir'san": "Salamanders", "Ashmantle": "Salamanders", "Harath Shen": "Salamanders",
+    "Redth": "Mantis Warriors", "Thulsa Kane": "Executioners", "Androcles": "Star Phantoms",
+    "Vaylund Cal": "Iron Hands", "Courbray": "Fire Hawks", "Huron": "Astral Claws", "Sumatris": "Astral Claws",
+    "Valthex": "Astral Claws", "Moloc": "Minotaurs", "Enkomi": "Minotaurs",
+}
+
+
+def require_chapter(codex):
+    group = next(g for g in codex.iter(q("selectionEntryGroup")) if g.get("name") == "Must Pick One")
+    options = {}
+    for o in group.find(q("selectionEntries")):
+        options[o.get("name").replace(" (Forge World)", "")] = o.get("id")
+    done = []
+    for e in codex.find(q("selectionEntries")):
+        n = e.get("name") or ""
+        key = next((k for k in CHARACTER_CHAPTER if k in n), None)
+        if key is None or n.startswith(NOT_BADAB):
+            continue
+        mods = e.find(q("modifiers"))
+        if mods is None:
+            mods = ET.Element(q("modifiers"))
+            e.insert(0, mods)
+        m = ET.SubElement(mods, q("modifier"), {"type": "set", "field": "hidden", "value": "true"})
+        ET.SubElement(ET.SubElement(m, q("conditions")), q("condition"), {
+            "type": "equalTo", "value": "0", "field": "selections", "scope": "force",
+            "childId": options[CHARACTER_CHAPTER[key]], "shared": "true",
+            "includeChildSelections": "true", "includeChildForces": "false"})
+        done.append(f"{n} -> {CHARACTER_CHAPTER[key]}")
+    return done
+
+
 def apply(cats, gst, report):
     """cats: {source stem: converted catalogue root} (after ID suffixing)."""
     done = {"pointsFixed": [], "built": [], "copiedToCodex": []}
@@ -169,6 +291,16 @@ def apply(cats, gst, report):
                     if c.get("typeId") == POINTS:
                         c.set("value", str(fixes[e.get("name")]))
                 done["pointsFixed"].append(e.get("name"))
+    for stem, names in UNIQUE.items():
+        for e in cats[stem].find(q("selectionEntries")):
+            if e.get("name") in names:
+                cons = e.find(q("constraints"))
+                if cons is None:
+                    cons = ET.SubElement(e, q("constraints"))
+                ET.SubElement(cons, q("constraint"), {
+                    "type": "max", "value": "1", "field": "selections", "scope": "roster", "shared": "true",
+                    "id": f"{e.get('id')}-unique", "includeChildSelections": "true", "includeChildForces": "false"})
+                done.setdefault("madeUnique", []).append(e.get("name"))
     for spec in NEW_CHARACTERS:
         done["built"].append(build_character(cats[SAV], gst, spec))
     codex = cats[CODEX]
@@ -181,7 +313,10 @@ def apply(cats, gst, report):
         if any(k in h for k in BADAB for h in have if k in n):
             continue                       # the codex list already has its own version
         c = copy.deepcopy(e)
+        _inline_chapter_tactics(c, cats[SAV])
         _renumber(c, f"mh6-codex-{e.get('id')}")
         codex.find(q("selectionEntries")).append(c)
         done["copiedToCodex"].append(n)
+    done["forgeWorldChapters"] = extend_chapter_choice(codex)
+    done["chapterRequired"] = require_chapter(codex)
     report["sixthAdditions"] = done
